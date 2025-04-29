@@ -81,22 +81,33 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                 <Lock className="w-5 h-5 text-red-500" />
                 <h3 className="text-xl font-bold text-white">Confidential Document</h3>
               </div>
-              <button 
+              <button
                 onClick={onClose}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <FileDown className="w-6 h-6 text-red-500" />
-                <p className="text-gray-300 text-lg">
-                  <span className="font-semibold text-white">{projectTitle}</span> Pitch-deck.pptx
-                </p>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <FileDown className="w-6 h-6 text-red-500" />
+                  <p className="text-gray-300 text-lg">
+                    <span className="font-semibold text-white">{projectTitle}</span> Pitch-deck.pptx
+                  </p>
+                </div>
+
+                {/* Request Access Button */}
+                <button
+                  onClick={() => window.location.href = '/contact'} // Change '/contact' to your contact page URL
+                  className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                >
+                  Request Access
+                </button>
               </div>
-              
+
+
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
                   <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
@@ -109,9 +120,8 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                       id="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className={`w-full bg-gray-800 border ${
-                        isIncorrectPassword ? 'border-red-500' : 'border-gray-700'
-                      } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 pr-12`}
+                      className={`w-full bg-gray-800 border ${isIncorrectPassword ? 'border-red-500' : 'border-gray-700'
+                        } rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 pr-12`}
                       placeholder="Enter password"
                     />
                     <button
@@ -127,7 +137,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                     </button>
                   </div>
                 </div>
-                
+
                 <AnimatePresence>
                   {isIncorrectPassword && (
                     <motion.div
@@ -141,37 +151,42 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                         <p className="text-red-400 font-medium">Incorrect Password</p>
                         <p className="text-gray-300 text-sm mt-1">
                           This is a confidential file. Unauthorized access attempts may lead to legal action.
-                         
+
                         </p>
                       </div>
 
-                            {/* New small box below */}
-      <div className="bg-red-800/30 border border-red-600 rounded-md p-3">
-        <p className="text-red-300 text-sm font-bold">
-          If the password is incorrect please contact us.
-        </p>
-      </div>
+                      {/* New small box below */}
+                      <div className="bg-red-800/30 border border-red-600 rounded-md p-3">
+                        <p className="text-red-300 text-sm font-bold">
+                          If the password is incorrect please{' '}
+                          <a
+                            href="/contact"
+                            className="inline-block px-2 py-0.5 border border-red-400 rounded-md text-red-300 hover:bg-red-700 hover:text-white transition text-xs"
+                          >
+                            contact us
+                          </a>
+                        </p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-                
-<button
-  type="submit"
-  className={`w-full font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 ${
-    isDownloading 
-      ? 'bg-green-600 hover:bg-green-700' 
-      : 'bg-red-600 hover:bg-red-700'
-  } text-white`}
->
-  {isDownloading ? (
-    <Lottie animationData={downloadAnimation} loop autoplay className="w-6 h-6" />
-  ) : (
-    <Lock className="w-4 h-4" />
-  )}
-  {isDownloading ? 'Downloading...' : 'Verify & Download'}
-</button>
+
+                <button
+                  type="submit"
+                  className={`w-full font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 ${isDownloading
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : 'bg-red-600 hover:bg-red-700'
+                    } text-white`}
+                >
+                  {isDownloading ? (
+                    <Lottie animationData={downloadAnimation} loop autoplay className="w-6 h-6" />
+                  ) : (
+                    <Lock className="w-4 h-4" />
+                  )}
+                  {isDownloading ? 'Downloading...' : 'Verify & Download'}
+                </button>
               </form>
-              
+
               <p className="mt-6 text-xs text-gray-400 text-center">
                 This document contains confidential information about the project.
                 Sharing without authorization is strictly prohibited.
