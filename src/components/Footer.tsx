@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin,X } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, X } from 'lucide-react';
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { BsThreads } from "react-icons/bs";
@@ -33,7 +33,7 @@ const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, labe
   }, []);
 
   return (
-    <a 
+    <a
       ref={iconRef}
       href={href}
       className="relative p-2 text-gray-400 hover:text-red-500 transition-colors"
@@ -78,9 +78,9 @@ const FooterLink = ({ to, children }: { to: string, children: React.ReactNode })
   }, []);
 
   return (
-    <Link 
+    <Link
       ref={linkRef}
-      to={to} 
+      to={to}
       className="text-gray-400 block py-1 hover:text-white transition-colors"
       data-clickable="true"
     >
@@ -175,32 +175,32 @@ const Footer = () => {
             <div className="text-gray-400 text-sm">
               © 2025 UH Films. All rights reserved.
             </div>
-            
-            <div className="flex space-x-6">
+
+            <div className="flex space-x-5>
               <a
   href="https://bishan-portfolio.vercel.app/"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Visit Bishan Portfolio"
->
-  <img
-    src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Bishan Portfolio"
+            >
+              <img
+                src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png
 "
-    alt="Bishan Portfolio"
-    className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
-  />
-</a>
-              <SocialIcon icon={BsTwitterX } href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
-              <SocialIcon icon={FaLinkedinIn } href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
-              <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
-              <SocialIcon icon={BsThreads } href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Twitter" />
-              <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
-              <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
-            </div>
+                alt="Bishan Portfolio"
+                className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
+              />
+            </a>
+            <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
+            <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
+            <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
+            <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Twitter" />
+            <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
+            <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+    </footer >
   );
 };
 
