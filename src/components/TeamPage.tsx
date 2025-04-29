@@ -171,6 +171,7 @@ const TeamPage = () => {
   };
 
   return (
+    <div className="min-h-screen pt-20 overflow-x-hidden">
     <div className="min-h-screen pt-20">
       <div className="container mx-auto px-4 py-16">
         <motion.section
@@ -360,6 +361,7 @@ const TeamPage = () => {
           onClose={handleCloseForm}
         />
       )}
+    </div>
     </div>
   );
 };
