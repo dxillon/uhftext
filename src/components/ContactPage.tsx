@@ -103,7 +103,7 @@ const ContactPage = () => {
         // Replace these with your EmailJS service details
         const result = await emailjs.send(
           'service_a5tly1m',
-          'template_z0pckoc',
+          'template_9h0vho7',
           {
             from_name: formData.name,
             reply_to: formData.email,
