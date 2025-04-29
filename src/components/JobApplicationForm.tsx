@@ -212,6 +212,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
+                    placeholder="Location , Degree , student etc."
                     className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   />
                 </div>
