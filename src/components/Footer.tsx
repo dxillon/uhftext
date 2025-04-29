@@ -176,7 +176,7 @@ const Footer = () => {
               © 2025 UH Films. All rights reserved.
             </div>
 
-            <div className="flex space-x-5>
+            <div className="flex space-x-5 ">
               <a
   href="https://bishan-portfolio.vercel.app/"
               target="_blank"
