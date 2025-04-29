@@ -120,17 +120,17 @@ const jobOpenings = [
     ]
   },
   {
-    title: "Public Relations (PR) Manager",
+    title: "Editor & Animations",
     department: "Post-production",
     location: "Delhi, India / Remote",
     type: "Full-time",
-    salary: "Competitive",
-    description: "The PR Manager handles the communication between the production and the public, managing media relations, press releases, and promotional efforts. They ensure that the production gets positive coverage in the press and engages with audiences through social media.",
+    salary: "Per project",
+    description: "The Editor & Animator is responsible for cutting and assembling raw footage into the final film, ensuring the story flows smoothly. They also create animations and visual effects to enhance the storytelling experience",
     requirements: [
-      "Proven experience in public relations or communications.",
-      "Strong writing and verbal communication skills.",
-      "Ability to build and maintain relationships with media outlets.",
-      "Proficiency in social media marketing and online branding."
+      "Proficiency in editing software like Adobe Premiere Pro, Final Cut Pro, or Avid Media Composer.",
+      "Experience with animation software such as After Effects or Blender.",
+      "Strong sense of pacing, storytelling, and continuity.",
+      "Ability to work in a fast-paced environment and meet tight deadlines."
     ]
   }
 ];

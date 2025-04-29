@@ -114,13 +114,13 @@ const jobOpenings = [
   },
 
   {
-    title: "Editor & Animations",
-    description: "The Editor & Animator is responsible for cutting and assembling raw footage into the final film, ensuring the story flows smoothly. They also create animations and visual effects to enhance the storytelling experience. ",
+    title: "Public Relations (PR) Manager",
+    description: "The PR Manager handles the communication between the production and the public, managing media relations, press releases, and promotional efforts. They ensure that the production gets positive coverage in the press and engages with audiences through social media. ",
     requirements: [
-      "Proficiency in editing software like Adobe Premiere Pro, Final Cut Pro, or Avid Media Composer.",
-      "Experience with animation software such as After Effects or Blender.",
-      "Strong sense of pacing, storytelling, and continuity.",
-      "Ability to work in a fast-paced environment and meet tight deadlines."
+      "Proven experience in public relations or communications.",
+      "Strong writing and verbal communication skills.",
+      "Ability to build and maintain relationships with media outlets.",
+      "Proficiency in social media marketing and online branding."
     ]
   }
 ];
