@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, Film, Camera, Video, Handshake, ShieldCheck  } from 'lucide-react';
+import { Shield, Lock, Eye, Film, Camera, Video, Handshake, ShieldCheck } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
   const sections = [
@@ -35,78 +36,86 @@ const PrivacyPolicy = () => {
       content: "When it’s time to deliver your final project, we ensure that distribution happens securely. Files are shared through encrypted platforms, and we provide secure download links with expiration dates when necessary. We never share your content publicly or with third parties unless you explicitly authorize us to do so."
     },
     {
-      icon: Handshake ,
+      icon: Handshake,
       title: "Third-Party Service Providers",
       content: "At times, to support our production process and ensure seamless delivery, we may collaborate with trusted third-party service providers. These may include, but are not limited to, cloud storage providers, post-production studios, freelance specialists, legal advisors, or content distribution platforms. We ensure that all third parties we work with are contractually bound to maintain strict confidentiality and adhere to the same security and privacy standards that we uphold internally. Before sharing any project data or footage, we vet each provider's security policies, enforce non-disclosure agreements (NDAs) where necessary, and limit access only to the data essential for the service being performed. Under no circumstances will we sell, share, or disclose client information or content for marketing or unauthorized purposes."
     },
     {
-      icon: ShieldCheck ,
+      icon: ShieldCheck,
       title: "Rights of the Client",
       content: "We believe in empowering our clients with full control over their data and content. Clients have the right to request access to any personal data or production-related materials we hold about them. This includes viewing stored content, understanding how it is used, and requesting corrections if any information is inaccurate. Furthermore, clients may request the secure deletion of their data or footage upon project completion, provided that it does not conflict with any legal retention requirements or contractual obligations. To exercise these rights, clients can simply reach out to us via the contact information provided on our website. We are committed to responding to all legitimate requests within a reasonable timeframe and ensuring complete transparency throughout the process."
     }
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="container mx-auto px-4 py-16"
-      >
-        <motion.h1 
-          initial={{ y: -50 }}
-          animate={{ y: 0 }}
-          className="text-4xl font-bold text-white mb-8 text-center text-gradient"
-        >
-          Privacy Policy
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-300 text-center max-w-3xl mx-auto mb-16"
-        >
-          At UH Films, privacy isn’t just a policy — it's a commitment woven into everything we do. We understand the value of your creative work and the trust you place in us. By choosing to work with us, you can be confident that your ideas, your projects, and your privacy are always protected with the utmost care.
-        </motion.p>
+    <>
+      <Helmet>
+        <title>Privacy Policy – Urban Hustle Films</title>
+        <meta name="description" content="Read how Urban Hustle Films collects, stores, and protects your data." />
+        <link rel="canonical" href="https://uhfilms.in/privacy" />
+      </Helmet>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {sections.map((section, index) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="card hover:bg-white/5 transition-all duration-300"
-            >
-              <section.icon className="w-8 h-8 text-red-500 mb-4" />
-              <h2 className="text-2xl font-semibold text-white mb-4">{section.title}</h2>
-              <p className="text-gray-300">{section.content}</p>
-            </motion.div>
-          ))}
-        </div>
-
+      <div className="min-h-screen pt-20">
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-16 p-8 card"
+          animate={{ opacity: 1 }}
+          className="container mx-auto px-4 py-16"
         >
-          <h2 className="text-2xl font-semibold text-white mb-4">Contact Our Privacy Team</h2>
-<p className="text-gray-300">
-  For any privacy-related concerns or questions about how we handle your production data, 
-  please contact our dedicated privacy team at 
-<button
-  onClick={() => window.location.href = "https://mail.google.com/mail/?view=cm&fs=1&to=operations@uhfilms.com&su=Privacy%20Policy%20Inquiry&body=Dear%20Privacy%20Team%2C%0A%0AI%20have%20a%20privacy-related%20question%20regarding%20Urban%20Hustle%20Films.%0A%0ADetails%3A%0A%0A-%0A%0AThank%20you%2C%0A%5BYour%20Name%5D"}
-  className="text-red-400 underline ml-1 bg-transparent border-none cursor-pointer"
->
-  operations@uhfilms.in
-</button>
-</p>
+          <motion.h1
+            initial={{ y: -50 }}
+            animate={{ y: 0 }}
+            className="text-4xl font-bold text-white mb-8 text-center text-gradient"
+          >
+            Privacy Policy
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-300 text-center max-w-3xl mx-auto mb-16"
+          >
+            At UH Films, privacy isn’t just a policy — it's a commitment woven into everything we do. We understand the value of your creative work and the trust you place in us. By choosing to work with us, you can be confident that your ideas, your projects, and your privacy are always protected with the utmost care.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {sections.map((section, index) => (
+              <motion.div
+                key={section.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card hover:bg-white/5 transition-all duration-300"
+              >
+                <section.icon className="w-8 h-8 text-red-500 mb-4" />
+                <h2 className="text-2xl font-semibold text-white mb-4">{section.title}</h2>
+                <p className="text-gray-300">{section.content}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-16 p-8 card"
+          >
+            <h2 className="text-2xl font-semibold text-white mb-4">Contact Our Privacy Team</h2>
+            <p className="text-gray-300">
+              For any privacy-related concerns or questions about how we handle your production data,
+              please contact our dedicated privacy team at
+              <button
+                onClick={() => window.location.href = "https://mail.google.com/mail/?view=cm&fs=1&to=operations@uhfilms.com&su=Privacy%20Policy%20Inquiry&body=Dear%20Privacy%20Team%2C%0A%0AI%20have%20a%20privacy-related%20question%20regarding%20Urban%20Hustle%20Films.%0A%0ADetails%3A%0A%0A-%0A%0AThank%20you%2C%0A%5BYour%20Name%5D"}
+                className="text-red-400 underline ml-1 bg-transparent border-none cursor-pointer"
+              >
+                operations@uhfilms.in
+              </button>
+            </p>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </>
   );
 };
 

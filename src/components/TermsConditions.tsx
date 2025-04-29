@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scale, FileText, Shield, Clock, Film, Award, Pencil,   CloudLightning, 
-  ShieldAlert, 
-  ClipboardCheck, 
-  Gavel, 
-  Edit3, 
-  CreditCard, 
-  Ban  } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import {
+  Scale, FileText, Shield, Clock, Film, Award, Pencil, CloudLightning,
+  ShieldAlert,
+  ClipboardCheck,
+  Gavel,
+  Edit3,
+  CreditCard,
+  Ban
+} from 'lucide-react';
 
 const TermsConditions = () => {
   const sections = [
@@ -40,22 +43,22 @@ const TermsConditions = () => {
       title: "Quality Standards",
       content: "We commit to delivering work that meets professional industry standards. However, creative work is subjective. Minor differences in artistic interpretation are not considered a failure to meet standards unless they fall outside of agreed project briefs."
     },
-        {
+    {
       icon: CloudLightning,
       title: " Force Majeure (Unforeseen Circumstances)",
       content: "UH films ( Urban Hustle Films )is not liable for delays, interruptions, or failure to deliver services due to circumstances beyond our control, including but not limited to natural disasters, pandemics, equipment failure, strikes, or changes in law."
     },
-          {
-      icon: ShieldAlert	,
+    {
+      icon: ShieldAlert,
       title: " Liability Limitation",
       content: "We are not responsible for any indirect, incidental, or consequential damages arising from the use or inability to use the final deliverables. The client's remedy is limited to refund or re-performance of the service."
     },
-          {
+    {
       icon: ClipboardCheck,
       title: " Client Responsibilities",
       content: "Clients are responsible for obtaining all necessary permissions (e.g., location permits, participant releases) unless otherwise agreed. Clients must also ensure all content they provide does not infringe on third-party rights."
     },
-          {
+    {
       icon: Gavel,
       title: " Dispute Resolution / Governing Law",
       content: "Any disputes arising under these Terms shall be governed by the laws of [Your State/Country]. Parties agree to attempt mediation before pursuing formal legal action."
@@ -81,95 +84,103 @@ const TermsConditions = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="container mx-auto px-4 py-16"
-      >
-        <motion.div className="text-center mb-16">
-          <motion.h1 
-            initial={{ y: -50 }}
-            animate={{ y: 0 }}
-            className="text-4xl font-bold text-white mb-8 text-gradient"
-          >
-            Terms & Conditions
-          </motion.h1>
-          <Pencil className="w-16 h-16 text-red-500 mx-auto mb-8" />
-          <motion.p
+    <>
+      <Helmet>
+        <title>Terms & Conditions – Urban Hustle Films</title>
+        <meta name="description" content="Review the terms and conditions for using Urban Hustle Films' services." />
+        <link rel="canonical" href="https://uhfilms.in/terms" />
+      </Helmet>
+
+      <div className="min-h-screen pt-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="container mx-auto px-4 py-16"
+        >
+          <motion.div className="text-center mb-16">
+            <motion.h1
+              initial={{ y: -50 }}
+              animate={{ y: 0 }}
+              className="text-4xl font-bold text-white mb-8 text-gradient"
+            >
+              Terms & Conditions
+            </motion.h1>
+            <Pencil className="w-16 h-16 text-red-500 mx-auto mb-8" />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-gray-300 max-w-3xl mx-auto"
+            >
+              Welcome to UH films ( Urban Hustle Films ). These Terms and Conditions (“Terms”) govern all services provided by our production house. By engaging with our services, you agree to comply with these Terms. Please read them carefully to understand your rights and responsibilities.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {sections.map((section, index) => (
+              <motion.div
+                key={section.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card hover:bg-white/5 transition-all duration-300"
+              >
+                <section.icon className="w-8 h-8 text-red-500 mb-4" />
+                <h2 className="text-2xl font-semibold text-white mb-4">{section.title}</h2>
+                <p className="text-gray-300">{section.content}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-300 max-w-3xl mx-auto"
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="space-y-8"
           >
-            Welcome to UH films ( Urban Hustle Films ). These Terms and Conditions (“Terms”) govern all services provided by our production house. By engaging with our services, you agree to comply with these Terms. Please read them carefully to understand your rights and responsibilities.
-          </motion.p>
-        </motion.div>
+            {additionalTerms.map((term, index) => (
+              <motion.div
+                key={term.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card"
+              >
+                <term.icon className="w-8 h-8 text-red-500 mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-3">{term.title}</h3>
+                <p className="text-gray-300">{term.content}</p>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {sections.map((section, index) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="card hover:bg-white/5 transition-all duration-300"
-            >
-              <section.icon className="w-8 h-8 text-red-500 mb-4" />
-              <h2 className="text-2xl font-semibold text-white mb-4">{section.title}</h2>
-              <p className="text-gray-300">{section.content}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          {additionalTerms.map((term, index) => (
-            <motion.div
-              key={term.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="card"
-            >
-               <term.icon className="w-8 h-8 text-red-500 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-3">{term.title}</h3>
-              <p className="text-gray-300">{term.content}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-16 p-8 card text-center"
-        >
-          <h2 className="text-2xl font-semibold text-white mb-4">Questions About Our Terms?</h2>
-          <p className="text-gray-300 mb-6">
-            Our legal team is available to clarify any aspects of our terms and conditions.
-            Contact us at legal@uhfilms.com for detailed information.
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary"
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-16 p-8 card text-center"
+          >
+            <h2 className="text-2xl font-semibold text-white mb-4">Questions About Our Terms?</h2>
+            <p className="text-gray-300 mb-6">
+              Our legal team is available to clarify any aspects of our terms and conditions.
+              Contact us at legal@uhfilms.com for detailed information.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary"
               onClick={() => {
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=operation@uhfilms.in&su=Legal%20Support%20Request&body=Dear%20Legal%20Team%2C%0A%0AI%20need%20assistance%20regarding%20[insert%20your%20issue%20here].%0A%0AThank%20you%2C%0A[Your%20Name]`;
-    window.open(gmailUrl, '_blank');
-  }}
-          >
-            Contact Legal Team
-          </motion.button>
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=operation@uhfilms.in&su=Legal%20Support%20Request&body=Dear%20Legal%20Team%2C%0A%0AI%20need%20assistance%20regarding%20[insert%20your%20issue%20here].%0A%0AThank%20you%2C%0A[Your%20Name]`;
+                window.open(gmailUrl, '_blank');
+              }}
+            >
+              Contact Legal Team
+            </motion.button>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JobApplicationForm2 from './JobApplicationForm2';
+import { Helmet } from 'react-helmet-async';
 
 const mainTeam = [
   {
@@ -172,194 +173,203 @@ const TeamPage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 overflow-x-hidden">
-      <div className="min-h-screen pt-20">
-        <div className="container mx-auto px-4 py-16">
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-20"
-          >
-            <motion.h1
-              initial={{ y: -50 }}
-              animate={{ y: 0 }}
-              className="text-5xl font-bold text-center mb-16 text-gradient"
+    <>
+      <Helmet>
+        <title>Our Team – Urban Hustle Films</title>
+        <meta name="description" content="Meet the passionate creators and artists behind Urban Hustle Films." />
+        <link rel="canonical" href="https://uhfilms.in/team" />
+      </Helmet>
+
+      <div className="min-h-screen pt-20 overflow-x-hidden">
+        <div className="min-h-screen pt-20">
+          <div className="container mx-auto px-4 py-16">
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-20"
             >
-              Leadership Team
-            </motion.h1>
+              <motion.h1
+                initial={{ y: -50 }}
+                animate={{ y: 0 }}
+                className="text-5xl font-bold text-center mb-16 text-gradient"
+              >
+                Leadership Team
+              </motion.h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {mainTeam.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="card group overflow-hidden"
-                  data-clickable="true"
-                >
-                  <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-2xl font-semibold text-white mb-1">{member.name}</h3>
-                      <p className="text-red-500 font-medium">{member.role}</p>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {member.achievements.map((achievement, i) => (
-                        <span key={i} className="px-3 py-1 bg-red-500/10 rounded-full text-red-400 text-sm">
-                          {achievement}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-gray-300">{member.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-20"
-          >
-            <h2 className="text-4xl font-bold text-center mb-16 text-gradient">Our Teams</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {Object.entries(departments).map(([department, { description, members }], index) => (
-                <motion.div
-                  key={department}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`card group overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'ring-2 ring-red-500/50' : ''
-                    }`}
-                  onClick={() => handleDepartmentClick(department)}
-                  data-clickable="true"
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
-                      <Users className="w-6 h-6 text-red-500" />
-                      {department}
-                    </h3>
-                    {expandedDepartments[department] ? (
-                      <ChevronUp className="w-5 h-5 text-red-500" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-red-500" />
-                    )}
-                  </div>
-                  <p className="text-gray-300 mb-4">{description}</p>
-
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'h-auto' : 'h-[160px]'
-                      }`}
-                  >
-                    <div
-                      ref={el => scrollContainers.current[department] = el}
-                      className={`transition-transform duration-1000 ${expandedDepartments[department] ? 'translate-y-0!' : ''
-                        }`}
-                      style={{
-                        transform: getScrollTransform(department)
-                      }}
-                    >
-                      {members.map((member, i) => (
-                        <div
-                          key={`${member}-${i}`}
-                          className={`py-2 transition-colors duration-300 ${expandedDepartments[department]
-                              ? 'text-white'
-                              : 'text-gray-400 hover:text-white'
-                            }`}
-                        >
-                          {member}
-                        </div>
-                      ))}
-                      {!expandedDepartments[department] && [...members, ...members].map((member, i) => (
-                        <div
-                          key={`duplicate-${member}-${i}`}
-                          className="py-2 text-gray-400 hover:text-white transition-colors"
-                        >
-                          {member}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={`mt-4 text-center text-xs text-gray-500 opacity-75 ${expandedDepartments[department] ? 'block' : 'hidden'
-                    }`}>
-                    Click to resume scrolling
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl font-bold mb-8 text-gradient">Join Our Team</h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {jobOpenings.map((job, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {mainTeam.map((member, index) => (
                   <motion.div
-                    key={job.title}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={member.name}
+                    initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="card group h-full"
+                    transition={{ delay: index * 0.2 }}
+                    className="card group overflow-hidden"
                     data-clickable="true"
                   >
-                    <BriefcaseIcon className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform mb-4" />
-                    <h3 className="text-xl font-semibold text-white mb-2">{job.title}</h3>
-                    <p className="text-gray-400 mb-4">{job.description}</p>
-                    <div className="space-y-2 mb-6">
-                      <h4 className="text-sm font-semibold text-red-500">Requirements:</h4>
-                      <ul className="text-gray-400 space-y-1">
-                        {job.requirements.map((req, i) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-red-500 rounded-full" />
-                            {req}
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-2xl font-semibold text-white mb-1">{member.name}</h3>
+                        <p className="text-red-500 font-medium">{member.role}</p>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => handleApplyClick(job.title)}
-                      className="mt-auto inline-flex items-center justify-center px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors w-full"
-                    >
-                      Apply Now
-                    </button>
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        {member.achievements.map((achievement, i) => (
+                          <span key={i} className="px-3 py-1 bg-red-500/10 rounded-full text-red-400 text-sm">
+                            {achievement}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-gray-300">{member.description}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
-              <Link
-                to="/careers"
-                className="btn-primary inline-flex items-center gap-2 group"
-                data-clickable="true"
-              >
-                <span>View All Positions</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </motion.section>
-        </div>
+            </motion.section>
 
-        {selectedJob && (
-          <JobApplicationForm2
-            selectedRole={selectedJob}
-            onClose={handleCloseForm}
-          />
-        )}
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-20"
+            >
+              <h2 className="text-4xl font-bold text-center mb-16 text-gradient">Our Teams</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {Object.entries(departments).map(([department, { description, members }], index) => (
+                  <motion.div
+                    key={department}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`card group overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'ring-2 ring-red-500/50' : ''
+                      }`}
+                    onClick={() => handleDepartmentClick(department)}
+                    data-clickable="true"
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
+                        <Users className="w-6 h-6 text-red-500" />
+                        {department}
+                      </h3>
+                      {expandedDepartments[department] ? (
+                        <ChevronUp className="w-5 h-5 text-red-500" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-red-500" />
+                      )}
+                    </div>
+                    <p className="text-gray-300 mb-4">{description}</p>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'h-auto' : 'h-[160px]'
+                        }`}
+                    >
+                      <div
+                        ref={el => scrollContainers.current[department] = el}
+                        className={`transition-transform duration-1000 ${expandedDepartments[department] ? 'translate-y-0!' : ''
+                          }`}
+                        style={{
+                          transform: getScrollTransform(department)
+                        }}
+                      >
+                        {members.map((member, i) => (
+                          <div
+                            key={`${member}-${i}`}
+                            className={`py-2 transition-colors duration-300 ${expandedDepartments[department]
+                              ? 'text-white'
+                              : 'text-gray-400 hover:text-white'
+                              }`}
+                          >
+                            {member}
+                          </div>
+                        ))}
+                        {!expandedDepartments[department] && [...members, ...members].map((member, i) => (
+                          <div
+                            key={`duplicate-${member}-${i}`}
+                            className="py-2 text-gray-400 hover:text-white transition-colors"
+                          >
+                            {member}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className={`mt-4 text-center text-xs text-gray-500 opacity-75 ${expandedDepartments[department] ? 'block' : 'hidden'
+                      }`}>
+                      Click to resume scrolling
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.section>
+
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-center"
+            >
+              <h2 className="text-3xl font-bold mb-8 text-gradient">Join Our Team</h2>
+              <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {jobOpenings.map((job, index) => (
+                    <motion.div
+                      key={job.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="card group h-full"
+                      data-clickable="true"
+                    >
+                      <BriefcaseIcon className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform mb-4" />
+                      <h3 className="text-xl font-semibold text-white mb-2">{job.title}</h3>
+                      <p className="text-gray-400 mb-4">{job.description}</p>
+                      <div className="space-y-2 mb-6">
+                        <h4 className="text-sm font-semibold text-red-500">Requirements:</h4>
+                        <ul className="text-gray-400 space-y-1">
+                          {job.requirements.map((req, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-red-500 rounded-full" />
+                              {req}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button
+                        onClick={() => handleApplyClick(job.title)}
+                        className="mt-auto inline-flex items-center justify-center px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors w-full"
+                      >
+                        Apply Now
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+                <Link
+                  to="/careers"
+                  className="btn-primary inline-flex items-center gap-2 group"
+                  data-clickable="true"
+                >
+                  <span>View All Positions</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.section>
+          </div>
+
+          {selectedJob && (
+            <JobApplicationForm2
+              selectedRole={selectedJob}
+              onClose={handleCloseForm}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
+
 };
 
 export default TeamPage;

@@ -4,11 +4,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Film, Users, Award, Clock, Calendar, Star, Play, Heart, ArrowLeft, FileDown } from 'lucide-react';
 import PasswordModal from '../components/PasswordModal';
 import usePasswordProtectedDownload from '../hooks/usePasswordProtectedDownload';
+import { Helmet } from 'react-helmet-async';
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   // This would normally come from an API or database
   const projectDetails = {
     "the-last-horizon": {
@@ -32,7 +33,7 @@ const ProjectDetail = () => {
         composer: "TBR"
       },
       cast: [
-"Casting in process."
+        "Casting in process."
       ],
       pitchdeckUrl: "https://example.com/pitchdeck-last-horizon.pdf",
       password: "agyaat2025+1"
@@ -58,7 +59,7 @@ const ProjectDetail = () => {
         composer: "TBD"
       },
       cast: [
-"TBD"
+        "TBD"
       ],
       pitchdeckUrl: "https://example.com/pitchdeck-urban-legends.pdf",
       password: "sucidefun2025+2"
@@ -84,7 +85,7 @@ const ProjectDetail = () => {
         composer: "TBD"
       },
       cast: [
-"Casting  in process."
+        "Casting  in process."
       ],
       pitchdeckUrl: "https://example.com/pitchdeck-silent-echo.pdf",
       password: "s&l2026+3"
@@ -100,14 +101,14 @@ const ProjectDetail = () => {
       </div>
     );
   }
-  
-  const { 
-    isModalOpen, 
+
+  const {
+    isModalOpen,
     isIncorrectPassword,
     isDownloading,
-    openModal, 
-    closeModal, 
-    handlePasswordSubmit 
+    openModal,
+    closeModal,
+    handlePasswordSubmit
   } = usePasswordProtectedDownload({
     correctPassword: project.password,
     fileUrl: project.pitchdeckUrl
@@ -118,181 +119,188 @@ const ProjectDetail = () => {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={id}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen"
-      >
-        <div className="relative h-[60vh] overflow-hidden">
-          <motion.div
-            initial={{ scale: 1.2, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5 }}
-            className="absolute inset-0"
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${project.image})`,
-                backgroundSize: project.shouldCover ? 'cover' : 'contain',
-                backgroundPosition: 'center 25%',
-                backgroundRepeat: 'no-repeat'
-              }}
-            />
-            {project.shouldDim && (
+    <>
+      <Helmet>
+        <title>{project.title} – Urban Hustle Films</title>
+        <meta name="description" content={project.description} />
+        <link rel="canonical" href={`https://uhfilms.in/project/${id}`} />
+      </Helmet>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="min-h-screen"
+        >
+          <div className="relative h-[60vh] overflow-hidden">
+            <motion.div
+              initial={{ scale: 1.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0"
+            >
               <div
-                className="absolute inset-0"
+                className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  background: 'radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)',
-                  filter: 'brightness(1.5) contrast(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))',
+                  backgroundImage: `url(${project.image})`,
+                  backgroundSize: project.shouldCover ? 'cover' : 'contain',
+                  backgroundPosition: 'center 25%',
+                  backgroundRepeat: 'no-repeat'
                 }}
               />
-            )}        
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-          <div className="container mx-auto px-4 h-full flex items-end pb-16">
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1 }}
-              style={{ zIndex: 1 }}
-              className="text-white"
-            >
-              <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-              <div className="flex flex-wrap gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-red-500" />
-                  <span>{project.releaseDate}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-red-500" />
-                  <span>{project.duration}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Film className="w-4 h-4 text-red-500" />
-                  <span>{project.genre}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-red-500" />
-                  <span>{project.rating}</span>
-                </div>
-              </div>
+              {project.shouldDim && (
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)',
+                    filter: 'brightness(1.5) contrast(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))',
+                  }}
+                />
+              )}
             </motion.div>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-between items-center">
-            <motion.button
-              onClick={handleBackToHome}
-              className="flex items-center gap-2 text-gray-300 group"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <ArrowLeft className="w-5 h-5 transition-colors duration-300 group-hover:text-red-500" />
-              <span>Back to Home</span>
-            </motion.button>
-            
-            <motion.button
-              onClick={openModal}
-              className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FileDown className="w-5 h-5" />
-              <span>Download Pitch deck</span>
-            </motion.button>
-          </div>
-        </div>
-        
-        <div className="container mx-auto px-4 py-1">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="md:col-span-2"
-            >
-              <div className="card mb-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Synopsis</h2>
-                <p className="text-gray-300 leading-relaxed">{project.synopsis}</p>
-              </div>
-
-              <div className="card">
-                <h2 className="text-2xl font-bold text-white mb-4">Cast</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.cast.map((member, index) => (
-                    <motion.div
-                      key={member}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 text-gray-300"
-                    >
-                      <Users className="w-5 h-5 text-red-500" />
-                      <span>{member}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-              className="space-y-8"
-            >
-              <div className="card">
-                <h2 className="text-2xl font-bold text-white mb-4">Production Details</h2>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-gray-300">
-                    <span>Status</span>
-                    <span className="text-red-500 font-semibold">{project.status}</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+            <div className="container mx-auto px-4 h-full flex items-end pb-16">
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1 }}
+                style={{ zIndex: 1 }}
+                className="text-white"
+              >
+                <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
+                <div className="flex flex-wrap gap-6 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-red-500" />
+                    <span>{project.releaseDate}</span>
                   </div>
-                  <div className="flex items-center justify-between text-gray-300">
-                    <span>Budget</span>
-                    <span>{project.budget}</span>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-red-500" />
+                    <span>{project.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Film className="w-4 h-4 text-red-500" />
+                    <span>{project.genre}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-red-500" />
+                    <span>{project.rating}</span>
                   </div>
                 </div>
-              </div>
-
-              <div className="card">
-                <h2 className="text-2xl font-bold text-white mb-4">Creative Team</h2>
-                <div className="space-y-4">
-                  {Object.entries(project.team).map(([role, name], index) => (
-                    <motion.div
-                      key={role}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center justify-between text-gray-300"
-                    >
-                      <span className="capitalize">{role}</span>
-                      <span className="font-semibold">{name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-        
-        {/* Password Modal */}
-        <PasswordModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onPasswordSubmit={handlePasswordSubmit}
-          isIncorrectPassword={isIncorrectPassword}
-          projectTitle={project.title}
-          isDownloading={isDownloading}
-        />
-      </motion.div>
-    </AnimatePresence>
+
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex justify-between items-center">
+              <motion.button
+                onClick={handleBackToHome}
+                className="flex items-center gap-2 text-gray-300 group"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <ArrowLeft className="w-5 h-5 transition-colors duration-300 group-hover:text-red-500" />
+                <span>Back to Home</span>
+              </motion.button>
+
+              <motion.button
+                onClick={openModal}
+                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FileDown className="w-5 h-5" />
+                <span>Download Pitch deck</span>
+              </motion.button>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 py-1">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="md:col-span-2"
+              >
+                <div className="card mb-8">
+                  <h2 className="text-2xl font-bold text-white mb-4">Synopsis</h2>
+                  <p className="text-gray-300 leading-relaxed">{project.synopsis}</p>
+                </div>
+
+                <div className="card">
+                  <h2 className="text-2xl font-bold text-white mb-4">Cast</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.cast.map((member, index) => (
+                      <motion.div
+                        key={member}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center gap-3 text-gray-300"
+                      >
+                        <Users className="w-5 h-5 text-red-500" />
+                        <span>{member}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="space-y-8"
+              >
+                <div className="card">
+                  <h2 className="text-2xl font-bold text-white mb-4">Production Details</h2>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-gray-300">
+                      <span>Status</span>
+                      <span className="text-red-500 font-semibold">{project.status}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-gray-300">
+                      <span>Budget</span>
+                      <span>{project.budget}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <h2 className="text-2xl font-bold text-white mb-4">Creative Team</h2>
+                  <div className="space-y-4">
+                    {Object.entries(project.team).map(([role, name], index) => (
+                      <motion.div
+                        key={role}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center justify-between text-gray-300"
+                      >
+                        <span className="capitalize">{role}</span>
+                        <span className="font-semibold">{name}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Password Modal */}
+          <PasswordModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            onPasswordSubmit={handlePasswordSubmit}
+            isIncorrectPassword={isIncorrectPassword}
+            projectTitle={project.title}
+            isDownloading={isDownloading}
+          />
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 };
 
