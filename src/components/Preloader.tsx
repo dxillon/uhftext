@@ -6,10 +6,17 @@ const Preloader = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+
     if (videoRef.current) {
       videoRef.current.playbackRate = 1.8;
     }
 
+    return () => {
+      // Restore scroll after unmount
+      document.body.style.overflow = '';
+    };
   }, []);
 
   return (
