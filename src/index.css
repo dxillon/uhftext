@@ -12,6 +12,7 @@
 }
 * {
   user-select: none;
+
   cursor: none;
 }
 body {
@@ -53,6 +54,12 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 9998;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease, height 0.3s ease;
   backdrop-filter: blur(4px);
+}
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none;
+  }
 }
 
 [data-clickable="true"]:hover ~ .custom-cursor {
