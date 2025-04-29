@@ -16,6 +16,7 @@ import Preloader from './components/Preloader';
 import JobApplicationForm from './components/JobApplicationForm';
 import JobApplicationForm2 from './components/JobApplicationForm2';
 import NotFound from './components/NotFound';
+import { Analytics } from "@vercel/analytics/react";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -102,6 +103,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <Analytics />
         <CookieBanner />
       </div>
     </Router>
