@@ -91,6 +91,7 @@ const FooterLink = ({ to, children }: { to: string, children: React.ReactNode })
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
+  const contactButtonRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -115,8 +116,31 @@ const Footer = () => {
       observer.observe(footerRef.current);
     }
 
+    // Button animation on hover
+    const button = contactButtonRef.current;
+    if (button) {
+      button.addEventListener('mouseenter', () => {
+        anime({
+          targets: button,
+          scale: 1.05,
+          duration: 300,
+          easing: 'easeOutCubic'
+        });
+      });
+
+      button.addEventListener('mouseleave', () => {
+        anime({
+          targets: button,
+          scale: 1,
+          duration: 300,
+          easing: 'easeOutCubic'
+        });
+      });
+    }
+
     return () => observer.disconnect();
   }, []);
+
 
   return (
     <footer ref={footerRef} className="relative bg-black/50 backdrop-blur-lg">
@@ -166,6 +190,13 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-red-500" />
                 <span>Delhi, INDIA</span>
               </div>
+              <Link
+                to="/contact"
+                ref={contactButtonRef}
+                className="inline-block mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-sm transition-all duration-300 font-medium tracking-normal"
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
@@ -178,28 +209,28 @@ const Footer = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-5 overflow-hidden ">
               <a
-  href="https://bishan-portfolio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Bishan Portfolio"
-            >
-              <img
-                src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png
+                href="https://bishan-portfolio.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Bishan Portfolio"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png
 "
-                alt="Bishan Portfolio"
-                className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
-              />
-            </a>
-            <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
-            <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
-            <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
-            <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Twitter" />
-            <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
-            <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
+                  alt="Bishan Portfolio"
+                  className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
+                />
+              </a>
+              <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
+              <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
+              <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
+              <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Twitter" />
+              <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
+              <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </footer >
   );
 };
