@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Lock, FileDown, AlertTriangle, Eye, EyeOff } from 'lucide-react';
 import Lottie from "lottie-react";
 import downloadAnimation from "../downloadAnimation.json";
+import { Link } from 'react-router-dom';
 
 interface PasswordModalProps {
   isOpen: boolean;
@@ -99,12 +100,12 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                 </div>
 
                 {/* Request Access Button */}
-                <button
-                  onClick={() => window.location.href = '/contact'} // Change '/contact' to your contact page URL
+                <Link
+                  to="/contact" // Update if your contact route is different
                   className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                 >
                   Request Access
-                </button>
+                </Link>
               </div>
 
 
@@ -159,12 +160,12 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                       <div className="bg-red-800/30 border border-red-600 rounded-md p-3">
                         <p className="text-red-300 text-sm font-bold">
                           If the password is incorrect please{' '}
-                          <a
-                            href="/contact"
+                          <Link
+                            to="/contact" // Your contact page route
                             className="inline-block px-2 py-0.5 border border-red-400 rounded-md text-red-300 hover:bg-red-700 hover:text-white transition text-xs"
                           >
                             contact us
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </motion.div>
