@@ -23,7 +23,7 @@ const mainTeam = [
   {
     name: "Sankalp Kumar",
     role: "Executive Director",
-    image: "hhttps://res.cloudinary.com/dbtj6orw2/image/upload/v1745935240/Untitled_design_3_reofpb.png",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745935240/Untitled_design_3_reofpb.png",
     achievements: ["Pixel Bender", "Gearhead", "Render King"],
     description: "Sankalp fuses data intelligence with film craft, driving strategy and storytelling. With viral campaigns and a 1M+ viewed short film, he channels audience insight into high-impact narratives."
   }
