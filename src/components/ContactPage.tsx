@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, Check, AlertTriangle, Instagram, Youtube, Facebook, Twitter, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, AlertTriangle, Instagram, Youtube, Facebook, User } from 'lucide-react';
+import { BsTwitterX, BsThreads } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa6";
 import anime from 'animejs';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
@@ -15,6 +17,19 @@ const subjectOptions = [
   { value: 'feedback', label: 'Feedback' },
   { value: 'other', label: 'Other' }
 ];
+
+
+const SocialIcon = ({ icon: Icon, href, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
+    aria-label={label}
+  >
+    <Icon className="w-4 h-4" />
+  </a>
+);
 
 // Form field type
 type FormField = {
@@ -48,6 +63,7 @@ const ContactPage = () => {
     subject: useRef<HTMLSelectElement>(null),
     message: useRef<HTMLTextAreaElement>(null)
   };
+
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -105,9 +121,9 @@ const ContactPage = () => {
           'service_a5tly1m',
           'template_9h0vho7',
           {
-            from_name: formData.name,
-            reply_to: formData.email,
-            phone_number: formData.phone,
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
             subject: subjectOptions.find(opt => opt.value === formData.subject)?.label || formData.subject,
             message: formData.message
           },
@@ -195,6 +211,8 @@ const ContactPage = () => {
       addInputAnimation(ref.current, labelEl);
     });
   }, []);
+
+  const SocialIcon = ({ icon: Icon, href, label }) => (
 
   return (
     <>
@@ -460,43 +478,14 @@ const ContactPage = () => {
                   {/* Social Media */}
                   <div className="mt-10">
                     <h3 className="text-lg font-medium text-white mb-4">Follow Us</h3>
-                    <div className="flex flex-wrap gap-3">
-                      <a
-                        href="https://www.instagram.com/urbanhustlefilms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://www.youtube.com/@urbanhustlefilms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
-                        aria-label="YouTube"
-                      >
-                        <Youtube className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
-                        aria-label="Facebook"
-                      >
-                        <Facebook className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://x.com/urbanhustlefilm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
-                        aria-label="Twitter"
-                      >
-                        <Twitter className="w-5 h-5" />
-                      </a>
+                    <div className="flex flex-wrap gap-2">
+                      <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
+                      <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
+                      <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
+                      <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
+                      <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
+                      <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Threads" />
+
                     </div>
                   </div>
                 </div>
@@ -505,7 +494,9 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+
     </>
+
   );
 };
 

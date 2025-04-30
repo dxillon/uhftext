@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, X } from 'lucide-react';
-import { BsTwitterX } from "react-icons/bs";
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, X } from 'lucide-react';
+import { BsTwitterX, BsThreads } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { BsThreads } from "react-icons/bs";
 import anime from 'animejs';
 
 const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, label: string }) => {
