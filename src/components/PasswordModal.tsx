@@ -101,7 +101,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
 
                 {/* Request Access Button */}
                 <Link
-                  to="/contact" // Update if your contact route is different
+                    to={`/contact?project=I%20would%20like%20to%20request%20access%20to%20the%20${encodeURIComponent(projectTitle)}.&subject=request-access`}
                   className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                 >
                   Request Access
@@ -161,7 +161,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                         <p className="text-red-300 text-sm font-bold">
                           If the password is incorrect please{' '}
                           <Link
-                            to="/contact" // Your contact page route
+                           to={`/contact?project=I%20would%20like%20to%20request%20password%20of%20${encodeURIComponent(projectTitle)}.&subject=incorrect-password`}// Your contact page route
                             className="inline-block px-2 py-0.5 border border-red-400 rounded-md text-red-300 hover:bg-red-700 hover:text-white transition text-xs"
                           >
                             contact us

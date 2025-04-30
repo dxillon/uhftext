@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import anime from 'animejs';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from "react-router-dom";
 
 // Define subject options for the dropdown
 const subjectOptions = [
@@ -13,6 +14,8 @@ const subjectOptions = [
   { value: 'casting', label: 'Casting Information' },
   { value: 'location-scouting', label: 'Location Scouting' },
   { value: 'equipment-rental', label: 'Equipment Rental' },
+  { value: 'request-access', label: 'Request access for files.' },
+  { value: 'incorrect-password', label: 'Incorrect password for files.' },
   { value: 'general-support', label: 'General Support' },
   { value: 'feedback', label: 'Feedback' },
   { value: 'other', label: 'Other' }
@@ -64,6 +67,19 @@ const ContactPage = () => {
     message: useRef<HTMLTextAreaElement>(null)
   };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const prefillMessage = params.get("project");
+    const prefillSubject = params.get("subject");
+
+    setFormData((prev) => ({
+      ...prev,
+      message: prev.message || prefillMessage || '',
+      subject: prefillSubject || prev.subject,
+    }));
+  }, [location.search]);
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -330,7 +346,9 @@ const ContactPage = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className={`w-full bg-gray-800/50 border ${errors.subject ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 appearance-none`}
+                        className={`w-full bg-black border ${errors.subject ? 'border-red-500' : 'border-gray-700'} 
+                        text-white rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 
+                        transition-all duration-300 appearance-none`}
                       >
                         <option value="" disabled>Select a subject</option>
                         {subjectOptions.map(option => (
@@ -495,7 +513,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-    
+
     </>
 
   );
