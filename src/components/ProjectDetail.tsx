@@ -12,7 +12,7 @@ const ProjectDetail = () => {
 
   // This would normally come from an API or database
   const projectDetails = {
-    "the-last-horizon": {
+    "agyaat": {
       title: "Agyaat",
       shouldCover: true,
       shouldDim: true,
@@ -38,7 +38,7 @@ const ProjectDetail = () => {
       pitchdeckUrl: "https://example.com/pitchdeck-last-horizon.pdf",
       password: "agyaat2025+1"
     },
-    "urban-legends": {
+    "sucidefun": {
       title: "Sucide Fun",
       shouldCover: true,
       shouldDim: true,
@@ -64,7 +64,7 @@ const ProjectDetail = () => {
       pitchdeckUrl: "https://example.com/pitchdeck-urban-legends.pdf",
       password: "sucidefun2025+2"
     },
-    "the-silent-echo": {
+    "snake&lovers": {
       title: "Snake & Lovers",
       image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745852895/Snake_2_dz80lv.png",
       shouldCover: true,

@@ -14,21 +14,21 @@ import { Helmet } from 'react-helmet-async';
 
 const upcomingProjects = [
   {
-    id: "urban-legends",
+    id: "sucidefun",
     title: "Sucide Fun",
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759555/WhatsApp_Image_2025-04-27_at_17.53.32_87bee1b0_q9etqk.jpg",
     description: "Do you have the courage to see your future?",
     releaseDate: "Fall 2025"
   },
   {
-    id: "the-last-horizon",
+    id: "agyaat",
     title: "Agyaat",
     description: "When truth is invisible, can you find it?",
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759562/WhatsApp_Image_2025-04-27_at_17.53.31_a20c2148_x5mnpk.jpg",
     releaseDate: "Fall 2025"
   },
   {
-    id: "the-silent-echo",
+    id: "snake&lovers",
     title: "Snake & Lovers",
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745762922/Snake_1_cq4u0v.png",
     description: "The paths of love are never straight",
