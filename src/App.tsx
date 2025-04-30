@@ -16,6 +16,7 @@ import Careers from './components/Careers';
 import Preloader from './components/Preloader';
 import JobApplicationForm from './components/JobApplicationForm';
 import JobApplicationForm2 from './components/JobApplicationForm2';
+import Journey from './components/Journey';
 import NotFound from './components/NotFound';
 import { Analytics } from "@vercel/analytics/react";
 
@@ -102,6 +103,7 @@ function App() {
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/journey" element={<Journey />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
