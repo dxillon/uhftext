@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import {  Instagram, Linkedin,Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JobApplicationForm2 from './JobApplicationForm2';
 import { Helmet } from 'react-helmet-async';
+import { BsTwitterX } from "react-icons/bs";
 
 const mainTeam = [
   {
@@ -12,14 +13,19 @@ const mainTeam = [
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745935032/Untitled_design_2_mcvbus.png",
     achievements: ["Trendmaker", "Story Hustler", "Vision Architect"],
     journey: "true",
+    instagram: "https://instagram.com/thebishandxillon",
+    x: "https://x.com/Bishandxillon",
+    linkedin: "https://www.linkedin.com/in/bishanpreet-singh-2582a62b7/,
     description: "Tech-savvy and creatively driven, Bishanpreet blends coding with storytelling to lead bold, boundary-pushing productions. His diverse freelancing roots in development and direction shape the innovative spirit of UH Films."
   },
   {
     name: "Harry Targotra",
     role: "Production Director",
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745868468/Untitled_design_4_eu2n3m.png",
-    achievements: ["Frame Whisperer", "Idea Machine", "Set Commander"], 
+    achievements: ["Frame Whisperer", "Idea Machine", "Set Commander"],
     journey: "false",
+    instagram: "https://www.instagram.com/hitt_pawan_targotra",
+    linkedin: "https://www.linkedin.com/in/harry-targotra-252047356/",
     description: "From script to screen, Harry builds each series from the ground up. As DOP, he crafts rich, cinematic visuals that bring stories to life with emotional depth and visual precision."
   },
   {
@@ -233,23 +239,43 @@ const TeamPage = () => {
                     </div>
 
                     {member.journey === "true" && (
-                      <Link to={`/journey`} className="inline-block mt-4 mb-6">
-                        <motion.div
-                          whileHover="hover"
-                          whileTap={{ scale: 0.95 }}
-                          variants={{ hover: { scale: 1.05 } }}
-                          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 group"
-                        >
-                          <span>View Journey</span>
-                          <motion.span
-                            variants={{ hover: { x: 6 } }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="group-hover:text-red-500 transition-colors duration-300"
+                      <div className="flex justify-between items-center mt-4 mb-6">
+                        <Link to={`/journey`} className="inline-block">
+                          <motion.div
+                            whileHover="hover"
+                            whileTap={{ scale: 0.95 }}
+                            variants={{ hover: { scale: 1.05 } }}
+                            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 group"
                           >
-                            <ArrowRight className="w-4 h-4" />
-                          </motion.span>
-                        </motion.div>
-                      </Link>
+                            <span>View Journey</span>
+                            <motion.span
+                              variants={{ hover: { x: 6 } }}
+                              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                              className="group-hover:text-red-500 transition-colors duration-300"
+                            >
+                              <ArrowRight className="w-4 h-4" />
+                            </motion.span>
+                          </motion.div>
+                        </Link>
+
+                        <div className="flex gap-3">
+                          {member.instagram && (
+                            <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                              <Instagram className="w-5 h-5" />
+                            </a>
+                          )}
+                          {member.x && (
+                            <a href={member.x} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                              <BsTwitterX className="w-5 h-5" />
+                            </a>
+                          )}
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                              <Linkedin className="w-5 h-5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     )}
 
 
