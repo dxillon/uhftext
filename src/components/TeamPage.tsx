@@ -15,7 +15,7 @@ const mainTeam = [
     journey: "true",
     instagram: "https://instagram.com/thebishandxillon",
     x: "https://x.com/Bishandxillon",
-    linkedin: "https://www.linkedin.com/in/bishanpreet-singh-2582a62b7/,
+    linkedin: "https://www.linkedin.com/in/bishanpreet-singh-2582a62b7",
     description: "Tech-savvy and creatively driven, Bishanpreet blends coding with storytelling to lead bold, boundary-pushing productions. His diverse freelancing roots in development and direction shape the innovative spirit of UH Films."
   },
   {
