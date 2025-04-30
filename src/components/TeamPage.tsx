@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import {  Instagram, Linkedin,Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Instagram, Linkedin, Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JobApplicationForm2 from './JobApplicationForm2';
 import { Helmet } from 'react-helmet-async';
@@ -238,45 +238,45 @@ const TeamPage = () => {
                       <p className="text-gray-300">{member.description}</p>
                     </div>
 
+                    {/* View Journey Link (only shows when journey is true) */}
                     {member.journey === "true" && (
-                      <div className="flex justify-between items-center mt-4 mb-6">
-                        <Link to={`/journey`} className="inline-block">
-                          <motion.div
-                            whileHover="hover"
-                            whileTap={{ scale: 0.95 }}
-                            variants={{ hover: { scale: 1.05 } }}
-                            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 group"
+                      <Link to={`/journey`} className="inline-block mt-4">
+                        <motion.div
+                          whileHover="hover"
+                          whileTap={{ scale: 0.95 }}
+                          variants={{ hover: { scale: 1.05 } }}
+                          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 group"
+                        >
+                          <span>View Journey</span>
+                          <motion.span
+                            variants={{ hover: { x: 6 } }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="group-hover:text-red-500 transition-colors duration-300"
                           >
-                            <span>View Journey</span>
-                            <motion.span
-                              variants={{ hover: { x: 6 } }}
-                              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                              className="group-hover:text-red-500 transition-colors duration-300"
-                            >
-                              <ArrowRight className="w-4 h-4" />
-                            </motion.span>
-                          </motion.div>
-                        </Link>
-
-                        <div className="flex gap-3">
-                          {member.instagram && (
-                            <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
-                              <Instagram className="w-5 h-5" />
-                            </a>
-                          )}
-                          {member.x && (
-                            <a href={member.x} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-                              <BsTwitterX className="w-5 h-5" />
-                            </a>
-                          )}
-                          {member.linkedin && (
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
-                              <Linkedin className="w-5 h-5" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
+                            <ArrowRight className="w-4 h-4" />
+                          </motion.span>
+                        </motion.div>
+                      </Link>
                     )}
+
+                    {/* Social Icons (shows for all members with social links) */}
+                    <div className="flex gap-3 mt-4 mb-6">
+                      {member.instagram && (
+                        <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                          <Instagram className="w-5 h-5" />
+                        </a>
+                      )}
+                      {member.x && (
+                        <a href={member.x} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                          <BsTwitterX className="w-5 h-5" />
+                        </a>
+                      )}
+                      {member.linkedin && (
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
 
 
 
