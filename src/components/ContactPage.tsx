@@ -212,9 +212,10 @@ const ContactPage = () => {
     });
   }, []);
 
-  const SocialIcon = ({ icon: Icon, href, label }) => (
+
 
   return (
+
     <>
       <Helmet>
         <title>Contact Us – Urban Hustle Films</title>
@@ -494,7 +495,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-
+    
     </>
 
   );

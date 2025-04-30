@@ -18,7 +18,7 @@ const mainTeam = [
     name: "Harry Targotra",
     role: "Production Director",
     image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745868468/Untitled_design_4_eu2n3m.png",
-    achievements: ["Frame Whisperer", "Idea Machine", "Set Commander"], \
+    achievements: ["Frame Whisperer", "Idea Machine", "Set Commander"], 
     journey: "false",
     description: "From script to screen, Harry builds each series from the ground up. As DOP, he crafts rich, cinematic visuals that bring stories to life with emotional depth and visual precision."
   },
@@ -231,7 +231,7 @@ const TeamPage = () => {
                       </div>
                       <p className="text-gray-300">{member.description}</p>
                     </div>
-                    
+
                     {member.journey === "true" && (
                       <Link to={`/journey`} className="inline-block mt-4 mb-6">
                         <motion.div
