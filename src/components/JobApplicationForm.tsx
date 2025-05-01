@@ -78,6 +78,11 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
         portfolio: '',
         message: ''
       });
+      // Scroll to top after successful submission
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     } catch (error) {
       console.error('Error sending application:', error);
       setSubmitStatus('error');
