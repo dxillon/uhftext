@@ -9,6 +9,8 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import ArticleSlider from '../components/ArticleSlider';
+import { articles } from '../data/articles';
 import VideoPlayer from './VideoPlayer';
 import { Helmet } from 'react-helmet-async';
 
@@ -392,6 +394,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        <ArticleSlider articles={articles} title="How we film?" />
 
         <section className="py-20">
           <div className="container mx-auto px-4">
