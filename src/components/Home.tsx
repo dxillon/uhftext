@@ -183,7 +183,14 @@ const Home = () => {
       <Helmet>
         <title>Urban Hustle Films – Home</title>
         <meta name="description" content="Official site of Urban Hustle Films – producing bold, real, and unique stories in film and web." />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://uhfilms.in/" />
+
+        <meta property="og:title" content="Urban Hustle Films – Official Site" />
+        <meta property="og:description" content="Producing bold, real, and unique stories in film and web." />
+        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:url" content="https://uhfilms.in/" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <div className="min-h-screen">
 
