@@ -192,7 +192,7 @@ const Home = () => {
         <meta property="og:url" content="https://uhfilms.in/" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
-      <div className="min-h-screen">
+      <div className="min-h-screen"> 
 
         <section className="min-h-screen relative overflow-hidden">
           <div ref={carouselRef} className="absolute inset-0 z-0">
