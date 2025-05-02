@@ -263,3 +263,59 @@ input[type="range"]::-moz-range-thumb:hover {
   aspect-ratio: 16/9;
   background: black;
 }
+
+
+  /* Prose customization for article content */
+  .prose {
+    @apply text-gray-300;
+  }
+  
+  .prose img {
+    @apply rounded-lg;
+  }
+  
+  .prose h2 {
+    @apply text-2xl font-serif font-bold text-white mt-10 mb-4;
+  }
+  
+  .prose p {
+    @apply text-gray-300 leading-relaxed mb-6;
+  }
+  
+  .prose a {
+    @apply text-red-500 hover:text-red-400;
+  }
+  
+  .prose strong {
+    @apply text-white;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-red-500 text-gray-400;
+  }
+  
+  .prose code {
+    @apply bg-gray-800 text-red-400 px-1 rounded;
+  }
+  /* Page transitions */
+  .page-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .page-transition-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .page-transition-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+  }
