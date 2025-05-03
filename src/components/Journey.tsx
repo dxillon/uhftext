@@ -156,89 +156,113 @@ const Journey = () => {
         </motion.div>
 
 
-      {/* Timeline Section */}
-      <div className="container mx-auto px-4 py-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center mb-20"
-        >
-          The Journey
-        </motion.h2>
-        
-        <div className="max-w-4xl mx-auto">
-          {milestones.map((item, index) => (
-            <motion.div
-              key={item.year}
-              className="journey-item flex items-start gap-8 mb-20"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <div className="flex-shrink-0 w-32 text-right">
-                <span className="text-2xl font-bold text-red-500">{item.year}</span>
-              </div>
-              
-              <div className="relative flex-grow">
-                <div className="absolute left-0 top-0 -ml-4 h-full w-px bg-gradient-to-b from-red-500 to-transparent" />
-                <div className="absolute left-0 top-0 -ml-6 w-4 h-4 rounded-full bg-red-500" />
-                
-                <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 ml-4 hover:bg-gray-900/70 transition-all duration-300 transform hover:scale-105 group">
-                  <div className="flex items-center gap-3 mb-4">
-                    <item.icon className={`w-6 h-6 ${item.color}`} />
-                    <h3 className="text-2xl font-bold">{item.title}</h3>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
-                  
-                  <motion.div
-                    className="mt-4 flex items-center gap-2 text-gray-400"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Heart className="w-4 h-4" />
-                    <span className="text-sm">A milestone in our story</span>
-                  </motion.div>
+        {/* Timeline Section */}
+        <div className="container mx-auto px-4 py-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-center mb-12 md:mb-20"
+          >
+            The Journey
+          </motion.h2>
+
+          <div className="max-w-4xl mx-auto">
+            {milestones.map((item, index) => (
+              <motion.div
+                key={item.year}
+                className="journey-item flex flex-col md:flex-row items-start gap-4 md:gap-8 mb-16 md:mb-20"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              >
+
+                <div className="w-full md:w-32 md:text-right">
+                  <span className="text-2xl font-bold text-red-500 block md:inline">{item.year}</span>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+
+                <div className="relative flex-grow w-full">
+
+                  <div className="hidden md:block absolute left-0 top-0 -ml-4 h-full w-px bg-gradient-to-b from-red-500 to-transparent" />
+
+
+                  <div className="hidden md:block absolute left-0 top-0 -ml-6 w-4 h-4 rounded-full bg-red-500" />
+
+
+                  <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 md:ml-4 hover:bg-gray-900/70 transition-all duration-300 transform hover:scale-[1.02] group">
+                    <div className="flex items-center gap-3 mb-4">
+                      <item.icon className={`w-6 h-6 ${item.color}`} />
+                      <h3 className="text-2xl font-bold">{item.title}</h3>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed">{item.description}</p>
+
+                    <motion.div
+                      className="mt-4 flex items-center gap-2 text-gray-400"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <Heart className="w-4 h-4" />
+                      <span className="text-sm">A milestone in our story</span>
+                    </motion.div>
+                  </div>
+
+
+                  <div className="md:hidden absolute -top-6 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-red-500" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
 
-
-
-        {/* Vision Section */}
-        <div className="py-20 bg-gradient-to-b from-black to-gray-900">
-          <div className="container mx-auto px-4">
+        <div className="py-12 md:py-20 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-center mb-20"
+              viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+              className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20"
             >
               Founder's Vision
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl md:max-w-6xl mx-auto">
               {visionAreas.map((vision, index) => (
                 <motion.div
                   key={vision.title}
-                  className="vision-card group"
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  className="vision-card"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 10,
+                      delay: index * 0.1
+                    }
+                  }}
+                  viewport={{ once: true, margin: "0px 0px -30px 0px" }}
                 >
-                  <div className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${vision.color} p-8 border border-gray-800 hover:border-red-500/50 transition-all duration-500`}>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-500/10 to-transparent rounded-bl-full transform translate-x-16 -translate-y-16" />
+                  <div className={`relative overflow-hidden rounded-xl md:rounded-lg bg-gradient-to-br ${vision.color} p-6 md:p-8 border border-gray-800/70 hover:border-red-500/30 transition-all duration-300`}>
 
-                    <vision.icon className="w-10 h-10 text-red-500 mb-4" />
-                    <h3 className="text-2xl font-bold mb-4">{vision.title}</h3>
-                    <p className="text-gray-300">{vision.description}</p>
+                    <div className="absolute top-0 right-0 w-20 h-20 md:w-32 md:h-32 bg-gradient-to-br from-red-500/5 to-transparent rounded-bl-full md:translate-x-16 md:-translate-y-16" />
 
-                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Star className="w-6 h-6 text-red-500" />
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-3 mb-3">
+                        <vision.icon className="w-8 h-8 md:w-10 md:h-10 text-red-500" />
+                        <h3 className="text-xl md:text-2xl font-bold">{vision.title}</h3>
+                      </div>
+                      <p className="text-gray-300 text-sm md:text-base">{vision.description}</p>
+
+
+                      <motion.div
+                        className="mt-4 self-end"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring" }}
+                      >
+                        <Star className="w-5 h-5 md:w-6 md:h-6 text-red-500 opacity-70 md:opacity-0 group-hover:md:opacity-100 transition-opacity" />
+                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
@@ -246,6 +270,7 @@ const Journey = () => {
             </div>
           </div>
         </div>
+
 
         {/* Future Vision Section */}
         <div className="py-20 bg-gradient-to-t from-red-500/10 to-transparent">
