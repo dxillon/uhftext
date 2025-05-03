@@ -155,125 +155,57 @@ const Journey = () => {
           </div>
         </motion.div>
 
-     {/* Timeline Section */}
-<div className="relative w-full py-20 overflow-hidden">
-  <div className="w-full px-4 mx-auto max-w-4xl">
-    <motion.h2 
-      className="text-4xl md:text-5xl font-bold text-center mb-20"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      The Journey
-    </motion.h2>
-    
-    <div className="relative w-full">
-      {milestones.map((item, index) => (
-        <motion.div
-          key={item.year}
-          className="relative w-full mb-20 pl-24"
-          initial={{ 
-            opacity: 0,
-            y: 50,
-            x: index % 2 === 0 ? -20 : 20 // Slight alternating horizontal offset
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            x: 0,
-            transition: {
-              duration: 0.8,
-              ease: "easeOut",
-              delay: index * 0.15
-            }
-          }}
-          viewport={{ 
-            once: true,
-            margin: "-100px 0px -100px 0px" // Triggers animation earlier
-          }}
+
+      {/* Timeline Section */}
+      <div className="container mx-auto px-4 py-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold text-center mb-20"
         >
-          {/* Year indicator */}
-          <motion.div 
-            className="absolute left-0 top-0 w-20 text-right"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.15 + 0.1 }}
-          >
-            <span className="text-2xl font-bold text-red-500">{item.year}</span>
-          </motion.div>
-          
-          {/* Timeline item */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-red-500 to-transparent -ml-px" />
-            
-            {/* Dot indicator */}
-            <motion.div 
-              className="absolute left-0 top-0 w-3 h-3 rounded-full bg-red-500 -ml-1.5"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 + 0.2 }}
-            />
-            
-            {/* Content card */}
+          The Journey
+        </motion.h2>
+        
+        <div className="max-w-4xl mx-auto">
+          {milestones.map((item, index) => (
             <motion.div
-              className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ 
-                opacity: 1, 
-                scale: 1,
-                transition: { delay: index * 0.15 + 0.3 }
-              }}
+              key={item.year}
+              className="journey-item flex items-start gap-8 mb-20"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ 
-                y: -5,
-                backgroundColor: 'rgba(17, 24, 39, 0.7)'
-              }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: index * 0.15 + 0.4 }}
-                >
-                  <item.icon className={`w-6 h-6 ${item.color}`} />
-                </motion.div>
-                <motion.h3 
-                  className="text-2xl font-bold"
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.15 + 0.5 }}
-                >
-                  {item.title}
-                </motion.h3>
+              <div className="flex-shrink-0 w-32 text-right">
+                <span className="text-2xl font-bold text-red-500">{item.year}</span>
               </div>
-              <motion.p 
-                className="text-gray-300 leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.15 + 0.6 }}
-              >
-                {item.description}
-              </motion.p>
-              <motion.div
-                className="mt-4 flex items-center gap-2 text-gray-400"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.15 + 0.7 }}
-              >
-                <Heart className="w-4 h-4" />
-                <span className="text-sm">A milestone in our story</span>
-              </motion.div>
+              
+              <div className="relative flex-grow">
+                <div className="absolute left-0 top-0 -ml-4 h-full w-px bg-gradient-to-b from-red-500 to-transparent" />
+                <div className="absolute left-0 top-0 -ml-6 w-4 h-4 rounded-full bg-red-500" />
+                
+                <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 ml-4 hover:bg-gray-900/70 transition-all duration-300 transform hover:scale-105 group">
+                  <div className="flex items-center gap-3 mb-4">
+                    <item.icon className={`w-6 h-6 ${item.color}`} />
+                    <h3 className="text-2xl font-bold">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                  
+                  <motion.div
+                    className="mt-4 flex items-center gap-2 text-gray-400"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Heart className="w-4 h-4" />
+                    <span className="text-sm">A milestone in our story</span>
+                  </motion.div>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</div>
+          ))}
+        </div>
+      </div>
+
 
 
         {/* Vision Section */}
