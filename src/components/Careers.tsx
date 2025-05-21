@@ -6,6 +6,23 @@ import { Helmet } from 'react-helmet-async';
 
 const jobOpenings = [
   {
+    title: "T-Shirt Designer",
+    department: "Design",
+    location: "Remote",
+    type: "Freelance/Part-time",
+    salary: "Competitive",
+    fastRecruiting: true,  
+    description: "Create bold, urban-themed t-shirt designs for our streetwear line. Perfect for students or fresh graduates looking to build their portfolio. Quick hiring process!",
+    requirements: [
+      "Basic knowledge of design tools (Photoshop/Illustrator/Canva)",
+      "Creative and understands urban culture",
+      "No formal experience required (share your portfolio if available)",
+      "Can work with quick turnarounds",
+      "Students welcome to apply!"
+    ]
+  },
+  
+  {
     title: "Screenwriter",
     department: "Writing",
     location: "Delhi, India / Remote",
@@ -106,20 +123,6 @@ const jobOpenings = [
     ]
   },
   {
-    title: " Assistant Director (AD)",
-    department: "Production",
-    location: "Delhi, India",
-    type: "Full-time",
-    salary: "Competitive",
-    description: "The Assistant Director ensures the smooth operation of the set, managing the crew, actors, and ensuring the production stays on schedule. They work closely with the director to ensure everything runs efficiently during filming.",
-    requirements: [
-      "Previous experience as an Assistant Director or production coordinator.",
-      "Strong organizational and multitasking skills.",
-      "Ability to work under pressure and handle last-minute changes.",
-      "Proven experience in managing large teams and coordinating logistics."
-    ]
-  },
-  {
     title: "Editor & Animations",
     department: "Post-production",
     location: "Delhi, India / Remote",
@@ -177,9 +180,14 @@ const Careers = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-black/20 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:bg-black/30 transition-all duration-300"
+                  className="bg-black/20 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:bg-black/30 transition-all duration-300 relative"
                   data-clickable="true"
                 >
+                    {job.fastRecruiting && (
+    <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md">
+      Fast Recruiting
+    </div>
+  )}
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-2">{job.title}</h3>
@@ -219,8 +227,8 @@ const Careers = () => {
 
                   <button
                     onClick={() => setSelectedJob(job.title)}
-                    className="flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors"
-                  >
+                      className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-red-500/20"
+>
                     <span>Apply Now</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
