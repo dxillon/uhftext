@@ -19,6 +19,7 @@ import JobApplicationForm2 from './components/JobApplicationForm2';
 import Journey from './components/Journey';
 import ArticlesPage from './components/ArticlesPage';
 import ArticleDetailPage from './components/ArticleDetailPage';
+import ProjectShowcase from './components/ProjectShowcase'; 
 import NotFound from './components/NotFound';
 import { Analytics } from "@vercel/analytics/react";
 
@@ -108,6 +109,7 @@ function App() {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/journey" element={<Journey />} />
+          <Route path="/projects" element={<ProjectShowcase />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
