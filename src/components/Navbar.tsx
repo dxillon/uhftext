@@ -201,7 +201,7 @@ const Navbar = () => {
                   }}
                 >
                   <Link
-                    to="/courses"
+                    to="/"
                     className="flex items-center gap-3 text-2xl py-3 text-white group"
                     onClick={() => setIsOpen(false)}
                   >
@@ -209,7 +209,7 @@ const Navbar = () => {
                       Courses
                     </span>
                     <NewBadge className="text-xs font-bold px-2 py-1">
-                      NEW
+                      Coming Soon
                     </NewBadge>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
