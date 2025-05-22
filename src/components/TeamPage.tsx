@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Instagram, Linkedin, Users, BriefcaseIcon, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import JobApplicationForm2 from './JobApplicationForm2';
-import { Helmet } from 'react-helmet-async';
 import { BsTwitterX } from "react-icons/bs";
+import { Helmet } from 'react-helmet-async';
 
 const mainTeam = [
   {
@@ -140,6 +140,7 @@ const TeamPage = () => {
   const scrollContainers = useRef<Record<string, HTMLDivElement | null>>({});
   const [isScrolling, setIsScrolling] = useState(true);
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
+  const [playedAnimations, setPlayedAnimations] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -183,11 +184,32 @@ const TeamPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Team – Urban Hustle Films</title>
-        <meta name="description" content="Meet the passionate creators and artists behind Urban Hustle Films." />
-        <link rel="canonical" href="https://uhfilms.in/team" />
-      </Helmet>
+ <Helmet>
+      {/* Basic Meta Tags */}
+      <title>Meet the Team | Urban Hustle Films™</title>
+      <meta name="description" content="Get to know the creative minds behind Urban Hustle Films™ – a passionate team of filmmakers, developers, designers, and storytellers." />
+      <meta name="keywords" content="Urban Hustle Films Team, Filmmakers, Creators, Designers, Developers, Creative Team, Crew, Urban Hustle Films Members" />
+      <meta name="author" content="Urban Hustle Films™" />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:title" content="Meet the Team | Urban Hustle Films" />
+      <meta property="og:description" content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films™." />
+      <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+      <meta property="og:url" content="https://uhfilms.in/team" />
+      <meta property="og:type" content="website" />
+
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Meet the Team | Urban Hustle Films" />
+      <meta name="twitter:description" content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films™." />
+      <meta name="twitter:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+
+      {/* Canonical URL */}
+      <link rel="canonical" href="https://uhfilms.in/team" />
+
+      {/* Favicon (Optional if already included globally) */}
+      <link rel="icon" href="/favicon.ico" />
+    </Helmet>
 
       <div className="min-h-screen pt-20 overflow-x-hidden">
         <div className="min-h-screen pt-20">
@@ -206,15 +228,23 @@ const TeamPage = () => {
               </motion.h1>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {mainTeam.map((member, index) => (
-                  <motion.div
-                    key={member.name}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    className="card group overflow-hidden"
-                    data-clickable="true"
-                  >
+{mainTeam.map((member, index) => (
+  <motion.div
+    key={member.name}
+    initial={{ opacity: 0, y: 50 }}
+    animate={playedAnimations[`member-${index}`] ? { opacity: 1, y: 0 } : {}}
+    onViewportEnter={() => {
+      if (!playedAnimations[`member-${index}`]) {
+        setPlayedAnimations(prev => ({
+          ...prev,
+          [`member-${index}`]: true
+        }));
+      }
+    }}
+    transition={{ delay: index * 0.2 }}
+    className="card group overflow-hidden"
+    data-clickable="true"
+  >
                     <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
                       <img
                         src={member.image}
@@ -298,70 +328,72 @@ const TeamPage = () => {
             >
               <h2 className="text-4xl font-bold text-center mb-16 text-gradient">Our Teams</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {Object.entries(departments).map(([department, { description, members }], index) => (
-                  <motion.div
-                    key={department}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`card group overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'ring-2 ring-red-500/50' : ''
-                      }`}
-                    onClick={() => handleDepartmentClick(department)}
-                    data-clickable="true"
-                  >
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
-                        <Users className="w-6 h-6 text-red-500" />
-                        {department}
-                      </h3>
-                      {expandedDepartments[department] ? (
-                        <ChevronUp className="w-5 h-5 text-red-500" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-red-500" />
-                      )}
-                    </div>
-                    <p className="text-gray-300 mb-4">{description}</p>
+{Object.entries(departments).map(([department, deptData], index) => (
+  <motion.div
+    key={department}
+    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+    animate={playedAnimations[`dept-${index}`] ? { opacity: 1, x: 0 } : {}}
+    onViewportEnter={() => {
+      if (!playedAnimations[`dept-${index}`]) {
+        setPlayedAnimations(prev => ({
+          ...prev,
+          [`dept-${index}`]: true
+        }));
+      }
+    }}
+    transition={{ delay: index * 0.1 }}
+    className={`card group overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'ring-2 ring-red-500/50' : ''}`}
+    onClick={() => handleDepartmentClick(department)}
+    data-clickable="true"
+  >
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
+        <Users className="w-6 h-6 text-red-500" />
+        {department}
+      </h3>
+      {expandedDepartments[department] ? (
+        <ChevronUp className="w-5 h-5 text-red-500" />
+      ) : (
+        <ChevronDown className="w-5 h-5 text-red-500" />
+      )}
+    </div>
+    <p className="text-gray-300 mb-4">{deptData.description}</p>
 
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'h-auto' : 'h-[160px]'
-                        }`}
-                    >
-                      <div
-                        ref={el => scrollContainers.current[department] = el}
-                        className={`transition-transform duration-1000 ${expandedDepartments[department] ? 'translate-y-0!' : ''
-                          }`}
-                        style={{
-                          transform: getScrollTransform(department)
-                        }}
-                      >
-                        {members.map((member, i) => (
-                          <div
-                            key={`${member}-${i}`}
-                            className={`py-2 transition-colors duration-300 ${expandedDepartments[department]
-                              ? 'text-white'
-                              : 'text-gray-400 hover:text-white'
-                              }`}
-                          >
-                            {member}
-                          </div>
-                        ))}
-                        {!expandedDepartments[department] && [...members, ...members].map((member, i) => (
-                          <div
-                            key={`duplicate-${member}-${i}`}
-                            className="py-2 text-gray-400 hover:text-white transition-colors"
-                          >
-                            {member}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+    <div className={`overflow-hidden transition-all duration-300 ${expandedDepartments[department] ? 'h-auto' : 'h-[160px]'}`}>
+      <div
+        ref={el => scrollContainers.current[department] = el}
+        className={`transition-transform duration-1000 ${expandedDepartments[department] ? 'translate-y-0!' : ''}`}
+        style={{
+          transform: getScrollTransform(department)
+        }}
+      >
+        {deptData.members.map((member, i) => (
+          <div
+            key={`${member}-${i}`}
+            className={`py-2 transition-colors duration-300 ${expandedDepartments[department]
+              ? 'text-white'
+              : 'text-gray-400 hover:text-white'
+              }`}
+          >
+            {member}
+          </div>
+        ))}
+        {!expandedDepartments[department] && [...deptData.members, ...deptData.members].map((member, i) => (
+          <div
+            key={`duplicate-${member}-${i}`}
+            className="py-2 text-gray-400 hover:text-white transition-colors"
+          >
+            {member}
+          </div>
+        ))}
+      </div>
+    </div>
 
-                    <div className={`mt-4 text-center text-xs text-gray-500 opacity-75 ${expandedDepartments[department] ? 'block' : 'hidden'
-                      }`}>
-                      Click to resume scrolling
-                    </div>
-                  </motion.div>
-                ))}
+    <div className={`mt-4 text-center text-xs text-gray-500 opacity-75 ${expandedDepartments[department] ? 'block' : 'hidden'}`}>
+      Click to resume scrolling
+    </div>
+  </motion.div>
+))}
               </div>
             </motion.section>
 
@@ -373,15 +405,23 @@ const TeamPage = () => {
               <h2 className="text-3xl font-bold mb-8 text-gradient">Join Our Team</h2>
               <div className="max-w-4xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  {jobOpenings.map((job, index) => (
-                    <motion.div
-                      key={job.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="card group h-full"
-                      data-clickable="true"
-                    >
+ {jobOpenings.map((job, index) => (
+  <motion.div
+    key={job.title}
+    initial={{ opacity: 0, y: 20 }}
+    animate={playedAnimations[`job-${index}`] ? { opacity: 1, y: 0 } : {}}
+    onViewportEnter={() => {
+      if (!playedAnimations[`job-${index}`]) {
+        setPlayedAnimations(prev => ({
+          ...prev,
+          [`job-${index}`]: true
+        }));
+      }
+    }}
+    transition={{ delay: index * 0.1 }}
+    className="card group h-full"
+    data-clickable="true"
+  >
                       <BriefcaseIcon className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform mb-4" />
                       <h3 className="text-xl font-semibold text-white mb-2">{job.title}</h3>
                       <p className="text-gray-400 mb-4">{job.description}</p>
