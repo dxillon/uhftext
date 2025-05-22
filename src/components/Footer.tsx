@@ -258,7 +258,7 @@ useEffect(() => {
             <nav className="space-y-2">
               <FooterLink to="/team">Team</FooterLink>
               <FooterLink to="/about">About</FooterLink>
-              <FooterLink to="/careers">Careers</FooterLink>
+              <FooterLink to="/careers">Jobs / Careers</FooterLink>
             </nav>
           </div>
 
@@ -354,7 +354,7 @@ useEffect(() => {
             <MobileDropdown title="Quick Links">
               <FooterLink to="/team">Team</FooterLink>
               <FooterLink to="/about">About</FooterLink>
-              <FooterLink to="/careers">Careers</FooterLink>
+              <FooterLink to="/careers">Jobs / Careers</FooterLink>
             </MobileDropdown>
 
             <MobileDropdown title="Resources">
