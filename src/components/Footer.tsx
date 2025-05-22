@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, } from 'react-router-dom';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, X, ChevronDown } from 'lucide-react';
 import { BsTwitterX, BsThreads } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import anime from 'animejs';
@@ -32,7 +32,7 @@ const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, labe
   }, []);
 
   return (
-    <a
+    <a 
       ref={iconRef}
       href={href}
       className="relative p-2 text-gray-400 hover:text-red-500 transition-colors"
@@ -50,6 +50,7 @@ const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, labe
 
 const FooterLink = ({ to, children }: { to: string, children: React.ReactNode }) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
+
 
   useEffect(() => {
     const el = linkRef.current;
@@ -77,9 +78,9 @@ const FooterLink = ({ to, children }: { to: string, children: React.ReactNode })
   }, []);
 
   return (
-    <Link
+    <Link 
       ref={linkRef}
-      to={to}
+      to={to} 
       className="text-gray-400 block py-1 hover:text-white transition-colors"
       data-clickable="true"
     >
@@ -88,15 +89,88 @@ const FooterLink = ({ to, children }: { to: string, children: React.ReactNode })
   );
 };
 
+const MobileDropdown = ({ title, children }: { title: string, children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    if (!dropdownRef.current || !contentRef.current) return;
+    
+    if (!isOpen) {
+      // First make content visible to measure its height
+      contentRef.current.style.display = 'block';
+      const contentHeight = contentRef.current.scrollHeight;
+      
+      // Reset height before animating
+      dropdownRef.current.style.height = '0px';
+      
+      // Force reflow
+      void dropdownRef.current.offsetHeight;
+      
+      // Animate to full height
+      anime({
+        targets: dropdownRef.current,
+        height: contentHeight,
+        opacity: 1,
+        duration: 300,
+        easing: 'easeOutCubic'
+      });
+    } else {
+      // Animate to closed
+      anime({
+        targets: dropdownRef.current,
+        height: 0,
+        opacity: 0,
+        duration: 300,
+        easing: 'easeOutCubic',
+        complete: () => {
+          if (contentRef.current) {
+            contentRef.current.style.display = 'none';
+          }
+        }
+      });
+    }
+    
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="w-full border-b border-gray-800">
+      <button
+        onClick={toggleDropdown}
+        className="flex items-center justify-between w-full py-3 text-gray-300 hover:text-white focus:outline-none"
+      >
+        <span className="text-sm font-medium">{title}</span>
+        <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <div
+        ref={dropdownRef}
+        className="overflow-hidden"
+        style={{ height: 0, opacity: 0 }}
+      >
+        <div ref={contentRef} className="pb-4 space-y-2">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
   const contactButtonRef = useRef<HTMLAnchorElement>(null);
+  const getCastedButtonRef = useRef<HTMLAnchorElement>(null);
+   const hasAnimated = useRef(false);
 
-  useEffect(() => {
+
+useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            hasAnimated.current = true;
+            
             anime({
               targets: entry.target.querySelectorAll('.footer-section'),
               translateY: [50, 0],
@@ -105,6 +179,9 @@ const Footer = () => {
               duration: 800,
               easing: 'easeOutExpo'
             });
+
+            // Disconnect observer after first animation
+            observer.disconnect();
           }
         });
       },
@@ -115,36 +192,50 @@ const Footer = () => {
       observer.observe(footerRef.current);
     }
 
-    // Button animation on hover
-    const button = contactButtonRef.current;
-    if (button) {
-      button.addEventListener('mouseenter', () => {
-        anime({
-          targets: button,
-          scale: 1.05,
-          duration: 300,
-          easing: 'easeOutCubic'
-        });
-      });
+    // Button animations
+    const buttons = [
+      contactButtonRef.current,
+      getCastedButtonRef.current
+    ].filter(Boolean);
 
-      button.addEventListener('mouseleave', () => {
-        anime({
-          targets: button,
-          scale: 1,
-          duration: 300,
-          easing: 'easeOutCubic'
+    buttons.forEach(button => {
+      if (button) {
+        button.addEventListener('mouseenter', () => {
+          anime({
+            targets: button,
+            scale: 1.05,
+            duration: 300,
+            easing: 'easeOutCubic'
+          });
         });
-      });
-    }
 
-    return () => observer.disconnect();
+        button.addEventListener('mouseleave', () => {
+          anime({
+            targets: button,
+            scale: 1,
+            duration: 300,
+            easing: 'easeOutCubic'
+          });
+        });
+      }
+    });
+
+    return () => {
+      // Cleanup button event listeners
+      buttons.forEach(button => {
+        if (button) {
+          button.removeEventListener('mouseenter', () => {});
+          button.removeEventListener('mouseleave', () => {});
+        }
+      });
+    };
   }, []);
-
 
   return (
     <footer ref={footerRef} className="relative bg-black/50 backdrop-blur-lg">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Desktop Layout */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-5 gap-12">
           <div className="footer-section space-y-4">
             <Link to="/" className="flex items-center space-x-2 group" data-clickable="true">
               <div className="w-[4.5rem] h-[4.5rem]">
@@ -152,16 +243,31 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold text-white">UH FILM'S</span>
             </Link>
-            <p className="text-gray-400">Urban tales | Cinematic trails</p>
+            <p className="text-white">Urban tales | Cinematic trails</p>
+            <Link 
+                to="/projects#get-casted"
+  ref={getCastedButtonRef}
+              className="inline-block mt-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-sm transition-all duration-300 font-medium tracking-normal"
+            >
+              Get Casted
+            </Link>
           </div>
 
           <div className="footer-section">
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <nav className="space-y-2">
-              <FooterLink to="/">Home</FooterLink>
               <FooterLink to="/team">Team</FooterLink>
               <FooterLink to="/about">About</FooterLink>
               <FooterLink to="/careers">Careers</FooterLink>
+            </nav>
+          </div>
+
+          <div className="footer-section">
+            <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+            <nav className="space-y-2">
+              <FooterLink to="/articles">Articles</FooterLink>
+              <FooterLink to="/courses">Courses</FooterLink>
+              <FooterLink to="/projects">Projects</FooterLink>
             </nav>
           </div>
 
@@ -189,7 +295,7 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-red-500" />
                 <span>Delhi, INDIA</span>
               </div>
-              <Link
+              <Link 
                 to="/contact"
                 ref={contactButtonRef}
                 className="inline-block mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-sm transition-all duration-300 font-medium tracking-normal"
@@ -200,13 +306,78 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-6">
+          <div className="flex flex-col items-center space-y-4">
+ <Link to="/" className="flex items-center space-x-2" data-clickable="true">
+      <div className="w-16 h-16">
+        <img 
+          src="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745764899/FILMS_3_iblzzr.png" 
+          alt="UH Films Logo" 
+          className="w-full h-full" 
+        />
+      </div>
+      <span className="text-xl font-bold text-white">UH FILM'S</span>
+    </Link>
+            <p className="text-white text-center">Urban tales | Cinematic trails</p>
+            
+<div className="flex gap-3 w-full justify-center px-4">
+  <Link 
+        to="/projects#get-casted"
+        ref={getCastedButtonRef}
+        className="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-sm whitespace-nowrap w-fit"
+      >
+        Get Casted
+      </Link>
+      <Link 
+        to="/contact"
+        ref={contactButtonRef}
+        className="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-sm whitespace-nowrap w-fit"
+      >
+        Contact Us
+      </Link>
+    </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Twitter" />
+              <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="LinkedIn" />
+              <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Instagram" />
+              <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Threads" />
+              <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Facebook" />
+              <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="YouTube" />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <MobileDropdown title="Quick Links">
+              <FooterLink to="/team">Team</FooterLink>
+              <FooterLink to="/about">About</FooterLink>
+              <FooterLink to="/careers">Careers</FooterLink>
+            </MobileDropdown>
+
+            <MobileDropdown title="Resources">
+              <FooterLink to="/articles">Articles</FooterLink>
+              <FooterLink to="/courses">Courses</FooterLink>
+              <FooterLink to="/projects">Projects</FooterLink>
+            </MobileDropdown>
+
+            <MobileDropdown title="Legal">
+              <FooterLink to="/privacy">Privacy Policy</FooterLink>
+              <FooterLink to="/cookies">Cookie Policy</FooterLink>
+              <FooterLink to="/terms">Terms & Conditions</FooterLink>
+            </MobileDropdown>
+          </div>
+        </div>
+
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-gray-400 text-sm">
               © 2025 UH Films. All rights reserved.
             </div>
-
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-5 overflow-hidden ">
+            
+            <div className="hidden md:flex items-center justify-center gap-5">
               <a
                 href="https://bishan-portfolio.vercel.app/"
                 target="_blank"
@@ -214,8 +385,7 @@ const Footer = () => {
                 aria-label="Visit Bishan Portfolio"
               >
                 <img
-                  src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png
-"
+                  src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png"
                   alt="Bishan Portfolio"
                   className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
                 />
@@ -223,15 +393,15 @@ const Footer = () => {
               <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
               <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
               <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
-              <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Twitter" />
+              <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Threads" />
               <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
               <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
             </div>
           </div>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 };
 
-export default Footer;
+export default Footer; 
