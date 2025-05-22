@@ -11,7 +11,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Helmet } from 'react-helmet-async';
 
-onst upcomingProjects = [
+const upcomingProjects = [
   {
     id: "sucidefun",
     title: "Suicide Fun",
