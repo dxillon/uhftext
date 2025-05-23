@@ -402,7 +402,11 @@ const Home = () => {
           </div>
         </section>
 
-        <ArticleSlider articles={articles} title="How we film?" />
+            <ArticleSlider 
+        articles={articles} 
+        title="Featured Articles" 
+        autoScrollDelay={5000} 
+      />
 
         <section className="py-20">
           <div className="container mx-auto px-4">
