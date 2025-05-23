@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Category, SubCategory } from '../types/article';
 import { articles } from '../data/articles';
 import ArticleCard from '../components/ArticleCard';
@@ -10,10 +10,10 @@ import { Helmet } from 'react-helmet-async';
 // Performance constants
 const INITIAL_ARTICLES = 9;
 const LOAD_MORE_COUNT = 6;
-const MAX_ARTICLES_BEFORE_PAGINATION = 30;
-const QUICK_ACCESS_CATEGORIES_COUNT = 5;
+const MAX_ARTICLES_BEFORE_PAGINATION = 30; // Switch to pagination if more than this
 
 const ArticlesPage: React.FC = () => {
+  const articlesSectionRef = useRef<HTMLElement>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [activeSubCategory, setActiveSubCategory] = useState<SubCategory | null>(null);
@@ -21,6 +21,9 @@ const ArticlesPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [usePagination, setUsePagination] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const smoothEaseOut = (t: number) => {
+    return 1 - Math.pow(1 - t, 3); // Cubic ease-out for smoother deceleration
+  };
 
   // Memoized filtered articles
   const filteredArticles = useMemo(() => {
@@ -37,43 +40,6 @@ const ArticlesPage: React.FC = () => {
     });
   }, [searchTerm, activeCategory, activeSubCategory]);
 
-  // Categories data
-  const { categories, categorySubMap, quickCategories } = useMemo(() => {
-    const uniqueCategories = new Set<Category>();
-    const map: Record<Category, SubCategory[]> = {} as Record<Category, SubCategory[]>;
-
-    // First pass to count category usage
-    const categoryCounts: Record<Category, number> = {} as Record<Category, number>;
-    articles.forEach(article => {
-      uniqueCategories.add(article.category);
-      categoryCounts[article.category] = (categoryCounts[article.category] || 0) + 1;
-
-      if (!map[article.category]) {
-        map[article.category] = [];
-      }
-      if (article.subCategory && !map[article.category].includes(article.subCategory)) {
-        map[article.category].push(article.subCategory);
-      }
-    });
-
-    // Get top categories for quick access
-    const sortedCategories = Array.from(uniqueCategories).sort(
-      (a, b) => categoryCounts[b] - categoryCounts[a]
-    );
-    const quickAccess = sortedCategories.slice(0, QUICK_ACCESS_CATEGORIES_COUNT);
-
-    // Filter out quick access categories from dropdown
-    const dropdownCategories = Array.from(uniqueCategories).filter(
-      cat => !quickAccess.includes(cat)
-    );
-
-    return {
-      categories: dropdownCategories,
-      categorySubMap: map,
-      quickCategories: quickAccess
-    };
-  }, []);
-
   // Determine if we should use pagination
   useEffect(() => {
     setUsePagination(filteredArticles.length > MAX_ARTICLES_BEFORE_PAGINATION);
@@ -89,6 +55,27 @@ const ArticlesPage: React.FC = () => {
     }
     return filteredArticles.slice(0, visibleCount);
   }, [filteredArticles, usePagination, currentPage, visibleCount]);
+
+  // Categories data
+  const { categories, categorySubMap } = useMemo(() => {
+    const uniqueCategories = new Set<Category>();
+    const map: Record<Category, SubCategory[]> = {} as Record<Category, SubCategory[]>;
+
+    articles.forEach(article => {
+      uniqueCategories.add(article.category);
+      if (!map[article.category]) {
+        map[article.category] = [];
+      }
+      if (article.subCategory && !map[article.category].includes(article.subCategory)) {
+        map[article.category].push(article.subCategory);
+      }
+    });
+
+    return {
+      categories: Array.from(uniqueCategories),
+      categorySubMap: map
+    };
+  }, []);
 
   // Check for mobile view
   useEffect(() => {
@@ -136,10 +123,44 @@ const ArticlesPage: React.FC = () => {
     return Math.ceil(filteredArticles.length / INITIAL_ARTICLES);
   }, [filteredArticles.length]);
 
-  const handleQuickCategorySelect = (category: Category) => {
-    setActiveCategory(category === activeCategory ? null : category);
-    setActiveSubCategory(null);
-  };
+
+  useEffect(() => {
+    if (!usePagination || !articlesSectionRef.current) return;
+
+    const element = articlesSectionRef.current;
+    const headerHeight = 100; // Match this to your actual header height
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+
+    // Only animate if we need to scroll more than 50px
+    if (Math.abs(distance) < 50) return;
+
+    const duration = Math.min(800, Math.max(400, Math.abs(distance) * 0.5)); // Dynamic duration based on distance
+    let startTime: number | null = null;
+
+    const animateScroll = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = smoothEaseOut(progress);
+
+      window.scrollTo(0, startPosition + distance * easedProgress);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    // Start the animation with a slight delay to ensure everything is ready
+    const animationFrame = requestAnimationFrame((time) => {
+      setTimeout(() => requestAnimationFrame(animateScroll), 50);
+    });
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [currentPage, usePagination]);
+
+
 
   return (
     <>
@@ -168,43 +189,26 @@ const ArticlesPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-8 md:py-12 bg-gray-900">
+        <section ref={articlesSectionRef} className="py-8 md:py-12 bg-gray-900">
           <div className="container mx-auto px-4">
-            {/* Search and Filter Bar */}
+            {/* Search and Filter Bar - Reduced animations */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 md:mb-8 gap-4">
               <div className="w-full md:w-1/2 lg:w-1/3">
                 <SearchBar onSearch={setSearchTerm} />
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                {/* Quick access categories */}
-                {quickCategories.map(category => (
-                  <button
-                    key={category}
-                    onClick={() => handleQuickCategorySelect(category)}
-                    className={`whitespace-nowrap px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${activeCategory === category
-                        ? 'bg-red-600 text-white'
-                        : 'bg-gray-800 text-white hover:bg-gray-700'
-                      }`}
-                  >
-                    {category.replace(/-/g, ' ')}
-                  </button>
-                ))}
-
-                {/* Dropdown for other categories */}
-                <div className="relative z-30">
-                  <CategoryFilter
-                    categories={categories}
-                    subCategories={activeCategory ? categorySubMap[activeCategory] : []}
-                    activeCategory={activeCategory}
-                    activeSubCategory={activeSubCategory}
-                    onSelectCategory={(cat) => {
-                      setActiveCategory(cat);
-                      setActiveSubCategory(null);
-                    }}
-                    onSelectSubCategory={setActiveSubCategory}
-                  />
-                </div>
+                <CategoryFilter
+                  categories={categories}
+                  subCategories={activeCategory ? categorySubMap[activeCategory] : []}
+                  activeCategory={activeCategory}
+                  activeSubCategory={activeSubCategory}
+                  onSelectCategory={(cat) => {
+                    setActiveCategory(cat);
+                    setActiveSubCategory(null);
+                  }}
+                  onSelectSubCategory={setActiveSubCategory}
+                />
               </div>
             </div>
 
