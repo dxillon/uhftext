@@ -116,16 +116,29 @@ const Journey = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Bishanpreet Singh - Founder Journey | Urban Hustle Films™</title>
-        <meta name="description" content="Explore the inspiring journey of Bishanpreet Singh the founder of Urban Hustle Films. Learn about the vision, struggles, and achievements behind the brand." />
-        <meta name="keywords" content="Bishanpreet Singh , Bishan dxillon , Bishan singh , uhf, uh films ,Urban Hustle Films, founder journey, film production, indie cinema, hustle story" />
-        <meta property="og:title" content="Bishanpreet Singh - Founder Journey | Urban Hustle Films" />
-        <meta property="og:description" content="Explore the inspiring journey of Bishanpreet Singh the founder of Urban Hustle Films." />
-        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1746015970/_DSC0937_mweldt.jpg" />
-        <meta property="og:url" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+<Helmet>
+  <title>Bishanpreet Singh - Founder Journey | Urban Hustle Films™</title>
+  <meta
+    name="description"
+    content="Explore the inspiring journey of Bishanpreet Singh, the founder of Urban Hustle Films. Learn about his vision, creative path, and impact in indie cinema."
+  />
+  <meta
+    name="keywords"
+    content="Bishanpreet Singh, Bishanpreet Singh filmmaker, Bishanpreet Singh director, Bishanpreet Singh Urban Hustle Films, Bishan Dxillon, Bishan Singh, UH Films, UHF, Urban Hustle Films, founder journey, indie film director, Indian filmmaker, creative entrepreneur, hustle story, film production"
+  />
+  <meta property="og:title" content="Bishanpreet Singh - Founder Journey | Urban Hustle Films" />
+  <meta
+    property="og:description"
+    content="Discover the story of Bishanpreet Singh, the visionary behind Urban Hustle Films. A creative journey in indie filmmaking and entrepreneurship."
+  />
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1746015970/_DSC0937_mweldt.jpg"
+  />
+  <meta property="og:url" content="https://www.uhfilms.in/founder" />
+  <meta name="twitter:card" content="summary_large_image" />
+</Helmet>
+
 
       <div ref={containerRef} className="min-h-screen bg-black text-white">
         {/* Hero Section */}
@@ -141,7 +154,7 @@ const Journey = () => {
               transition={{ duration: 1, delay: 0.2 }}
               className="mb-6"
             >
-              <h2 className="text-2xl md:text-3xl text-red-500 font-medium mb-4">Bishanpreet Singh</h2>
+              <h1 className="text-2xl md:text-3xl text-red-500 font-medium mb-4">Bishanpreet Singh</h1>
               <h1 className="text-6xl md:text-7xl font-bold">Founder's Journey</h1>
             </motion.div>
             <motion.p
