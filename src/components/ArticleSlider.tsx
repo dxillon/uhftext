@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Article } from '../types/article';
 import ArticleCard from './ArticleCard';
@@ -20,8 +20,28 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
   const startX = useRef(0);
   const scrollLeft = useRef(0);
   const autoScrollInterval = useRef<NodeJS.Timeout>();
+  const animationFrameId = useRef<number>();
+  const lastScrollTime = useRef(0);
 
-  const startAutoScroll = () => {
+  // Throttled scroll handler
+  const handleScroll = useCallback(() => {
+    const now = Date.now();
+    if (now - lastScrollTime.current < 100) return; // Throttle to 10fps
+    
+    lastScrollTime.current = now;
+    // Any scroll-related calculations can go here
+  }, []);
+
+  // Memoized article cards to prevent unnecessary re-renders
+  const memoizedArticleCards = React.useMemo(() => {
+    return articles.map((article) => (
+      <div key={article.id} className="min-w-[280px] md:min-w-[320px] snap-start">
+        <ArticleCard article={article} compact />
+      </div>
+    ));
+  }, [articles]);
+
+  const startAutoScroll = useCallback(() => {
     if (autoScrollInterval.current) {
       clearInterval(autoScrollInterval.current);
     }
@@ -29,25 +49,39 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
     autoScrollInterval.current = setInterval(() => {
       if (scrollContainerRef.current && !isDragging.current) {
         const container = scrollContainerRef.current;
-        const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
+        const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10; // 10px buffer
         
         if (isAtEnd) {
-          container.scrollLeft = 0;
+          container.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
         } else {
-          container.scrollLeft += 320;
+          container.scrollBy({
+            left: 320,
+            behavior: 'smooth'
+          });
         }
       }
     }, autoScrollDelay);
-  };
+  }, [autoScrollDelay]);
 
+  // Cleanup on unmount
   useEffect(() => {
-    startAutoScroll();
     return () => {
       if (autoScrollInterval.current) {
         clearInterval(autoScrollInterval.current);
       }
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
-  }, [autoScrollDelay]);
+  }, []);
+
+  // Initialize auto-scroll when component mounts or articles change
+  useEffect(() => {
+    startAutoScroll();
+  }, [startAutoScroll, articles]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
@@ -61,35 +95,39 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current) return;
-    e.preventDefault();
-    const x = e.pageX - (scrollContainerRef.current?.offsetLeft || 0);
-    const walk = (x - startX.current) * 2;
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
+    
+    if (animationFrameId.current) {
+      cancelAnimationFrame(animationFrameId.current);
     }
+    
+    animationFrameId.current = requestAnimationFrame(() => {
+      if (!scrollContainerRef.current || !isDragging.current) return;
+      
+      const x = e.pageX - (scrollContainerRef.current.offsetLeft || 0);
+      const walk = (x - startX.current) * 2;
+      scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
+      handleScroll();
+    });
   };
 
   const handleMouseUp = () => {
-    isDragging.current = false;
-    startAutoScroll();
-  };
-
-  const handleMouseLeave = () => {
     if (isDragging.current) {
       isDragging.current = false;
       startAutoScroll();
     }
   };
 
-  const scrollToDirection = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === 'left' ? -320 : 320;
-      scrollContainerRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const handleMouseLeave = handleMouseUp;
+
+  const scrollToDirection = useCallback((direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    
+    const scrollAmount = direction === 'left' ? -320 : 320;
+    scrollContainerRef.current.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  }, []);
 
   return (
     <section className="py-12 px-4 md:px-8 bg-black text-white">
@@ -129,15 +167,11 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
           onMouseLeave={handleMouseLeave}
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {articles.map((article) => (
-            <div key={article.id} className="min-w-[280px] md:min-w-[320px] snap-start">
-              <ArticleCard article={article} compact />
-            </div>
-          ))}
+          {memoizedArticleCards}
         </div>
       </div>
     </section>
   );
 };
 
-export default ArticleSlider;
+export default React.memo(ArticleSlider);
