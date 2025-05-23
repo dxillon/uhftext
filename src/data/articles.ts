@@ -130,7 +130,7 @@ export const articles: Article[] = [
     author: authors[1],
     publishDate: '2024-02-05T11:20:00Z',
     readTimeMinutes: 9,
-    featured: true,
+    featured: false,
     tags: ['cinematography', 'low-budget filmmaking', 'camera techniques', 'UH Films director', 'DIY cinematography']
 },
   {
@@ -202,7 +202,7 @@ export const articles: Article[] = [
     author: authors[3],
     publishDate: '2024-03-12T16:45:00Z',
     readTimeMinutes: 11,
-    featured: true,
+    featured: false,
     tags: ['film marketing', 'viral content', 'social media strategy', 'UH Films marketing', 'organic growth']
 },
  {
@@ -370,7 +370,7 @@ export const articles: Article[] = [
     author: authors[3],
     publishDate: '2024-07-10T10:30:00Z',
     readTimeMinutes: 8,
-    featured: true,
+    featured: false,
     tags: ['metaverse movies', 'NFT films', 'blockchain distribution', 'Web3 cinema', 'decentralized streaming']
 },
 
@@ -434,7 +434,7 @@ export const articles: Article[] = [
   author: authors[3],
   publishDate: '2025-05-22T09:00:00Z',
   readTimeMinutes: 6,
-  featured: false,
+  featured: true,
   tags: ['Guy Ritchie', 'adventure film', 'John Krasinski', 'bishanpreet']
 },
 {
@@ -581,7 +581,7 @@ export const articles: Article[] = [
   author: authors[0],
   publishDate: '2025-05-23T00:00:00Z',
   readTimeMinutes: 8,
-  featured: false,
+  featured: true,
   tags: ['John Abraham', 'JP Singh', 'Shivam Nair', 'uh films', 'bsiha', 'bishanpreet']
 },
 {
@@ -602,7 +602,7 @@ export const articles: Article[] = [
   author: authors[1],
   publishDate: '2025-03-20T00:00:00Z',
   readTimeMinutes: 9,
-  featured: false,
+  featured: true,
   tags: ['Prosenjit Chatterjee', 'Neeraj Pandey', 'Bengal politics', 'uh films', 'bsiha', 'bishanpreet']
 },
 {
@@ -623,7 +623,7 @@ export const articles: Article[] = [
   author: authors[0],
   publishDate: '2025-06-13T00:00:00Z',
   readTimeMinutes: 8,
-  featured: false,
+  featured: true,
   tags: ['Rana Naidu', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
 },
   {
@@ -644,7 +644,7 @@ export const articles: Article[] = [
   author: authors[1],
   publishDate: '2025-05-09T00:00:00Z',
   readTimeMinutes: 7,
- featured: false,
+ featured: true,
   tags: ['The Royals', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
 },
 {
@@ -1484,7 +1484,7 @@ featured: false,
     author: authors[3],
     publishDate: '2025-11-18T10:00:00Z',
     readTimeMinutes: 7,
-    featured: true,
+    featured: false,
     tags: ['metaverse premieres', 'NFT tickets', 'blockchain films', 'virtual red carpet', 'DeFi cinema']
 },
   {
@@ -1527,7 +1527,7 @@ featured: false,
   author: authors[1],
   publishDate: '2025-12-02T08:00:00Z',
   readTimeMinutes: 6,
-  featured: true,
+  featured: false,
   tags: ['AI music', 'tokenized setlists', 'remix NFTs', 'fan DAOs', 'web3 festivals']
 }
 ,{
@@ -1570,7 +1570,7 @@ featured: false,
   author: authors[0],
   publishDate: '2025-10-12T09:00:00Z',
   readTimeMinutes: 8,
-  featured: true,
+  featured: false,
   tags: ['NFT degrees', 'decentralized education', 'eduDAO', 'tokenized classrooms']
 }
 ,{
@@ -1612,7 +1612,7 @@ featured: false,
   author: authors[2],
   publishDate: '2025-08-17T15:30:00Z',
   readTimeMinutes: 5,
-  featured: true,
+  featured: false,
   tags: ['blockchain marriage', 'NFT rings', 'DeFi weddings', 'vow tokens', 'virtual ceremonies']
 }
 ,{
@@ -1654,7 +1654,7 @@ featured: false,
   author: authors[3],
   publishDate: '2025-09-30T14:00:00Z',
   readTimeMinutes: 7,
-  featured: true,
+  featured: false,
   tags: ['tokenized theatre', 'AI actors', 'scene NFTs', 'drama DAO']
 }
 ,{
@@ -1696,7 +1696,7 @@ featured: false,
   author: authors[3],
   publishDate: '2025-11-01T11:00:00Z',
   readTimeMinutes: 9,
-  featured: true,
+  featured: false,
   tags: ['property NFTs', 'smart cities blockchain', 'DAO zoning', 'token urbanism']
 }
 ,{
@@ -1738,7 +1738,7 @@ featured: false,
   author: authors[0],
   publishDate: '2025-10-01T06:00:00Z',
   readTimeMinutes: 6,
-  featured: true,
+  featured: false,
   tags: ['AR darshan', 'token blessings', 'spiritual NFTs', 'web3 devotion']
 },{
   id: '26',
@@ -1779,7 +1779,7 @@ featured: false,
   author: authors[0],
   publishDate: '2025-12-10T13:00:00Z',
   readTimeMinutes: 6,
-  featured: true,
+  featured: false,
   tags: ['fan-controlled cricket', 'sports DAOs', 'angle NFTs', 'blockchain sports', 'fantasy web3']
 }
 
