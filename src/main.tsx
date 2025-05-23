@@ -16,6 +16,7 @@ createRoot(rootElement).render(
   <StrictMode>
     <HelmetProvider>
       <App />
+       <SpeedInsights />
     </HelmetProvider>
   </StrictMode>
 );
