@@ -65,7 +65,7 @@ export const articles: Article[] = [
     author: authors[0],
     publishDate: '2024-01-18T09:15:00Z',
     readTimeMinutes: 8,
-    featured: true,
+    featured: false,
     tags: ['independent films', 'film technology', 'virtual production', 'UH Films', 'Bishan Preet Singh']
 },
   {
@@ -258,7 +258,7 @@ export const articles: Article[] = [
     author: authors[0],
     publishDate: '2024-06-20T08:00:00Z',
     readTimeMinutes: 7,
-    featured: true,
+    featured: false,
     tags: ['AI filmmaking', 'OpenAI Sora', 'synthetic media', 'virtual production', 'Bishan Preet Singh']
 },
   {
@@ -314,7 +314,7 @@ export const articles: Article[] = [
     author: authors[1],
     publishDate: '2024-05-30T14:15:00Z',
     readTimeMinutes: 6,
-    featured: true,
+    featured: false,
     tags: ['YouTube Shorts', 'Instagram Reels', 'viral video', 'short-form content', 'filmmaker marketing']
 },
   {
@@ -665,7 +665,7 @@ export const articles: Article[] = [
   author: authors[3],
   publishDate: '2025-05-15T00:00:00Z',
   readTimeMinutes: 8,
-  featured: false,
+  featured: true,
   tags: ['Killer Soup', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
 },
 
@@ -687,7 +687,7 @@ export const articles: Article[] = [
   author: authors[0],
   publishDate: '2025-03-13T00:00:00Z',
   readTimeMinutes: 9,
-  featured: false,
+  featured: true,
   tags: ['Ziddi Girls', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
 },
 {
@@ -708,7 +708,7 @@ export const articles: Article[] = [
   author: authors[1],
   publishDate: '2025-01-10T00:00:00Z',
   readTimeMinutes: 9,
-featured: false,
+featured: true,
   tags: ['Black Warrant', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
 },
 {
@@ -727,7 +727,7 @@ featured: false,
   author: authors[0],
   publishDate: '2025-05-22T00:00:00Z',
   readTimeMinutes: 7,
-  featured: false,
+  featured: true,
   tags: ['Knock Knock Kaun Hai', 'MX Player', 'uh films', 'bishan', 'bishanpreet']
 },
 {
