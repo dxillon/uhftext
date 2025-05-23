@@ -9,8 +9,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNewsletter } from '../hooks/useNewsletter';
 import { Helmet } from 'react-helmet-async';
 
-
-
 const ArticleDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<Article | null>(null);
@@ -61,41 +59,40 @@ const ArticleDetailPage: React.FC = () => {
 
   return (
     <>
-<Helmet>
-  <title>{`${article.title} | Urban Hustle Films™`}</title>
+      <Helmet>
+        <title>{`${article.title} | Urban Hustle Films™`}</title>
 
-  <meta
-    name="description"
-    content={
-      article.summary?.length
-        ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
-        : 'Explore inspiring stories and insights from Urban Hustle Films™.'
-    }
-  />
+        <meta
+          name="description"
+          content={
+            article.summary?.length
+              ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
+              : 'Explore inspiring stories and insights from Urban Hustle Films™.'
+          }
+        />
 
-  <meta
-    name="keywords"
-    content={
-      article.tags?.length
-        ? `Urban Hustle Films, ${article.tags.join(', ')}, Bishanpreet Singh`
-        : 'Urban Hustle Films, Bishanpreet Singh'
-    }
-  />
+        <meta
+          name="keywords"
+          content={
+            article.tags?.length
+              ? `Urban Hustle Films, ${article.tags.join(', ')}, Bishanpreet Singh`
+              : 'Urban Hustle Films, Bishanpreet Singh'
+          }
+        />
 
-  <meta property="og:title" content={`${article.title} | Urban Hustle Films™`} />
-  <meta
-    property="og:description"
-    content={
-      article.summary?.length
-        ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
-        : 'Explore insights and untold stories from Urban Hustle Films™.'
-    }
-  />
-  <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
-  <meta property="og:url" content={`https://urbanhustlefilms.com/articles/${article.slug}`} />
-  <meta name="twitter:card" content="summary_large_image" />
-</Helmet>
-
+        <meta property="og:title" content={`${article.title} | Urban Hustle Films™`} />
+        <meta
+          property="og:description"
+          content={
+            article.summary?.length
+              ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
+              : 'Explore insights and untold stories from Urban Hustle Films™.'
+          }
+        />
+        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:url" content={`https://urbanhustlefilms.com/articles/${article.slug}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -105,12 +102,12 @@ const ArticleDetailPage: React.FC = () => {
       >
         {/* Hero Section */}
         <motion.section
-          className="relative pt-20"
+          className="relative !pt-0 !mt-0"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="h-[60vh] relative overflow-hidden">
+          <div className="h-[60vh] relative overflow-hidden ">
             <motion.img
               src={article.heroImage}
               alt={article.title}
@@ -127,17 +124,7 @@ const ArticleDetailPage: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <Link
-                  to="/articles"
-                  className="inline-flex items-center text-white hover:text-red-400 mb-6 transition-colors duration-200 group"
-                >
-                  <motion.span
-                    whileHover={{ x: -5 }}
-                    className="flex items-center"
-                  >
-                    <ArrowLeft size={16} className="mr-2" /> Back to Articles
-                  </motion.span>
-                </Link>
+
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   <motion.span
@@ -191,7 +178,20 @@ const ArticleDetailPage: React.FC = () => {
 
         {/* Article Content */}
         <section className="py-16">
+
           <div className="container mx-auto px-4">
+            <Link
+              to="/articles"
+              className="inline-flex items-center text-white hover:text-red-400 mb-6 transition-colors duration-200 group"
+            >
+              <motion.span
+                whileHover={{ x: -5 }}
+                className="flex items-center"
+              >
+                <ArrowLeft size={16} className="mr-2" /> Back to Articles
+              </motion.span>
+            </Link>
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               <motion.div
                 className="lg:col-span-8"
@@ -199,7 +199,6 @@ const ArticleDetailPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-
 
                 {/* Added Summary Section */}
                 {article.summary && (
