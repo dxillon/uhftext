@@ -330,38 +330,40 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Mobile Layout */}
-        <div className="md:hidden space-y-6">
-          <div className="flex flex-col items-center space-y-4">
-            <Link to="/" className="flex items-center space-x-2" data-clickable="true">
-              <div className="w-16 h-16">
-                <img
-                  src="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745764899/FILMS_3_iblzzr.png"
-                  alt="UH Films Logo"
-                  className="w-full h-full"
-                />
-              </div>
-              <span className="text-xl font-bold text-white">UH FILM'S</span>
-            </Link>
-            <p className="text-white text-center">Urban tales | Cinematic trails</p>
+ {/* Mobile Layout */}
+<div className="md:hidden space-y-8 px-4">
+  <div className="flex flex-col items-center space-y-4">
+    <Link to="/" className="flex items-center space-x-3" data-clickable="true">
+      <div className="w-16 h-16">
+        <img
+          src="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745764899/FILMS_3_iblzzr.png"
+          alt="UH Films Logo"
+          className="w-full h-full"
+        />
+      </div>
+      <span className="text-2xl font-extrabold text-white tracking-wide">UH FILM'S</span>
+    </Link>
+    <p className="text-white text-center text-sm italic tracking-wide opacity-80">
+      Urban tales | Cinematic trails
+    </p>
 
-            <div className="flex gap-3 w-full justify-center px-4">
-              <Link
-                to="/projects#get-casted"
-                ref={getCastedButtonRef}
-                className="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-sm whitespace-nowrap w-fit"
-              >
-                Get Casted
-              </Link>
-              <Link
-                to="/contact"
-                ref={contactButtonRef}
-                className="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-medium text-sm whitespace-nowrap w-fit"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
+    <div className="flex gap-4 w-full justify-center px-4">
+      <Link
+        to="/projects#get-casted"
+        ref={getCastedButtonRef}
+        className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
+      >
+        Get Casted
+      </Link>
+      <Link
+        to="/contact"
+        ref={contactButtonRef}
+        className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
+      >
+        Contact Us
+      </Link>
+    </div>
+  </div>
 
           <div className="flex justify-center">
             <div className="flex flex-wrap items-center justify-center gap-2">
