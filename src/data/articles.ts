@@ -2,376 +2,120 @@ import { Article } from '../types/article';
 import { authors } from './authors';
 
 export const articles: Article[] = [
- {
-    id: '1',
-    title: 'The Future of Independent Filmmaking: How UH Films is Revolutionizing the Industry',
-    slug: 'future-independent-filmmaking-uh-films',
-    excerpt: 'Discover how UH Films leverages cutting-edge technology and innovative storytelling to empower indie filmmakers worldwide.',
-    summary: [
-      "How UH Films bridges the gap between indie creators and mainstream audiences",
-      "The role of affordable 4K/8K cameras in democratizing filmmaking",
-      "Case studies of successful UH Films productions and their global impact"
-    ],
-    content: `
-      <p>The film industry has long been dominated by big studios with massive budgets, but UH Films, under the visionary leadership of founder <strong>Bishan Preet Singh</strong>, is changing that narrative. By combining technological innovation with compelling storytelling, we're creating opportunities for independent filmmakers to compete on a global stage.</p>
-      
-      <h2>Democratizing High-Quality Production</h2>
-      
-      <p>Gone are the days when you needed millions to make a cinema-quality film. With advancements like:</p>
-      <ul>
-        <li>Blackmagic Pocket Cinema Camera 6K (under $2,500)</li>
-        <li>DaVinci Resolve's free editing software</li>
-        <li>AI-powered color grading tools</li>
-      </ul>
-      
-      <p>UH Films has produced 12 feature-length projects under $100,000 that have premiered at major festivals like Sundance and TIFF.</p>
-      
-      <h2>Virtual Production Breakthroughs</h2>
-      
-      <p>Our recent collaboration with Epic Games' Unreal Engine allows indie creators to:</p>
-      <ul>
-        <li>Shoot in virtual environments with LED walls</li>
-        <li>Reduce location costs by 70%</li>
-        <li>Iterate scenes in real-time with directors</li>
-      </ul>
-      
-      <p>This technology, once exclusive to Marvel productions, is now accessible through UH Films' rental studio in Mumbai.</p>
-      
-      <h2>Global Distribution Strategies</h2>
-      
-      <p>We've developed a proprietary distribution model that combines:</p>
-      <ul>
-        <li>Blockchain-based rights management</li>
-        <li>Direct-to-consumer streaming platforms</li>
-        <li>NFT-based collector's editions</li>
-      </ul>
-      
-      <p>Our 2023 documentary "The Silent Valley" reached 1.2M viewers across 18 countries using this approach.</p>
-      
-      <h2>What's Next for Indie Cinema?</h2>
-      
-      <p>In 2024, UH Films will launch its filmmaker incubator program, offering:</p>
-      <ul>
-        <li>Equipment grants worth ₹50 lakhs</li>
-        <li>Mentorship from industry veterans</li>
-        <li>Guaranteed distribution for qualifying projects</li>
-      </ul>
-      
-      <p>The future of film belongs to the innovators, and at UH Films, we're building the tools to make that future accessible to all.</p>
-    `,
-    heroImage: 'https://images.pexels.com/photos/3566120/pexels-photo-3566120.jpeg',
-    category: 'filmmaking',
-    subCategory: 'industry-trends',
-    author: authors[0],
-    publishDate: '2024-01-18T09:15:00Z',
-    readTimeMinutes: 8,
-    featured: false,
-    tags: ['independent films', 'film technology', 'virtual production', 'UH Films', 'Bishan Preet Singh']
+{
+  id: '1',
+  title: 'Kankhajura: A Tale of Redemption and Shadows',
+  slug: 'kankhajura-review',
+  excerpt: 'An intense crime thriller exploring family ties and the haunting past.',
+  content: `
+    <p>"Kankhajura," streaming on SonyLIV, is a gripping crime thriller that delves into the complexities of familial relationships and the shadows of the past. The story follows Ashu, who returns after serving 14 years for a crime from his youth, attempting to reconnect with his brother Max. As they struggle to rebuild trust, Ashu's dark past and dangerous connections resurface, threatening Max's life and business.</p>
+
+    <p>Directed by Chandan Arora and produced by Ajay Rai, the series features a stellar cast including Roshan Mathew, Mohit Raina, Sarah Jane Dias, and Trinetra Haldar Gummaraju. The narrative is a compelling exploration of family, redemption, and the shadows that never truly fade.</p>
+  `,
+  heroImage: 'https://upload.wikimedia.org/wikipedia/en/3/33/Kankhajura_Poster.jpeg',
+  category: 'bollywood',
+  subCategory: 'web-series',
+  author: authors[1],
+  publishDate: '2025-05-30T00:00:00Z',
+  readTimeMinutes: 8,
+  featured: false,
+  tags: ['Kankhajura', 'SonyLIV', 'uh films', 'bishan', 'bishanpreet']
 },
-  {
-    id: '2',
-    title: 'Mastering Low-Budget Cinematography: Techniques from UH Films Award-Winning Director',
-    slug: 'low-budget-cinematography-techniques',
-    excerpt: 'Learn professional cinematography techniques used in UH Films productions that cost 80% less than traditional methods.',
-    summary: [
-      "Lighting hacks using household items that saved ₹5 lakhs per project",
-      "The '3-Lens Rule' for creating visual variety without expensive gear",
-      "How to achieve the Alexa look with sub-₹1 lakh cameras"
-    ],
-    content: `
-      <p>As the director of 9 UH Films productions, I've developed techniques that deliver premium visuals on micro-budgets. Our film "Monsoon Dreams" (2023) was shot for ₹28 lakhs but looks like a ₹2 crore production. Here's how we did it:</p>
-      
-      <h2>The UH Films Lighting Pyramid</h2>
-      
-      <p>Instead of expensive Hollywood-style setups, we use:</p>
-      <ul>
-        <li><strong>Base Layer:</strong> Modified construction LEDs (₹3,500 vs. ₹75,000 film lights)</li>
-        <li><strong>Modifiers:</strong> Unbleached muslin fabric for diffusion (₹200/meter)</li>
-        <li><strong>Accents:</strong> Repurposed car LED strips for practicals</li>
-      </ul>
-      
-      <p>This approach saved ₹17 lakhs across our last 3 features while maintaining cinematic quality.</p>
-      
-      <h2>The Camera Movement Matrix</h2>
-      
-      <p>We combine three affordable tools to create dynamic shots:</p>
-      <table>
-        <tr><th>Tool</th><th>Cost</th><th>Use Case</th></tr>
-        <tr><td>Neewer Slider</td><td>₹12,000</td><td>Precise horizontal moves</td></tr>
-        <tr><td>Zhiyun Crane 4</td><td>₹45,000</td><td>Stabilized walking shots</td></tr>
-        <tr><td>Car Suction Mount</td><td>₹8,000</td><td>High-speed vehicle shots</td></tr>
-      </table>
-      
-      <h2>Post-Production Alchemy</h2>
-      
-      <p>Our secret sauce includes:</p>
-      <ul>
-        <li><strong>Color Grading:</strong> Custom LUTs that mimic ₹50 lakh cameras</li>
-        <li><strong>AI Upscaling:</strong> Topaz Video Enhance for 4K delivery from 1080p sources</li>
-        <li><strong>Sound Design:</strong> Layering free BBC Sound Effects with Foley</li>
-      </ul>
-      
-      <p>These techniques helped our short film "Chai Time" win Best Cinematography at the Mumbai International Film Festival despite being shot on a ₹65,000 camera.</p>
-      
-      <h2>Case Study: The ₹5 Lakh Feature</h2>
-      
-      <p>Our upcoming project "Paper Boats" was shot for just ₹5.2 lakhs by:</p>
-      <ol>
-        <li>Using natural light for 89% of scenes</li>
-        <li>Casting non-actors from local communities</li>
-        <li>Shooting all interiors in one converted warehouse</li>
-      </ol>
-      
-      <p>The trailer has already garnered 420,000 YouTube views, proving budget constraints can inspire creativity.</p>
-    `,
-    heroImage: 'https://images.pexels.com/photos/7508637/pexels-photo-7508637.jpeg',
-    category: 'cinematography',
-    subCategory: 'techniques',
-    author: authors[1],
-    publishDate: '2024-02-05T11:20:00Z',
-    readTimeMinutes: 9,
-    featured: false,
-    tags: ['cinematography', 'low-budget filmmaking', 'camera techniques', 'UH Films director', 'DIY cinematography']
+{
+  id: '2',
+  title: 'Kull: The Legacy of the Raisingghs – A Royal Drama Unfolds',
+  slug: 'kull-legacy-raisingghs-review',
+  excerpt: 'A gripping tale of legacy, power, and family secrets in a royal household.',
+  content: `
+    <p>JioHotstar's "Kull: The Legacy of the Raisingghs" is a captivating drama thriller that explores the intricate dynamics of a royal family. The series centers around the Raisinggh family, unraveling secrets, power struggles, and the weight of legacy that binds them.</p>
+
+    <p>Directed by Sahir Raza and written by Chiranjeevi Bajpai, the series features performances by Nimrat Kaur, Amol Parashar, and Ridhi Dogra. The narrative delves into themes of tradition, ambition, and the complexities of familial relationships within a royal context.</p>
+  `,
+  heroImage: 'https://upload.wikimedia.org/wikipedia/en/8/88/Kull_%E2%80%93_The_Legacy_of_the_Raisingghs.jpg',
+  category: 'bollywood',
+  subCategory: 'web-series',
+  author: authors[3],
+  publishDate: '2025-05-02T00:00:00Z',
+  readTimeMinutes: 7,
+  featured: false,
+  tags: ['Kull', 'JioHotstar', 'uh films', 'bishan', 'bishanpreet']
 },
-  {
-    id: '3',
-    title: 'Viral Film Marketing: UH Films Blueprint for 10M+ Views on Zero Budget',
-    slug: 'viral-film-marketing-strategies',
-    excerpt: 'The exact strategies UH Films used to grow from 0 to 2.8M followers and get 10M+ views without paid advertising.',
-    summary: [
-      "The '3-2-1' social media content formula that tripled engagement",
-      "How to leverage micro-influencers for 10x ROI",
-      "Case study: Making a ₹15,000 short film trend nationally"
-    ],
-    content: `
-      <p>At UH Films, we've cracked the code for making small films go viral. Our marketing team achieved 14.7M organic views last quarter using these proven strategies:</p>
-      
-      <h2>The Content Multiplication Framework</h2>
-      
-      <p>For every 1 minute of film footage, we create:</p>
-      <ul>
-        <li><strong>3 Behind-the-Scenes (BTS) clips</strong> showing technical challenges</li>
-        <li><strong>2 Actor Prep Videos</strong> demonstrating method acting processes</li>
-        <li><strong>1 Cultural Connection</strong> piece linking the story to current trends</li>
-      </ul>
-      
-      <p>This approach helped our documentary "Threads of Punjab" reach 3.2M TikTok views in 72 hours.</p>
-      
-      <h2>The Influencer Pyramid Strategy</h2>
-      
-      <p>Instead of paying celebrities, we:</p>
-      <ol>
-        <li>Identify 100+ nano-influencers (1K-10K followers)</li>
-        <li>Provide exclusive early access</li>
-        <li>Encourage authentic reactions with custom filters</li>
-      </ol>
-      
-      <p>Result: 42% higher engagement than paid promotions at 0 cost.</p>
-      
-      <h2>Google's E-E-A-T Advantage</h2>
-      
-      <p>We dominate search results by:</p>
-      <table>
-        <tr><th>Factor</th><th>Implementation</th><th>Result</th></tr>
-        <tr><td>Experience</td><td>Director commentary SERP snippets</td><td>+230% CTR</td></tr>
-        <tr><td>Expertise</td><td>Frame-by-frame analysis blogs</td><td>Rank #1 for 14 cinematography terms</td></tr>
-        <tr><td>Authoritativeness</td><td>Guest columns on IndieWire</td><td>Backlinks from 89 domains</td></tr>
-      </table>
-      
-      <h2>Case Study: The ₹15,000 Viral Sensation</h2>
-      
-      <p>Our short film "The Last Letter" was made for just ₹15,000 but:</p>
-      <ul>
-        <li>Trended on Twitter India for 19 hours</li>
-        <li>Got featured by YouTube India as "Creator on the Rise"</li>
-        <li>Led to 3 brand partnership offers</li>
-      </ul>
-      
-      <p>The secret? We:</p>
-      <ol>
-        <li>Released the full film on YouTube with custom chapter markers</li>
-        <li>Created an interactive Instagram filter replicating the protagonist's glasses</li>
-        <li>Hosted a Reddit AMA with the cinematographer</li>
-      </ol>
-      
-      <p>This multi-platform approach delivered 8.4M views in the first month.</p>
-    `,
-    heroImage: 'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg',
-    category: 'marketing',
-    subCategory: 'digital-strategy',
-    author: authors[3],
-    publishDate: '2024-03-12T16:45:00Z',
-    readTimeMinutes: 11,
-    featured: false,
-    tags: ['film marketing', 'viral content', 'social media strategy', 'UH Films marketing', 'organic growth']
+{
+  id: '3',
+  title: 'The Last of Us: A Gripping Post-Apocalyptic Drama',
+  slug: 'the-last-of-us-review',
+  excerpt: 'A gripping journey through survival and human connection in a ravaged world.',
+  content: `
+    <p>HBO’s "The Last of Us" masterfully adapts the beloved video game into a post-apocalyptic drama that explores survival, loss, and hope. The story follows Joel and Ellie as they navigate a dangerous world filled with infected creatures and hostile survivors.</p>
+
+    <p>Directed by Craig Mazin and Neil Druckmann, the series features powerful performances by Pedro Pascal and Bella Ramsey. "The Last of Us" blends intense action with emotional storytelling, capturing the raw human spirit amid chaos.</p>
+  `,
+  heroImage: 'https://image.tmdb.org/t/p/original/hPB3F9CRdCf8wrncRPEEUm005DG.jpg',
+  category: 'international',
+  subCategory: 'web-series',
+  author: authors[0],
+  publishDate: '2025-04-18T00:00:00Z',
+  readTimeMinutes: 8,
+  featured: false,
+  tags: ['The Last of Us', 'HBO', 'post-apocalyptic', 'survival', 'drama']
 },
- {
-    id: '4',
-    title: 'AI in Filmmaking: How UH Films is Leveraging ChatGPT & Sora to Cut Production Costs by 40%',
-    slug: 'ai-filmmaking-cost-reduction',
-    excerpt: 'Exclusive look at UH Films\' AI pipeline that automates pre-production, generates synthetic actors, and creates virtual locations.',
-    summary: [
-      "How we used OpenAI's Sora to generate 12 minutes of B-roll (saving ₹18 lakhs)",
-      "Our ChatGPT-powered script analysis tool that predicts box office potential",
-      "Ethical guidelines for AI usage in creative projects"
-    ],
-    content: `
-      <h2>The AI Pre-Production Suite</h2>
-      <p>Our custom-built "CineAI" system combines:</p>
-      <ul>
-        <li><strong>ChatGPT-4o:</strong> Generates 500+ location scout reports in 3 minutes</li>
-        <li><strong>MidJourney V6:</strong> Creates concept art that's 92% production-ready</li>
-        <li><strong>Descript:</strong> Edits raw interview footage automatically</li>
-      </ul>
-      <p><em>Case Study:</em> Reduced pre-production time for "Silicon Slum" from 11 weeks to 19 days.</p>
+{
+  id: '4',
+  title: 'Made in Heaven: A Stunning Portrait of Modern India',
+  slug: 'made-in-heaven-review',
+  excerpt: 'A captivating drama exploring love, ambition, and societal pressures through the lens of Indian weddings.',
+  content: `
+    <p>Amazon Prime Video’s "Made in Heaven" offers a compelling glimpse into contemporary India, focusing on the lives of two wedding planners navigating complex social and personal dynamics. The series delicately balances glamour with raw emotional storytelling.</p>
 
-      <h2>Synthetic Actors & Ethical Boundaries</h2>
-      <p>We've developed a hybrid approach:</p>
-      <table>
-        <tr><th>Scenario</th><th>AI Usage</th><th>Cost Saved</th></tr>
-        <tr><td>Crowd Scenes</td><td>100% AI extras</td><td>₹4.2 lakhs/day</td></tr>
-        <tr><td>Supporting Roles</td><td>AI voice + human actor</td><td>37%</td></tr>
-        <tr><td>Lead Actors</td><td>0% AI (contractual)</td><td>-</td></tr>
-      </table>
-      <p>This balanced model keeps performances authentic while optimizing budgets.</p>
-
-      <h2>Virtual Location Generation</h2>
-      <p>Using OpenAI's Sora and Unreal Engine, we:</p>
-      <ol>
-        <li>Input historical references (e.g., "1970s Mumbai bazaar")</li>
-        <li>Generate 8K background plates with consistent lighting</li>
-        <li>Composite actors using Blackmagic's AI masking</li>
-      </ol>
-      <p><em>Result:</em> Our period drama "Bombay Electric" saved ₹2.1 crore in set construction.</p>
-
-      <h2>The Future: AI as Creative Partner</h2>
-      <p>Upcoming innovations at UH Films:</p>
-      <ul>
-        <li>AI-assisted VFX that learns director's style</li>
-        <li>Neural network-based color grading presets</li>
-        <li>Real-time script analysis during table reads</li>
-      </ul>
-    `,
-    heroImage: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
-    category: 'technology',
-    subCategory: 'artificial-intelligence',
-    author: authors[0],
-    publishDate: '2024-06-20T08:00:00Z',
-    readTimeMinutes: 7,
-    featured: false,
-    tags: ['AI filmmaking', 'OpenAI Sora', 'synthetic media', 'virtual production', 'Bishan Preet Singh']
+    <p>Created by Zoya Akhtar and Reema Kagti, and starring Arjun Mathur and Sobhita Dhulipala, "Made in Heaven" highlights the clash between tradition and modernity, bringing forward stories of love, class, and identity with nuance and grace.</p>
+  `,
+  heroImage: 'https://image.tmdb.org/t/p/original/rN9Tp1DQfqOfYcpOmM5YHheZuu6.jpg',
+  category: 'bollywood',
+  subCategory: 'web-series',
+  author: authors[1],
+  publishDate: '2025-05-09T00:00:00Z',
+  readTimeMinutes: 7,
+  featured: false,
+  tags: ['Made in Heaven', 'Amazon Prime Video', 'drama', 'weddings', 'Zoya Akhtar']
 },
-  {
-    id: '5',
-    title: 'YouTube Shorts vs. Instagram Reels: Data-Driven Strategies for Filmmakers',
-    slug: 'youtube-shorts-instagram-reels-filmmakers',
-    excerpt: 'Analysis of 217 UH Films videos revealing which platform delivers better engagement, conversions, and career opportunities.',
-    summary: [
-      "Shorts vs. Reels: 90-day performance comparison (views, comments, shares)",
-      "Optimal video length for filmmaker content (spoiler: it's not 9:16)",
-      "How we turned 1 viral Short into a Netflix development deal"
-    ],
-    content: `
-      <h2>The Platform Showdown: Hard Data</h2>
-      <p>After analyzing 3.2M views across both platforms:</p>
-      <table>
-        <tr><th>Metric</th><th>YouTube Shorts</th><th>Instagram Reels</th></tr>
-        <tr><td>Avg. View Duration</td><td>19.7s</td><td>14.2s</td></tr>
-        <tr><td>Click-Through Rate</td><td>8.3%</td><td>4.1%</td></tr>
-        <tr><td>Profile Visits</td><td>1.2%</td><td>3.8%</td></tr>
-      </table>
-      <p><strong>Key Insight:</strong> Shorts work better for narrative content, Reels for personality-driven clips.</p>
 
-      <h2>The "21-9" Format Hack</h2>
-      <p>We discovered cinematic widescreen (21:9) with letterboxing outperforms vertical video by:</p>
-      <ul>
-        <li>47% higher completion rate</li>
-        <li>2.3x more director profile follows</li>
-        <li>31% increase in website clicks</li>
-      </ul>
-      <p><em>Example:</em> Our short "Monsoon Memories" got 2.1M views in this format.</p>
+{
+  id: '5',
+  title: 'Kill Dill: A Tale of Love and Betrayal',
+  slug: 'kill-dill-review',
+  excerpt: 'A romantic thriller that explores the complexities of love and the consequences of betrayal.',
+  content: `
+    <p>"Kill Dill," streaming on Amazon MX Player, is a romantic thriller that delves into the intricacies of love, trust, and betrayal. The narrative follows Tavish and Kisha, whose passionate relationship takes a dark turn as secrets unravel and past traumas resurface.</p>
 
-      <h2>Algorithm-Friendly Posting Strategy</h2>
-      <p>Our "3-2-1" rule:</p>
-      <ol>
-        <li><strong>3 Story Hooks:</strong> Start with question/conflict/mystery</li>
-        <li><strong>2 Texture Layers:</strong> Combine B-roll + close-ups</li>
-        <li><strong>1 CTA:</strong> End with poll or "Watch full film"</li>
-      </ol>
-      <p>Increased average watch time by 62%.</p>
-
-      <h2>From Short-Form to Studio Deals</h2>
-      <p>How our viral Short "Kala Ghoda" led to:</p>
-      <ul>
-        <li>Netflix India development meeting</li>
-        <li>₹25 lakh brand deal with Fujifilm</li>
-        <li>Cannes Short Film Corner invitation</li>
-      </ul>
-    `,
-    heroImage: 'https://images.pexels.com/photos/7338574/pexels-photo-7338574.jpeg',
-    category: 'digital',
-    subCategory: 'short-form-video',
-    author: authors[1],
-    publishDate: '2024-05-30T14:15:00Z',
-    readTimeMinutes: 6,
-    featured: false,
-    tags: ['YouTube Shorts', 'Instagram Reels', 'viral video', 'short-form content', 'filmmaker marketing']
+    <p>Directed by Glen Barretto and Ankush Mohla, the series stars Prit Kamani and Anushka Sen in lead roles. With its engaging storyline and compelling performances, "Kill Dill" offers a fresh perspective on romantic relationships and the challenges they entail.</p>
+  `,
+  heroImage: 'https://upload.wikimedia.org/wikipedia/en/e/ed/Kill_Dill_%E2%80%93_The_Heartbreak_Club.jpg',
+  category: 'bollywood',
+  subCategory: 'web-series',
+  author: authors[3],
+  publishDate: '2025-03-28T00:00:00Z',
+  readTimeMinutes: 7,
+  featured: false,
+  tags: ['Kill Dill', 'Amazon MX Player', 'uh films', 'bishan', 'bishanpreet']
 },
-  {
-    id: '6',
-    title: 'Metaverse Movies: UH Films Blockchain-Based Distribution Model',
-    slug: 'metaverse-movies-blockchain-distribution',
-    excerpt: 'How were using NFT tickets, decentralized streaming, and virtual premieres to create new revenue streams for indie films.',
-    summary: [
-      "Our Polygon-powered platform reduced piracy by 83%",
-      "Case study: ₹72 lakhs earned through NFT collector's editions",
-      "Step-by-step guide to hosting virtual red carpet events"
-    ],
-    content: `
-      <h2>The Web3 Film Distribution Stack</h2>
-      <p>Our end-to-end solution includes:</p>
-      <ul>
-        <li><strong>NFT Tickets:</strong> Soulbound tokens for exclusive access</li>
-        <li><strong>DeStream:</strong> Pay-per-view with crypto payments</li>
-        <li><strong>AR Premiere:</strong> Watch parties in Spatial.io metaverse</li>
-      </ul>
-      <p><em>Results:</em> 12,000+ NFT tickets sold for our anthology "Mumbai Diaries".</p>
+{
+  id: '6',
+  title: 'Paatal Lok: A Dark Descent into India’s Underbelly',
+  slug: 'paatal-lok-review',
+  excerpt: 'A gritty and provocative thriller that exposes the harsh realities of society through a cop’s investigation.',
+  content: `
+    <p>Amazon Prime Video’s "Paatal Lok" is a hard-hitting crime thriller that follows a disillusioned police officer as he unravels a complex conspiracy tied to caste, politics, and crime. The show is noted for its raw storytelling and powerful performances.</p>
 
-      <h2>Smart Contract Royalties</h2>
-      <p>Filmmakers earn automatically via:</p>
-      <table>
-        <tr><th>Revenue Stream</th><th>Blockchain</th><th>Royalty %</th></tr>
-        <tr><td>Secondary NFT Sales</td><td>Polygon</td><td>15%</td></tr>
-        <tr><td>International PPV</td><td>Ethereum</td><td>72%</td></tr>
-        <tr><td>Merch Drops</td><td>Solana</td><td>30%</td></tr>
-      </table>
-      <p>Compared to traditional distribution's 15-25% net profit share.</p>
-
-      <h2>Virtual Premiere Playbook</h2>
-      <p>Our "Metaverse Red Carpet" template:</p>
-      <ol>
-        <li>Custom 3D avatars for cast (built with Ready Player Me)</li>
-        <li>Interactive poster galleries with hidden Easter eggs</li>
-        <li>Live AMA sessions in Decentraland theaters</li>
-      </ol>
-      <p><em>Case Study:</em> 4,300 concurrent attendees at our last premiere.</p>
-
-      <h2>The Future: AI + Blockchain Synergy</h2>
-      <p>Upcoming pilots:</p>
-      <ul>
-        <li>Dynamic NFTs that change based on viewer reactions</li>
-        <li>Token-graded behind-the-scenes content</li>
-        <li>DAO-funded film productions</li>
-      </ul>
-    `,
-    heroImage: 'https://images.pexels.com/photos/8449236/pexels-photo-8449236.jpeg',
-    category: 'emerging-tech',
-    subCategory: 'web3',
-    author: authors[3],
-    publishDate: '2024-07-10T10:30:00Z',
-    readTimeMinutes: 8,
-    featured: false,
-    tags: ['metaverse movies', 'NFT films', 'blockchain distribution', 'Web3 cinema', 'decentralized streaming']
+    <p>Directed by Avinash Arun and Prosit Roy, and produced by Anushka Sharma, "Paatal Lok" has been praised for its nuanced portrayal of India’s socio-political landscape.</p>
+  `,
+  heroImage: 'https://image.tmdb.org/t/p/original/xEB6chdsdHFS2RfTXueMVXLWGcl.jpg',
+  category: 'bollywood',
+  subCategory: 'web-series',
+  author: authors[2],
+  publishDate: '2025-05-20T00:00:00Z',
+  readTimeMinutes: 8,
+  featured: false,
+  tags: ['Paatal Lok', 'Amazon Prime Video', 'thriller', 'crime drama', 'Anushka Sharma']
 },
 
 {
@@ -731,119 +475,375 @@ featured: true,
   tags: ['Knock Knock Kaun Hai', 'MX Player', 'uh films', 'bishan', 'bishanpreet']
 },
 {
-  id: '24',
-  title: 'Kankhajura: A Tale of Redemption and Shadows',
-  slug: 'kankhajura-review',
-  excerpt: 'An intense crime thriller exploring family ties and the haunting past.',
-  content: `
-    <p>"Kankhajura," streaming on SonyLIV, is a gripping crime thriller that delves into the complexities of familial relationships and the shadows of the past. The story follows Ashu, who returns after serving 14 years for a crime from his youth, attempting to reconnect with his brother Max. As they struggle to rebuild trust, Ashu's dark past and dangerous connections resurface, threatening Max's life and business.</p>
-
-    <p>Directed by Chandan Arora and produced by Ajay Rai, the series features a stellar cast including Roshan Mathew, Mohit Raina, Sarah Jane Dias, and Trinetra Haldar Gummaraju. The narrative is a compelling exploration of family, redemption, and the shadows that never truly fade.</p>
-  `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/3/33/Kankhajura_Poster.jpeg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-05-30T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['Kankhajura', 'SonyLIV', 'uh films', 'bishan', 'bishanpreet']
+    id: '24',
+    title: 'The Future of Independent Filmmaking: How UH Films is Revolutionizing the Industry',
+    slug: 'future-independent-filmmaking-uh-films',
+    excerpt: 'Discover how UH Films leverages cutting-edge technology and innovative storytelling to empower indie filmmakers worldwide.',
+    summary: [
+      "How UH Films bridges the gap between indie creators and mainstream audiences",
+      "The role of affordable 4K/8K cameras in democratizing filmmaking",
+      "Case studies of successful UH Films productions and their global impact"
+    ],
+    content: `
+      <p>The film industry has long been dominated by big studios with massive budgets, but UH Films, under the visionary leadership of founder <strong>Bishan Preet Singh</strong>, is changing that narrative. By combining technological innovation with compelling storytelling, we're creating opportunities for independent filmmakers to compete on a global stage.</p>
+      
+      <h2>Democratizing High-Quality Production</h2>
+      
+      <p>Gone are the days when you needed millions to make a cinema-quality film. With advancements like:</p>
+      <ul>
+        <li>Blackmagic Pocket Cinema Camera 6K (under $2,500)</li>
+        <li>DaVinci Resolve's free editing software</li>
+        <li>AI-powered color grading tools</li>
+      </ul>
+      
+      <p>UH Films has produced 12 feature-length projects under $100,000 that have premiered at major festivals like Sundance and TIFF.</p>
+      
+      <h2>Virtual Production Breakthroughs</h2>
+      
+      <p>Our recent collaboration with Epic Games' Unreal Engine allows indie creators to:</p>
+      <ul>
+        <li>Shoot in virtual environments with LED walls</li>
+        <li>Reduce location costs by 70%</li>
+        <li>Iterate scenes in real-time with directors</li>
+      </ul>
+      
+      <p>This technology, once exclusive to Marvel productions, is now accessible through UH Films' rental studio in Mumbai.</p>
+      
+      <h2>Global Distribution Strategies</h2>
+      
+      <p>We've developed a proprietary distribution model that combines:</p>
+      <ul>
+        <li>Blockchain-based rights management</li>
+        <li>Direct-to-consumer streaming platforms</li>
+        <li>NFT-based collector's editions</li>
+      </ul>
+      
+      <p>Our 2023 documentary "The Silent Valley" reached 1.2M viewers across 18 countries using this approach.</p>
+      
+      <h2>What's Next for Indie Cinema?</h2>
+      
+      <p>In 2024, UH Films will launch its filmmaker incubator program, offering:</p>
+      <ul>
+        <li>Equipment grants worth ₹50 lakhs</li>
+        <li>Mentorship from industry veterans</li>
+        <li>Guaranteed distribution for qualifying projects</li>
+      </ul>
+      
+      <p>The future of film belongs to the innovators, and at UH Films, we're building the tools to make that future accessible to all.</p>
+    `,
+    heroImage: 'https://images.pexels.com/photos/3566120/pexels-photo-3566120.jpeg',
+    category: 'filmmaking',
+    subCategory: 'industry-trends',
+    author: authors[0],
+    publishDate: '2024-01-18T09:15:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['independent films', 'film technology', 'virtual production', 'UH Films', 'Bishan Preet Singh']
 },
-{
-  id: '25',
-  title: 'Kull: The Legacy of the Raisingghs – A Royal Drama Unfolds',
-  slug: 'kull-legacy-raisingghs-review',
-  excerpt: 'A gripping tale of legacy, power, and family secrets in a royal household.',
-  content: `
-    <p>JioHotstar's "Kull: The Legacy of the Raisingghs" is a captivating drama thriller that explores the intricate dynamics of a royal family. The series centers around the Raisinggh family, unraveling secrets, power struggles, and the weight of legacy that binds them.</p>
-
-    <p>Directed by Sahir Raza and written by Chiranjeevi Bajpai, the series features performances by Nimrat Kaur, Amol Parashar, and Ridhi Dogra. The narrative delves into themes of tradition, ambition, and the complexities of familial relationships within a royal context.</p>
-  `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/8/88/Kull_%E2%80%93_The_Legacy_of_the_Raisingghs.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-05-02T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Kull', 'JioHotstar', 'uh films', 'bishan', 'bishanpreet']
+  {
+    id: '25',
+    title: 'Mastering Low-Budget Cinematography: Techniques from UH Films Award-Winning Director',
+    slug: 'low-budget-cinematography-techniques',
+    excerpt: 'Learn professional cinematography techniques used in UH Films productions that cost 80% less than traditional methods.',
+    summary: [
+      "Lighting hacks using household items that saved ₹5 lakhs per project",
+      "The '3-Lens Rule' for creating visual variety without expensive gear",
+      "How to achieve the Alexa look with sub-₹1 lakh cameras"
+    ],
+    content: `
+      <p>As the director of 9 UH Films productions, I've developed techniques that deliver premium visuals on micro-budgets. Our film "Monsoon Dreams" (2023) was shot for ₹28 lakhs but looks like a ₹2 crore production. Here's how we did it:</p>
+      
+      <h2>The UH Films Lighting Pyramid</h2>
+      
+      <p>Instead of expensive Hollywood-style setups, we use:</p>
+      <ul>
+        <li><strong>Base Layer:</strong> Modified construction LEDs (₹3,500 vs. ₹75,000 film lights)</li>
+        <li><strong>Modifiers:</strong> Unbleached muslin fabric for diffusion (₹200/meter)</li>
+        <li><strong>Accents:</strong> Repurposed car LED strips for practicals</li>
+      </ul>
+      
+      <p>This approach saved ₹17 lakhs across our last 3 features while maintaining cinematic quality.</p>
+      
+      <h2>The Camera Movement Matrix</h2>
+      
+      <p>We combine three affordable tools to create dynamic shots:</p>
+      <table>
+        <tr><th>Tool</th><th>Cost</th><th>Use Case</th></tr>
+        <tr><td>Neewer Slider</td><td>₹12,000</td><td>Precise horizontal moves</td></tr>
+        <tr><td>Zhiyun Crane 4</td><td>₹45,000</td><td>Stabilized walking shots</td></tr>
+        <tr><td>Car Suction Mount</td><td>₹8,000</td><td>High-speed vehicle shots</td></tr>
+      </table>
+      
+      <h2>Post-Production Alchemy</h2>
+      
+      <p>Our secret sauce includes:</p>
+      <ul>
+        <li><strong>Color Grading:</strong> Custom LUTs that mimic ₹50 lakh cameras</li>
+        <li><strong>AI Upscaling:</strong> Topaz Video Enhance for 4K delivery from 1080p sources</li>
+        <li><strong>Sound Design:</strong> Layering free BBC Sound Effects with Foley</li>
+      </ul>
+      
+      <p>These techniques helped our short film "Chai Time" win Best Cinematography at the Mumbai International Film Festival despite being shot on a ₹65,000 camera.</p>
+      
+      <h2>Case Study: The ₹5 Lakh Feature</h2>
+      
+      <p>Our upcoming project "Paper Boats" was shot for just ₹5.2 lakhs by:</p>
+      <ol>
+        <li>Using natural light for 89% of scenes</li>
+        <li>Casting non-actors from local communities</li>
+        <li>Shooting all interiors in one converted warehouse</li>
+      </ol>
+      
+      <p>The trailer has already garnered 420,000 YouTube views, proving budget constraints can inspire creativity.</p>
+    `,
+    heroImage: 'https://images.pexels.com/photos/7508637/pexels-photo-7508637.jpeg',
+    category: 'cinematography',
+    subCategory: 'techniques',
+    author: authors[1],
+    publishDate: '2024-02-05T11:20:00Z',
+    readTimeMinutes: 9,
+    featured: false,
+    tags: ['cinematography', 'low-budget filmmaking', 'camera techniques', 'UH Films director', 'DIY cinematography']
 },
-{
-  id: '26',
-  title: 'The Last of Us: A Gripping Post-Apocalyptic Drama',
-  slug: 'the-last-of-us-review',
-  excerpt: 'A gripping journey through survival and human connection in a ravaged world.',
-  content: `
-    <p>HBO’s "The Last of Us" masterfully adapts the beloved video game into a post-apocalyptic drama that explores survival, loss, and hope. The story follows Joel and Ellie as they navigate a dangerous world filled with infected creatures and hostile survivors.</p>
-
-    <p>Directed by Craig Mazin and Neil Druckmann, the series features powerful performances by Pedro Pascal and Bella Ramsey. "The Last of Us" blends intense action with emotional storytelling, capturing the raw human spirit amid chaos.</p>
-  `,
-  heroImage: 'https://image.tmdb.org/t/p/original/hPB3F9CRdCf8wrncRPEEUm005DG.jpg',
-  category: 'international',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-04-18T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['The Last of Us', 'HBO', 'post-apocalyptic', 'survival', 'drama']
+  {
+    id: '26',
+    title: 'Viral Film Marketing: UH Films Blueprint for 10M+ Views on Zero Budget',
+    slug: 'viral-film-marketing-strategies',
+    excerpt: 'The exact strategies UH Films used to grow from 0 to 2.8M followers and get 10M+ views without paid advertising.',
+    summary: [
+      "The '3-2-1' social media content formula that tripled engagement",
+      "How to leverage micro-influencers for 10x ROI",
+      "Case study: Making a ₹15,000 short film trend nationally"
+    ],
+    content: `
+      <p>At UH Films, we've cracked the code for making small films go viral. Our marketing team achieved 14.7M organic views last quarter using these proven strategies:</p>
+      
+      <h2>The Content Multiplication Framework</h2>
+      
+      <p>For every 1 minute of film footage, we create:</p>
+      <ul>
+        <li><strong>3 Behind-the-Scenes (BTS) clips</strong> showing technical challenges</li>
+        <li><strong>2 Actor Prep Videos</strong> demonstrating method acting processes</li>
+        <li><strong>1 Cultural Connection</strong> piece linking the story to current trends</li>
+      </ul>
+      
+      <p>This approach helped our documentary "Threads of Punjab" reach 3.2M TikTok views in 72 hours.</p>
+      
+      <h2>The Influencer Pyramid Strategy</h2>
+      
+      <p>Instead of paying celebrities, we:</p>
+      <ol>
+        <li>Identify 100+ nano-influencers (1K-10K followers)</li>
+        <li>Provide exclusive early access</li>
+        <li>Encourage authentic reactions with custom filters</li>
+      </ol>
+      
+      <p>Result: 42% higher engagement than paid promotions at 0 cost.</p>
+      
+      <h2>Google's E-E-A-T Advantage</h2>
+      
+      <p>We dominate search results by:</p>
+      <table>
+        <tr><th>Factor</th><th>Implementation</th><th>Result</th></tr>
+        <tr><td>Experience</td><td>Director commentary SERP snippets</td><td>+230% CTR</td></tr>
+        <tr><td>Expertise</td><td>Frame-by-frame analysis blogs</td><td>Rank #1 for 14 cinematography terms</td></tr>
+        <tr><td>Authoritativeness</td><td>Guest columns on IndieWire</td><td>Backlinks from 89 domains</td></tr>
+      </table>
+      
+      <h2>Case Study: The ₹15,000 Viral Sensation</h2>
+      
+      <p>Our short film "The Last Letter" was made for just ₹15,000 but:</p>
+      <ul>
+        <li>Trended on Twitter India for 19 hours</li>
+        <li>Got featured by YouTube India as "Creator on the Rise"</li>
+        <li>Led to 3 brand partnership offers</li>
+      </ul>
+      
+      <p>The secret? We:</p>
+      <ol>
+        <li>Released the full film on YouTube with custom chapter markers</li>
+        <li>Created an interactive Instagram filter replicating the protagonist's glasses</li>
+        <li>Hosted a Reddit AMA with the cinematographer</li>
+      </ol>
+      
+      <p>This multi-platform approach delivered 8.4M views in the first month.</p>
+    `,
+    heroImage: 'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg',
+    category: 'marketing',
+    subCategory: 'digital-strategy',
+    author: authors[3],
+    publishDate: '2024-03-12T16:45:00Z',
+    readTimeMinutes: 11,
+    featured: false,
+    tags: ['film marketing', 'viral content', 'social media strategy', 'UH Films marketing', 'organic growth']
 },
-{
-  id: '27',
-  title: 'Made in Heaven: A Stunning Portrait of Modern India',
-  slug: 'made-in-heaven-review',
-  excerpt: 'A captivating drama exploring love, ambition, and societal pressures through the lens of Indian weddings.',
-  content: `
-    <p>Amazon Prime Video’s "Made in Heaven" offers a compelling glimpse into contemporary India, focusing on the lives of two wedding planners navigating complex social and personal dynamics. The series delicately balances glamour with raw emotional storytelling.</p>
+ {
+    id: '27',
+    title: 'AI in Filmmaking: How UH Films is Leveraging ChatGPT & Sora to Cut Production Costs by 40%',
+    slug: 'ai-filmmaking-cost-reduction',
+    excerpt: 'Exclusive look at UH Films\' AI pipeline that automates pre-production, generates synthetic actors, and creates virtual locations.',
+    summary: [
+      "How we used OpenAI's Sora to generate 12 minutes of B-roll (saving ₹18 lakhs)",
+      "Our ChatGPT-powered script analysis tool that predicts box office potential",
+      "Ethical guidelines for AI usage in creative projects"
+    ],
+    content: `
+      <h2>The AI Pre-Production Suite</h2>
+      <p>Our custom-built "CineAI" system combines:</p>
+      <ul>
+        <li><strong>ChatGPT-4o:</strong> Generates 500+ location scout reports in 3 minutes</li>
+        <li><strong>MidJourney V6:</strong> Creates concept art that's 92% production-ready</li>
+        <li><strong>Descript:</strong> Edits raw interview footage automatically</li>
+      </ul>
+      <p><em>Case Study:</em> Reduced pre-production time for "Silicon Slum" from 11 weeks to 19 days.</p>
 
-    <p>Created by Zoya Akhtar and Reema Kagti, and starring Arjun Mathur and Sobhita Dhulipala, "Made in Heaven" highlights the clash between tradition and modernity, bringing forward stories of love, class, and identity with nuance and grace.</p>
-  `,
-  heroImage: 'https://image.tmdb.org/t/p/original/rN9Tp1DQfqOfYcpOmM5YHheZuu6.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-05-09T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Made in Heaven', 'Amazon Prime Video', 'drama', 'weddings', 'Zoya Akhtar']
+      <h2>Synthetic Actors & Ethical Boundaries</h2>
+      <p>We've developed a hybrid approach:</p>
+      <table>
+        <tr><th>Scenario</th><th>AI Usage</th><th>Cost Saved</th></tr>
+        <tr><td>Crowd Scenes</td><td>100% AI extras</td><td>₹4.2 lakhs/day</td></tr>
+        <tr><td>Supporting Roles</td><td>AI voice + human actor</td><td>37%</td></tr>
+        <tr><td>Lead Actors</td><td>0% AI (contractual)</td><td>-</td></tr>
+      </table>
+      <p>This balanced model keeps performances authentic while optimizing budgets.</p>
+
+      <h2>Virtual Location Generation</h2>
+      <p>Using OpenAI's Sora and Unreal Engine, we:</p>
+      <ol>
+        <li>Input historical references (e.g., "1970s Mumbai bazaar")</li>
+        <li>Generate 8K background plates with consistent lighting</li>
+        <li>Composite actors using Blackmagic's AI masking</li>
+      </ol>
+      <p><em>Result:</em> Our period drama "Bombay Electric" saved ₹2.1 crore in set construction.</p>
+
+      <h2>The Future: AI as Creative Partner</h2>
+      <p>Upcoming innovations at UH Films:</p>
+      <ul>
+        <li>AI-assisted VFX that learns director's style</li>
+        <li>Neural network-based color grading presets</li>
+        <li>Real-time script analysis during table reads</li>
+      </ul>
+    `,
+    heroImage: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
+    category: 'technology',
+    subCategory: 'artificial-intelligence',
+    author: authors[0],
+    publishDate: '2024-06-20T08:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['AI filmmaking', 'OpenAI Sora', 'synthetic media', 'virtual production', 'Bishan Preet Singh']
 },
+  {
+    id: '28',
+    title: 'YouTube Shorts vs. Instagram Reels: Data-Driven Strategies for Filmmakers',
+    slug: 'youtube-shorts-instagram-reels-filmmakers',
+    excerpt: 'Analysis of 217 UH Films videos revealing which platform delivers better engagement, conversions, and career opportunities.',
+    summary: [
+      "Shorts vs. Reels: 90-day performance comparison (views, comments, shares)",
+      "Optimal video length for filmmaker content (spoiler: it's not 9:16)",
+      "How we turned 1 viral Short into a Netflix development deal"
+    ],
+    content: `
+      <h2>The Platform Showdown: Hard Data</h2>
+      <p>After analyzing 3.2M views across both platforms:</p>
+      <table>
+        <tr><th>Metric</th><th>YouTube Shorts</th><th>Instagram Reels</th></tr>
+        <tr><td>Avg. View Duration</td><td>19.7s</td><td>14.2s</td></tr>
+        <tr><td>Click-Through Rate</td><td>8.3%</td><td>4.1%</td></tr>
+        <tr><td>Profile Visits</td><td>1.2%</td><td>3.8%</td></tr>
+      </table>
+      <p><strong>Key Insight:</strong> Shorts work better for narrative content, Reels for personality-driven clips.</p>
 
-{
-  id: '28',
-  title: 'Kill Dill: A Tale of Love and Betrayal',
-  slug: 'kill-dill-review',
-  excerpt: 'A romantic thriller that explores the complexities of love and the consequences of betrayal.',
-  content: `
-    <p>"Kill Dill," streaming on Amazon MX Player, is a romantic thriller that delves into the intricacies of love, trust, and betrayal. The narrative follows Tavish and Kisha, whose passionate relationship takes a dark turn as secrets unravel and past traumas resurface.</p>
+      <h2>The "21-9" Format Hack</h2>
+      <p>We discovered cinematic widescreen (21:9) with letterboxing outperforms vertical video by:</p>
+      <ul>
+        <li>47% higher completion rate</li>
+        <li>2.3x more director profile follows</li>
+        <li>31% increase in website clicks</li>
+      </ul>
+      <p><em>Example:</em> Our short "Monsoon Memories" got 2.1M views in this format.</p>
 
-    <p>Directed by Glen Barretto and Ankush Mohla, the series stars Prit Kamani and Anushka Sen in lead roles. With its engaging storyline and compelling performances, "Kill Dill" offers a fresh perspective on romantic relationships and the challenges they entail.</p>
-  `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/e/ed/Kill_Dill_%E2%80%93_The_Heartbreak_Club.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-03-28T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Kill Dill', 'Amazon MX Player', 'uh films', 'bishan', 'bishanpreet']
+      <h2>Algorithm-Friendly Posting Strategy</h2>
+      <p>Our "3-2-1" rule:</p>
+      <ol>
+        <li><strong>3 Story Hooks:</strong> Start with question/conflict/mystery</li>
+        <li><strong>2 Texture Layers:</strong> Combine B-roll + close-ups</li>
+        <li><strong>1 CTA:</strong> End with poll or "Watch full film"</li>
+      </ol>
+      <p>Increased average watch time by 62%.</p>
+
+      <h2>From Short-Form to Studio Deals</h2>
+      <p>How our viral Short "Kala Ghoda" led to:</p>
+      <ul>
+        <li>Netflix India development meeting</li>
+        <li>₹25 lakh brand deal with Fujifilm</li>
+        <li>Cannes Short Film Corner invitation</li>
+      </ul>
+    `,
+    heroImage: 'https://images.pexels.com/photos/7338574/pexels-photo-7338574.jpeg',
+    category: 'digital',
+    subCategory: 'short-form-video',
+    author: authors[1],
+    publishDate: '2024-05-30T14:15:00Z',
+    readTimeMinutes: 6,
+    featured: false,
+    tags: ['YouTube Shorts', 'Instagram Reels', 'viral video', 'short-form content', 'filmmaker marketing']
 },
-{
-  id: '29',
-  title: 'Paatal Lok: A Dark Descent into India’s Underbelly',
-  slug: 'paatal-lok-review',
-  excerpt: 'A gritty and provocative thriller that exposes the harsh realities of society through a cop’s investigation.',
-  content: `
-    <p>Amazon Prime Video’s "Paatal Lok" is a hard-hitting crime thriller that follows a disillusioned police officer as he unravels a complex conspiracy tied to caste, politics, and crime. The show is noted for its raw storytelling and powerful performances.</p>
+  {
+    id: '29',
+    title: 'Metaverse Movies: UH Films Blockchain-Based Distribution Model',
+    slug: 'metaverse-movies-blockchain-distribution',
+    excerpt: 'How were using NFT tickets, decentralized streaming, and virtual premieres to create new revenue streams for indie films.',
+    summary: [
+      "Our Polygon-powered platform reduced piracy by 83%",
+      "Case study: ₹72 lakhs earned through NFT collector's editions",
+      "Step-by-step guide to hosting virtual red carpet events"
+    ],
+    content: `
+      <h2>The Web3 Film Distribution Stack</h2>
+      <p>Our end-to-end solution includes:</p>
+      <ul>
+        <li><strong>NFT Tickets:</strong> Soulbound tokens for exclusive access</li>
+        <li><strong>DeStream:</strong> Pay-per-view with crypto payments</li>
+        <li><strong>AR Premiere:</strong> Watch parties in Spatial.io metaverse</li>
+      </ul>
+      <p><em>Results:</em> 12,000+ NFT tickets sold for our anthology "Mumbai Diaries".</p>
 
-    <p>Directed by Avinash Arun and Prosit Roy, and produced by Anushka Sharma, "Paatal Lok" has been praised for its nuanced portrayal of India’s socio-political landscape.</p>
-  `,
-  heroImage: 'https://image.tmdb.org/t/p/original/xEB6chdsdHFS2RfTXueMVXLWGcl.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[2],
-  publishDate: '2025-05-20T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['Paatal Lok', 'Amazon Prime Video', 'thriller', 'crime drama', 'Anushka Sharma']
+      <h2>Smart Contract Royalties</h2>
+      <p>Filmmakers earn automatically via:</p>
+      <table>
+        <tr><th>Revenue Stream</th><th>Blockchain</th><th>Royalty %</th></tr>
+        <tr><td>Secondary NFT Sales</td><td>Polygon</td><td>15%</td></tr>
+        <tr><td>International PPV</td><td>Ethereum</td><td>72%</td></tr>
+        <tr><td>Merch Drops</td><td>Solana</td><td>30%</td></tr>
+      </table>
+      <p>Compared to traditional distribution's 15-25% net profit share.</p>
+
+      <h2>Virtual Premiere Playbook</h2>
+      <p>Our "Metaverse Red Carpet" template:</p>
+      <ol>
+        <li>Custom 3D avatars for cast (built with Ready Player Me)</li>
+        <li>Interactive poster galleries with hidden Easter eggs</li>
+        <li>Live AMA sessions in Decentraland theaters</li>
+      </ol>
+      <p><em>Case Study:</em> 4,300 concurrent attendees at our last premiere.</p>
+
+      <h2>The Future: AI + Blockchain Synergy</h2>
+      <p>Upcoming pilots:</p>
+      <ul>
+        <li>Dynamic NFTs that change based on viewer reactions</li>
+        <li>Token-graded behind-the-scenes content</li>
+        <li>DAO-funded film productions</li>
+      </ul>
+    `,
+    heroImage: 'https://images.pexels.com/photos/8449236/pexels-photo-8449236.jpeg',
+    category: 'emerging-tech',
+    subCategory: 'web3',
+    author: authors[3],
+    publishDate: '2024-07-10T10:30:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['metaverse movies', 'NFT films', 'blockchain distribution', 'Web3 cinema', 'decentralized streaming']
 },
 {
   id: '30',
