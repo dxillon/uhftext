@@ -28,13 +28,9 @@ const jobOpenings = [
     type: "Intern's",
     salary: "Commision , Stipend",
     fastRecruiting: true,  
-description: "Create bold, urban-themed t-shirt designs for our streetwear line. Perfect for students or fresh graduates looking to build their portfolio. Quick hiring process!",
+description: " Any one can apply for any. role.",
   requirements: [
-    "Basic knowledge of design tools (Photoshop/Illustrator/Canva)",
-    "Creative and understands urban culture",
-    "No formal experience required (share your portfolio if available)",
-    "Can work with quick turnarounds",
-    "Students welcome to apply!"
+    "Come and join :)",
   ]
 },
   
