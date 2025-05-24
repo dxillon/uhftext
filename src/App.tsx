@@ -21,6 +21,7 @@ import ArticlesPage from './components/ArticlesPage';
 import ArticleDetailPage from './components/ArticleDetailPage';
 import ProjectShowcase from './components/ProjectShowcase'; 
 import NotFound from './components/NotFound';
+import FAQPage from './components/FAQPage'; 
 import { Analytics } from "@vercel/analytics/react";
 
 const ScrollToTop = () => {
@@ -109,6 +110,7 @@ function App() {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/journey" element={<Journey />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/projects" element={<ProjectShowcase />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

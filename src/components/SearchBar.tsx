@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, Loader2 } from 'lucide-react';
 
 interface SearchBarProps {
   onSearch: (term: string) => void;
+  isLoading?: boolean;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading = false }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,32 +21,59 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative w-full flex items-center">
-      <input
-        type="text"
-        placeholder="Search articles..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-      />
-      <Search size={18} className="absolute left-3 text-gray-400" />
-      
-      {searchTerm && (
-        <button
-          type="button"
-          onClick={handleClear}
-          className="absolute right-10 text-gray-400 hover:text-gray-600"
-        >
-          <X size={18} />
-        </button>
-      )}
-      
-      <button
-        type="submit"
-        className="absolute right-2 bg-red-600 hover:bg-red-700 text-white p-1 rounded-md transition-colors duration-200"
+    <form onSubmit={handleSubmit} className="relative w-full max-w-xl mx-auto">
+      <div
+        className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 backdrop-blur-md 
+          ${isFocused ? 'border-red-500 bg-white/20' : 'border-white/20 bg-white/10'}
+        `}
       >
-        <Search size={16} />
-      </button>
+        <div className="text-white/70">
+          {isLoading ? (
+            <Loader2 size={20} className="animate-spin" />
+          ) : (
+            <Search size={20} />
+          )}
+        </div>
+
+        <input
+          type="text"
+          placeholder="Search articles..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className="flex-grow bg-transparent outline-none text-white placeholder-white/60 text-base sm:text-lg"
+        />
+
+        {/* Clear */}
+        {searchTerm && !isLoading && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="text-white/60 hover:text-red-500 transition"
+            aria-label="Clear search"
+          >
+            <X size={18} />
+          </button>
+        )}
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={!searchTerm || isLoading}
+          className={`ml-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-1
+            ${searchTerm && !isLoading
+              ? 'bg-red-600 hover:bg-red-700 text-white'
+              : 'bg-white/20 text-white/50 cursor-not-allowed'}
+          `}
+        >
+          {isLoading ? (
+            <Loader2 size={16} className="animate-spin" />
+          ) : (
+            'Search'
+          )}
+        </button>
+      </div>
     </form>
   );
 };
