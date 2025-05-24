@@ -3,6 +3,7 @@ import { Category, SubCategory } from '../types/article';
 import { articles } from '../data/articles';
 import ArticleCard from '../components/ArticleCard';
 import SearchBar from '../components/SearchBar';
+import {  ChevronLeft, ChevronRight } from 'lucide-react';
 import CategoryFilter from '../components/CategoryFilter';
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from 'react-helmet-async';
