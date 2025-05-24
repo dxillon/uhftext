@@ -21,6 +21,18 @@ const jobOpenings = [
       "Students welcome to apply!"
     ]
   },
+    {
+    title: "Internship",
+    department: "Any",
+    location: "Remote",
+    type: "Intern's",
+    salary: "Commision , Stipend",
+    fastRecruiting: true,  
+description: " Any one can apply for any. role.",
+  requirements: [
+    "Come and join :)",
+  ]
+},
   
   {
     title: "Screenwriter",
