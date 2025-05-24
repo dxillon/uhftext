@@ -14,7 +14,7 @@ export const articles: Article[] = [
   `,
   heroImage: 'https://upload.wikimedia.org/wikipedia/en/3/33/Kankhajura_Poster.jpeg',
   category: 'bollywood',
-   category: 'trending',
+  category: 'trending',
   subCategory: 'web-series',
   author: authors[1],
   publishDate: '2025-05-30T00:00:00Z',
