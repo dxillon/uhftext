@@ -16,6 +16,7 @@ export type Category =
   | 'international'
   | 'marketing'
   | 'AI'
+  | 'trending'
   | 'web3'
   | 'neuroscience'
   | 'quantum-tech'
