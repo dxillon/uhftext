@@ -405,26 +405,9 @@ const Home = () => {
 
 
 
-        <div style={{
-          background: `
-    radial-gradient(
-      ellipse 100% 70% at center 60% ,
-      rgba(255, 30, 30, 0.5) 0%,
-      rgba(255, 0, 60, 0.3) 30%,
-      rgba(100, 0, 20, 0.1) 60%,
-      rgba(0, 0, 0, 0) 100%
-    )`,
-          backdropFilter: 'blur(24px) saturate(200%)',
-          padding: '3rem 2.5rem',
-          margin: '0',
-          border: 'none',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: 'inset 0 0 50px 20px rgba(0, 0, 0, 0.7)'
-        }}>
-          <div
-            style={{
-              background: `
+        <div
+          style={{
+            background: `
       radial-gradient(
         ellipse 100% 70% at center 60%,
         rgba(255, 30, 30, 0.5) 0%,
@@ -433,66 +416,65 @@ const Home = () => {
         rgba(0, 0, 0, 0) 100%
       )
     `,
-              backdropFilter: 'blur(24px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-              padding: 'clamp(1rem, 4vw, 3rem) clamp(0.75rem, 4vw, 2rem)',
-              margin: 0,
-              border: 'none',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: 'inset 0 0 50px 20px rgba(0, 0, 0, 0.7)',
-              width: '100%',
-              boxSizing: 'border-box',
-              transition: 'padding 0.3s ease'
+            backdropFilter: 'blur(24px) saturate(200%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+            padding: 'clamp(1rem, 4vw, 3rem) clamp(0.75rem, 4vw, 2rem)',
+            margin: 0,
+            border: 'none',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: 'inset 0 0 50px 20px rgba(0, 0, 0, 0.7)',
+            width: '100%',
+            boxSizing: 'border-box',
+            transition: 'padding 0.3s ease'
+          }}
+        >
+          <ArticleSlider
+            articles={articles}
+            title="Featured Articles"
+            autoScrollDelay={5000}
+            style={{
+              maxWidth: '100%',
+              overflow: 'hidden'
             }}
-          >
-            <ArticleSlider
-              articles={articles}
-              title="Featured Articles"
-              autoScrollDelay={5000}
-              style={{
-                maxWidth: '100%',
-                overflow: 'hidden'
-              }}
-            />
-          </div>
-
-
-
-          <section className="py-20">
-            <div className="container mx-auto px-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center max-w-2xl mx-auto"
-              >
-                <h2 className="text-3xl font-bold mb-6 text-gradient">About us</h2>
-                <p className="text-lg text-gray-300 leading-relaxed mb-8">
-                  UH Films is a dynamic and forward-thinking film production company committed to storytelling that resonates, inspires, and entertains. Founded with a passion for cinema and a drive for innovation, UH Films specializes in creating high-quality content across genres—from independent films and documentaries to branded content and commercial projects.
-                  We blend creativity with cutting-edge technology to deliver powerful visual narratives that connect deeply with audiences.
-                </p>
-                <Link
-                  to="/about"
-                  className="btn-primary inline-flex items-center gap-2 group"
-                  data-clickable="true"
-                >
-                  <span>Learn More About Us</span>
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-            </div>
-          </section>
-
-          <VideoPlayer
-            url={selectedVideo?.url || ''}
-            duration={selectedVideo?.duration || '00:00'}
-            isOpen={!!selectedVideo}
-            onClose={() => setSelectedVideo(null)}
           />
         </div>
-      </>
-      );
+
+
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-2xl mx-auto"
+            >
+              <h2 className="text-3xl font-bold mb-6 text-gradient">About us</h2>
+              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                UH Films is a dynamic and forward-thinking film production company committed to storytelling that resonates, inspires, and entertains. Founded with a passion for cinema and a drive for innovation, UH Films specializes in creating high-quality content across genres—from independent films and documentaries to branded content and commercial projects.
+                We blend creativity with cutting-edge technology to deliver powerful visual narratives that connect deeply with audiences.
+              </p>
+              <Link
+                to="/about"
+                className="btn-primary inline-flex items-center gap-2 group"
+                data-clickable="true"
+              >
+                <span>Learn More About Us</span>
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        <VideoPlayer
+          url={selectedVideo?.url || ''}
+          duration={selectedVideo?.duration || '00:00'}
+          isOpen={!!selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+        />
+      </div>
+    </>
+  );
 };
 
-      export default Home;
+export default Home;
