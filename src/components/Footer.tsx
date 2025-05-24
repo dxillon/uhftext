@@ -258,7 +258,7 @@ const Footer = () => {
             <nav className="space-y-2">
               <FooterLink to="/team">Team</FooterLink>
               <FooterLink to="/about">About</FooterLink>
-              <FooterLink to="/careers">Jobs / Careers</FooterLink>
+              <FooterLink to="/careers">Careers</FooterLink>
             </nav>
           </div>
 
@@ -296,7 +296,7 @@ const Footer = () => {
                 <span>Delhi, INDIA</span>
               </div>
               <div
-                className="inline-flex items-center gap-4 mt-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-md border border-red-600 cursor-pointer select-none"
+                className="inline-flex items-center gap-4 mt-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-md border border-red-600 cursor-pointer select-none overflow-x-auto no-scrollbar"
                 style={{
                   background: `linear-gradient(
       135deg,
@@ -307,66 +307,69 @@ const Footer = () => {
                   WebkitBackdropFilter: 'blur(12px)',
                   backdropFilter: 'blur(12px)',
                   borderColor: 'rgba(255, 0, 0, 0.6)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <Link
                   to="/contact"
-                  className="text-white font-semibold transition-colors duration-300 hover:text-red-300"
+                  className="text-white font-semibold transition-colors duration-300 hover:text-red-300 flex-shrink-0"
                 >
                   Contact Us
                 </Link>
 
-                <span className="text-white/70 select-none">|</span>
+                <span className="text-white/70 select-none flex-shrink-0">|</span>
 
                 <Link
                   to="/faq"
-                  className="text-white font-semibold transition-colors duration-300 hover:text-red-300"
+                  className="text-white font-semibold transition-colors duration-300 hover:text-red-300 flex-shrink-0"
                 >
                   FAQ
                 </Link>
               </div>
 
+
             </div>
           </div>
         </div>
 
- {/* Mobile Layout */}
-<div className="md:hidden space-y-8 px-4">
-  <div className="flex flex-col items-center space-y-4">
-    <Link to="/" className="flex items-center space-x-3" data-clickable="true">
-      <div className="w-16 h-16">
-        <img
-          src="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745764899/FILMS_3_iblzzr.png"
-          alt="UH Films Logo"
-          className="w-full h-full"
-        />
-      </div>
-      <span className="text-2xl font-extrabold text-white tracking-wide">UH FILM'S</span>
-    </Link>
-    <p className="text-white text-center text-sm italic tracking-wide opacity-80">
-      Urban tales | Cinematic trails
-    </p>
+        {/* Mobile Layout */}
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-8 px-4">
+          <div className="flex flex-col items-center space-y-4">
+            <Link to="/" className="flex items-center space-x-3" data-clickable="true">
+              <div className="w-16 h-16">
+                <img
+                  src="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745764899/FILMS_3_iblzzr.png"
+                  alt="UH Films Logo"
+                  className="w-full h-full"
+                />
+              </div>
+              <span className="text-2xl font-extrabold text-white tracking-wide">UH FILM'S</span>
+            </Link>
+            <p className="text-white text-center text-sm italic tracking-wide opacity-80">
+              Urban tales | Cinematic trails
+            </p>
 
-    <div className="flex gap-4 w-full justify-center px-4">
-      <Link
-        to="/projects#get-casted"
-        ref={getCastedButtonRef}
-        className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
-      >
-        Get Casted
-      </Link>
-      <Link
-        to="/contact"
-        ref={contactButtonRef}
-        className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
-      >
-        Contact Us
-      </Link>
-    </div>
-  </div>
+            <div className="flex gap-4 w-full justify-center px-4">
+              <Link
+                to="/projects#get-casted"
+                ref={getCastedButtonRef}
+                className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
+              >
+                Get Casted
+              </Link>
+              <Link
+                to="/contact"
+                ref={contactButtonRef}
+                className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
 
           <div className="flex justify-center">
-            <div className="flex flex-wrap items-center justify-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Twitter" />
               <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="LinkedIn" />
               <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Instagram" />
@@ -376,11 +379,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-4">
             <MobileDropdown title="Quick Links">
               <FooterLink to="/team">Team</FooterLink>
               <FooterLink to="/about">About</FooterLink>
-              <FooterLink to="/careers">Jobs / Careers</FooterLink>
+              <FooterLink to="/careers">Careers</FooterLink>
             </MobileDropdown>
 
             <MobileDropdown title="Resources">
@@ -395,25 +398,31 @@ const Footer = () => {
               <FooterLink to="/terms">Terms & Conditions</FooterLink>
             </MobileDropdown>
           </div>
-        </div>
 
-        <div className="mt-8 flex justify-center">
-          <div className="text-gray-300 text-base md:text-lg flex items-center gap-3 select-none">
-            <span className="font-semibold">Have questions?</span>
-            <Link
-              to="/faq"
-              className="font-semibold text-red-500 border-b-2 border-transparent hover:border-red-500 transition-all duration-300"
-            >
-              FAQ
-            </Link>
+          <div className="mt-8 flex justify-center md:hidden">
+            <div className="text-gray-300 text-base md:text-lg flex items-center gap-3 select-none">
+              <span className="font-semibold">Have questions?</span>
+              <Link
+                to="/faq"
+                className="font-semibold text-red-500 border-b-2 border-transparent hover:border-red-500 transition-all duration-300"
+              >
+                FAQ
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-gray-400 text-sm">
+
+
+          <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+            <div className="text-gray-400 text-sm text-center sm:text-left">
               © 2025 UH Films. All rights reserved.
             </div>
+
+
+
+
+
 
             <div className="hidden md:flex items-center justify-center gap-5">
               <a
