@@ -19,7 +19,7 @@ export const articles: Article[] = [
   author: authors[1],
   publishDate: '2025-05-30T00:00:00Z',
   readTimeMinutes: 8,
-  featured: true,
+  featured: true, 
   tags: ['Kankhajura', 'SonyLIV', 'uh films', 'bishan', 'bishanpreet']
 },
 {
