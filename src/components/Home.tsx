@@ -402,12 +402,29 @@ const Home = () => {
           </div>
         </section>
 
-            <ArticleSlider 
-        articles={articles} 
-        title="Featured Articles" 
-        autoScrollDelay={5000} 
-      />
-
+<div style={{
+  background: `
+    radial-gradient(
+      ellipse 100% 70% at center 60% ,
+      rgba(255, 30, 30, 0.5) 0%,
+      rgba(255, 0, 60, 0.3) 30%,
+      rgba(100, 0, 20, 0.1) 60%,
+      rgba(0, 0, 0, 0) 100%
+    )`,
+  backdropFilter: 'blur(24px) saturate(200%)',
+  padding: '3rem 2.5rem',
+  margin: '0',
+  border: 'none',
+  position: 'relative',
+  overflow: 'hidden',
+  boxShadow: 'inset 0 0 50px 20px rgba(0, 0, 0, 0.7)' 
+}}> 
+  <ArticleSlider 
+    articles={articles} 
+    title="Featured Articles" 
+    autoScrollDelay={5000} 
+  />
+</div>
         <section className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
