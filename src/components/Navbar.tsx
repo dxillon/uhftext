@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { articles } from '../data/articles';
 import { Menu, X, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
@@ -63,7 +64,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    if (logoRef.current) {
+    if (logoRef.current) { 
       anime({
         targets: logoRef.current,
         rotateY: [90, 0],
@@ -90,6 +91,10 @@ const Navbar = () => {
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' }
   ];
+  const getArticleUrlById = (id) => {
+  const article = articles.find(a => a.id === id);
+  return article ? `/articles/${article.slug}` : '#';
+};
 
   return (
     <nav className="fixed w-full z-50 mt-5">
@@ -169,7 +174,7 @@ const Navbar = () => {
           className="flex-shrink-0 h-8 flex items-center justify-end w-full"  // justify-end for right alignment
         >
           <Link
-            to={item.link}
+            to={getArticleUrlById(item.id)}
             className="flex items-center group"
           >
             <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">

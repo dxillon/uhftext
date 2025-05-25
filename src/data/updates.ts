@@ -1,19 +1,57 @@
-// src/lib/updates.ts
+import { Article } from '../types/article';
+import { articles } from './articles';
+
+
 export const updates = [
-  {
-    text: "Wanna join us? Come fast!",
-    link: "/careers"
-  },
-  {
-    text: "“I'll be back.” – Terminator",
-    link: "/articles/terminator"
-  },
-  {
-    text: "“Why so serious?” – The Joker",
-    link: "/articles/joker"
-  },
-  {
-    text: "“May the Force be with you.” – Star Wars",
-    link: "/articles/star-wars"
-  }
+  { text: "Kankhajura Returns", id: "1" },
+  { text: "Kull's Royal Chaos", id: "2" },
+  { text: "Survive the End", id: "3" },
+  { text: "Weddings & Secrets", id: "4" },
+  { text: "Kill for Love", id: "5" },
+  { text: "Descent into Darkness", id: "6" },
+  { text: "Love Rejected Loudly", id: "7" }, 
+  { text: "Cartel of Women", id: "8" },
+  { text: "Youth Gone Wrong", id: "9" },
+  { text: "Khauf is Back", id: "10" },
+  { text: "Teenage Mind Games", id: "11" },
+  { text: "Village on Wheels", id: "12" },
+  { text: "Royal Vengeance Awaits", id: "13" },
+  { text: "Retro Love Chaos", id: "14" },
+  { text: "HIT Case 3", id: "15" },
+  { text: "Diplomacy Under Fire", id: "16" },
+  { text: "Bengal Crime Files", id: "17" },
+  { text: "Rana Returns Again", id: "18" },
+  { text: "Royal Life Today", id: "19" },
+  { text: "Soup Turns Deadly", id: "20" },
+  { text: "Bold Ziddi Girls", id: "21" },
+  { text: "Tihar Exposed", id: "22" },
+  { text: "Knock Knock Thriller", id: "23" },
+  { text: "Future of UH", id: "24" },
+  { text: "Low-Budget Magic", id: "25" },
+  { text: "Viral Views Guide", id: "26" },
+  { text: "AI Saves Budget", id: "27" },
+  { text: "Reels vs Shorts", id: "28" },
+  { text: "Blockchain Cinema", id: "29" },
+  { text: "Delhi Crime Real", id: "30" },
+  { text: "Green Filmmaking", id: "31" },
+  { text: "Calm On Set", id: "32" },
+  { text: "Farm Films AI", id: "33" },
+  { text: "Brainwave Cinema", id: "34" },
+  { text: "NFT Scriptwriting", id: "35" },
+  { text: "AI Acting Trained", id: "36" },
+  { text: "Quantum Storytelling", id: "37" },
+  { text: "AI Writes Hits", id: "38" },
+  { text: "Trigger Pleasure Films", id: "39" },
+  { text: "Synthetic Superstars Rise", id: "40" },
+  { text: "Infinite Movie Cuts", id: "41" },
+  { text: "Legends Reborn", id: "42" },
+  { text: "Gritty Sacred Games", id: "43" },
+  { text: "₹5 Cr in 72h", id: "44" },
+  { text: "AI DJs Rule", id: "45" },
+  { text: "NFT University Rise", id: "46" },
+  { text: "Crypto Vow Weddings", id: "47" },
+  { text: "Live Web3 Theatre", id: "48" },
+  { text: "DAO City Sells", id: "49" },
+  { text: "Virtual Pilgrimage ₹2.9Cr", id: "50" },
+  { text: "Token Fans Win", id: "51" }
 ];

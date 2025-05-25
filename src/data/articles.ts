@@ -1750,7 +1750,7 @@ featured: true,
   featured: false,
   tags: ['AR darshan', 'token blessings', 'spiritual NFTs', 'web3 devotion']
 },{
-  id: '26',
+  id: '51',
   title: 'FanFi Stadiums: ₹6.3 Cr Raised as Cricket Fans Tokenize Live Game Decisions',
   slug: 'fanfi-cricket-token-decision-stadiums',
   excerpt: 'For the first time, cricket fans used tokens to vote on player substitutions, camera angles, and even jersey colors — live from the blockchain.',
