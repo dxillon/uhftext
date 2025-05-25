@@ -171,22 +171,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
     };
   }, [startAutoScroll]);
 
-  useEffect(() => {
-    const titleEl = document.querySelector('.in-view-title') as HTMLElement;
-    if (!titleEl) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          titleEl.classList.add('animate-title-underline');
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(titleEl);
-    return () => observer.disconnect();
-  }, []);
 
 
   return (
@@ -195,7 +180,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
       {!isMobile ? (
         <div className="article-slider__header">
           <motion.h2
-            className="article-slider__title in-view-title"
+            className="article-slider__title "
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -260,7 +245,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
         </div>
       ) : (
         <div className="mobile-header">
-          <h2 className="article-slider__title in-view-title">
+          <h2 className="article-slider__title ">
             {title}
             <span className="title-underline"></span>
           </h2>
@@ -419,22 +404,17 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
         margin: 0;
         display: inline-block;
       }
-      .article-slider__title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        background: linear-gradient(90deg, #ff4d4f, transparent);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-      }
-
-      .animate-title-underline::after {
-        transform: scaleX(1);
-      }
+.article-slider__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff4d4f, transparent);
+  transform: scaleX(1); // Changed from 0 to 1 to show immediately
+  transform-origin: left;
+}}
 
         
         .article-slider__wrapper {
@@ -581,7 +561,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
       @media (max-width: 600px) {
   .article-slider__title {
-    font-size: 1.5rem; /* smaller font on small screens */
+    font-size: 1.4rem; /* smaller font on small screens */
   }
 
       `}</style>
