@@ -172,8 +172,6 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
   }, [startAutoScroll]);
 
   useEffect(() => {
-    if (!isMobile) return;
-
     const titleEl = document.querySelector('.in-view-title') as HTMLElement;
     if (!titleEl) return;
 
@@ -188,7 +186,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
     observer.observe(titleEl);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, []);
 
 
   return (
@@ -197,7 +195,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
       {!isMobile ? (
         <div className="article-slider__header">
           <motion.h2
-            className="article-slider__title"
+            className="article-slider__title in-view-title"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -546,9 +544,9 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
       .mobile-view-all-link {
         background: rgba(255, 255, 255, 0.15);
-        padding: 8px 16px;
-        font-size: 1rem;
-        font-weight: 600;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        font-weight: 800;
         color: white;
         border-radius: 8px;
         display: flex;
@@ -556,6 +554,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
         gap: 8px;
         transition: background 0.3s, color 0.3s;
       }
+
 
       .mobile-view-all-link:hover {
         background: rgba(255, 255, 255, 0.25);
@@ -579,6 +578,11 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
         background: rgba(255, 255, 255, 0.2);
         color: #ff4d4f;
       }
+
+      @media (max-width: 600px) {
+  .article-slider__title {
+    font-size: 1.5rem; /* smaller font on small screens */
+  }
 
       `}</style>
     </section>
