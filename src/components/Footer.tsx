@@ -379,7 +379,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-span-5 pt-8 mt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+         <div className="col-span-5 pt-4 mt-4 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <motion.div
               className="flex justify-center items-center text-base md:text-lg font-medium px-6"
