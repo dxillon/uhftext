@@ -91,9 +91,15 @@ const Navbar = () => {
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' }
   ];
-  const getArticleUrlById = (id) => {
-  const article = articles.find(a => a.id === id);
-  return article ? `/articles/${article.slug}` : '#';
+
+
+  
+const getArticleUrl = (item) => {
+  if (item.id) {
+    const article = articles.find(a => a.id === item.id);
+    if (article) return `/articles/${article.slug}`;
+  }
+  return item.link || '#';
 };
 
   return (
@@ -141,7 +147,7 @@ const Navbar = () => {
         className="flex-shrink-0 h-8 flex items-center justify-center" // Fixed height
       >
         <Link
-          to={item.link}
+          to={getArticleUrl(item)}
           className="flex items-center max-w-full px-1"
         >
           <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
@@ -174,7 +180,7 @@ const Navbar = () => {
           className="flex-shrink-0 h-8 flex items-center justify-end w-full"  // justify-end for right alignment
         >
           <Link
-            to={getArticleUrlById(item.id)}
+            to={getArticleUrl(item)}
             className="flex items-center group"
           >
             <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
