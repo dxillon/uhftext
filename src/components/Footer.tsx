@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, X, ChevronDown } from 'lucide-react';
+import { Facebook,  Instagram, Youtube, Mail, Phone, MapPin,  ChevronDown } from 'lucide-react';
 import { BsTwitterX, BsThreads } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import anime from 'animejs';
 
 const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, label: string }) => {
@@ -295,14 +296,17 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-red-500" />
                 <span>Delhi, INDIA</span>
               </div>
+
+
+
               <div
                 className="inline-flex items-center gap-4 mt-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-md border border-red-600 cursor-pointer select-none overflow-x-auto no-scrollbar"
                 style={{
                   background: `linear-gradient(
-                             135deg,
-                           rgba(255, 0, 0, 0.15),
-                    rgba(255, 0, 0, 0.05)
-                                )`,
+      135deg,
+      rgba(255, 0, 0, 0.15),
+      rgba(255, 0, 0, 0.05)
+    )`,
                   boxShadow: '0 8px 32px 0 rgba(255, 0, 0, 0.2)',
                   WebkitBackdropFilter: 'blur(12px)',
                   backdropFilter: 'blur(12px)',
@@ -330,8 +334,114 @@ const Footer = () => {
 
             </div>
           </div>
+
+          <div className="col-span-5 pt-8 mt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Copyright */}
+            <motion.div
+              className="text-gray-400 text-sm"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              © 2025 UH Films. All rights reserved.
+            </motion.div>
+
+            {/* Socials */}
+            <div className="flex items-center justify-center gap-5">
+              {/* Logo */}
+              <motion.a
+                href="https://bishan-portfolio.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Bishan Portfolio"
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.3 }}
+                style={{ display: 'inline-block' }}
+              >
+                <motion.img
+                  src="https://raw.githubusercontent.com/dxillon/portfolio/main/portfolio/src/png/vi/android-chrome-512x512.png"
+                  alt="Bishan Portfolio"
+                  className="w-9 h-9 object-contain"
+                />
+              </motion.a>
+
+              {/* Social Icons */}
+              <motion.a
+                href="https://x.com/urbanhustlefilm"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                whileHover={{ scale: 1.2, color: '#f00' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <BsTwitterX />
+              </motion.a>
+
+              <motion.a
+                href="https://www.linkedin.com/company/urbanhustlefilms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                whileHover={{ scale: 1.2, color: '#0077B5' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <FaLinkedinIn />
+              </motion.a>
+
+              <motion.a
+                href="https://www.instagram.com/urbanhustlefilms"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                whileHover={{ scale: 1.2, color: '#D62976' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <Instagram />
+              </motion.a>
+
+              <motion.a
+                href="https://www.threads.net/@urbanhustlefilms"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Threads"
+                whileHover={{ scale: 1.2, color: '#f00' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <BsThreads />
+              </motion.a>
+
+              <motion.a
+                href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                whileHover={{ scale: 1.2, color: '#0077B5' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <Facebook />
+              </motion.a>
+
+              <motion.a
+                href="https://www.youtube.com/@urbanhustlefilms"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                whileHover={{ scale: 1.2, color: '#f00' }}
+                transition={{ duration: 0.3 }}
+                style={{ fontSize: '1.5rem', color: 'white' }}
+              >
+                <Youtube />
+              </motion.a>
+            </div>
+          </div>
         </div>
 
+        {/* Mobile Layout */}
         {/* Mobile Layout */}
         <div className="md:hidden space-y-8 px-4">
           <div className="flex flex-col items-center space-y-4">
@@ -398,7 +508,8 @@ const Footer = () => {
             </MobileDropdown>
           </div>
 
-          <div className="mt-8 flex justify-center md:hidden">
+
+          <div className="mt-8 flex justify-center">
             <div className="text-gray-300 text-base md:text-lg flex items-center gap-3 select-none">
               <span className="font-semibold">Have questions?</span>
               <Link
@@ -411,16 +522,11 @@ const Footer = () => {
           </div>
 
 
-
           <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
 
             <div className="text-gray-400 text-sm text-center sm:text-left">
               © 2025 UH Films. All rights reserved.
             </div>
-
-
-
-
 
 
             <div className="hidden md:flex items-center justify-center gap-5">
@@ -436,12 +542,7 @@ const Footer = () => {
                   className="w-9 h-9 object-contain hover:scale-110 transition-transform duration-300"
                 />
               </a>
-              <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
-              <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
-              <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
-              <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Threads" />
-              <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
-              <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
+
             </div>
           </div>
         </div>
