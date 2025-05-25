@@ -231,21 +231,28 @@ const FAQPage: React.FC = () => {
         {/* Contact Bar - Hidden when no results */}
         {!noResults && !searchTerm && (
           <div className="flex justify-center py-8 px-4 bg-transparent">
-            <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 bg-red-900/20 border border-red-900/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-md w-full max-w-screen-sm text-xs sm:text-sm overflow-hidden min-w-0 text-center sm:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-2xl mx-auto"
+            >
+              <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 bg-red-900/20 border border-red-900/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-md w-full max-w-screen-sm text-xs sm:text-sm overflow-hidden min-w-0 text-center sm:text-left">
+                <h4 className="text-white/80 whitespace-nowrap flex-shrink-0">
+                  Didn't find what you're looking for?
+                </h4>
 
-              <h4 className="text-white/80 whitespace-nowrap flex-shrink-0">
-                Didn't find what you're looking for?
-              </h4>
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm rounded-full transition-colors whitespace-nowrap flex-shrink-0"
-              >
-                Contact Us
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-
-            </div>
+                <Link
+                  to="/faq"
+                  className="group inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm rounded-full transition-colors whitespace-nowrap flex-shrink-0"
+                >
+                  <span className="flex items-center">
+                    More FAQ's
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         )}
 

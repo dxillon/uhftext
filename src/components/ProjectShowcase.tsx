@@ -6,6 +6,7 @@ import Select from 'react-select';
 import emailjs from '@emailjs/browser';
 import VideoPlayer from './VideoPlayer';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import confetti from 'canvas-confetti';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -123,6 +124,7 @@ const ProjectShowcase = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const featuredProjectsRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const confettiRef = useRef(false);
   const getcastProjectsRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -205,6 +207,24 @@ const ProjectShowcase = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (submitSuccess && !confettiRef.current) {
+      confettiRef.current = true;
+
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#d62976', '#962fbf', '#fa7e1e', '#feda75'],
+        scalar: 1.2,
+      });
+
+      // reset ref after a short delay so it can play again if needed
+      setTimeout(() => {
+        confettiRef.current = false;
+      }, 2000);
+    }
+  }, [submitSuccess]);
 
   return (
     <>

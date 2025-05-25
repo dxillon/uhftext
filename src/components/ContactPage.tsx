@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, Check, AlertTriangle, Instagram, Youtube, Facebook, User } from 'lucide-react';
-import { BsTwitterX, BsThreads } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa6";
+import { Mail, Phone, TrendingUp, MapPin, Send, ArrowRight, ChevronUp, ChevronDown, Check, Eye, AlertTriangle, Instagram, Youtube, Facebook, Twitter, User } from 'lucide-react';
 import anime from 'animejs';
+import type { FAQItem } from '../types/faq';
+import { faqData } from '../data/faq';
+import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+
 
 // Define subject options for the dropdown
 const subjectOptions = [
@@ -20,19 +22,6 @@ const subjectOptions = [
   { value: 'feedback', label: 'Feedback' },
   { value: 'other', label: 'Other' }
 ];
-
-
-const SocialIcon = ({ icon: Icon, href, label }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
-    aria-label={label}
-  >
-    <Icon className="w-4 h-4" />
-  </a>
-);
 
 // Form field type
 type FormField = {
@@ -52,11 +41,14 @@ const initialFormState: FormField = {
   message: ''
 };
 
+
+
+
 const ContactPage = () => {
   const [formData, setFormData] = useState<FormField>(initialFormState);
   const [errors, setErrors] = useState<Partial<FormField>>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
+  const [expandedFeatured, setExpandedFeatured] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   const inputRefs = {
@@ -135,11 +127,11 @@ const ContactPage = () => {
         // Replace these with your EmailJS service details
         const result = await emailjs.send(
           'service_a5tly1m',
-          'template_9h0vho7',
+          'template_z0pckoc',
           {
             name: formData.name,
             email: formData.email,
-            phone: formData.phone,
+            phone_number: formData.phone,
             subject: subjectOptions.find(opt => opt.value === formData.subject)?.label || formData.subject,
             message: formData.message
           },
@@ -229,16 +221,24 @@ const ContactPage = () => {
   }, []);
 
 
+  const mostAskedQuestions = faqData
+    .filter(faq => faq.isFeatured)
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 4);
+
+  const handleFeaturedClick = (id: string) => {
+    setExpandedFeatured(expandedFeatured === id ? null : id);
+  };
 
   return (
-
     <>
       <Helmet>
         <title>Contact Us – Urban Hustle Films</title>
         <meta name="description" content="Get in touch with Urban Hustle Films for collaborations, inquiries, and partnerships." />
         <link rel="canonical" href="https://uhfilms.in/contact" />
       </Helmet>
-      <div ref={pageRef} className="pt-24 pb-16">
+
+      <div ref={pageRef} className="pt-40 pb-16">
         <div className="container mx-auto px-4">
           {/* Header Section */}
           <section className="text-center mb-16">
@@ -250,6 +250,126 @@ const ContactPage = () => {
               Ready to bring your vision to life? We're excited to hear from you and discuss how we can help create your next masterpiece.
             </p>
           </section>
+
+
+
+          <section className="py-12 bg-black/50">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center gap-2 mb-8">
+                <TrendingUp className="w-6 h-6 text-red-500" />
+                <h2 className="text-2xl font-bold text-white">Most Asked Questions</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {mostAskedQuestions.map((faq) => (
+                  <motion.div
+                    key={faq.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden hover:border-red-500/30 transition-all duration-300"
+                  >
+                    <div onClick={() => handleFeaturedClick(faq.id)} className="cursor-pointer">
+                      <div className="w-full px-6 py-4 flex items-center justify-between">
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="flex items-center gap-1 text-xs bg-gray-800/70 rounded-full px-2 py-1 whitespace-nowrap flex-shrink-0">
+                            <Eye className="w-4 h-4 text-red-500" />
+                            <span className="text-gray-300">{faq.views.toLocaleString()} views</span>
+                          </div>
+                          <h3 className="text-lg font-medium text-white">{faq.question}</h3>
+                        </div>
+                        {expandedFeatured === faq.id ? (
+                          <ChevronUp className="w-5 h-5 text-red-500" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-gray-400" />
+                        )}
+                      </div>
+
+                      {/* Preview when collapsed */}
+                      {expandedFeatured !== faq.id && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                          className="px-6 pb-4"
+                        >
+                          <p className="text-gray-400 line-clamp-2 text-sm">{faq.answer}</p>
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Expanded content */}
+                    <AnimatePresence>
+                      {expandedFeatured === faq.id && (
+                        <motion.div
+                          key={`content-${faq.id}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{
+                            height: 'auto',
+                            opacity: 1,
+                            transition: {
+                              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
+                              opacity: { duration: 0.25, delay: 0.1 }
+                            }
+                          }}
+                          exit={{
+                            height: 0,
+                            opacity: 0,
+                            transition: {
+                              opacity: { duration: 0.15 },
+                              height: { duration: 0.2, ease: [0.04, 0.62, 0.23, 0.98] }
+                            }
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 py-4 bg-black/20">
+                            <p className="text-gray-300 mb-4">{faq.answer}</p>
+                            {faq.hasActionButton && (
+                              <Link
+                                to={faq.actionLink || '#'}
+                                className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm transition-colors"
+                              >
+                                {faq.actionText}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Link>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+
+          <div className="flex justify-center py-8 px-4 bg-transparent">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-2xl mx-auto"
+            >
+              <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 bg-red-900/20 border border-red-900/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-md w-full max-w-screen-sm text-xs sm:text-sm overflow-hidden min-w-0 text-center sm:text-left">
+                <h4 className="text-white/80 whitespace-nowrap flex-shrink-0">
+                  Didn't find what you're looking for?
+                </h4>
+
+                <Link
+                  to="/faq"
+                  className="group inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm rounded-full transition-colors whitespace-nowrap flex-shrink-0"
+                >
+                  <span className="flex items-center">
+                    More FAQ's
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Contact Form */}
@@ -323,7 +443,7 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className={`w-full bg-gray-800/50 border ${errors.phone ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300`}
-                        placeholder="+91 9876543210"
+                        placeholder="+91 8920476445"
                       />
                       {errors.phone && (
                         <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -347,8 +467,8 @@ const ContactPage = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         className={`w-full bg-black border ${errors.subject ? 'border-red-500' : 'border-gray-700'} 
-                        text-white rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 
-                        transition-all duration-300 appearance-none`}
+              text-white rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 
+              transition-all duration-300 appearance-none`}
                       >
                         <option value="" disabled>Select a subject</option>
                         {subjectOptions.map(option => (
@@ -497,14 +617,43 @@ const ContactPage = () => {
                   {/* Social Media */}
                   <div className="mt-10">
                     <h3 className="text-lg font-medium text-white mb-4">Follow Us</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <SocialIcon icon={Instagram} href="https://www.instagram.com/urbanhustlefilms" label="Follow us on Instagram" />
-                      <SocialIcon icon={Youtube} href="https://www.youtube.com/@urbanhustlefilms" label="Subscribe on YouTube" />
-                      <SocialIcon icon={Facebook} href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083" label="Follow us on Facebook" />
-                      <SocialIcon icon={BsTwitterX} href="https://x.com/urbanhustlefilm" label="Follow us on Twitter" />
-                      <SocialIcon icon={FaLinkedinIn} href="https://www.linkedin.com/company/urbanhustlefilms/" label="Follow us on LinkedIn" />
-                      <SocialIcon icon={BsThreads} href="https://www.threads.net/@urbanhustlefilms" label="Follow us on Threads" />
-
+                    <div className="flex flex-wrap gap-3">
+                      <a
+                        href="https://www.instagram.com/urbanhustlefilms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
+                        aria-label="Instagram"
+                      >
+                        <Instagram className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@urbanhustlefilms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
+                        aria-label="YouTube"
+                      >
+                        <Youtube className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
+                        aria-label="Facebook"
+                      >
+                        <Facebook className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="https://x.com/urbanhustlefilm"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-800 hover:bg-red-500/20 hover:text-red-500 text-gray-300 p-3 rounded-full transition-colors"
+                        aria-label="Twitter"
+                      >
+                        <Twitter className="w-5 h-5" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -513,9 +662,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-
     </>
-
   );
 };
 

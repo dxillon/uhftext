@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, } from 'react-router-dom';
-import { Facebook,  Instagram, Youtube, Mail, Phone, MapPin,  ChevronDown } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, ChevronDown, Star } from 'lucide-react';
 import { BsTwitterX, BsThreads } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -248,9 +248,53 @@ const Footer = () => {
             <Link
               to="/projects#get-casted"
               ref={getCastedButtonRef}
-              className="inline-block mt-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-md hover:shadow-sm transition-all duration-300 font-medium tracking-normal"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 14px',
+                borderRadius: '9999px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '500',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(250, 126, 30, 0.4)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+              }}
             >
-              Get Casted
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '20px',
+                  height: '20px',
+                  background: 'linear-gradient(135deg, #fa7e1e, #d62976, #962fbf, #feda75)',
+                  WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 24 24\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\'/%3E%3C/svg%3E")',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  animation: 'spin 6s linear infinite',
+                }}
+              />
+              <span style={{ lineHeight: '1' }}>Get Casted</span>
+
+              <style>
+                {`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}
+              </style>
             </Link>
           </div>
 
@@ -463,9 +507,53 @@ const Footer = () => {
               <Link
                 to="/projects#get-casted"
                 ref={getCastedButtonRef}
-                className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm whitespace-nowrap w-fit"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '6px 14px',
+                  borderRadius: '9999px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(250, 126, 30, 0.4)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                }}
               >
-                Get Casted
+                <span
+                  style={{
+                    display: 'inline-block',
+                    width: '20px',
+                    height: '20px',
+                    background: 'linear-gradient(135deg, #fa7e1e, #d62976, #962fbf, #feda75)',
+                    WebkitMaskImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 24 24\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\'/%3E%3C/svg%3E")',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskPosition: 'center',
+                    animation: 'spin 6s linear infinite',
+                  }}
+                />
+                <span style={{ lineHeight: '1' }}>Get Casted</span>
+
+                <style>
+                  {`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}
+                </style>
               </Link>
               <Link
                 to="/contact"
