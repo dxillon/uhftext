@@ -269,7 +269,7 @@ const ProjectShowcase = () => {
               className="text-center"
             >
               <h1 className="text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
-                UH FILMS
+                UH FILM'S
               </h1>
               <motion.p
                 initial={{ opacity: 0 }}
