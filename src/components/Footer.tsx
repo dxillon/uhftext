@@ -299,10 +299,10 @@ const Footer = () => {
                 className="inline-flex items-center gap-4 mt-4 px-6 py-2 rounded-full shadow-lg backdrop-blur-md border border-red-600 cursor-pointer select-none overflow-x-auto no-scrollbar"
                 style={{
                   background: `linear-gradient(
-      135deg,
-      rgba(255, 0, 0, 0.15),
-      rgba(255, 0, 0, 0.05)
-    )`,
+                             135deg,
+                           rgba(255, 0, 0, 0.15),
+                    rgba(255, 0, 0, 0.05)
+                                )`,
                   boxShadow: '0 8px 32px 0 rgba(255, 0, 0, 0.2)',
                   WebkitBackdropFilter: 'blur(12px)',
                   backdropFilter: 'blur(12px)',
@@ -332,7 +332,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Mobile Layout */}
         {/* Mobile Layout */}
         <div className="md:hidden space-y-8 px-4">
           <div className="flex flex-col items-center space-y-4">
