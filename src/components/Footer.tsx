@@ -379,38 +379,59 @@ const Footer = () => {
             </div>
           </div>
 
-         <div className="col-span-5 pt-4 mt-4 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="col-span-5 pt-4 mt-4 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <motion.div
-              className="flex justify-center items-center text-base md:text-lg font-medium px-6"
+              className="flex justify-center items-center text-base md:text-lg font-semibold px-10 py-3 rounded-3xl text-white select-none relative overflow-hidden"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               style={{
-                color: '#d1d5db',
-                background: 'linear-gradient(90deg, #6c5ce7, #636e72)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'black',
-                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                background: 'rgba(30, 30, 30, 0.25)',
+                backdropFilter: 'blur(14px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(14px) saturate(180%)',
+
+
               }}
             >
+              {/* Glowing red pulse circle inside the glass box */}
               <motion.span
-                style={{ display: 'inline-block', marginRight: 6 }}
-                animate={{ rotate: [0, -10, 10, -5, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '40%',
+                  width: 80,
+                  height: 80,
+                  backgroundColor: 'rgba(255, 77, 77, 0.5)',
+                  borderRadius: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  filter: 'blur(18px)',
+                  zIndex: 0,
+                }}
+                animate={{ scale: [1, 2.5, 1], opacity: [0.4, 1, 0.4] }}
+                transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+              />
+
+              {/* Content on top */}
+              <motion.span
+                style={{ display: 'inline-block', marginRight: 10, position: 'relative', zIndex: 1 }}
+                animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
               >
                 <Copyright
-                  size={22}
+                  size={24}
                   style={{
-                    color: '#8B0000', // Deep red for high contrast
-                    textShadow: '0 0 4px rgba(255, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4)',
+                    color: '#ff4d4d',
+                    textShadow: '0 0 8px rgba(255, 77, 77, 0.8)',
                   }}
                 />
               </motion.span>
-              2025 UH Films. All rights reserved.
-            </motion.div>
 
+              <span style={{ position: 'relative', zIndex: 1 }}>
+                2025 UH Films. All rights reserved.
+              </span>
+            </motion.div>
 
 
             {/* Socials */}
@@ -636,33 +657,55 @@ const Footer = () => {
           <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
 
             <motion.div
-              className="flex justify-center items-center text-base md:text-lg font-medium px-6"
+              className="flex justify-center items-center text-base md:text-lg font-semibold px-10 py-3 rounded-3xl text-white select-none relative overflow-hidden"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               style={{
-                color: '#d1d5db',
-                background: 'linear-gradient(90deg, #6c5ce7, #636e72)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'black',
-                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                background: 'rgba(30, 30, 30, 0.25)',
+                backdropFilter: 'blur(14px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(14px) saturate(180%)',
+
+
               }}
             >
+              {/* Glowing red pulse circle inside the glass box */}
               <motion.span
-                style={{ display: 'inline-block', marginRight: 6 }}
-                animate={{ rotate: [0, -10, 10, -5, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '40%',
+                  width: 80,
+                  height: 80,
+                  backgroundColor: 'rgba(255, 77, 77, 0.5)',
+                  borderRadius: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  filter: 'blur(18px)',
+                  zIndex: 0,
+                }}
+                animate={{ scale: [1, 2.5, 1], opacity: [0.4, 1, 0.4] }}
+                transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+              />
+
+              {/* Content on top */}
+              <motion.span
+                style={{ display: 'inline-block', marginRight: 10, position: 'relative', zIndex: 1 }}
+                animate={{ rotate: [0, -15, 15, -10, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
               >
                 <Copyright
-                  size={22}
+                  size={24}
                   style={{
-                    color: '#8B0000', // Deep red for high contrast
-                    textShadow: '0 0 4px rgba(255, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4)',
+                    color: '#ff4d4d',
+                    textShadow: '0 0 8px rgba(255, 77, 77, 0.8)',
                   }}
                 />
               </motion.span>
-              2025 UH Films. All rights reserved.
+
+              <span style={{ position: 'relative', zIndex: 1 }}>
+                2025 UH Films. All rights reserved.
+              </span>
             </motion.div>
 
             <div className="hidden md:flex items-center justify-center gap-5">
