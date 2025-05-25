@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, } from 'react-router-dom';
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, ChevronDown, Star } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Mail, Copyright, Phone, MapPin, ChevronDown, Star } from 'lucide-react';
 import { BsTwitterX, BsThreads } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -382,13 +382,36 @@ const Footer = () => {
           <div className="col-span-5 pt-8 mt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <motion.div
-              className="text-gray-400 text-sm"
+              className="flex justify-center items-center text-base md:text-lg font-medium px-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                color: '#d1d5db',
+                background: 'linear-gradient(90deg, #6c5ce7, #636e72)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'black',
+                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+              }}
             >
-              © 2025 UH Films. All rights reserved.
+              <motion.span
+                style={{ display: 'inline-block', marginRight: 6 }}
+                animate={{ rotate: [0, -10, 10, -5, 5, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+              >
+                <Copyright
+                  size={22}
+                  style={{
+                    color: '#8B0000', // Deep red for high contrast
+                    textShadow: '0 0 4px rgba(255, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4)',
+                  }}
+                />
+              </motion.span>
+              2025 UH Films. All rights reserved.
             </motion.div>
+
+
 
             {/* Socials */}
             <div className="flex items-center justify-center gap-5">
@@ -612,10 +635,35 @@ const Footer = () => {
 
           <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
 
-            <div className="text-gray-400 text-sm text-center sm:text-left">
-              © 2025 UH Films. All rights reserved.
-            </div>
-
+            <motion.div
+              className="flex justify-center items-center text-base md:text-lg font-medium px-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                color: '#d1d5db',
+                background: 'linear-gradient(90deg, #6c5ce7, #636e72)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'black',
+                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+              }}
+            >
+              <motion.span
+                style={{ display: 'inline-block', marginRight: 6 }}
+                animate={{ rotate: [0, -10, 10, -5, 5, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+              >
+                <Copyright
+                  size={22}
+                  style={{
+                    color: '#8B0000', // Deep red for high contrast
+                    textShadow: '0 0 4px rgba(255, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4)',
+                  }}
+                />
+              </motion.span>
+              2025 UH Films. All rights reserved.
+            </motion.div>
 
             <div className="hidden md:flex items-center justify-center gap-5">
               <a
