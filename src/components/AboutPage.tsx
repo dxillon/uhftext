@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Bhishanpreet Singh",
     role: "Founder & Director",
     background: "A multi-talented creative force, Bhishanpreet Singh brings a rare combination of tech expertise and artistic vision to UH Films. With a diverse freelancing background across web development, Android app development, backend systems, film direction, and digital marketing, he seamlessly blends technology with storytelling.",
-    keyRoles: [
+    keyRoles: [ 
       "Company leadership and strategic direction",
       "Scriptwriting & screenplay development",
       "Cinematography, editing, and visual storytelling",
