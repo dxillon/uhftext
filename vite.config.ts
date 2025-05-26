@@ -24,7 +24,7 @@ export default defineConfig({
     sitemap({
       hostname: 'https://uhfilms.in',
       outDir: 'dist',
-      robotsTxt: false,
+      robotsTxt: true,
       routes: appRoutes,
     }),
   ],
