@@ -110,6 +110,7 @@ function App() {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/journey" element={<Journey />} />
+          <Route path="/bishan" element={<TeamPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/projects" element={<ProjectShowcase />} />
           <Route path="*" element={<NotFound />} />
