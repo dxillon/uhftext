@@ -243,11 +243,11 @@ const FAQPage: React.FC = () => {
                 </h4>
 
                 <Link
-                  to="/faq"
+                  to="/contact"
                   className="group inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm rounded-full transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   <span className="flex items-center">
-                    More FAQ's
+                    Contact us
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </span>
                 </Link>
@@ -359,7 +359,9 @@ const FAQPage: React.FC = () => {
                       animate={{ opacity: 1 }}
                       className="flex justify-center mt-12"
                     >
-                      <div className="flex items-center gap-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full px-4 py-2">
+                      <div className="flex items-center gap-4 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full px-4 py-2">
+
+                        {/* Prev Button */}
                         <button
                           onClick={() => handlePageChange(currentPage - 1)}
                           disabled={currentPage === 1}
@@ -368,19 +370,16 @@ const FAQPage: React.FC = () => {
                           <ChevronLeft className="w-5 h-5 text-gray-400" />
                         </button>
 
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                          <button
-                            key={page}
-                            onClick={() => handlePageChange(page)}
-                            className={`w-10 h-10 rounded-full flex items-center justify-center ${currentPage === page
-                              ? 'bg-red-600 text-white'
-                              : 'text-gray-400 hover:bg-gray-800/50'
-                              } transition-colors`}
-                          >
-                            {page}
-                          </button>
-                        ))}
+                        {/* Current Page / Total Pages */}
+                        <span className="flex items-center text-sm font-medium text-gray-300 space-x-2">
+                          <span className="w-5 h-5 flex items-center justify-center bg-red-600 text-white rounded-full shadow-md transition-all duration-300">
+                            {currentPage}
+                          </span>
+                          <span className="text-gray-500 text-sm">/</span>
+                          <span className="text-gray-400">{totalPages}</span>
+                        </span>
 
+                        {/* Next Button */}
                         <button
                           onClick={() => handlePageChange(currentPage + 1)}
                           disabled={currentPage === totalPages}
@@ -391,6 +390,7 @@ const FAQPage: React.FC = () => {
                       </div>
                     </motion.div>
                   )}
+
                 </div>
               )}
             </AnimatePresence>
