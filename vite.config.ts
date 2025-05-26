@@ -10,6 +10,7 @@ export default defineConfig({
       hostname: 'https://uhfilms.in',
       outDir: 'dist',
       robotsTxt: false,
+      routes: appRoutes,
     }),
   ],
   optimizeDeps: {
