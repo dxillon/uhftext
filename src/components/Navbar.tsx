@@ -64,7 +64,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    if (logoRef.current) { 
+    if (logoRef.current) {
       anime({
         targets: logoRef.current,
         rotateY: [90, 0],
@@ -93,14 +93,14 @@ const Navbar = () => {
   ];
 
 
-  
-const getArticleUrl = (item) => {
-  if (item.id) {
-    const article = articles.find(a => a.id === item.id);
-    if (article) return `/articles/${article.slug}`;
-  }
-  return item.link || '#';
-};
+
+  const getArticleUrl = (item) => {
+    if (item.id) {
+      const article = articles.find(a => a.id === item.id);
+      if (article) return `/articles/${article.slug}`;
+    }
+    return item.link || '#';
+  };
 
   return (
     <nav className="fixed w-full z-50 mt-5">
@@ -133,66 +133,66 @@ const getArticleUrl = (item) => {
 
 
 
-           {/* Mobile Text Carousel (left of menu button) */}
-<div className="md:hidden flex-1 min-w-0 mx-2 h-8 overflow-hidden relative">
-  <div
-    className="absolute top-0 left-0 right-0 flex flex-col transition-transform duration-500 ease-in-out"
-    style={{
-      transform: `translateY(-${currentIndex * 32}px)`, // 32px matches exact height
-    }}
-  >
-    {updates.map((item, index) => (
-      <div 
-        key={index}
-        className="flex-shrink-0 h-8 flex items-center justify-center" // Fixed height
-      >
-        <Link
-          to={getArticleUrl(item)}
-          className="flex items-center max-w-full px-1"
-        >
-          <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
-            {item.text}
-          </span>
-          <ExternalLink className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
-        </Link>
-      </div>
-    ))}
-  </div>
-</div>
+          {/* Mobile Text Carousel (left of menu button) */}
+          <div className="md:hidden flex-1 min-w-0 mx-2 h-8 overflow-hidden relative">
+            <div
+              className="absolute top-0 left-0 right-0 flex flex-col transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateY(-${currentIndex * 32}px)`, // 32px matches exact height
+              }}
+            >
+              {updates.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 h-8 flex items-center justify-center" // Fixed height
+                >
+                  <Link
+                    to={getArticleUrl(item)}
+                    className="flex items-center max-w-full px-1"
+                  >
+                    <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+                      {item.text}
+                    </span>
+                    <ExternalLink className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          
-{/* Centered Text Carousel */}
-<div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
-  <div 
-    className="relative h-8 w-full max-w-lg mx-auto"  // mx-auto for centering
-    style={{ overflow: 'hidden' }}
-  >
-    <div
-      className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"  // items-end for right alignment
-      style={{
-        transform: `translateY(-${currentIndex * 32}px)`,
-        right: '10%'  // Adjust this percentage to fine-tune position
-      }}
-    >
-      {updates.map((item, index) => (
-        <div 
-          key={index}
-          className="flex-shrink-0 h-8 flex items-center justify-end w-full"  // justify-end for right alignment
-        >
-          <Link
-            to={getArticleUrl(item)}
-            className="flex items-center group"
-          >
-            <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
-              {item.text}
-            </span>
-            <ExternalLink className="w-5 h-5 text-red-400 flex-shrink-0" />
-          </Link>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+
+          {/* Centered Text Carousel */}
+          <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
+            <div
+              className="relative h-8 w-full max-w-lg mx-auto"  // mx-auto for centering
+              style={{ overflow: 'hidden' }}
+            >
+              <div
+                className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"  // items-end for right alignment
+                style={{
+                  transform: `translateY(-${currentIndex * 32}px)`,
+                  right: '10%'  // Adjust this percentage to fine-tune position
+                }}
+              >
+                {updates.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 h-8 flex items-center justify-end w-full"  // justify-end for right alignment
+                  >
+                    <Link
+                      to={getArticleUrl(item)}
+                      className="flex items-center group"
+                    >
+                      <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
+                        {item.text}
+                      </span>
+                      <ExternalLink className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-6 -mr-7">
@@ -200,9 +200,8 @@ const getArticleUrl = (item) => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-white text-xl font-medium transition-colors hover:text-red-400 ${
-                  location.pathname === link.path ? 'text-red-500 font-semibold' : ''
-                }`}
+                className={`text-white text-xl font-medium transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
+                  }`}
               >
                 {link.label}
               </Link>
@@ -256,7 +255,7 @@ const getArticleUrl = (item) => {
               transition={{ type: 'spring', damping: 20 }}
               className="relative mt-24 mx-6 p-8 rounded-xl bg-gray-900/80 border border-gray-800 backdrop-blur-md"
             >
-              
+
               <div className="flex flex-col space-y-8">
                 {navLinks.map((link, index) => (
                   <motion.div
@@ -271,9 +270,8 @@ const getArticleUrl = (item) => {
                   >
                     <Link
                       to={link.path}
-                      className={`block text-2xl py-3 text-white hover:text-red-400 transition-colors ${
-                        location.pathname === link.path ? 'font-bold text-red-500' : 'font-medium'
-                      }`}
+                      className={`block text-2xl py-3 text-white hover:text-red-400 transition-colors ${location.pathname === link.path ? 'font-bold text-red-500' : 'font-medium'
+                        }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {link.label}
@@ -301,7 +299,6 @@ const getArticleUrl = (item) => {
                     <NewBadge className="text-xs font-bold px-2 py-1">
                       Coming Soon
                     </NewBadge>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
               </div>
