@@ -8,7 +8,7 @@ export default defineConfig({
     sitemap({
       hostname: 'https://uhfilms.in',
       outDir: 'dist',
-      robots: true,
+      robotsTxt: true,  // Use the correct option for the latest version
       routes: [
         '/',
         '/team',
