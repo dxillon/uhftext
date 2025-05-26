@@ -5,25 +5,27 @@ import sitemap from 'vite-plugin-sitemap';
 export default defineConfig({
   plugins: [
     react(),
-    sitemap({
-      hostname: 'https://uhfilms.in',
-      outDir: 'dist',
-      robotsTxt: true,  // Use the correct option for the latest version
-      routes: [
-        '/',
-        '/team',
-        '/about',
-        '/careers',
-        '/contact',
-        '/privacy',
-        '/cookies',
-        '/terms',
-        '/articles',
-        '/journey',
-        '/faq',
-        '/projects',
-      ],
-    }),
+sitemap({
+  hostname: 'https://uhfilms.in',
+  outDir: 'dist',
+  robotsTxt: true,
+  routes() {
+    return [
+      '/',
+      '/team',
+      '/about',
+      '/careers',
+      '/contact',
+      '/privacy',
+      '/cookies',
+      '/terms',
+      '/articles',
+      '/journey',
+      '/faq',
+      '/projects',
+    ];
+  },
+}),
   ],
   optimizeDeps: {
     exclude: ['lucide-react'],
