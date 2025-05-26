@@ -9,10 +9,6 @@ export default defineConfig({
       hostname: 'https://uhfilms.in',
       outDir: 'dist',
       robotsTxt: true,
-      routes() {
-        console.log('Generating routes for sitemap');
-        return ['/', '/about'];
-      },
     }),
   ],
   optimizeDeps: {
