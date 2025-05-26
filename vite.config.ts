@@ -10,22 +10,8 @@ export default defineConfig({
       outDir: 'dist',
       robotsTxt: true,
       routes() {
-        const pages = [
-          '/',
-          '/team',
-          '/about',
-          '/careers',
-          '/contact',
-          '/privacy',
-          '/cookies',
-          '/terms',
-          '/articles',
-          '/journey',
-          '/faq',
-          '/projects',
-        ];
-        console.log('Sitemap routes:', pages);
-        return pages;
+        console.log('Generating routes for sitemap');
+        return ['/', '/about'];
       },
     }),
   ],
