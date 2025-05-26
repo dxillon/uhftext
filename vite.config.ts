@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import sitemap from 'vite-plugin-sitemap';
+import { appRoutes } from './src/routes';
 
 export default defineConfig({
   plugins: [
