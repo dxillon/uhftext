@@ -3,12 +3,15 @@ import { articles } from './articles';
 
 
 export const updates = [
+  
+  { text: "Bishan on Instagram", link: "https://instagram.com/thebishandxillon" },
   { text: "Kankhajura Returns", id: "1" },
   { text: "Our Journey", link: "/journey" },
   { text: "Kull's Royal Chaos", id: "2" },
   { text: "Our Projects", link: "/projects" },
   { text: "Survive the End", id: "3" },
   { text: "Weddings & Secrets", id: "4" },
+   { text: "Bishan on Instagram", link: "https://instagram.com/thebishandxillon" },
   { text: "Kill for Love", id: "5" },
   { text: "Descent into Darkness", id: "6" },
   { text: "Love Rejected Loudly", id: "7" },
@@ -51,7 +54,6 @@ export const updates = [
   { text: "AI Acting Trained", id: "36" },
   { text: "Quantum Storytelling", id: "37" },
   { text: "AI Writes Hits", id: "38" },
-  { text: "Bishan on Instagram", link: "https://instagram.com/thebishandxillon" },
   { text: "Trigger Pleasure Films", id: "39" },
   { text: "Synthetic Superstars Rise", id: "40" },
   { text: "Infinite Movie Cuts", id: "41" },
