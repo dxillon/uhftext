@@ -3,30 +3,31 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import sitemap from 'vite-plugin-sitemap';
 
-const appRoutes = [
-  '/',
-  '/team',
-  '/about',
-  '/careers',
-  '/contact',
-  '/privacy',
-  '/cookies',
-  '/terms',
-  '/articles',
-  '/journey',
-  '/faq',
-  '/projects',
-];
+
 
 export default defineConfig({
   plugins: [
-    react(),
     sitemap({
       hostname: 'https://uhfilms.in',
       outDir: 'dist',
       robots: true,
-      routes: appRoutes,
-    }),
+      routes() {
+        return [
+          '/',
+          '/team',
+          '/about',
+          '/careers',
+          '/contact',
+          '/privacy',
+          '/cookies',
+          '/terms',
+          '/articles',
+          '/journey',
+          '/faq',
+          '/projects',
+        ];
+      }
+    })
   ],
   optimizeDeps: {
     exclude: ['lucide-react'],
