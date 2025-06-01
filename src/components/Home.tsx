@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 import ArticleSlider from '../components/ArticleSlider';
 import { articles } from '../data/articles';
 import VideoPlayer from './VideoPlayer';
+import CourseSlider from '../components/CourseSlider';
 import { Helmet } from 'react-helmet-async';
 
 const upcomingProjects = [
@@ -261,7 +262,7 @@ const Home = () => {
           </div>
         </section>
 
-         <section className="py-16 bg-black/30 relative overflow-hidden">
+        <section className="py-16 bg-black/30 relative overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
             <div className="absolute top-20 left-20 w-60 h-60 bg-red-500/10 rounded-full filter blur-3xl"></div>
@@ -369,7 +370,7 @@ const Home = () => {
 
 
 
-<section className="py-20 bg-black/30">
+        <section className="py-20 bg-black/30">
           <div className="container mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -428,6 +429,76 @@ const Home = () => {
 
 
 
+
+
+        <div
+          style={{
+            background: `
+      radial-gradient(
+        ellipse 100% 50% at center 50%,
+        rgba(255, 230, 200, 0.7) 0%,
+        rgba(255, 190, 150, 0.5) 25%,
+        rgba(255, 150, 130, 0.2) 50%,
+        rgba(0, 0, 0, 0) 80%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        transparent 15%,
+        transparent 85%,
+        rgba(0, 0, 0, 0.15) 100%
+      )
+    `,
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            padding: 'clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem)',
+            margin: 0,
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: `
+      inset 0 12px 40px -15px rgba(0, 0, 0, 0.25),
+      inset 0 -12px 40px -15px rgba(0, 0, 0, 0.25)
+    `,
+            width: '100%',
+            boxSizing: 'border-box',
+            '::before': {
+              content: '""',
+              position: 'absolute',
+              inset: '20px 20px 15px 20px',
+              background: `
+        radial-gradient(
+          circle at center,
+          rgba(255, 230, 200, 0.25) 0%,
+          transparent 65%
+        )
+      `,
+              pointerEvents: 'none',
+              zIndex: 1,
+              borderRadius: '8px'
+            },
+            '::after': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              background: `rgba(0, 0, 0, 0.05)`,
+              pointerEvents: 'none',
+              zIndex: 1
+            }
+          }}
+        >
+          <CourseSlider
+            style={{
+              maxWidth: '100%',
+              overflow: 'hidden',
+              position: 'relative',
+              zIndex: 2,
+              borderRadius: '6px'
+            }}
+          />
+        </div>
+
+
+
         <section className="py-20 bg-black/30">
           <div className="container mx-auto px-4">
             <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -455,7 +526,7 @@ const Home = () => {
 
 
 
-         <div
+        <div
           style={{
             background: `
       radial-gradient(
@@ -483,7 +554,7 @@ const Home = () => {
             articles={articles}
             title="Featured Articles"
             autoScrollDelay={5000}
-                 featuredOnly={true}
+            featuredOnly={true}
             style={{
               maxWidth: '100%',
               overflow: 'hidden'

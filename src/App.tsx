@@ -19,9 +19,11 @@ import JobApplicationForm2 from './components/JobApplicationForm2';
 import Journey from './components/Journey';
 import ArticlesPage from './components/ArticlesPage';
 import ArticleDetailPage from './components/ArticleDetailPage';
-import ProjectShowcase from './components/ProjectShowcase'; 
+import ProjectShowcase from './components/ProjectShowcase';
 import NotFound from './components/NotFound';
-import FAQPage from './components/FAQPage'; 
+import FAQPage from './components/FAQPage';
+import CourseDetail from './components/CourseDetail';
+import Courses from './components/Courses';
 import { Analytics } from "@vercel/analytics/react";
 
 const ScrollToTop = () => {
@@ -112,6 +114,8 @@ function App() {
           <Route path="/journey" element={<Journey />} />
           <Route path="/bishan" element={<TeamPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/course/:slug" element={<CourseDetail />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/projects" element={<ProjectShowcase />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
