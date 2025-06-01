@@ -16,7 +16,7 @@ interface ArticleSliderProps {
 const ArticleSlider: React.FC<ArticleSliderProps> = ({
   articles,
   title,
-  autoScrollDelay = 5000
+  autoScrollDelay = 5000,
   featuredOnly = false
 }) => {
 
