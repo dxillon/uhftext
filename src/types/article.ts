@@ -82,6 +82,6 @@ export interface Article {
   author: Author;
   publishDate: string;
   readTimeMinutes: number;
-  featured?: boolean;
+  featuredOnly?: boolean;
   tags?: string[];
 }

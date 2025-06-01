@@ -261,84 +261,130 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-black/30">
-          <div className="container mx-auto px-4">
-            <motion.h2
+         <section className="py-16 bg-black/30 relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <div className="absolute top-20 left-20 w-60 h-60 bg-red-500/10 rounded-full filter blur-3xl"></div>
+            <div className="absolute bottom-10 right-20 w-80 h-80 bg-red-500/5 rounded-full filter blur-3xl"></div>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section Title with Underline */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl font-bold text-center mb-16 text-gradient"
+              className="text-center mb-12"
             >
-              Featured Projects
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredProjects.map((project, index) => (
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
+                Featured Projects
+              </h2>
+              <div className="mx-auto w-24 h-1 bg-gradient-to-r from-red-500 to-transparent"></div>
+            </motion.div>
+
+            {/* Projects Grid - 3 on mobile, 6 on desktop */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProjects.slice(0, 6).map((project, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="card group cursor-pointer overflow-hidden"
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ delay: index * 0.15, duration: 0.4 }}
+                  className={`card group cursor-pointer ${index >= 3 ? 'hidden lg:block' : ''}`}
                   data-clickable="true"
                 >
-                  <div className="relative aspect-video mb-4 overflow-hidden rounded-lg group">
+                  {/* Image with play button */}
+                  <div className="relative aspect-video mb-4 overflow-hidden rounded-xl group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                       <div
-                        className="bg-black p-3 rounded-full flex justify-center items-center w-12 h-12"
+                        className="bg-black/90 p-3 rounded-full flex justify-center items-center w-12 h-12 hover:scale-110 transition-transform"
                         onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
                       >
-                        <Play className="w-10 h-10 text-red-500" />
+                        <Play className="w-6 h-6 text-red-500" />
                       </div>
                     </div>
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-125 transition-transform duration-500"
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <div className="space-y-2 text-sm text-gray-400">
-                    <div className="flex items-center space-x-2">
-                      <Film className="w-4 h-4 text-red-500" />
-                      <span>{project.category}</span>
+
+                  {/* Project Info */}
+                  <div className="p-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-white mb-3">{project.title}</h3>
+
+                    {/* Metadata Grid */}
+                    <div className="grid grid-cols-2 gap-3 text-sm text-gray-400 mb-4">
+                      <div className="flex items-center space-x-2">
+                        <Film className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span className="truncate">{project.category}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Star className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span className="truncate">{project.awards}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Clock className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span>{project.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Users className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span className="truncate">{project.Artist}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Star className="w-4 h-4 text-red-500" />
-                      <span>{project.awards}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock className="w-4 h-4 text-red-500" />
-                      <span>{project.duration}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="w-4 h-4 text-red-500" />
-                      <span>{project.Artist}</span>
-                    </div>
+
+                    {/* Watch Now Button */}
+                    <button
+                      onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
+                      className="w-full py-2 px-4 bg-red-500/10 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors duration-300 rounded-lg flex items-center justify-center space-x-2"
+                    >
+                      <Play className="w-4 h-4" />
+                      <span>Watch Now</span>
+                    </button>
                   </div>
-                  <button
-                    onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
-                    className="mt-4 inline-flex items-center space-x-2 text-red-500 hover:text-red-400 transition-colors"
-                  >
-                    <Play className="w-4 h-4" />
-                    <span>Watch Now</span>
-                  </button>
                 </motion.div>
               ))}
             </div>
+
+            {/* View All Projects CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-center mt-10"
+            >
+              <Link
+                href="/projects"
+                className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-lg shadow-lg hover:shadow-red-500/20"
+              >
+                View All Projects
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
-        <section className="py-20 bg-black/30">
+
+
+<section className="py-20 bg-black/30">
           <div className="container mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}  // Prevent re-animation
               transition={{ duration: 0.6 }}
               className="text-4xl font-bold text-center mb-16 text-gradient"
             >
               Our Services
             </motion.h2>
-            <div ref={servicesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div
+              ref={servicesRef}
+              className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
               {[
                 {
                   icon: Camera,
@@ -365,18 +411,22 @@ const Home = () => {
                   key={service.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="card group"
+                  viewport={{ once: true }}  // Prevent re-animation
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="card group p-6 bg-gray-900/50 rounded-lg hover:bg-gray-900/70 transition-colors"
                   data-clickable="true"
                 >
-                  <service.icon className="service-icon w-12 h-12 text-red-500 mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-                  <p className="text-gray-400">{service.description}</p>
+                  <service.icon className="service-icon w-10 h-10 text-red-500 mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-lg font-semibold text-white mb-2">{service.title}</h3>
+                  <p className="text-gray-400 text-sm">{service.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
+
+
+
 
         <section className="py-20 bg-black/30">
           <div className="container mx-auto px-4">
@@ -433,6 +483,7 @@ const Home = () => {
             articles={articles}
             title="Featured Articles"
             autoScrollDelay={5000}
+                 featuredOnly={true}
             style={{
               maxWidth: '100%',
               overflow: 'hidden'

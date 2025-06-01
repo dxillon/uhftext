@@ -10,13 +10,20 @@ interface ArticleSliderProps {
   articles: Article[];
   title: string;
   autoScrollDelay?: number;
+  featuredOnly?: boolean;
 }
 
 const ArticleSlider: React.FC<ArticleSliderProps> = ({
   articles,
   title,
   autoScrollDelay = 5000
+  featuredOnly = false
 }) => {
+
+  const filteredArticles = featuredOnly
+    ? articles.filter(article => article.featured)
+    : articles;
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
@@ -38,12 +45,12 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
   // Memoized article cards
   const memoizedArticleCards = React.useMemo(() => {
-    return articles.map((article) => (
+    return filteredArticles.map((article) => (
       <div key={article.id} className="article-slider__item">
         <ArticleCard article={article} compact={!isMobile} />
       </div>
     ));
-  }, [articles, isMobile]);
+  }, [filteredArticles, isMobile]);
 
   // Smooth scroll to position using CSS transitions
   const smoothScrollTo = useCallback((target: number) => {
