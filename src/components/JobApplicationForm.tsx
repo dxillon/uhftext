@@ -1,23 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Send, Loader, ArrowLeft } from 'lucide-react';
+import { Send, Loader, ArrowLeft, Film, Clapperboard, Camera, Video } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
-import { BsTwitterX, BsThreads } from 'react-icons/bs';
-import { FaLinkedinIn } from 'react-icons/fa';
+import { Instagram, Youtube } from 'lucide-react';
+import { BsTwitterX } from 'react-icons/bs';
+import confetti from 'canvas-confetti';
 import { Helmet } from 'react-helmet-async';
 
 const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, label: string }) => (
-  <a
+  <motion.a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-white transition-colors duration-300"
+    className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-red-900 rounded-lg text-white transition-all duration-300 border border-gray-700"
     aria-label={label}
+    whileHover={{ y: -2 }}
+    whileTap={{ scale: 0.95 }}
   >
     <Icon className="w-5 h-5" />
-  </a>
+    <span className="text-sm">{label}</span>
+  </motion.a>
 );
 
 interface JobApplicationFormProps {
@@ -51,11 +54,23 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
     phone: '',
     experience: '',
     portfolio: '',
+    reel: '',
+    skills: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const fireConfetti = () => {
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#22c55e', '#ef4444', '#3b82f6'],
+      shapes: ['circle', 'square']
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,15 +85,18 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
       );
 
       setSubmitStatus('success');
+      fireConfetti();
       setFormData({
         name: '',
         email: '',
         phone: '',
         experience: '',
         portfolio: '',
+        reel: '',
+        skills: '',
         message: ''
       });
-      // Scroll to top after successful submission
+      
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -106,107 +124,161 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
     }
   };
 
+  // Film reel animation frames
+  const FilmReel = () => (
+    <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 opacity-10 md:opacity-20">
+      <div className="relative w-40 h-64">
+        <div className="absolute inset-0 bg-black rounded-lg border-4 border-gray-800 p-1">
+          <div className="h-full flex flex-col gap-1">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="h-6 bg-gray-800 rounded-sm"></div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute -inset-2 border border-gray-700 rounded-lg"></div>
+      </div>
+    </div>
+  );
+
   return (
-    <>
+        <>
       <Helmet>
         <title>Apply – Careers at Urban Hustle Films</title>
         <meta name="description" content="Apply for exciting roles in filmmaking, production, editing, and more at Urban Hustle Films." />
         <link rel="canonical" href="https://uhfilms.in/careers/apply" />
       </Helmet>
+          
+    <div className="min-h-screen py-20 bg-black bg-opacity-90 relative overflow-hidden">
+      {/* Film grain overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjA1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+CiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+CiAgPC9maWx0ZXI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wMiIvPgo8L3N2Zz4=')] opacity-5 pointer-events-none"></div>
 
-      <div className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl mx-auto"
+      {/* Film set lights */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-900/10 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-red-900/10 to-transparent pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onBack}
+            className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 group"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onBack}
-              className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 group"
-            >
-              <ArrowLeft className="w-4 h-4 transition-all duration-300 group-hover:-translate-x-1 group-hover:text-red-500" />
-              Back to listings
-            </motion.button>
+            <ArrowLeft className="w-5 h-5 transition-all duration-300 group-hover:-translate-x-1 group-hover:text-red-500" />
+            <span className="font-mono text-sm">BACK TO LISTINGS</span>
+          </motion.button>
 
-            <div className="p-8 bg-black/20 backdrop-blur-sm rounded-xl border border-gray-800">
-              {submitStatus !== 'success' ? (
-                <>
-                  <h2 className="text-3xl font-bold text-white mb-2">Apply for Position</h2>
-                  <p className="text-xl text-red-500 font-semibold mb-8">{role}</p>
+          <div className="relative p-8 bg-gray-900/80 backdrop-blur-sm rounded-lg border border-gray-800 shadow-lg">
+            {/* Film clapper decoration */}
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+              <Clapperboard className="w-12 h-12 text-red-600" />
+            </div>
 
-                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                    <input type="hidden" name="role" value={role} />
+            {/* Film reel decoration - only on desktop */}
+            <div className="hidden md:block">
+              <FilmReel />
+            </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
+            {submitStatus !== 'success' ? (
+              <motion.div
+                initial={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <Camera className="w-8 h-8 text-red-500" />
+                  <h2 className="text-3xl font-bold text-white font-mono tracking-tight">
+                    APPLICATION FORM
+                  </h2>
+                </div>
+                
+                <div className="mb-8 p-4 bg-black/50 border border-gray-800 rounded-lg">
+                  <div className="flex items-center gap-2 text-red-500">
+                    <Film className="w-5 h-5" />
+                    <p className="text-lg font-medium">{role}</p>
+                  </div>
+                </div>
+                
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                  <input type="hidden" name="role" value={role} />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        FULL NAME *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="John Doe"
+                      />
+                    </motion.div>
+                    
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        EMAIL *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="john@example.com"
+                      />
+                    </motion.div>
+                  </div>
 
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                          Email *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
-                    </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        PHONE *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="+1 234 567 8900"
+                      />
+                    </motion.div>
+                    
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="experience" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        YEARS OF EXPERIENCE *
+                      </label>
+                      <input
+                        type="text"
+                        id="experience"
+                        name="experience"
+                        required
+                        value={formData.experience}
+                        onChange={handleChange}
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="3+ years"
+                      />
+                    </motion.div>
+                  </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
-                          Phone Number *
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          required
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="experience" className="block text-sm font-medium text-gray-300 mb-2">
-                          Years of Experience *
-                        </label>
-                        <input
-                          type="text"
-                          id="experience"
-                          name="experience"
-                          required
-                          value={formData.experience}
-                          onChange={handleChange}
-                          className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="portfolio" className="block text-sm font-medium text-gray-300 mb-2">
-                        Portfolio URL
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="portfolio" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        PORTFOLIO LINK
                       </label>
                       <input
                         type="url"
@@ -214,122 +286,182 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
                         name="portfolio"
                         value={formData.portfolio}
                         onChange={handleChange}
-                        className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="https://yourportfolio.com"
                       />
-                    </div>
+                    </motion.div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                        Additional Information *
+                    <motion.div whileHover={{ y: -2 }}>
+                      <label htmlFor="reel" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                        DEMO REEL LINK
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        required
-                        value={formData.message}
+                      <input
+                        type="url"
+                        id="reel"
+                        name="reel"
+                        value={formData.reel}
                         onChange={handleChange}
-                        rows={4}
-                        placeholder="Location, Degree, student etc."
-                        className="w-full bg-black/30 border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                        placeholder="https://vimeo.com/yourreel"
                       />
-                    </div>
+                    </motion.div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-lg font-medium hover:from-red-700 hover:to-red-800 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
+                  <motion.div whileHover={{ y: -2 }}>
+                    <label htmlFor="skills" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                      KEY SKILLS / EQUIPMENT *
+                    </label>
+                    <input
+                      type="text"
+                      id="skills"
+                      name="skills"
+                      required
+                      value={formData.skills}
+                      onChange={handleChange}
+                      className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                      placeholder="Cinematography, RED Komodo, Adobe Premiere"
+                    />
+                  </motion.div>
+
+                  <motion.div whileHover={{ y: -2 }}>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
+                      COVER LETTER / NOTES *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={5}
+                      className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
+                      placeholder="Tell us about your experience, availability, and why you're a good fit..."
+                    />
+                  </motion.div>
+
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-red-800 hover:bg-red-700 text-white py-4 rounded-lg font-mono tracking-wider text-sm uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border border-red-900 transition-all duration-300 relative overflow-hidden group"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-full group-hover:translate-x-full"></span>
+                    <span className="relative z-10 flex items-center gap-2">
                       {isSubmitting ? (
                         <>
                           <Loader className="w-5 h-5 animate-spin" />
-                          Submitting...
+                          SUBMITTING...
                         </>
                       ) : (
                         <>
-                          <Send className="w-5 h-5" />
-                          Submit Application
+                          <Video className="w-5 h-5" />
+                          SUBMIT APPLICATION
                         </>
                       )}
-                    </button>
+                    </span>
+                  </motion.button>
 
-                    {submitStatus === 'error' && (
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-red-500 text-center"
-                      >
-                        Error submitting application. Please try again or contact us directly.
-                      </motion.p>
-                    )}
-                  </form>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center"
-                >
-                  <h2 className="text-3xl font-bold text-white mb-4">Thank You!</h2>
-                  <p className="text-xl text-gray-300 mb-8">
-                    Your application has been submitted successfully. We'll be in touch soon!
-                  </p>
-                </motion.div>
-              )}
-
-              {/* Social Media Section - always visible but more prominent after submission */}
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="p-4 bg-red-900/30 rounded-lg border border-red-800 text-red-300 text-center font-mono text-sm"
+                    >
+                      ERROR: Submission failed. Please try again or contact us directly.
+                    </motion.div>
+                  )}
+                </form>
+              </motion.div>
+            ) : (
               <motion.div
+                key="success-message"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: submitStatus === 'success' ? 0 : 0.5 }}
-                className={`mt-10 p-6 bg-black/20 backdrop-blur-sm rounded-xl border border-gray-800 ${submitStatus === 'success' ? 'border-red-500' : ''
-                  }`}
+                transition={{ duration: 0.5 }}
+                className="text-center py-10"
               >
-                <h3 className="text-xl font-bold text-white mb-4">
-                  {submitStatus === 'success' ? 'Stay Connected With Us' : 'Follow Us for Updates'}
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  {submitStatus === 'success'
-                    ? 'While you wait, connect with us on social media:'
-                    : 'Stay connected with Urban Hustle Films for more opportunities and updates!'}
-                </p>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <SocialIcon
-                    icon={Instagram}
-                    href="https://www.instagram.com/urbanhustlefilms"
-                    label="Follow us on Instagram"
+                <div className="mb-8 flex flex-col items-center">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="mb-6 bg-black/50 p-6 rounded-full border border-green-500/30"
+                  >
+                    <svg className="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </motion.div>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-3xl font-bold text-white mb-4 font-mono tracking-tight"
+                  >
+                    APPLICATION RECEIVED
+                  </motion.h2>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                    className="w-32 h-1 bg-red-500 mb-6 mx-auto"
                   />
-                  <SocialIcon
-                    icon={Youtube}
-                    href="https://www.youtube.com/@urbanhustlefilms"
-                    label="Subscribe on YouTube"
-                  />
-                  <SocialIcon
-                    icon={Facebook}
-                    href="https://www.facebook.com/people/Urban-Hustle-Films/61573424103083"
-                    label="Follow us on Facebook"
-                  />
-                  <SocialIcon
-                    icon={BsTwitterX}
-                    href="https://x.com/urbanhustlefilm"
-                    label="Follow us on Twitter"
-                  />
-                  <SocialIcon
-                    icon={FaLinkedinIn}
-                    href="https://www.linkedin.com/company/urbanhustlefilms/"
-                    label="Follow us on LinkedIn"
-                  />
-                  <SocialIcon
-                    icon={BsThreads}
-                    href="https://www.threads.net/@urbanhustlefilms"
-                    label="Follow us on Threads"
-                  />
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="text-lg text-gray-300 mb-8 max-w-md mx-auto"
+                  >
+                    Thank you for applying to Urban Hustle Films. We'll review your submission and be in touch soon.
+                  </motion.p>
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    onClick={onBack}
+                    className="px-8 py-3 bg-black/50 text-white rounded-lg border border-gray-700 hover:bg-gray-800 transition-all duration-300 font-mono text-sm uppercase tracking-wider"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    BACK TO CAREERS
+                  </motion.button>
                 </div>
               </motion.div>
-            </div>
-          </motion.div>
-        </div>
+            )}
+
+            {/* Social Media Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: submitStatus === 'success' ? 1.2 : 0 }}
+              className={`mt-12 pt-6 border-t border-gray-800 ${submitStatus === 'success' ? 'border-green-500/30' : 'border-red-500/30'}`}
+            >
+              <h3 className="text-lg font-bold text-white mb-4 font-mono tracking-tight text-center">
+                {submitStatus === 'success' ? 'STAY CONNECTED' : 'FOLLOW OUR WORK'}
+              </h3>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <SocialIcon 
+                  icon={Instagram} 
+                  href="https://www.instagram.com/urbanhustlefilms" 
+                  label="Instagram" 
+                />
+                <SocialIcon 
+                  icon={Youtube} 
+                  href="https://www.youtube.com/@urbanhustlefilms" 
+                  label="YouTube" 
+                />
+                <SocialIcon 
+                  icon={BsTwitterX} 
+                  href="https://x.com/urbanhustlefilm" 
+                  label="Twitter/X" 
+                />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
-    </>
+    </div>
+        </>
   );
 };
 
