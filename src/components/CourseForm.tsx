@@ -266,6 +266,17 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                                         <span>Taking you back to course page...</span>
                                     </motion.div>
                                 )}
+
+                                                
+                 {paymentStatus && (
+                  <div className={`mt-4 p-4 rounded-lg ${
+                    paymentStatus.type === 'success' ? 'bg-green-500/20 text-green-400' :
+                    paymentStatus.type === 'error' ? 'bg-red-500/20 text-red-400' :
+                    'bg-blue-500/20 text-blue-400'
+                  }`}>
+                    {paymentStatus.text}
+                  </div>
+                )} 
                             </form>
                         </div>
                     </motion.div>
