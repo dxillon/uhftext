@@ -1,6 +1,6 @@
 types
 article.ts
-export type Category = 
+export type Category =
   | 'post-production'
   | 'hollywood'
   | 'film-production'
@@ -76,6 +76,7 @@ export interface Article {
   summary?: string[];
   content: string;
   heroImage: string;
+  trending?: boolean;
   category: Category;
   subCategory?: SubCategory;
   author: Author;

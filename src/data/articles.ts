@@ -2,488 +2,488 @@ import { Article } from '../types/article';
 import { authors } from './authors';
 
 export const articles: Article[] = [
-{
-  id: '1',
-  title: 'Kankhajura: A Tale of Redemption and Shadows',
-  slug: 'kankhajura-review',
-  excerpt: 'An intense crime thriller exploring family ties and the haunting past.',
-  content: `
+  {
+    id: '1',
+    title: 'Kankhajura: A Tale of Redemption and Shadows',
+    slug: 'kankhajura-review',
+    excerpt: 'An intense crime thriller exploring family ties and the haunting past.',
+    content: `
     <p>"Kankhajura," streaming on SonyLIV, is a gripping crime thriller that delves into the complexities of familial relationships and the shadows of the past. The story follows Ashu, who returns after serving 14 years for a crime from his youth, attempting to reconnect with his brother Max. As they struggle to rebuild trust, Ashu's dark past and dangerous connections resurface, threatening Max's life and business.</p>
 
     <p>Directed by Chandan Arora and produced by Ajay Rai, the series features a stellar cast including Roshan Mathew, Mohit Raina, Sarah Jane Dias, and Trinetra Haldar Gummaraju. The narrative is a compelling exploration of family, redemption, and the shadows that never truly fade.</p>
   `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/3/33/Kankhajura_Poster.jpeg',
-  category: 'bollywood',
-  category: 'trending',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-05-30T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: true, 
-  tags: ['Kankhajura', 'SonyLIV', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '2',
-  title: 'Kull: The Legacy of the Raisingghs – A Royal Drama Unfolds',
-  slug: 'kull-legacy-raisingghs-review',
-  excerpt: 'A gripping tale of legacy, power, and family secrets in a royal household.',
-  content: `
+    heroImage: 'https://upload.wikimedia.org/wikipedia/en/3/33/Kankhajura_Poster.jpeg',
+    category: 'bollywood',
+    trending: true,
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-05-30T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['Kankhajura', 'SonyLIV', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '2',
+    title: 'Kull: The Legacy of the Raisingghs – A Royal Drama Unfolds',
+    slug: 'kull-legacy-raisingghs-review',
+    excerpt: 'A gripping tale of legacy, power, and family secrets in a royal household.',
+    content: `
     <p>JioHotstar's "Kull: The Legacy of the Raisingghs" is a captivating drama thriller that explores the intricate dynamics of a royal family. The series centers around the Raisinggh family, unraveling secrets, power struggles, and the weight of legacy that binds them.</p>
 
     <p>Directed by Sahir Raza and written by Chiranjeevi Bajpai, the series features performances by Nimrat Kaur, Amol Parashar, and Ridhi Dogra. The narrative delves into themes of tradition, ambition, and the complexities of familial relationships within a royal context.</p>
   `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/8/88/Kull_%E2%80%93_The_Legacy_of_the_Raisingghs.jpg',
-  category: 'bollywood',
-   category: 'trending',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-05-02T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Kull', 'JioHotstar', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '3',
-  title: 'The Last of Us: A Gripping Post-Apocalyptic Drama',
-  slug: 'the-last-of-us-review',
-  excerpt: 'A gripping journey through survival and human connection in a ravaged world.',
-  content: `
+    heroImage: 'https://upload.wikimedia.org/wikipedia/en/8/88/Kull_%E2%80%93_The_Legacy_of_the_Raisingghs.jpg',
+    category: 'bollywood',
+    trending: true,
+    subCategory: 'web-series',
+    author: authors[3],
+    publishDate: '2025-05-02T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['Kull', 'JioHotstar', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '3',
+    title: 'The Last of Us: A Gripping Post-Apocalyptic Drama',
+    slug: 'the-last-of-us-review',
+    excerpt: 'A gripping journey through survival and human connection in a ravaged world.',
+    content: `
     <p>HBO’s "The Last of Us" masterfully adapts the beloved video game into a post-apocalyptic drama that explores survival, loss, and hope. The story follows Joel and Ellie as they navigate a dangerous world filled with infected creatures and hostile survivors.</p>
 
     <p>Directed by Craig Mazin and Neil Druckmann, the series features powerful performances by Pedro Pascal and Bella Ramsey. "The Last of Us" blends intense action with emotional storytelling, capturing the raw human spirit amid chaos.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/hPB3F9CRdCf8wrncRPEEUm005DG.jpg',
-  category: 'international',
-   category: 'trending',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-04-18T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['The Last of Us', 'HBO', 'post-apocalyptic', 'survival', 'drama']
-},
-{
-  id: '4',
-  title: 'Made in Heaven: A Stunning Portrait of Modern India',
-  slug: 'made-in-heaven-review',
-  excerpt: 'A captivating drama exploring love, ambition, and societal pressures through the lens of Indian weddings.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/hPB3F9CRdCf8wrncRPEEUm005DG.jpg',
+    category: 'international',
+    trending: true,
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-04-18T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['The Last of Us', 'HBO', 'post-apocalyptic', 'survival', 'drama']
+  },
+  {
+    id: '4',
+    title: 'Made in Heaven: A Stunning Portrait of Modern India',
+    slug: 'made-in-heaven-review',
+    excerpt: 'A captivating drama exploring love, ambition, and societal pressures through the lens of Indian weddings.',
+    content: `
     <p>Amazon Prime Video’s "Made in Heaven" offers a compelling glimpse into contemporary India, focusing on the lives of two wedding planners navigating complex social and personal dynamics. The series delicately balances glamour with raw emotional storytelling.</p>
 
     <p>Created by Zoya Akhtar and Reema Kagti, and starring Arjun Mathur and Sobhita Dhulipala, "Made in Heaven" highlights the clash between tradition and modernity, bringing forward stories of love, class, and identity with nuance and grace.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/rN9Tp1DQfqOfYcpOmM5YHheZuu6.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-   category: 'trending',
-  author: authors[1],
-  publishDate: '2025-05-09T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Made in Heaven', 'Amazon Prime Video', 'drama', 'weddings', 'Zoya Akhtar']
-},
+    heroImage: 'https://image.tmdb.org/t/p/original/rN9Tp1DQfqOfYcpOmM5YHheZuu6.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    trending: true,
+    author: authors[1],
+    publishDate: '2025-05-09T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['Made in Heaven', 'Amazon Prime Video', 'drama', 'weddings', 'Zoya Akhtar']
+  },
 
-{
-  id: '5',
-  title: 'Kill Dill: A Tale of Love and Betrayal',
-  slug: 'kill-dill-review',
-  excerpt: 'A romantic thriller that explores the complexities of love and the consequences of betrayal.',
-  content: `
+  {
+    id: '5',
+    title: 'Kill Dill: A Tale of Love and Betrayal',
+    slug: 'kill-dill-review',
+    excerpt: 'A romantic thriller that explores the complexities of love and the consequences of betrayal.',
+    content: `
     <p>"Kill Dill," streaming on Amazon MX Player, is a romantic thriller that delves into the intricacies of love, trust, and betrayal. The narrative follows Tavish and Kisha, whose passionate relationship takes a dark turn as secrets unravel and past traumas resurface.</p>
 
     <p>Directed by Glen Barretto and Ankush Mohla, the series stars Prit Kamani and Anushka Sen in lead roles. With its engaging storyline and compelling performances, "Kill Dill" offers a fresh perspective on romantic relationships and the challenges they entail.</p>
   `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/e/ed/Kill_Dill_%E2%80%93_The_Heartbreak_Club.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-03-28T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Kill Dill', 'Amazon MX Player', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '6',
-  title: 'Paatal Lok: A Dark Descent into India’s Underbelly',
-  slug: 'paatal-lok-review',
-  excerpt: 'A gritty and provocative thriller that exposes the harsh realities of society through a cop’s investigation.',
-  content: `
+    heroImage: 'https://upload.wikimedia.org/wikipedia/en/e/ed/Kill_Dill_%E2%80%93_The_Heartbreak_Club.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[3],
+    publishDate: '2025-03-28T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['Kill Dill', 'Amazon MX Player', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '6',
+    title: 'Paatal Lok: A Dark Descent into India’s Underbelly',
+    slug: 'paatal-lok-review',
+    excerpt: 'A gritty and provocative thriller that exposes the harsh realities of society through a cop’s investigation.',
+    content: `
     <p>Amazon Prime Video’s "Paatal Lok" is a hard-hitting crime thriller that follows a disillusioned police officer as he unravels a complex conspiracy tied to caste, politics, and crime. The show is noted for its raw storytelling and powerful performances.</p>
 
     <p>Directed by Avinash Arun and Prosit Roy, and produced by Anushka Sharma, "Paatal Lok" has been praised for its nuanced portrayal of India’s socio-political landscape.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/xEB6chdsdHFS2RfTXueMVXLWGcl.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-   category: 'trending',
-  author: authors[2],
-  publishDate: '2025-05-20T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['Paatal Lok', 'Amazon Prime Video', 'thriller', 'crime drama', 'Anushka Sharma']
-},
+    heroImage: 'https://image.tmdb.org/t/p/original/xEB6chdsdHFS2RfTXueMVXLWGcl.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    trending: true,
+    author: authors[2],
+    publishDate: '2025-05-20T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['Paatal Lok', 'Amazon Prime Video', 'thriller', 'crime drama', 'Anushka Sharma']
+  },
 
-{
-  id: '7',
-  title: 'Nobody Wants This: A Refreshing Take on Modern Romance',
-  slug: 'nobody-wants-this-review',
-  excerpt: 'Kristen Bell and Adam Brody deliver a nuanced performance in Netflix’s latest romantic comedy series.',
-  content: `
+  {
+    id: '7',
+    title: 'Nobody Wants This: A Refreshing Take on Modern Romance',
+    slug: 'nobody-wants-this-review',
+    excerpt: 'Kristen Bell and Adam Brody deliver a nuanced performance in Netflix’s latest romantic comedy series.',
+    content: `
     <p>Netflix's "Nobody Wants This" emerges as a standout romantic comedy in 2025, featuring Kristen Bell and Adam Brody in roles that defy traditional genre tropes. The series centers on Joanne, a candid sex and dating podcast host, and Noah, a thoughtful rabbi, whose unexpected romance unfolds with authenticity and humor.</p>
 
     <p>The show's strength lies in its grounded storytelling, avoiding over-the-top dramatics in favor of intimate, character-driven moments. Bell and Brody's chemistry brings depth to their characters, making their evolving relationship both relatable and compelling.</p>
 
     <p>With its sharp writing and contemporary themes, "Nobody Wants This" resonates with audiences seeking a fresh perspective on love and connection in the digital age.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/dPZItN4dZdNv9V9frxuQxwck0Ac.jpg',
-  category: 'hollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-   category: 'trending',
-  publishDate: '2025-05-20T10:00:00Z',
-  readTimeMinutes: 7,
-  featured: true,
-  tags: ['Netflix', 'romantic comedy', 'Kristen Bell', 'Adam Brody', 'uh films']
-},
-{
-  id: '8',
-  title: 'Dabba Cartel: Empowering Narratives in Crime Drama',
-  slug: 'dabba-cartel-review',
-  excerpt: 'Netflix’s "Dabba Cartel" showcases a group of women navigating the criminal underworld under the guise of a food delivery service.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/dPZItN4dZdNv9V9frxuQxwck0Ac.jpg',
+    category: 'hollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    trending: true,
+    publishDate: '2025-05-20T10:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['Netflix', 'romantic comedy', 'Kristen Bell', 'Adam Brody', 'uh films']
+  },
+  {
+    id: '8',
+    title: 'Dabba Cartel: Empowering Narratives in Crime Drama',
+    slug: 'dabba-cartel-review',
+    excerpt: 'Netflix’s "Dabba Cartel" showcases a group of women navigating the criminal underworld under the guise of a food delivery service.',
+    content: `
     <p>"Dabba Cartel" brings a fresh perspective to the crime drama genre, focusing on a group of women who operate a drug cartel disguised as a food delivery business. The series delves into themes of empowerment, resilience, and the complexities of moral choices.</p>
 
     <p>Stellar performances by Shabana Azmi and Jyothika anchor the narrative, offering depth and nuance to their characters. The show's gritty storytelling and strong character development make it a compelling watch for audiences seeking substance and intrigue.</p>
 
     <p>By blending social commentary with thrilling plotlines, "Dabba Cartel" stands out as a significant addition to Bollywood’s evolving narrative landscape.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/wYDr3lsKfZKrQ40E6npKkXgQJH8.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-03-15T12:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['Netflix', 'crime drama', 'Shabana Azmi', 'Jyothika', 'bsiha']
-} ,
+    heroImage: 'https://image.tmdb.org/t/p/original/wYDr3lsKfZKrQ40E6npKkXgQJH8.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-03-15T12:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['Netflix', 'crime drama', 'Shabana Azmi', 'Jyothika', 'bsiha']
+  },
   {
-  id: '9',
-  title: 'Fountain of Youth: A Misstep in Adventure Filmmaking',
-  slug: 'fountain-of-youth-review',
-  excerpt: 'Guy Ritchie’s latest film attempts to capture the magic of classic adventure tales but falls short in execution.',
-  content: `
+    id: '9',
+    title: 'Fountain of Youth: A Misstep in Adventure Filmmaking',
+    slug: 'fountain-of-youth-review',
+    excerpt: 'Guy Ritchie’s latest film attempts to capture the magic of classic adventure tales but falls short in execution.',
+    content: `
     <p>"Fountain of Youth" aims to revive the spirit of classic adventure films, featuring John Krasinski as a modern-day treasure hunter. Despite its ambitious premise, the film struggles with pacing and character development, leading to a disjointed viewing experience.</p>
 
     <p>The narrative's reliance on familiar tropes without innovative twists results in a predictable storyline. While the cinematography offers visually appealing moments, it isn't enough to compensate for the film's shortcomings.</p>
 
     <p>Overall, "Fountain of Youth" serves as a reminder that homage to classic genres requires both reverence and originality to truly resonate with contemporary audiences.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/meYlxtHSwBsXNtdQt1HKKMxp2jC.jpg',
-  category: 'hollywood',
-     category: 'trending',
-  subCategory: 'movies',
-  author: authors[3],
-  publishDate: '2025-05-22T09:00:00Z',
-  readTimeMinutes: 6,
-  featured: true,
-  tags: ['Guy Ritchie', 'adventure film', 'John Krasinski', 'bishanpreet']
-},
-{
-  id: '10',
-  title: 'Khauf: Revitalizing the Horror Genre',
-  slug: 'khauf-review',
-  excerpt: 'The Hindi horror series "Khauf" delivers spine-chilling narratives that reinvigorate the genre for Indian audiences.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/meYlxtHSwBsXNtdQt1HKKMxp2jC.jpg',
+    category: 'hollywood',
+    trending: true,
+    subCategory: 'movies',
+    author: authors[3],
+    publishDate: '2025-05-22T09:00:00Z',
+    readTimeMinutes: 6,
+    featured: true,
+    tags: ['Guy Ritchie', 'adventure film', 'John Krasinski', 'bishanpreet']
+  },
+  {
+    id: '10',
+    title: 'Khauf: Revitalizing the Horror Genre',
+    slug: 'khauf-review',
+    excerpt: 'The Hindi horror series "Khauf" delivers spine-chilling narratives that reinvigorate the genre for Indian audiences.',
+    content: `
     <p>"Khauf" stands out in the Indian horror landscape, offering a series of episodes that blend traditional folklore with modern fears. The show's atmospheric storytelling and well-crafted suspense keep viewers engaged and on edge.</p>
 
     <p>Strong performances and meticulous production design contribute to the series' eerie ambiance. By tapping into culturally resonant themes, "Khauf" provides a refreshing take on horror that appeals to both genre enthusiasts and new viewers.</p>
 
     <p>This series marks a significant step forward in Indian horror storytelling, setting a new standard for future productions.</p>
   `,
-  heroImage: 'https://resizing.flixster.com/5qcQne6pe8R06O3k_0SFJcdMyRU=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p29993886_b_h10_ab.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-04-10T14:00:00Z',
-  readTimeMinutes: 7,
-  featured: true,
-  tags: ['horror series', 'Indian folklore', 'Khauf', 'uh films']
-},
+    heroImage: 'https://resizing.flixster.com/5qcQne6pe8R06O3k_0SFJcdMyRU=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p29993886_b_h10_ab.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-04-10T14:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['horror series', 'Indian folklore', 'Khauf', 'uh films']
+  },
   {
-  id: '11',
-  title: 'Adolescence: A Gripping Psychological Drama',
-  slug: 'adolescence-review',
-  excerpt: 'Netflix’s "Adolescence" offers a compelling exploration of youth and crime through innovative storytelling techniques.',
-  content: `
+    id: '11',
+    title: 'Adolescence: A Gripping Psychological Drama',
+    slug: 'adolescence-review',
+    excerpt: 'Netflix’s "Adolescence" offers a compelling exploration of youth and crime through innovative storytelling techniques.',
+    content: `
     <p>"Adolescence" delves into the complexities of teenage life intersecting with criminal investigations. The series is notable for its unique approach, with each episode presented in a single continuous take, enhancing the immersive experience.</p>
 
     <p>The narrative follows a young boy entangled in a murder case, unraveling layers of psychological tension and societal commentary. The performances are compelling, and the direction maintains a tight grip on the viewer's attention throughout.</p>
 
     <p>By pushing the boundaries of conventional storytelling, "Adolescence" establishes itself as a must-watch series that challenges and engages its audience.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/21zaGM92ERIRvWOmH6gAgI2WUKb.jpg',
-  category: 'hollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-     category: 'trending',
-  publishDate: '2025-03-20T11:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['psychological drama', 'Netflix series', 'Adolescence', 'bsiha']
-},
-{
-  id: '12',
-  title: 'Dupahiya: Celebrating Rural Narratives',
-  slug: 'dupahiya-review',
-  excerpt: 'The Hindi series "Dupahiya" brings rural stories to the forefront, highlighting the charm and challenges of village life.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/21zaGM92ERIRvWOmH6gAgI2WUKb.jpg',
+    category: 'hollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    trending: true,
+    publishDate: '2025-03-20T11:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['psychological drama', 'Netflix series', 'Adolescence', 'bsiha']
+  },
+  {
+    id: '12',
+    title: 'Dupahiya: Celebrating Rural Narratives',
+    slug: 'dupahiya-review',
+    excerpt: 'The Hindi series "Dupahiya" brings rural stories to the forefront, highlighting the charm and challenges of village life.',
+    content: `
     <p>"Dupahiya" offers a heartfelt portrayal of rural India, focusing on the lives of its inhabitants with authenticity and respect. The series captures the nuances of village dynamics, traditions, and the evolving landscape of rural communities.</p>
 
     <p>Through its engaging storytelling and relatable characters, "Dupahiya" sheds light on the joys and struggles faced by those in the countryside. The show's commitment to representing rural narratives contributes to a more inclusive portrayal of Indian society on screen.</p>
 
     <p>By bringing these stories to a broader audience, "Dupahiya" plays a vital role in diversifying the narratives within Indian television.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/ziG7QLuVYtdcBs4ggMOR9vYgX6e.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-04-25T13:00:00Z',
-  readTimeMinutes: 7,
-  featured: true,
-  tags: ['rural India', 'Hindi series', 'Dupahiya', 'bishanpreet']
-},
-{
-  id: '13',
-  title: 'Sikandar: A Regal Tale of Vengeance and Redemption',
-  slug: 'sikandar-netflix-review',
-  excerpt: 'Salman Khan and Rashmika Mandanna star in this action-packed drama that explores themes of loss, justice, and redemption.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/ziG7QLuVYtdcBs4ggMOR9vYgX6e.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[3],
+    publishDate: '2025-04-25T13:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['rural India', 'Hindi series', 'Dupahiya', 'bishanpreet']
+  },
+  {
+    id: '13',
+    title: 'Sikandar: A Regal Tale of Vengeance and Redemption',
+    slug: 'sikandar-netflix-review',
+    excerpt: 'Salman Khan and Rashmika Mandanna star in this action-packed drama that explores themes of loss, justice, and redemption.',
+    content: `
     <p>"Sikandar" brings together the star power of Salman Khan and Rashmika Mandanna in a narrative that intertwines royal legacy with contemporary issues. Directed by A.R. Murugadoss, the film follows King Sanjay Rajkot, known as Sikandar, as he embarks on a mission to protect the recipients of his late wife's organ donations from a vengeful minister.</p>
 
     <p>The film's strength lies in its emotional core, exploring the depths of grief and the lengths one would go to honor a loved one's legacy. While the action sequences are commendable, it's the performances that truly shine, with Khan delivering a nuanced portrayal of a monarch torn between duty and personal loss.</p>
 
     <p>Despite mixed reviews, "Sikandar" has found its audience on Netflix, resonating with viewers who appreciate a blend of action and heartfelt storytelling. The film's exploration of organ donation and its impact adds a unique layer to the traditional revenge saga, making it a noteworthy addition to Bollywood's 2025 lineup.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/eMClxgkdkWCnjKoshtb49rWEV6q.jpg',
-  category: 'bollywood',
-  subCategory: 'movies',
-   category: 'trending',
-  author: authors[0],
-  publishDate: '2025-05-25T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['Salman Khan', 'Rashmika Mandanna', 'A.R. Murugadoss', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '14',
-  title: 'Retro: A Nostalgic Journey Through Love and Chaos',
-  slug: 'retro-tamil-film-review',
-  excerpt: 'Suriya and Pooja Hegde lead this romantic action film that delves into themes of redemption and destiny.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/eMClxgkdkWCnjKoshtb49rWEV6q.jpg',
+    category: 'bollywood',
+    subCategory: 'movies',
+    trending: true,
+    author: authors[0],
+    publishDate: '2025-05-25T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['Salman Khan', 'Rashmika Mandanna', 'A.R. Murugadoss', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '14',
+    title: 'Retro: A Nostalgic Journey Through Love and Chaos',
+    slug: 'retro-tamil-film-review',
+    excerpt: 'Suriya and Pooja Hegde lead this romantic action film that delves into themes of redemption and destiny.',
+    content: `
     <p>Directed by Karthik Subbaraj, "Retro" is a Tamil romantic action film that takes viewers on a rollercoaster ride through the life of Paarivel "Paari" Kannan, portrayed by Suriya. Raised by a gangster, Paari seeks to leave his violent past behind and reunite with his lost love, Rukmini, played by Pooja Hegde.</p>
 
     <p>The film masterfully blends elements of romance, action, and drama, set against the backdrop of a cult and a foreboding prophecy. The standout feature is a 15-minute single-shot sequence that showcases the director's prowess and the cast's dedication.</p>
 
     <p>With its compelling narrative and strong performances, "Retro" has garnered positive reviews and is set to stream on Netflix from June 5, 2025. It's a must-watch for fans of Tamil cinema and those who appreciate stories of love intertwined with action-packed sequences.</p>
   `,
-  heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/retro-et00426563-1735202760.jpg',
-  category: 'tollywood',
-  subCategory: 'movies',
-  author: authors[1],
-  publishDate: '2025-06-05T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: true,
-  tags: ['Suriya', 'Pooja Hegde', 'Karthik Subbaraj', 'uh films', 'bsiha', 'bishanpreet']
-},
-{
-  id: '15',
-  title: 'HIT: The Third Case – A Gripping Telugu Thriller',
-  slug: 'hit-third-case-review',
-  excerpt: 'Nani stars in this intense thriller that delves into a sinister cult and a complex investigation.',
-  content: `
+    heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/retro-et00426563-1735202760.jpg',
+    category: 'tollywood',
+    subCategory: 'movies',
+    author: authors[1],
+    publishDate: '2025-06-05T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['Suriya', 'Pooja Hegde', 'Karthik Subbaraj', 'uh films', 'bsiha', 'bishanpreet']
+  },
+  {
+    id: '15',
+    title: 'HIT: The Third Case – A Gripping Telugu Thriller',
+    slug: 'hit-third-case-review',
+    excerpt: 'Nani stars in this intense thriller that delves into a sinister cult and a complex investigation.',
+    content: `
     <p>"HIT: The Third Case" is a Telugu thriller that continues the HIT franchise's tradition of delivering edge-of-the-seat narratives. Directed by Sailesh Kolanu, the film features Nani as Arjun Sarkaar, a top cop who finds himself imprisoned under mysterious circumstances while investigating a gruesome case involving a cult named CTK.</p>
 
     <p>The film delves deep into the dark world of ritual killings and organ trafficking, with Arjun uncovering shocking truths that challenge his perceptions. Nani's performance is lauded for bringing depth and intensity to the character, making the film a standout in the thriller genre.</p>
 
     <p>Set to stream on Netflix from June 5, 2025, "HIT: The Third Case" is a must-watch for fans of crime thrillers and those who appreciate intricate storytelling combined with powerful performances.</p>
   `,
-  heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hit-the-3rd-case-et00410905-1740556769.jpg',
-  category: 'tollywood',
-  subCategory: 'movies',
-  author: authors[3],
-  publishDate: '2025-06-05T00:00:00Z',
-  readTimeMinutes: 9,
-  featured: true,
-  tags: ['Nani', 'Sailesh Kolanu', 'Telugu thriller', 'uh films', 'bsiha', 'bishanpreet']
-},
-{
-  id: '16',
-  title: 'The Diplomat: A Tale of Courage and Diplomacy',
-  slug: 'the-diplomat-review',
-  excerpt: 'John Abraham portrays IFS officer JP Singh in this gripping retelling of a real-life rescue mission.',
-  content: `
+    heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hit-the-3rd-case-et00410905-1740556769.jpg',
+    category: 'tollywood',
+    subCategory: 'movies',
+    author: authors[3],
+    publishDate: '2025-06-05T00:00:00Z',
+    readTimeMinutes: 9,
+    featured: true,
+    tags: ['Nani', 'Sailesh Kolanu', 'Telugu thriller', 'uh films', 'bsiha', 'bishanpreet']
+  },
+  {
+    id: '16',
+    title: 'The Diplomat: A Tale of Courage and Diplomacy',
+    slug: 'the-diplomat-review',
+    excerpt: 'John Abraham portrays IFS officer JP Singh in this gripping retelling of a real-life rescue mission.',
+    content: `
     <p>"The Diplomat" is a compelling film that brings to light the real-life story of Indian Foreign Service officer JP Singh, portrayed by John Abraham. The narrative focuses on the 2017 mission to rescue Uzma Ahmed, an Indian woman trapped in Pakistan after being coerced into marriage.</p>
 
     <p>Directed by Shivam Nair and written by Ritesh Shah, the film delves into the complexities of international diplomacy, personal courage, and the relentless pursuit of justice. Sadia Khateeb delivers a poignant performance as Uzma, capturing the emotional turmoil and resilience of her character.</p>
 
     <p>With a gripping storyline and powerful performances, "The Diplomat" is a testament to the strength of human spirit and the importance of diplomatic efforts in safeguarding citizens. Now streaming on Netflix, it's a must-watch for those interested in real-life stories of heroism and perseverance.</p>
   `,
-  heroImage: 'https://resizing.flixster.com/ycSV1vENwywdf2x4RLNjF2ib9PI=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p29678860_k_h10_aa.jpg',
-  category: 'bollywood',
-  subCategory: 'movies',
-  author: authors[0],
-  publishDate: '2025-05-23T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['John Abraham', 'JP Singh', 'Shivam Nair', 'uh films', 'bsiha', 'bishanpreet']
-},
-{
-  id: '17',
-  title: 'Khakee: The Bengal Chapter – A Political Crime Thriller',
-  slug: 'khakee-bengal-chapter-review',
-  excerpt: 'Prosenjit Chatterjee leads this gripping series that delves into the complexities of crime and politics in Bengal.',
-  content: `
+    heroImage: 'https://resizing.flixster.com/ycSV1vENwywdf2x4RLNjF2ib9PI=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p29678860_k_h10_aa.jpg',
+    category: 'bollywood',
+    subCategory: 'movies',
+    author: authors[0],
+    publishDate: '2025-05-23T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['John Abraham', 'JP Singh', 'Shivam Nair', 'uh films', 'bsiha', 'bishanpreet']
+  },
+  {
+    id: '17',
+    title: 'Khakee: The Bengal Chapter – A Political Crime Thriller',
+    slug: 'khakee-bengal-chapter-review',
+    excerpt: 'Prosenjit Chatterjee leads this gripping series that delves into the complexities of crime and politics in Bengal.',
+    content: `
     <p>"Khakee: The Bengal Chapter" is a Bengali-language political crime thriller that serves as a standalone sequel to "Khakee: The Bihar Chapter." Created by Neeraj Pandey, the series features an ensemble cast including Prosenjit Chatterjee, Jeet, and Chitrangada Singh.</p>
 
     <p>Set against the backdrop of Bengal's political landscape, the series explores the intertwining of crime and politics through compelling narratives and complex characters. The performances are lauded for their authenticity, bringing depth to the storyline.</p>
 
     <p>With its engaging plot and strong character development, "Khakee: The Bengal Chapter" has received positive reviews and is now streaming on Netflix. It's a must-watch for fans of political dramas and crime thrillers.</p>
   `,
-  heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/khakee-et00062706-28-09-2017-10-46-59.jpg',
-  category: 'tollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-03-20T00:00:00Z',
-  readTimeMinutes: 9,
-  featured: true,
-  tags: ['Prosenjit Chatterjee', 'Neeraj Pandey', 'Bengal politics', 'uh films', 'bsiha', 'bishanpreet']
-},
-{
-  id: '18',
-  title: 'Rana Naidu Season 2: The Fixer Returns',
-  slug: 'rana-naidu-season-2-review',
-  excerpt: 'The Daggubati duo returns in a gripping second season filled with intense drama and action.',
-  content: `
+    heroImage: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/khakee-et00062706-28-09-2017-10-46-59.jpg',
+    category: 'tollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-03-20T00:00:00Z',
+    readTimeMinutes: 9,
+    featured: true,
+    tags: ['Prosenjit Chatterjee', 'Neeraj Pandey', 'Bengal politics', 'uh films', 'bsiha', 'bishanpreet']
+  },
+  {
+    id: '18',
+    title: 'Rana Naidu Season 2: The Fixer Returns',
+    slug: 'rana-naidu-season-2-review',
+    excerpt: 'The Daggubati duo returns in a gripping second season filled with intense drama and action.',
+    content: `
     <p>Netflix's "Rana Naidu" returns with a bang in its second season, bringing back the dynamic duo of Rana Daggubati and Venkatesh Daggubati. The series delves deeper into the tumultuous lives of the Naidu family, exploring themes of loyalty, betrayal, and redemption.</p>
 
     <p>Season 2 introduces new characters portrayed by Arjun Rampal and Kriti Kharbanda, adding fresh dynamics to the narrative. The storytelling is tighter, with high-stakes scenarios that keep viewers on the edge of their seats. The series continues to showcase the gritty underbelly of Mumbai's crime world, with Rana's character navigating complex moral dilemmas.</p>
 
     <p>Produced by Locomotive Global Media and directed by Karan Anshuman, Suparn S. Varma, and Abhay Chopra, "Rana Naidu" Season 2 is a testament to the evolving landscape of Indian web series, blending intense drama with cinematic storytelling.</p>
   `,
-  heroImage: 'https://upload.wikimedia.org/wikipedia/en/0/07/Rana_Naidu.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-06-13T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['Rana Naidu', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
-},
+    heroImage: 'https://upload.wikimedia.org/wikipedia/en/0/07/Rana_Naidu.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-06-13T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['Rana Naidu', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
+  },
   {
-  id: '19',
-  title: 'The Royals: A Modern-Day Fairy Tale',
-  slug: 'the-royals-review',
-  excerpt: 'A charming rom-com that reimagines royalty in contemporary India, blending humor and heart.',
-  content: `
+    id: '19',
+    title: 'The Royals: A Modern-Day Fairy Tale',
+    slug: 'the-royals-review',
+    excerpt: 'A charming rom-com that reimagines royalty in contemporary India, blending humor and heart.',
+    content: `
     <p>Netflix's "The Royals" offers a delightful escape into a world where tradition meets modernity. Starring Ishaan Khatter as Prince Aviraaj Singh and Bhumi Pednekar as entrepreneur Sophia Shekhar, the series explores the unlikely romance between a royal and a commoner.</p>
 
     <p>The narrative unfolds as Sophia seeks to collaborate with a royal family for her luxury B&B business, leading her to Aviraaj, the new maharaja of a struggling estate. Their partnership, filled with comedic misadventures and heartfelt moments, challenges societal norms and personal beliefs.</p>
 
     <p>Directed with a light touch and featuring a witty script, "The Royals" stands out for its engaging performances and fresh take on romantic tropes. It's a testament to the evolving storytelling in Indian web series, appealing to audiences seeking both laughter and love.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/6Ya2tELysRQ6g6EPjFRY5lNUXXC.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-05-09T00:00:00Z',
-  readTimeMinutes: 7,
- featured: true,
-  tags: ['The Royals', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '20',
-  title: 'Killer Soup: A Small-Town Mystery Unfolds',
-  slug: 'killer-soup-review',
-  excerpt: 'Amazon Prime Video’s latest offering delves into the secrets of a quaint town, unraveling a gripping mystery.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/6Ya2tELysRQ6g6EPjFRY5lNUXXC.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-05-09T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['The Royals', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '20',
+    title: 'Killer Soup: A Small-Town Mystery Unfolds',
+    slug: 'killer-soup-review',
+    excerpt: 'Amazon Prime Video’s latest offering delves into the secrets of a quaint town, unraveling a gripping mystery.',
+    content: `
     <p>"Killer Soup," streaming on Amazon Prime Video, transports viewers to a serene town where tranquility masks deep-seated secrets. Starring Gajraj Rao, Sparsh Shrivastava, and Shivani Raghuvanshi, the series masterfully blends drama and suspense.</p>
 
     <p>The narrative centers around a series of unexplained events that disrupt the town's peace, prompting an investigation that uncovers hidden truths and challenges long-held beliefs. The performances are nuanced, capturing the essence of small-town life and the complexities of human relationships.</p>
 
     <p>Directed by Sonam Nair, "Killer Soup" stands out for its atmospheric storytelling and character-driven plot. It's a compelling addition to the Indian web series landscape, offering a fresh perspective on mystery and drama.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/w7W2k2dnKHWlDxqcApBj8Cj304Y.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[3],
-  publishDate: '2025-05-15T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: true,
-  tags: ['Killer Soup', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
-},
+    heroImage: 'https://image.tmdb.org/t/p/original/w7W2k2dnKHWlDxqcApBj8Cj304Y.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[3],
+    publishDate: '2025-05-15T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: true,
+    tags: ['Killer Soup', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
+  },
 
-{
-  id: '21',
-  title: 'Ziddi Girls: Challenging Norms with Bold Narratives',
-  slug: 'ziddi-girls-review',
-  excerpt: 'A provocative series that explores female empowerment and societal taboos in a Delhi college setting.',
-  content: `
+  {
+    id: '21',
+    title: 'Ziddi Girls: Challenging Norms with Bold Narratives',
+    slug: 'ziddi-girls-review',
+    excerpt: 'A provocative series that explores female empowerment and societal taboos in a Delhi college setting.',
+    content: `
     <p>"Ziddi Girls," available on Amazon Prime Video, is a daring exploration of female empowerment set against the backdrop of an all-girls college in Delhi. The series follows five freshmen as they navigate personal growth, societal expectations, and institutional challenges.</p>
 
     <p>The narrative delves into themes of sex education, autonomy, and resistance against conservative ideologies, sparking conversations and controversies alike. Despite facing legal challenges from real-life counterparts, the series remains steadfast in its portrayal of progressive values.</p>
 
     <p>"Ziddi Girls" is a testament to the evolving narratives in Indian web series, pushing boundaries and encouraging discourse on topics often considered taboo. It's a bold addition to the streaming landscape, resonating with audiences seeking thought-provoking content.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/fBsiBCHpBsniHfLBVdUlAOASams.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-03-13T00:00:00Z',
-  readTimeMinutes: 9,
-  featured: true,
-  tags: ['Ziddi Girls', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '22',
-  title: 'Black Warrant: Unveiling the Shadows of Tihar Jail',
-  slug: 'black-warrant-review',
-  excerpt: 'A gripping portrayal of life inside one of India’s most notorious prisons, highlighting systemic issues and personal stories.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/fBsiBCHpBsniHfLBVdUlAOASams.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-03-13T00:00:00Z',
+    readTimeMinutes: 9,
+    featured: true,
+    tags: ['Ziddi Girls', 'Amazon Prime Video', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '22',
+    title: 'Black Warrant: Unveiling the Shadows of Tihar Jail',
+    slug: 'black-warrant-review',
+    excerpt: 'A gripping portrayal of life inside one of India’s most notorious prisons, highlighting systemic issues and personal stories.',
+    content: `
     <p>Netflix's "Black Warrant" offers an unflinching look into the lives of inmates and officials within Tihar Jail, one of India's most infamous prisons. Starring Zahan Kapoor, Paramvir Singh Cheema, and Sidhant Gupta, the series delves into the complexities of justice, rehabilitation, and institutional challenges.</p>
 
     <p>The narrative weaves personal stories with broader systemic issues, shedding light on the human aspects often overlooked in discussions about incarceration. The performances are compelling, bringing authenticity and depth to the characters.</p>
 
     <p>"Black Warrant" stands as a significant contribution to Indian web series, prompting reflection on the criminal justice system and the lives it impacts. It's a must-watch for viewers interested in socially relevant storytelling.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/p9EbbTj6yDvmpUPpSlwD86Kydxd.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-01-10T00:00:00Z',
-  readTimeMinutes: 9,
-featured: true,
-  tags: ['Black Warrant', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
-},
-{
-  id: '23',
-  title: 'Knock Knock Kaun Hai?: A Digital Age Thriller',
-  slug: 'knock-knock-kaun-hai-review',
-  excerpt: 'Exploring the perils of digital temptations and teenage vulnerabilities in this gripping young adult series.',
-  content: `
+    heroImage: 'https://image.tmdb.org/t/p/original/p9EbbTj6yDvmpUPpSlwD86Kydxd.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-01-10T00:00:00Z',
+    readTimeMinutes: 9,
+    featured: true,
+    tags: ['Black Warrant', 'Netflix India', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
+    id: '23',
+    title: 'Knock Knock Kaun Hai?: A Digital Age Thriller',
+    slug: 'knock-knock-kaun-hai-review',
+    excerpt: 'Exploring the perils of digital temptations and teenage vulnerabilities in this gripping young adult series.',
+    content: `
     <p>MX Player's "Knock Knock Kaun Hai?" delves into the complexities of teenage life, highlighting the emotional vulnerabilities and peer pressures faced by today's youth. The narrative follows best friends Tanya and Rohan, whose bond begins to unravel after a breach of trust. Tanya's encounter with a mysterious mobile app that claims to fulfill any wish leads her into a dangerous and emotionally charged series of events.</p>
 
     <p>Starring Aadhya Anand, Kush Jotwani, and Arjun Deswal, the series addresses themes such as emotional vulnerability, peer pressure, and digital temptations. Aadhya Anand expressed her connection with the character Tanya due to her realistic portrayal and resilience. Producer Sudhir Sharma highlights the series as a reflection of the impulsiveness and emotional struggles of today's hyper-connected youth. With its blend of drama, romance, friendship, and suspense, the show promises a gripping viewing experience that keeps audiences guessing until the end.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/iKo0zu7PPN73oaVdr1mfdHg3tan.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-05-22T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: true,
-  tags: ['Knock Knock Kaun Hai', 'MX Player', 'uh films', 'bishan', 'bishanpreet']
-},
-{
+    heroImage: 'https://image.tmdb.org/t/p/original/iKo0zu7PPN73oaVdr1mfdHg3tan.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-05-22T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: true,
+    tags: ['Knock Knock Kaun Hai', 'MX Player', 'uh films', 'bishan', 'bishanpreet']
+  },
+  {
     id: '24',
     title: 'The Future of Independent Filmmaking: How UH Films is Revolutionizing the Industry',
     slug: 'future-independent-filmmaking-uh-films',
@@ -548,7 +548,7 @@ featured: true,
     readTimeMinutes: 8,
     featured: false,
     tags: ['independent films', 'film technology', 'virtual production', 'UH Films', 'Bishan Preet Singh']
-},
+  },
   {
     id: '25',
     title: 'Mastering Low-Budget Cinematography: Techniques from UH Films Award-Winning Director',
@@ -613,7 +613,7 @@ featured: true,
     readTimeMinutes: 9,
     featured: false,
     tags: ['cinematography', 'low-budget filmmaking', 'camera techniques', 'UH Films director', 'DIY cinematography']
-},
+  },
   {
     id: '26',
     title: 'Viral Film Marketing: UH Films Blueprint for 10M+ Views on Zero Budget',
@@ -685,8 +685,8 @@ featured: true,
     readTimeMinutes: 11,
     featured: false,
     tags: ['film marketing', 'viral content', 'social media strategy', 'UH Films marketing', 'organic growth']
-},
- {
+  },
+  {
     id: '27',
     title: 'AI in Filmmaking: How UH Films is Leveraging ChatGPT & Sora to Cut Production Costs by 40%',
     slug: 'ai-filmmaking-cost-reduction',
@@ -741,7 +741,7 @@ featured: true,
     readTimeMinutes: 7,
     featured: false,
     tags: ['AI filmmaking', 'OpenAI Sora', 'synthetic media', 'virtual production', 'Bishan Preet Singh']
-},
+  },
   {
     id: '28',
     title: 'YouTube Shorts vs. Instagram Reels: Data-Driven Strategies for Filmmakers',
@@ -797,7 +797,7 @@ featured: true,
     readTimeMinutes: 6,
     featured: false,
     tags: ['YouTube Shorts', 'Instagram Reels', 'viral video', 'short-form content', 'filmmaker marketing']
-},
+  },
   {
     id: '29',
     title: 'Metaverse Movies: UH Films Blockchain-Based Distribution Model',
@@ -853,27 +853,27 @@ featured: true,
     readTimeMinutes: 8,
     featured: false,
     tags: ['metaverse movies', 'NFT films', 'blockchain distribution', 'Web3 cinema', 'decentralized streaming']
-},
-{
-  id: '30',
-  title: 'Delhi Crime: A Stark Portrayal of Real-Life Crime Investigation',
-  slug: 'delhi-crime-review',
-  excerpt: 'An intense, gripping series based on the 2012 Delhi gang rape case and its aftermath.',
-  content: `
+  },
+  {
+    id: '30',
+    title: 'Delhi Crime: A Stark Portrayal of Real-Life Crime Investigation',
+    slug: 'delhi-crime-review',
+    excerpt: 'An intense, gripping series based on the 2012 Delhi gang rape case and its aftermath.',
+    content: `
     <p>Netflix’s "Delhi Crime" offers a harrowing and realistic depiction of the investigation following the 2012 Delhi gang rape case. The series, led by Shefali Shah’s compelling performance, highlights the challenges faced by law enforcement.</p>
 
     <p>Directed by Richie Mehta, "Delhi Crime" has received widespread acclaim for its sensitive storytelling and powerful impact, shining a light on justice and societal issues.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/original/xkpkTj6KGsjSaet0VQaq0aTn31D.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[1],
-  publishDate: '2025-05-09T00:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['Delhi Crime', 'Netflix India', 'crime drama', 'Shefali Shah', 'Richie Mehta']
-},
-{
+    heroImage: 'https://image.tmdb.org/t/p/original/xkpkTj6KGsjSaet0VQaq0aTn31D.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[1],
+    publishDate: '2025-05-09T00:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['Delhi Crime', 'Netflix India', 'crime drama', 'Shefali Shah', 'Richie Mehta']
+  },
+  {
     id: '31',
     title: 'Sustainable Filmmaking 2.0: How UH Films Merges AI & Solar Tech to Create Carbon-Neutral Cinema',
     slug: 'sustainable-ai-filmmaking',
@@ -919,7 +919,7 @@ featured: true,
     readTimeMinutes: 9,
     featured: false,
     tags: ['sustainable AI', 'carbon-neutral films', 'solar film tech', 'eco-production', 'Bishan UH Films', 'NFT environment']
-},
+  },
   {
     id: '32',
     title: 'AI-Powered Mental Health in Film: UH Films Neurofeedback System for Stress-Free Productions',
@@ -966,7 +966,7 @@ featured: true,
     readTimeMinutes: 8,
     featured: false,
     tags: ['AI mental health', 'neurofeedback filmmaking', 'stress-free production', 'Bishan Singh wellness', 'emotional AI', 'burnout prevention']
-},
+  },
   {
     id: '33',
     title: 'From Silver Screen to Smart Farms: UH Films AI Storytelling Tech Revolutionizing Agriculture',
@@ -1012,7 +1012,7 @@ featured: true,
     readTimeMinutes: 7,
     featured: false,
     tags: ['AI agriculture', 'film tech farming', 'smart village projects', 'Bishan Singh agritech', 'holo farming', 'Kisanflix']
-},
+  },
   {
     id: '34',
     title: 'Neurocinematics 2.0: How UH Films Uses Brainwave Tracking to Create Addictive Content',
@@ -1060,8 +1060,8 @@ featured: true,
     readTimeMinutes: 11,
     featured: false,
     tags: ['neurocinematics', 'brainwave filmmaking', 'dopamine content', 'Bishan Singh neuroscience', 'AI emotion tracking']
-},
- {
+  },
+  {
     id: '35',
     title: 'Blockchain Scriptwriting: How UH Films Crowdsources Stories Using NFT Voting',
     slug: 'nft-screenwriting-community-driven',
@@ -1105,9 +1105,9 @@ featured: true,
     author: authors[1],
     publishDate: '2024-12-10T14:15:00Z',
     readTimeMinutes: 9,
-   featured: false,
+    featured: false,
     tags: ['NFT filmmaking', 'decentralized storytelling', 'blockchain scripts', 'crowdsourced cinema', 'tokenized creativity']
-} ,
+  },
   {
     id: '36',
     title: 'AI Method Acting: How UH Films Trains Synthetic Actors Using Emotional GPTs',
@@ -1153,8 +1153,8 @@ featured: true,
     readTimeMinutes: 10,
     featured: false,
     tags: ['AI actors', 'digital humans', 'ethical deepfakes', 'synthetic performers', 'posthumous acting']
-},
- {
+  },
+  {
     id: '37',
     title: 'Quantum Filmmaking: UH Films Experiments with Entangled Particle Storytelling',
     slug: 'quantum-entanglement-filmmaking',
@@ -1197,9 +1197,9 @@ featured: true,
     author: authors[0],
     publishDate: '2025-02-28T16:20:00Z',
     readTimeMinutes: 12,
-   featured: false,
+    featured: false,
     tags: ['quantum filmmaking', 'entangled storytelling', 'physics cinema', 'Bishan Singh quantum', 'non-linear narratives']
-} ,
+  },
   {
     id: '38',
     title: 'AI-Powered Scriptwriting: How UH Films Uses Claude 3.5 to Generate Blockbuster Screenplays',
@@ -1244,9 +1244,9 @@ featured: true,
     author: authors[0],
     publishDate: '2025-06-10T09:45:00Z',
     readTimeMinutes: 8,
-   featured: false,
+    featured: false,
     tags: ['AI screenwriting', 'Claude 3.5', 'Bollywood AI', 'Bishan Singh', 'NFT scripts']
-},{
+  }, {
     id: '39',
     title: 'Dopamine Filmmaking: How UH Films Designs Movies That Trigger Pleasure Chemicals',
     slug: 'dopamine-filmmaking-neuroscience',
@@ -1291,7 +1291,7 @@ featured: true,
     readTimeMinutes: 9,
     featured: false,
     tags: ['dopamine filmmaking', 'neurocinematics', 'brainwave editing', 'AI entertainment', 'UH Films neuroscience']
-},{
+  }, {
     id: '40',
     title: 'Lab-Grown Celebrities: UH Films Synthetic Actors Outperform Humans in Emotional Scenes',
     slug: 'synthetic-actors-emotional-performance',
@@ -1336,7 +1336,7 @@ featured: true,
     readTimeMinutes: 10,
     featured: false,
     tags: ['synthetic actors', 'digital humans', 'Bollywood AI', 'ethical deepfakes', 'posthumous performances']
-},
+  },
   {
     id: '41',
     title: 'Quantum Editing: How UH Films Uses Entangled Particles to Create Infinite Movie Versions',
@@ -1380,9 +1380,9 @@ featured: true,
     author: authors[0],
     publishDate: '2025-09-22T16:45:00Z',
     readTimeMinutes: 12,
-   featured: false,
+    featured: false,
     tags: ['quantum filmmaking', 'entangled storytelling', 'physics cinema', 'Bishan Singh', 'NFT movies']
-},{
+  }, {
     id: '42',
     title: 'AI Vocal Remixing: How UH Films Is Resurrecting Legendary Singers for New Songs',
     slug: 'ai-vocal-remixing-legendary-singers',
@@ -1428,28 +1428,28 @@ featured: true,
     author: authors[1],
     publishDate: '2025-10-30T13:15:00Z',
     readTimeMinutes: 8,
-   featured: false,
+    featured: false,
     tags: ['AI vocals', 'voice cloning', 'Bollywood music', 'legendary singers', 'NFT music']
-},
+  },
   {
-  id: '43',
-  title: 'Sacred Games: A Gritty Crime Thriller That Redefines Indian Storytelling',
-  slug: 'sacred-games-review',
-  excerpt: 'A dark and intense dive into Mumbai’s underworld, blending crime, politics, and mythology.',
-  content: `
+    id: '43',
+    title: 'Sacred Games: A Gritty Crime Thriller That Redefines Indian Storytelling',
+    slug: 'sacred-games-review',
+    excerpt: 'A dark and intense dive into Mumbai’s underworld, blending crime, politics, and mythology.',
+    content: `
     <p>Netflix’s "Sacred Games," based on Vikram Chandra’s novel, is a gritty crime thriller that explores the murky depths of Mumbai’s criminal underworld. With powerful performances from Saif Ali Khan and Nawazuddin Siddiqui, the series intertwines politics, crime, and spirituality.</p>
 
     <p>Directed by Anurag Kashyap and Vikramaditya Motwane, "Sacred Games" is praised for its intricate narrative and complex characters, making it a landmark in Indian web series.</p>
   `,
-  heroImage: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/mnxPMgU5bw8np8zJKLqAgC9Eq0b.jpg',
-  category: 'bollywood',
-  subCategory: 'web-series',
-  author: authors[0],
-  publishDate: '2025-04-18T00:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['Sacred Games', 'Netflix India', 'crime thriller', 'Mumbai', 'Anurag Kashyap']
-},
+    heroImage: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/mnxPMgU5bw8np8zJKLqAgC9Eq0b.jpg',
+    category: 'bollywood',
+    subCategory: 'web-series',
+    author: authors[0],
+    publishDate: '2025-04-18T00:00:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['Sacred Games', 'Netflix India', 'crime thriller', 'Mumbai', 'Anurag Kashyap']
+  },
   {
     id: '44',
     title: 'Metaverse Movie Premieres: UH Films Blockchain Ticketing Generates ₹5.2 Crore in 72 Hours',
@@ -1495,18 +1495,18 @@ featured: true,
     readTimeMinutes: 7,
     featured: false,
     tags: ['metaverse premieres', 'NFT tickets', 'blockchain films', 'virtual red carpet', 'DeFi cinema']
-},
+  },
   {
-  id: '45',
-  title: 'AI Music Festivals: Synth DJs & Tokenized Setlists Dominate Goa Shores',
-  slug: 'ai-music-token-festival-goa',
-  excerpt: 'Inside India’s first AI-curated beach music fest with live remix NFTs and token voting for encore tracks.',
-  summary: [
-    "AI-DJ performance mechanics & real-time fan inputs",
-    "Music NFTs with dynamic royalties and remix rights",
-    "Case study: 3x merchandise sales via token drops"
-  ],
-  content: `
+    id: '45',
+    title: 'AI Music Festivals: Synth DJs & Tokenized Setlists Dominate Goa Shores',
+    slug: 'ai-music-token-festival-goa',
+    excerpt: 'Inside India’s first AI-curated beach music fest with live remix NFTs and token voting for encore tracks.',
+    summary: [
+      "AI-DJ performance mechanics & real-time fan inputs",
+      "Music NFTs with dynamic royalties and remix rights",
+      "Case study: 3x merchandise sales via token drops"
+    ],
+    content: `
     <h2>Programmable Beats & Blockchain Fans</h2>
     <p>Our stack included:</p>
     <ul>
@@ -1530,26 +1530,26 @@ featured: true,
       <li>Wearable-integrated beat syncs</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/6746692/pexels-photo-6746692.jpeg',
-  category: 'web3',
-  subCategory: 'ai-music',
-  author: authors[1],
-  publishDate: '2025-12-02T08:00:00Z',
-  readTimeMinutes: 6,
-  featured: false,
-  tags: ['AI music', 'tokenized setlists', 'remix NFTs', 'fan DAOs', 'web3 festivals']
-}
-,{
-  id: '46',
-  title: 'Campus in the Cloud: How India’s First NFT University Raised ₹12 Cr in 48 Hours',
-  slug: 'nft-university-launch',
-  excerpt: 'A blueprint for launching decentralized education with NFT degrees, token-based classrooms, and peer-driven faculty.',
-  summary: [
-    "Soulbound Degrees: Verifiable, non-tradable credentials",
-    "Governance by token-holding students and alumni",
-    "Startup accelerator with NFT tuition credits"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/6746692/pexels-photo-6746692.jpeg',
+    category: 'web3',
+    subCategory: 'ai-music',
+    author: authors[1],
+    publishDate: '2025-12-02T08:00:00Z',
+    readTimeMinutes: 6,
+    featured: false,
+    tags: ['AI music', 'tokenized setlists', 'remix NFTs', 'fan DAOs', 'web3 festivals']
+  }
+  , {
+    id: '46',
+    title: 'Campus in the Cloud: How India’s First NFT University Raised ₹12 Cr in 48 Hours',
+    slug: 'nft-university-launch',
+    excerpt: 'A blueprint for launching decentralized education with NFT degrees, token-based classrooms, and peer-driven faculty.',
+    summary: [
+      "Soulbound Degrees: Verifiable, non-tradable credentials",
+      "Governance by token-holding students and alumni",
+      "Startup accelerator with NFT tuition credits"
+    ],
+    content: `
     <h2>Onboarding the EduDAO</h2>
     <p>Stack elements:</p>
     <ul>
@@ -1573,26 +1573,26 @@ featured: true,
       <li>Internship NFT matching engine</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/374820/pexels-photo-374820.jpeg',
-  category: 'web3',
-  subCategory: 'education',
-  author: authors[0],
-  publishDate: '2025-10-12T09:00:00Z',
-  readTimeMinutes: 8,
-  featured: false,
-  tags: ['NFT degrees', 'decentralized education', 'eduDAO', 'tokenized classrooms']
-}
-,{
-  id: '47',
-  title: 'DeFi Weddings: ₹3.7 Cr in Vow Tokens Minted at India\'s First Blockchain Marriage',
-  slug: 'blockchain-weddings-defi-vows',
-  excerpt: 'A couple tied the knot in Decentraland—complete with NFT rings, AI priests, and tokenized gifts.',
-  summary: [
-    "Soulbound wedding contracts & community-validated vows",
-    "Gift NFTs with real-world value unlocks",
-    "DeFi honeymoon fund auto-managed by smart contracts"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/374820/pexels-photo-374820.jpeg',
+    category: 'web3',
+    subCategory: 'education',
+    author: authors[0],
+    publishDate: '2025-10-12T09:00:00Z',
+    readTimeMinutes: 8,
+    featured: false,
+    tags: ['NFT degrees', 'decentralized education', 'eduDAO', 'tokenized classrooms']
+  }
+  , {
+    id: '47',
+    title: 'DeFi Weddings: ₹3.7 Cr in Vow Tokens Minted at India\'s First Blockchain Marriage',
+    slug: 'blockchain-weddings-defi-vows',
+    excerpt: 'A couple tied the knot in Decentraland—complete with NFT rings, AI priests, and tokenized gifts.',
+    summary: [
+      "Soulbound wedding contracts & community-validated vows",
+      "Gift NFTs with real-world value unlocks",
+      "DeFi honeymoon fund auto-managed by smart contracts"
+    ],
+    content: `
     <h2>How It Worked</h2>
     <ul>
       <li><strong>NFT Rings:</strong> One-of-one blockchain-bonded tokens</li>
@@ -1615,26 +1615,26 @@ featured: true,
       <li>AR ring projection synced with blockchain</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/9481853/pexels-photo-9481853.jpeg',
-  category: 'web3',
-  subCategory: 'virtual-lifestyle',
-  author: authors[2],
-  publishDate: '2025-08-17T15:30:00Z',
-  readTimeMinutes: 5,
-  featured: false,
-  tags: ['blockchain marriage', 'NFT rings', 'DeFi weddings', 'vow tokens', 'virtual ceremonies']
-}
-,{
-  id: '48',
-  title: 'Tokenized Theatre: How Live Stage Plays on Web3 Hit ₹4.5 Cr in a Month',
-  slug: 'web3-theatre-token-nft',
-  excerpt: 'An immersive hybrid production reinvented stage acting with AI-enhanced performances and collectible scene tokens.',
-  summary: [
-    "Decentralized casting using token votes",
-    "Live NFT minting of iconic monologues",
-    "Audience reaction DAO to rewrite acts"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/9481853/pexels-photo-9481853.jpeg',
+    category: 'web3',
+    subCategory: 'virtual-lifestyle',
+    author: authors[2],
+    publishDate: '2025-08-17T15:30:00Z',
+    readTimeMinutes: 5,
+    featured: false,
+    tags: ['blockchain marriage', 'NFT rings', 'DeFi weddings', 'vow tokens', 'virtual ceremonies']
+  }
+  , {
+    id: '48',
+    title: 'Tokenized Theatre: How Live Stage Plays on Web3 Hit ₹4.5 Cr in a Month',
+    slug: 'web3-theatre-token-nft',
+    excerpt: 'An immersive hybrid production reinvented stage acting with AI-enhanced performances and collectible scene tokens.',
+    summary: [
+      "Decentralized casting using token votes",
+      "Live NFT minting of iconic monologues",
+      "Audience reaction DAO to rewrite acts"
+    ],
+    content: `
     <h2>Stack Behind the Curtain</h2>
     <ul>
       <li><strong>AI Co-Actors:</strong> Realtime dialogue with GPT-voice bots</li>
@@ -1657,26 +1657,26 @@ featured: true,
       <li>Actor AI personality plugins</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/1850222/pexels-photo-1850222.jpeg',
-  category: 'web3',
-  subCategory: 'arts-culture',
-  author: authors[3],
-  publishDate: '2025-09-30T14:00:00Z',
-  readTimeMinutes: 7,
-  featured: false,
-  tags: ['tokenized theatre', 'AI actors', 'scene NFTs', 'drama DAO']
-}
-,{
-  id: '49',
-  title: 'Smart Cities x Smart Contracts: Bengaluru’s DAO District Sells 500 Property NFTs in a Week',
-  slug: 'dao-district-bengaluru-property-nfts',
-  excerpt: 'A testbed for urban blockchain infrastructure shows real-time zoning, token-based governance, and NFT real estate deeds.',
-  summary: [
-    "Token-gated neighborhoods with dynamic tax rates",
-    "Property staking for local infrastructure funding",
-    "DAO-managed trash, traffic & security"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/1850222/pexels-photo-1850222.jpeg',
+    category: 'web3',
+    subCategory: 'arts-culture',
+    author: authors[3],
+    publishDate: '2025-09-30T14:00:00Z',
+    readTimeMinutes: 7,
+    featured: false,
+    tags: ['tokenized theatre', 'AI actors', 'scene NFTs', 'drama DAO']
+  }
+  , {
+    id: '49',
+    title: 'Smart Cities x Smart Contracts: Bengaluru’s DAO District Sells 500 Property NFTs in a Week',
+    slug: 'dao-district-bengaluru-property-nfts',
+    excerpt: 'A testbed for urban blockchain infrastructure shows real-time zoning, token-based governance, and NFT real estate deeds.',
+    summary: [
+      "Token-gated neighborhoods with dynamic tax rates",
+      "Property staking for local infrastructure funding",
+      "DAO-managed trash, traffic & security"
+    ],
+    content: `
     <h2>Blockchain Urbanism Stack</h2>
     <ul>
       <li><strong>Real Estate NFTs:</strong> 500 tokenized flats, sold out in 6 days</li>
@@ -1699,26 +1699,26 @@ featured: true,
       <li>Citizen scorecards as soulbound tokens</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/1877856/pexels-photo-1877856.jpeg',
-  category: 'web3',
-  subCategory: 'smart-cities',
-  author: authors[3],
-  publishDate: '2025-11-01T11:00:00Z',
-  readTimeMinutes: 9,
-  featured: false,
-  tags: ['property NFTs', 'smart cities blockchain', 'DAO zoning', 'token urbanism']
-}
-,{
-  id: '50',
-  title: 'AR Temples & Token Blessings: ₹2.9 Cr Raised via Virtual Pilgrimages on Chain',
-  slug: 'ar-temples-token-blessings',
-  excerpt: 'Devotees explore India’s holy sites via augmented reality—unlocking token darshan passes and AI-guided rituals.',
-  summary: [
-    "Token-based blessings & prayer subscriptions",
-    "AR overlay temples in 400+ global cities",
-    "Virtual prasad delivery through soulbound tokens"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/1877856/pexels-photo-1877856.jpeg',
+    category: 'web3',
+    subCategory: 'smart-cities',
+    author: authors[3],
+    publishDate: '2025-11-01T11:00:00Z',
+    readTimeMinutes: 9,
+    featured: false,
+    tags: ['property NFTs', 'smart cities blockchain', 'DAO zoning', 'token urbanism']
+  }
+  , {
+    id: '50',
+    title: 'AR Temples & Token Blessings: ₹2.9 Cr Raised via Virtual Pilgrimages on Chain',
+    slug: 'ar-temples-token-blessings',
+    excerpt: 'Devotees explore India’s holy sites via augmented reality—unlocking token darshan passes and AI-guided rituals.',
+    summary: [
+      "Token-based blessings & prayer subscriptions",
+      "AR overlay temples in 400+ global cities",
+      "Virtual prasad delivery through soulbound tokens"
+    ],
+    content: `
     <h2>Spiritual Stack</h2>
     <ul>
       <li><strong>AR Darshan:</strong> Temples visualized via phone or headset</li>
@@ -1741,25 +1741,25 @@ featured: true,
       <li>Devotion score NFTs as spiritual badges</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/1174147/pexels-photo-1174147.jpeg',
-  category: 'web3',
-  subCategory: 'spiritual-tech',
-  author: authors[0],
-  publishDate: '2025-10-01T06:00:00Z',
-  readTimeMinutes: 6,
-  featured: false,
-  tags: ['AR darshan', 'token blessings', 'spiritual NFTs', 'web3 devotion']
-},{
-  id: '51',
-  title: 'FanFi Stadiums: ₹6.3 Cr Raised as Cricket Fans Tokenize Live Game Decisions',
-  slug: 'fanfi-cricket-token-decision-stadiums',
-  excerpt: 'For the first time, cricket fans used tokens to vote on player substitutions, camera angles, and even jersey colors — live from the blockchain.',
-  summary: [
-    "Token-governed in-game decisions: bowlers, powerplays, and more",
-    "FanFi NFTs with instant game footage royalties",
-    "Decentralized fantasy leagues synced with real matches"
-  ],
-  content: `
+    heroImage: 'https://images.pexels.com/photos/1174147/pexels-photo-1174147.jpeg',
+    category: 'web3',
+    subCategory: 'spiritual-tech',
+    author: authors[0],
+    publishDate: '2025-10-01T06:00:00Z',
+    readTimeMinutes: 6,
+    featured: false,
+    tags: ['AR darshan', 'token blessings', 'spiritual NFTs', 'web3 devotion']
+  }, {
+    id: '51',
+    title: 'FanFi Stadiums: ₹6.3 Cr Raised as Cricket Fans Tokenize Live Game Decisions',
+    slug: 'fanfi-cricket-token-decision-stadiums',
+    excerpt: 'For the first time, cricket fans used tokens to vote on player substitutions, camera angles, and even jersey colors — live from the blockchain.',
+    summary: [
+      "Token-governed in-game decisions: bowlers, powerplays, and more",
+      "FanFi NFTs with instant game footage royalties",
+      "Decentralized fantasy leagues synced with real matches"
+    ],
+    content: `
     <h2>How FanFi Changed the Game</h2>
     <ul>
       <li><strong>Decision DAO:</strong> Token holders influenced real-time game calls</li>
@@ -1782,15 +1782,15 @@ featured: true,
       <li>Live player micro-sponsorships via flash tokens</li>
     </ol>
   `,
-  heroImage: 'https://images.pexels.com/photos/1028600/pexels-photo-1028600.jpeg',
-  category: 'web3',
-  subCategory: 'sports-fandom',
-  author: authors[0],
-  publishDate: '2025-12-10T13:00:00Z',
-  readTimeMinutes: 6,
-  featured: false,
-  tags: ['fan-controlled cricket', 'sports DAOs', 'angle NFTs', 'blockchain sports', 'fantasy web3']
-}
+    heroImage: 'https://images.pexels.com/photos/1028600/pexels-photo-1028600.jpeg',
+    category: 'web3',
+    subCategory: 'sports-fandom',
+    author: authors[0],
+    publishDate: '2025-12-10T13:00:00Z',
+    readTimeMinutes: 6,
+    featured: false,
+    tags: ['fan-controlled cricket', 'sports DAOs', 'angle NFTs', 'blockchain sports', 'fantasy web3']
+  }
 
 
 ];
