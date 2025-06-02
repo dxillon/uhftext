@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, User, Loader, Mail, MapPin, Globe, ArrowLeft, Instagram, Youtube, Facebook, Twitter, HelpCircle } from 'lucide-react';
+import { Phone, User, Loader, Mail, MapPin, Globe, ArrowLeft, Instagram, Youtube, Facebook, Twitter, HelpCircle, Check } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 interface CourseFormProps {
@@ -20,6 +20,29 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
         window.scrollTo(0, 0); // Scroll to top when the form opens
     }, []);
 
+
+
+    const [termsAccepted, setTermsAccepted] = useState(false);
+    const [showTermsError, setShowTermsError] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!termsAccepted) {
+            setShowTermsError(true);
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            await onSubmit(formData);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -31,15 +54,6 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
 
     const navigate = useNavigate();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        try {
-            await onSubmit(formData);
-        } finally {
-            setIsLoading(false);
-        }
-    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -52,7 +66,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
         handleBack();
     };
 
-    const [isLoading, setIsLoading] = useState(false);
+
 
     const getButtonStyle = () => {
         if (!paymentStatus) return 'bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600';
@@ -106,7 +120,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                         className="lg:col-span-2"
-                            >
+                    >
                         <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-lg rounded-xl p-8 border border-gray-700/50 shadow-xl">
                             <div className="mb-6">
                                 <h2 className="text-3xl font-bold text-white mb-1 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent inline-block">
@@ -233,14 +247,64 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                                     />
                                 </motion.div>
 
+
+
+                                <motion.div
+                                    className={`mt-6 p-4 rounded-lg border ${termsAccepted ? 'border-green-500/30 bg-green-500/10' : showTermsError ? 'border-red-500/30 bg-red-500/10' : 'border-gray-700/50 bg-gray-800/30'}`}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <div className="flex items-start">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setTermsAccepted(!termsAccepted);
+                                                setShowTermsError(false);
+                                            }}
+                                            className={`flex-shrink-0 w-5 h-5 mt-0.5 mr-3 rounded flex items-center justify-center transition-all ${termsAccepted ? 'bg-gradient-to-r from-green-500 to-emerald-500' : 'bg-gray-700 border border-gray-600'}`}
+                                        >
+                                            {termsAccepted && <Check className="w-3 h-3 text-white" />}
+                                        </button>
+                                        <div>
+                                            <p className="text-sm text-gray-300">
+                                                I agree to the{' '}
+                                                <Link to="/refund-policy" className="text-red-400 hover:text-red-300 underline transition-colors">
+                                                    Refund Policy
+                                                </Link>
+                                                ,{' '}
+                                                <Link to="/cancellation-policy" className="text-red-400 hover:text-red-300 underline transition-colors">
+                                                    Cancellation Policy
+                                                </Link>
+                                                , and{' '}
+                                                <Link to="/shipping-policy" className="text-red-400 hover:text-red-300 underline transition-colors">
+                                                    Shipping Policy
+                                                </Link>
+                                            </p>
+                                            {showTermsError && (
+                                                <motion.p
+                                                    initial={{ opacity: 0, y: -5 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="text-xs text-red-400 mt-1"
+                                                >
+                                                    You must accept the terms to proceed
+                                                </motion.p>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+
+
+
                                 <motion.div
                                     whileHover={{ scale: 1.01 }}
                                     whileTap={{ scale: 0.99 }}
                                 >
                                     <button
                                         type="submit"
-                                        className={`w-full text-white py-4 rounded-lg font-semibold transition-all ${getButtonStyle()} hover:shadow-lg relative overflow-hidden group`}
-                                        disabled={paymentStatus?.type === 'info' || isLoading}
+                                        className={`w-full text-white py-4 rounded-lg font-semibold transition-all ${getButtonStyle()} ${(!termsAccepted || paymentStatus?.type === 'info' || isLoading) ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg'} relative overflow-hidden group`}
+                                        disabled={!termsAccepted || paymentStatus?.type === 'info' || isLoading}
                                     >
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             {isLoading ? (
@@ -265,16 +329,6 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                                         <Loader className="w-5 h-5 animate-spin" />
                                         <span>Taking you back to course page...</span>
                                     </motion.div>
-                                )}
-
-
-                                {paymentStatus && (
-                                    <div className={`mt-4 p-4 rounded-lg ${paymentStatus.type === 'success' ? 'bg-green-500/20 text-green-400' :
-                                            paymentStatus.type === 'error' ? 'bg-red-500/20 text-red-400' :
-                                                'bg-blue-500/20 text-blue-400'
-                                        }`}>
-                                        {paymentStatus.text}
-                                    </div>
                                 )}
                             </form>
                         </div>

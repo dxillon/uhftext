@@ -8,6 +8,7 @@ import AboutPage from './components/AboutPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import CookiePolicy from './components/CookiePolicy';
 import ContactPage from './components/ContactPage';
+import PolicyPage from './components/PolicyPage';
 import TermsConditions from './components/TermsConditions';
 import ProjectDetail from './components/ProjectDetail';
 import CookieBanner from './components/CookieBanner';
@@ -109,6 +110,9 @@ function App() {
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/refund-policy" element={<PolicyPage />} />
+          <Route path="/shipping-policy" element={<PolicyPage />} />
+          <Route path="/cancellation-policy" element={<PolicyPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/journey" element={<Journey />} />
