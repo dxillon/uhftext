@@ -16,6 +16,7 @@ export interface Course {
     pdf: {
       price: number;
       features: string[];
+      downloadLink: string;
     };
     professional: {
       price: number;
@@ -55,6 +56,7 @@ export const courses: Course[] = [
           'Certificate of completion'
         ]
       },
+      downloadLink: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
       professional: {
         price: 899,
         features: [
