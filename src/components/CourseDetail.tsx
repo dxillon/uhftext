@@ -1208,8 +1208,8 @@ PDF Access:
                                                         onClick={handleCertificateRequest}
                                                         disabled={!policyAgreed}
                                                         className={`w-full px-6 py-3 rounded-lg transition-colors relative overflow-hidden ${policyAgreed
-                                                                ? 'bg-orange-500 text-white hover:bg-orange-600'
-                                                                : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                                                            ? 'bg-orange-500 text-white hover:bg-orange-600'
+                                                            : 'bg-gray-700 text-gray-400 cursor-not-allowed'
                                                             }`}
                                                     >
                                                         Submit Request
