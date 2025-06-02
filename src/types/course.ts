@@ -47,7 +47,7 @@ export const courses: Course[] = [
     },
     pricing: {
       pdf: {
-        price: 299,
+        price: 1,
         features: [
           'Comprehensive course material',
           'Lifetime access to PDF resources',
@@ -560,7 +560,7 @@ export const courses: Course[] = [
     },
     pricing: {
       pdf: {
-        price: 249,
+        price: 562,
         features: [
           'Detailed course material',
           'Lifetime access to resources',
