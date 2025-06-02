@@ -112,6 +112,7 @@ function App() {
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/refund-policy" element={<PolicyPage />} />
           <Route path="/shipping-policy" element={<PolicyPage />} />
+          <Route path="/policies" element={<PolicyPage />} />
           <Route path="/cancellation-policy" element={<PolicyPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
