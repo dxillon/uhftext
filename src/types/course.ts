@@ -425,7 +425,7 @@ export const courses: Course[] = [
     bestSeller: false,
     slug: 'action-film-cinematography',
     description: 'Specialized techniques for shooting high-octane action sequences.',
-    coverImage: 'https://images.pexels.com/photos/380954/pexels-photo-380954.jpeg',
+    coverImage: 'https://images.pexels.com/photos/380954/pexels-photo-380954.jpeg: ',
     category: 'Cinematography',
     duration: '4 weeks',
     instructor: {
