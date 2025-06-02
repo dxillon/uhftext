@@ -272,9 +272,6 @@ const PolicyPage = () => {
                                             <a href="mailto:operations@uhfilms.in" className="text-orange-400 hover:text-orange-300 text-sm block mt-1 transition-colors">
                                                 operations@uhfilms.in
                                             </a>
-                                            <a href="mailto:support@uhfilms.in" className="text-orange-400 hover:text-orange-300 text-sm block mt-1 transition-colors">
-                                                support@uhfilms.in
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
