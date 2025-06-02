@@ -21,36 +21,28 @@ const PolicyPage = () => {
                         className="lg:w-3/4"
                     >
                         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                            <div className="w-full text-center md:text-left">
-                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                            <div className="text-center md:text-left w-full">
+                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent whitespace-nowrap">
                                     Policies & Terms
                                 </h1>
                                 <p className="mt-3 text-gray-400 max-w-3xl mx-auto md:mx-0">
-                                    Comprehensive guidelines for our digital courses and services. Please read carefully before making a purchase.
+                                    Comprehensive guidelines for our digital courses and services.
                                 </p>
-                                {/* Back to Home link shown under the text on mobile */}
-                                <div className="md:hidden mt-4 flex justify-center">
-                                    <Link
-                                        to="/"
-                                        className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors"
-                                    >
+                                <div className="mt-4 md:hidden flex justify-center">
+                                    <Link to="/" className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition">
                                         <ArrowLeft className="w-5 h-5" />
                                         Back to Home
                                     </Link>
                                 </div>
                             </div>
-
-                            {/* Desktop version of Back to Home on bottom-left */}
                             <div className="hidden md:flex md:self-end">
-                                <Link
-                                    to="/"
-                                    className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors mb-1"
-                                >
+                                <Link to="/" className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition mb-1">
                                     <ArrowLeft className="w-5 h-5" />
                                     Back to Home
                                 </Link>
                             </div>
                         </div>
+
 
 
                         {/* Digital Delivery Policy */}
