@@ -526,7 +526,7 @@ const Home = () => {
 
 
 
-        <div
+         <div
           style={{
             background: `
       radial-gradient(
