@@ -106,7 +106,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                         className="lg:col-span-2"
-                    >
+                            >
                         <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-lg rounded-xl p-8 border border-gray-700/50 shadow-xl">
                             <div className="mb-6">
                                 <h2 className="text-3xl font-bold text-white mb-1 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent inline-block">
@@ -114,8 +114,8 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                                 </h2>
                                 <div className="flex items-center gap-2 mt-2">
                                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${planType === 'professional'
-                                            ? 'bg-gradient-to-r from-red-500/20 to-orange-500/20 text-orange-300'
-                                            : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-300'
+                                        ? 'bg-gradient-to-r from-red-500/20 to-orange-500/20 text-orange-300'
+                                        : 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-300'
                                         }`}>
                                         {planType.charAt(0).toUpperCase() + planType.slice(1)} Package
                                     </span>
@@ -267,16 +267,15 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseTitle, price, planType, o
                                     </motion.div>
                                 )}
 
-                                                
-                 {paymentStatus && (
-                  <div className={`mt-4 p-4 rounded-lg ${
-                    paymentStatus.type === 'success' ? 'bg-green-500/20 text-green-400' :
-                    paymentStatus.type === 'error' ? 'bg-red-500/20 text-red-400' :
-                    'bg-blue-500/20 text-blue-400'
-                  }`}>
-                    {paymentStatus.text}
-                  </div>
-                )} 
+
+                                {paymentStatus && (
+                                    <div className={`mt-4 p-4 rounded-lg ${paymentStatus.type === 'success' ? 'bg-green-500/20 text-green-400' :
+                                            paymentStatus.type === 'error' ? 'bg-red-500/20 text-red-400' :
+                                                'bg-blue-500/20 text-blue-400'
+                                        }`}>
+                                        {paymentStatus.text}
+                                    </div>
+                                )}
                             </form>
                         </div>
                     </motion.div>
