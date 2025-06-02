@@ -10,7 +10,7 @@ const PolicyPage = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-200 pt-36 pb-16">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-200 pt-34 pb-16">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Main Content */}
