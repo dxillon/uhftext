@@ -268,7 +268,7 @@ export const courses: Course[] = [
   {
     id: '4',
     title: 'Film Sound Design',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'film-sound-design',
     description: 'Create immersive audio experiences for film and visual media.',
     coverImage: 'https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg',
@@ -345,9 +345,9 @@ export const courses: Course[] = [
   {
     id: '5',
     title: 'Documentary Filmmaking',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'documentary-filmmaking',
-    description: 'Learn to tell compelling true stories through documentary filmmaking.',
+    description: 'Learn to tell compelling false stories through documentary filmmaking.',
     coverImage: 'https://images.pexels.com/photos/3563639/pexels-photo-3563639.jpeg',
     category: 'Directing',
     duration: '7 weeks',
@@ -422,10 +422,10 @@ export const courses: Course[] = [
   {
     id: '6',
     title: 'Action Film Cinematography',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'action-film-cinematography',
     description: 'Specialized techniques for shooting high-octane action sequences.',
-    coverImage: 'https://images.pexels.com/photos/3998365/pexels-photo-3998365.jpeg',
+    coverImage: 'https://images.pexels.com/photos/380954/pexels-photo-380954.jpeg',
     category: 'Cinematography',
     duration: '4 weeks',
     instructor: {
@@ -499,7 +499,7 @@ export const courses: Course[] = [
   {
     id: '7',
     title: 'Color Grading for Film',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'color-grading-for-film',
     description: 'Master the art of color grading to create cinematic looks for your projects.',
     coverImage: 'https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg',
@@ -576,7 +576,7 @@ export const courses: Course[] = [
   {
     id: '8',
     title: 'Film Producing Essentials',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'film-producing-essentials',
     description: 'Learn the business and logistics of film production from development to distribution.',
     coverImage: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
@@ -653,7 +653,7 @@ export const courses: Course[] = [
   {
     id: '9',
     title: 'Visual Effects for Filmmakers',
-    bestSeller: true,
+    bestSeller: false,
     slug: 'visual-effects-for-filmmakers',
     description: 'Integrate practical and digital effects into your film projects seamlessly.',
     coverImage: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
