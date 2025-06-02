@@ -20,30 +20,26 @@ const PolicyPage = () => {
                         transition={{ duration: 0.5 }}
                         className="lg:w-3/4"
                     >
-                        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                            <div className="text-center md:text-left w-full">
-                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent whitespace-nowrap">
+                        <div className="mb-12 relative">
+                            {/* Back button - always on left */}
+                            <Link
+                                to="/"
+                                className="absolute left-0 top-0 flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors md:mb-4"
+                            >
+                                <ArrowLeft className="w-5 h-5" />
+                                <span className="hidden md:inline">Back to Home</span>
+                            </Link>
+
+                            {/* Centered title group */}
+                            <div className="text-center mx-auto px-10 md:px-0">
+                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
                                     Policies & Terms
                                 </h1>
-                                <p className="mt-3 text-gray-400 max-w-3xl mx-auto md:mx-0">
-                                    Comprehensive guidelines for our digital courses and services.
+                                <p className="mt-3 text-gray-400 max-w-3xl mx-auto">
+                                    Comprehensive guidelines for our digital courses and services. Please read carefully before making a purchase.
                                 </p>
-                                <div className="mt-4 md:hidden flex justify-center">
-                                    <Link to="/" className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition">
-                                        <ArrowLeft className="w-5 h-5" />
-                                        Back to Home
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="hidden md:flex md:self-end">
-                                <Link to="/" className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition mb-1">
-                                    <ArrowLeft className="w-5 h-5" />
-                                    Back to Home
-                                </Link>
                             </div>
                         </div>
-
-
 
                         {/* Digital Delivery Policy */}
                         <motion.div
