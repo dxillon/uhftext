@@ -20,21 +20,18 @@ const PolicyPage = () => {
                         transition={{ duration: 0.5 }}
                         className="lg:w-3/4"
                     >
-                        <div className="mb-12 flex flex-col items-center md:flex-row md:justify-between">
-                            {/* Title group - always centered */}
-                            <div className="text-center md:text-left order-2 md:order-1">
-                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                            <div>
+                                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent text-center md:text-left">
                                     Policies & Terms
                                 </h1>
-                                <p className="mt-3 text-gray-400 max-w-3xl">
+                                <p className="mt-3 text-gray-400 max-w-3xl text-center md:text-left">
                                     Comprehensive guidelines for our digital courses and services. Please read carefully before making a purchase.
-                                </p>d
+                                </p>
                             </div>
-
-                            {/* Back button - below on mobile, right-aligned on desktop */}
                             <Link
                                 to="/"
-                                className="mt-6 md:mt-0 order-1 md:order-2 flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors"
+                                className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors md:self-end mb-1"
                             >
                                 <ArrowLeft className="w-5 h-5" />
                                 Back to Home
