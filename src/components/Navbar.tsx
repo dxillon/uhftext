@@ -211,7 +211,7 @@ const Navbar = () => {
               className="px-5 py-2 text-white text-base rounded-full flex items-center gap-1 relative"
             >
               <NewBadge className="absolute -top-4 -right-2">
-                coming soon
+                New
               </NewBadge>
               Courses
               <ArrowRight className="w-4 h-4" />
@@ -297,7 +297,7 @@ const Navbar = () => {
                       Courses
                     </span>
                     <NewBadge className="text-xs font-bold px-2 py-1">
-                      Coming Soon
+                      New
                     </NewBadge>
                   </Link>
                 </motion.div>
