@@ -7,16 +7,17 @@ export interface Course {
   coverImage: string;
   category: string;
   duration: string;
+   downloadLink: string;
   instructor: {
     name: string;
     avatar: string;
     bio: string;
+   
   };
   pricing: {
     pdf: {
       price: number;
-      features: string[];
-      downloadLink: string;
+      features: string[]; 
     };
     professional: {
       price: number;
@@ -41,10 +42,11 @@ export const courses: Course[] = [
     coverImage: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg',
     category: 'Cinematography',
     duration: '8 weeks',
+     downloadLink: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
     instructor: {
       name: 'Sarah Wilson',
       avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg',
-      bio: 'Renowned cinematographer with experience in feature films and commercials'
+      bio: 'Renowned cinematographer with experience in feature films and commercials', 
     },
     pricing: {
       pdf: {
@@ -56,7 +58,6 @@ export const courses: Course[] = [
           'Certificate of completion'
         ]
       },
-      downloadLink: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
       professional: {
         price: 899,
         features: [
