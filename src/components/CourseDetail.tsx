@@ -358,7 +358,7 @@ PDF Access:
                 setPasswordAttempts(0);
 
                 const pdfUrl = course?.pricing.pdf.downloadLink;
-                
+
                 if (!pdfUrl) {
                     throw new Error('PDF download link not available');
                 }
@@ -395,7 +395,13 @@ PDF Access:
                 setPasswordStatus('success');
                 setPasswordAttempts(0);
 
-                const pdfUrl = `/course-pdfs/${course?.slug}.pdf`;
+                const pdfUrl = course?.pricing.pdf.downloadLink;
+
+
+                if (!pdfUrl) {
+                    throw new Error('PDF download link not available');
+                }
+                
                 const link = document.createElement('a');
                 link.href = pdfUrl;
                 link.download = `${course?.title.replace(/\s+/g, '_')}_materials.pdf`;
