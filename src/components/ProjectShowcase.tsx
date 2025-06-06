@@ -107,7 +107,9 @@ const roleTypes = [
   { value: 'actor', label: 'Actor' },
   { value: 'extra', label: 'Extra' },
   { value: 'voice', label: 'Voice Artist' },
-  { value: 'stunts', label: 'Stunts' }
+  { value: 'stunts', label: 'Stunts' },
+  { value: 'modeling', label: 'Modeling' },
+  { value: 'others', label: 'Others.PLease describe below.' }
 ];
 
 const actingStyles = [
@@ -116,7 +118,9 @@ const actingStyles = [
   { value: 'antagonist', label: 'Antagonist' },
   { value: 'emotional', label: 'Emotional Roles' },
   { value: 'comedy', label: 'Comedy' },
-  { value: 'action', label: 'Action' }
+  { value: 'action', label: 'Action' },
+  { value: 'modeling', label: 'Modeling' },
+  { value: 'others', label: 'Others.PLease describe below.' }
 ];
 
 const ProjectShowcase = () => {
