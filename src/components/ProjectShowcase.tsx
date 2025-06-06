@@ -77,7 +77,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
 
     try {
       await emailjs.sendForm(
-        'service_a5tly1m',
+        'service_a5tly1',
         'template_57jdkuq',
         formRef.current!,
         'lJX7YKVh5gsW2x9rS'
