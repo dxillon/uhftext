@@ -1,459 +1,787 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { Camera, Star, Clock, Calendar, Users, ChevronDown, ChevronUp, Loader2, Check, Play } from 'lucide-react';
+import Select from 'react-select';
 import emailjs from '@emailjs/browser';
-import { Send, Loader, ArrowLeft, Film, Clapperboard, Camera, Video } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Instagram, Youtube } from 'lucide-react';
-import { BsTwitterX } from 'react-icons/bs';
+import VideoPlayer from './VideoPlayer';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import confetti from 'canvas-confetti';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Helmet } from 'react-helmet-async';
 
-const SocialIcon = ({ icon: Icon, href, label }: { icon: any, href: string, label: string }) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-red-900 rounded-lg text-white transition-all duration-300 border border-gray-700"
-    aria-label={label}
-    whileHover={{ y: -2 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Icon className="w-5 h-5" />
-    <span className="text-sm">{label}</span>
-  </motion.a>
-);
+const upcomingProjects = [
+  {
+    id: "sucidefun",
+    title: "Suicide Fun",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759555/WhatsApp_Image_2025-04-27_at_17.53.32_87bee1b0_q9etqk.jpg",
+    description: "Do you have the courage to see your future?",
+    releaseDate: "Fall 2025",
+    status: "In Development"
+  },
+  {
+    id: "agyaat",
+    title: "Agyaat",
+    description: "When truth is invisible, can you find it?",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759562/WhatsApp_Image_2025-04-27_at_17.53.31_a20c2148_x5mnpk.jpg",
+    releaseDate: "Fall 2025",
+    status: "Pre-production"
+  },
 
-interface JobApplicationFormProps {
-  selectedRole?: string | null;
-  handleBack?: () => void;
-}
+  {
+    id: "snake&lovers",
+    title: "Snake & Lovers",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745762922/Snake_1_cq4u0v.png",
+    description: "The paths of love are never straight",
+    releaseDate: "Early 2026",
+    status: "Writing"
+  }
+];
 
-const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, handleBack }) => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const navigate = useNavigate();
+const featuredProjects = [
+  {
+    id: 1,
+    title: "Moonlight",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745845529/Moonlight_-_Short_Film_cheshi.webp",
+    description: "A visually stunning short film exploring themes of isolation and connection under the moonlight.",
+    status: "Best Cinematography",
+    duration: "4:34",
+    director: "Avi Kesarvani",
+    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745845532/Moonlight_-_Short_Film_abxrcs.mp4"
+  },
+  {
+    id: 2,
+    title: "Naam main kya rhka hai",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745843893/cold_smooth_tasty._3_wcjkyz.png",
+    description: "A thought-provoking short film that questions identity and the meaning behind names in our society.",
+    status: "Best Narration",
+    duration: "4:52",
+    director: "Avi Kesarvani",
+    videoUrl: "https://storage.googleapis.com/uhfmp4/Naam%20Main%20Kya%20Rakha%20Hai%20With%20Subs.mp4"
+  },
+  {
+    id: 3,
+    title: "Mikaali",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/c_pad,ar_4:3/v1745837264/maxresdefault_vur854.jpg",
+    description: "A gripping trailer showcasing the visual masterpiece that tells a powerful story of resilience.",
+    status: "Best Visuals",
+    duration: "1:28",
+    director: "Manthan Mese",
+    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745836248/Trailer-_MiKaali_%E0%A4%AE%E0%A5%80%E0%A4%95%E0%A4%BE%E0%A4%B2%E0%A5%80_-_A_shortfilm_by_Manthan_Mese_zjvpyl.mp4"
+  },
+  {
+    id: 4,
+    title: "Work From Home",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745845873/Short_Film_Work_From_Home_Covid_19_Family_Drama_qbtelj.webp",
+    description: "A family drama capturing the challenges and unexpected moments of togetherness during the COVID-19 lockdown.",
+    status: "Best Sound Design",
+    duration: "13:46",
+    director: "Avi Kesarvani",
+    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745845890/Short_Film_Work_From_Home_Covid_19_Family_Drama_dpjkt3.mp4"
+  },
+  {
+    id: 5,
+    title: "Fastack Advertisement",
+    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/086d25e1-c650-4237-9c4c-2ff5a4832f3d.__CR0,0,970,600_PT0_SX970_V1___.png",
+    description: "A creative and engaging advertisement that tells a compelling story in just 20 seconds.",
+    status: "Best Story Telling",
+    duration: "0:20",
+    director: "Avi Kesarvani",
+    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745834231/Play_Mix_13_h23nxo.mp4"
+  },
+  {
+    id: 6,
+    title: "Lailaaj",
+    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745846167/SHORT_FILM_LAILAAJ_STORYGRAM_BOOMSLANG_PICTURES_ALLAHABAD_bebkgx.webp",
+    description: "An innovative short film with a unique concept that challenges conventional storytelling methods.",
+    status: "Best Concept",
+    duration: "5:54",
+    director: "Avi Kesarvani",
+    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745846175/SHORT_FILM_LAILAAJ_STORYGRAM_BOOMSLANG_PICTURES_ALLAHABAD_yeziho.mp4"
+  }
+];
+
+const roleTypes = [
+  { value: 'actor', label: 'Actor' },
+  { value: 'extra', label: 'Extra' },
+  { value: 'voice', label: 'Voice Artist' },
+  { value: 'stunts', label: 'Stunts' },
+  { value: 'modeling', label: 'Modeling' },
+  { value: 'others', label: 'Others.PLease describe below.' }
+];
+
+const actingStyles = [
+  { value: 'method', label: 'Method Acting' },
+  { value: 'protagonist', label: 'Protagonist' },
+  { value: 'antagonist', label: 'Antagonist' },
+  { value: 'emotional', label: 'Emotional Roles' },
+  { value: 'comedy', label: 'Comedy' },
+  { value: 'action', label: 'Action' },
+  { value: 'modeling', label: 'Modeling' },
+  { value: 'others', label: 'Others.PLease describe below.' }
+];
+
+const ProjectShowcase = () => {
+  const [selectedVideo, setSelectedVideo] = useState<{ url: string; duration: string } | null>(null);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const featuredProjectsRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const [role, setRole] = useState<string>('');
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const roleFromUrl = params.get('role');
-    if (roleFromUrl) {
-      setRole(decodeURIComponent(roleFromUrl));
-    } else if (selectedRole) {
-      setRole(selectedRole);
-    }
-  }, [location.search, selectedRole]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const confettiRef = useRef(false);
+  const getcastProjectsRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     experience: '',
+    phone: '',
     portfolio: '',
-    reel: '',
-    skills: '',
+    roleTypes: [],
+    actingStyles: [],
     message: ''
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const fireConfetti = () => {
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#22c55e', '#ef4444', '#3b82f6'],
-      shapes: ['circle', 'square']
-    });
-  };
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await emailjs.sendForm(
-        'service_a5tly1',
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        experience: formData.experience,
+        phone: formData.phone,
+        portfolio: formData.portfolio,
+        roleTypes: `Role Type's: ${formData.roleTypes.map(role => role.label).join(', ')}`,
+        actingStyles: `Best In: ${formData.actingStyles.map(style => style.label).join(', ')}`,
+        message: formData.message
+      };
+
+      await emailjs.send(
+        'service_a5tly1m',
         'template_57jdkuq',
-        formRef.current!,
+        templateParams,
         'lJX7YKVh5gsW2x9rS'
       );
 
-      setSubmitStatus('success');
-      fireConfetti();
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        experience: '',
-        portfolio: '',
-        reel: '',
-        skills: '',
-        message: ''
-      });
-      
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      setSubmitSuccess(true);
+      setTimeout(() => {
+        setIsFormVisible(false);
+        setSubmitSuccess(false);
+        setFormData({
+          name: '',
+          email: '',
+          experience: '',
+          phone: '',
+          portfolio: '',
+          roleTypes: [],
+          actingStyles: [],
+          message: ''
+        });
+      }, 1700);
     } catch (error) {
-      console.error('Error sending application:', error);
-      setSubmitStatus('error');
+      console.error('Submission error:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
 
-  const onBack = () => {
-    if (handleBack) {
-      handleBack();
-    } else {
-      navigate(-1);
+  useEffect(() => {
+    if (location.hash === '#get-casted') {
+      // First, open the form
+      setIsFormVisible(true);
+
+      // Then scroll after a small delay to allow the form to render
+      setTimeout(() => {
+        const element = document.getElementById('get-casted');
+        if (element) {
+          // Calculate position to center the entire section
+          const elementRect = element.getBoundingClientRect();
+          const offsetPosition = elementRect.top + window.pageYOffset - (window.innerHeight / 2) + (elementRect.height / 2);
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100); // Small delay to ensure form is rendered
     }
-  };
+  }, [location]);
 
-  // Film reel animation frames
-  const FilmReel = () => (
-    <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 opacity-10 md:opacity-20">
-      <div className="relative w-40 h-64">
-        <div className="absolute inset-0 bg-black rounded-lg border-4 border-gray-800 p-1">
-          <div className="h-full flex flex-col gap-1">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="h-6 bg-gray-800 rounded-sm"></div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute -inset-2 border border-gray-700 rounded-lg"></div>
-      </div>
-    </div>
-  );
+  useEffect(() => {
+    if (submitSuccess && !confettiRef.current) {
+      confettiRef.current = true;
+
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#d62976', '#962fbf', '#fa7e1e', '#feda75'],
+        scalar: 1.2,
+      });
+
+      // reset ref after a short delay so it can play again if needed
+      setTimeout(() => {
+        confettiRef.current = false;
+      }, 2000);
+    }
+  }, [submitSuccess]);
 
   return (
-    <div className="min-h-screen py-20 bg-black bg-opacity-90 relative overflow-hidden">
-      {/* Film grain overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjA1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+CiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+CiAgPC9maWx0ZXI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wMiIvPgo8L3N2Zz4=')] opacity-5 pointer-events-none"></div>
+    <>
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Projects | Urban Hustle Films™</title>
+        <meta name="description" content="Explore the latest creative projects from Urban Hustle Films™ – from web apps to music videos, short films, and design innovation." />
+        <meta name="keywords" content="Urban Hustle Films, Creative Projects, Short Films, Music Videos, Web Development, Animation, VFX, Design Portfolio" />
+        <meta name="author" content="Urban Hustle Films™" />
 
-      {/* Film set lights */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-900/10 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-red-900/10 to-transparent pointer-events-none"></div>
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Projects | Urban Hustle Films" />
+        <meta property="og:description" content="See what we've been working on – a dynamic portfolio of digital creativity and storytelling." />
+        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:url" content="https://uhfilms.in/projects" />
+        <meta property="og:type" content="website" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onBack}
-            className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 group"
-          >
-            <ArrowLeft className="w-5 h-5 transition-all duration-300 group-hover:-translate-x-1 group-hover:text-red-500" />
-            <span className="font-mono text-sm">BACK TO LISTINGS</span>
-          </motion.button>
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Projects | Urban Hustle Films" />
+        <meta name="twitter:description" content="Explore our latest creative and digital projects from music to tech." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
 
-          <div className="relative p-8 bg-gray-900/80 backdrop-blur-sm rounded-lg border border-gray-800 shadow-lg">
-            {/* Film clapper decoration */}
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-              <Clapperboard className="w-12 h-12 text-red-600" />
-            </div>
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://uhfilms.in/projects" />
+      </Helmet>
 
-            {/* Film reel decoration - only on desktop */}
-            <div className="hidden md:block">
-              <FilmReel />
-            </div>
+      <div className="min-h-screen pt-20 bg-black">
 
-            {submitStatus !== 'success' ? (
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <Camera className="w-8 h-8 text-red-500" />
-                  <h2 className="text-3xl font-bold text-white font-mono tracking-tight">
-                    APPLICATION FORM
-                  </h2>
-                </div>
-                
-                <div className="mb-8 p-4 bg-black/50 border border-gray-800 rounded-lg">
-                  <div className="flex items-center gap-2 text-red-500">
-                    <Film className="w-5 h-5" />
-                    <p className="text-lg font-medium">{role}</p>
-                  </div>
-                </div>
-                
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                  <input type="hidden" name="role" value={role} />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        FULL NAME *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="John Doe"
-                      />
-                    </motion.div>
-                    
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        EMAIL *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="john@example.com"
-                      />
-                    </motion.div>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        PHONE *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="+1 234 567 8900"
-                      />
-                    </motion.div>
-                    
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="experience" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        YEARS OF EXPERIENCE *
-                      </label>
-                      <input
-                        type="text"
-                        id="experience"
-                        name="experience"
-                        required
-                        value={formData.experience}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="3+ years"
-                      />
-                    </motion.div>
-                  </div>
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-transparent" />
+            <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbtj6orw2/image/upload/v1747864204/FILM_S_jhhj0l.svg')] bg-cover bg-center opacity-35 blur-sm" />
+          </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="portfolio" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        PORTFOLIO LINK
-                      </label>
-                      <input
-                        type="url"
-                        id="portfolio"
-                        name="portfolio"
-                        value={formData.portfolio}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="https://yourportfolio.com"
-                      />
-                    </motion.div>
-
-                    <motion.div whileHover={{ y: -2 }}>
-                      <label htmlFor="reel" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                        DEMO REEL LINK
-                      </label>
-                      <input
-                        type="url"
-                        id="reel"
-                        name="reel"
-                        value={formData.reel}
-                        onChange={handleChange}
-                        className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                        placeholder="https://vimeo.com/yourreel"
-                      />
-                    </motion.div>
-                  </div>
-
-                  <motion.div whileHover={{ y: -2 }}>
-                    <label htmlFor="skills" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                      KEY SKILLS / EQUIPMENT *
-                    </label>
-                    <input
-                      type="text"
-                      id="skills"
-                      name="skills"
-                      required
-                      value={formData.skills}
-                      onChange={handleChange}
-                      className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                      placeholder="Cinematography, RED Komodo, Adobe Premiere"
-                    />
-                  </motion.div>
-
-                  <motion.div whileHover={{ y: -2 }}>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                      COVER LETTER / NOTES *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={5}
-                      className="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-500 focus:border-transparent font-mono placeholder-gray-500"
-                      placeholder="Tell us about your experience, availability, and why you're a good fit..."
-                    />
-                  </motion.div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-red-800 hover:bg-red-700 text-white py-4 rounded-lg font-mono tracking-wider text-sm uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border border-red-900 transition-all duration-300 relative overflow-hidden group"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
-                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-full group-hover:translate-x-full"></span>
-                    <span className="relative z-10 flex items-center gap-2">
-                      {isSubmitting ? (
-                        <>
-                          <Loader className="w-5 h-5 animate-spin" />
-                          SUBMITTING...
-                        </>
-                      ) : (
-                        <>
-                          <Video className="w-5 h-5" />
-                          SUBMIT APPLICATION
-                        </>
-                      )}
-                    </span>
-                  </motion.button>
-
-                  {submitStatus === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="p-4 bg-red-900/30 rounded-lg border border-red-800 text-red-300 text-center font-mono text-sm"
-                    >
-                      ERROR: Submission failed. Please try again or contact us directly.
-                    </motion.div>
-                  )}
-                </form>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="success-message"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-center py-10"
-              >
-                <div className="mb-8 flex flex-col items-center">
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    className="mb-6 bg-black/50 p-6 rounded-full border border-green-500/30"
-                  >
-                    <svg className="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </motion.div>
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="text-3xl font-bold text-white mb-4 font-mono tracking-tight"
-                  >
-                    APPLICATION RECEIVED
-                  </motion.h2>
-                  <motion.div 
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.6, duration: 0.5 }}
-                    className="w-32 h-1 bg-red-500 mb-6 mx-auto"
-                  />
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="text-lg text-gray-300 mb-8 max-w-md mx-auto"
-                  >
-                    Thank you for applying to Urban Hustle Films. We'll review your submission and be in touch soon.
-                  </motion.p>
-                  <motion.button
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    onClick={onBack}
-                    className="px-8 py-3 bg-black/50 text-white rounded-lg border border-gray-700 hover:bg-gray-800 transition-all duration-300 font-mono text-sm uppercase tracking-wider"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    BACK TO CAREERS
-                  </motion.button>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Social Media Section */}
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: submitStatus === 'success' ? 1.2 : 0 }}
-              className={`mt-12 pt-6 border-t border-gray-800 ${submitStatus === 'success' ? 'border-green-500/30' : 'border-red-500/30'}`}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
-              <h3 className="text-lg font-bold text-white mb-4 font-mono tracking-tight text-center">
-                {submitStatus === 'success' ? 'STAY CONNECTED' : 'FOLLOW OUR WORK'}
-              </h3>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <SocialIcon 
-                  icon={Instagram} 
-                  href="https://www.instagram.com/urbanhustlefilms" 
-                  label="Instagram" 
-                />
-                <SocialIcon 
-                  icon={Youtube} 
-                  href="https://www.youtube.com/@urbanhustlefilms" 
-                  label="YouTube" 
-                />
-                <SocialIcon 
-                  icon={BsTwitterX} 
-                  href="https://x.com/urbanhustlefilm" 
-                  label="Twitter/X" 
-                />
-              </div>
+              <h1 className="text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
+                UH FILM'S
+              </h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+              >
+                Premium cinematic experiences and groundbreaking productions
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-12 flex flex-wrap justify-center gap-4"
+              >
+                <button
+                  onClick={() => featuredProjectsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 flex items-center gap-2"
+                >
+                  <Play className="w-5 h-5" />
+                  Explore Productions
+                </button>
+                <Link
+                  to="/about"
+                  className="px-8 py-3 border border-gray-600 hover:border-red-500 text-gray-300 hover:text-white rounded-full transition-all duration-300"
+                >
+                  Our Story
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
-        </motion.div>
+        </section>
+
+        {/* Upcoming Projects Section */}
+        <section className="py-16 container mx-auto px-4 ">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl font-bold text-center mb-12 text-gradient"
+          >
+            Upcoming Projects
+          </motion.h2>
+
+          {/* Mobile Carousel - Only visible on mobile (hidden on md and above) */}
+          <div className="block md:hidden px-4 relative pb-10">
+            <Swiper
+              modules={[Autoplay, Pagination, Navigation]}
+              spaceBetween={20}
+              slidesPerView={1}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{
+                delay: 1500,
+                disableOnInteraction: true,
+              }}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true,
+                el: '.swiper-pagination', // Add custom pagination container class
+              }}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              speed={800}
+              touchRatio={1.5}
+              grabCursor={true}
+            >
+              {upcomingProjects.map((project, index) => (
+                <SwiperSlide key={project.id}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/30 transition-all duration-300 mx-auto max-w-md"
+                  >
+                    {/* Project Card Content */}
+                    <div className="relative h-48">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                        <p className="text-gray-300 text-sm">{project.description}</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <span className="text-red-500 block">{project.status}</span>
+                          <span className="text-gray-400 text-sm">{project.releaseDate}</span>
+                        </div>
+                        <Link
+                          to={`/project/${project.id}`}
+                          className="bg-transparent border border-gray-700 text-gray-300 px-4 py-2 rounded-md text-sm font-medium hover:border-red-800 hover:text-white transition-all duration-300"
+                        >
+                          Know More
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="absolute bottom-0 left-0 right-0">
+              <div className="flex items-center justify-center">
+                {/* Previous Button - Small with spacing */}
+                <div className="swiper-button-prev !relative !text-red-500 !w-3 !h-3 !mr-14" />
+
+                {/* Pagination Dots - Perfectly Centered */}
+                <div className="swiper-pagination !absolute left-1/2 transform -translate-x-1/2" style={{ width: 'auto' }} />
+
+                {/* Next Button - Small with spacing */}
+                <div className="swiper-button-next !relative !text-red-500 !w-3 !h-3 !ml-14" />
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Grid - Only visible on md screens and above (hidden on mobile) */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+            {upcomingProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/30 transition-all duration-300"
+              >
+                <div className="relative h-48">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300 text-sm">{project.description}</p>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <span className="text-red-500 block">{project.status}</span>
+                      <span className="text-gray-400 text-sm">{project.releaseDate}</span>
+                    </div>
+                    <Link
+                      to={`/project/${project.id}`}
+                      className="bg-transparent border border-gray-700 text-gray-300 px-4 py-2 rounded-md text-sm font-medium hover:border-red-800 hover:text-white transition-all duration-300"
+                    >
+                      Know More
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+
+        {/* Casting Call-to-Action */}
+        <section ref={getcastProjectsRef} id="get-casted" className="py-16 bg-gradient-to-b from-black to-gray-900 -h-[50vh]">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center"
+            >
+              <button
+                onClick={() => setIsFormVisible(!isFormVisible)}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                <span className="text-lg font-semibold">
+                  Want to be in our shows and series? Get cast now!
+                </span>
+                {isFormVisible ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {isFormVisible && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="mt-8 max-w-2xl mx-auto"
+                  >
+                    <form onSubmit={handleSubmit} className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Full Name *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Email *
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Experience (years) *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.experience}
+                            onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Phone Number *
+                          </label>
+                          <input
+                            type="tel"
+                            required
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+
+                        <div className="md:col-span-2">
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Portfolio URL
+                          </label>
+                          <input
+                            type="url"
+                            value={formData.portfolio}
+                            onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Role Types *
+                          </label>
+                          <Select
+                            isMulti
+                            options={roleTypes}
+                            value={formData.roleTypes}
+                            onChange={(selected) => setFormData({ ...formData, roleTypes: selected || [] })}
+                            className="react-select-container"
+                            classNamePrefix="react-select"
+                            styles={{
+                              control: (base) => ({
+                                ...base,
+                                background: 'rgb(31, 41, 55)',
+                                borderColor: 'rgb(75, 85, 99)',
+                                '&:hover': {
+                                  borderColor: 'rgb(239, 68, 68)'
+                                }
+                              }),
+                              menu: (base) => ({
+                                ...base,
+                                background: 'rgb(31, 41, 55)'
+                              }),
+                              option: (base, state) => ({
+                                ...base,
+                                background: state.isFocused ? 'rgb(55, 65, 81)' : 'transparent',
+                                color: 'white'
+                              }),
+                              multiValue: (base) => ({
+                                ...base,
+                                background: 'rgb(239, 68, 68)'
+                              }),
+                              multiValueLabel: (base) => ({
+                                ...base,
+                                color: 'white'
+                              }),
+                              multiValueRemove: (base) => ({
+                                ...base,
+                                color: 'white',
+                                ':hover': {
+                                  background: 'rgb(185, 28, 28)',
+                                  color: 'white'
+                                }
+                              })
+                            }}
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Best In *
+                          </label>
+                          <Select
+                            isMulti
+                            options={actingStyles}
+                            value={formData.actingStyles}
+                            onChange={(selected) => setFormData({ ...formData, actingStyles: selected || [] })}
+                            className="react-select-container"
+                            classNamePrefix="react-select"
+                            styles={{
+                              control: (base) => ({
+                                ...base,
+                                background: 'rgb(31, 41, 55)',
+                                borderColor: 'rgb(75, 85, 99)',
+                                '&:hover': {
+                                  borderColor: 'rgb(239, 68, 68)'
+                                }
+                              }),
+                              menu: (base) => ({
+                                ...base,
+                                background: 'rgb(31, 41, 55)'
+                              }),
+                              option: (base, state) => ({
+                                ...base,
+                                background: state.isFocused ? 'rgb(55, 65, 81)' : 'transparent',
+                                color: 'white'
+                              }),
+                              multiValue: (base) => ({
+                                ...base,
+                                background: 'rgb(239, 68, 68)'
+                              }),
+                              multiValueLabel: (base) => ({
+                                ...base,
+                                color: 'white'
+                              }),
+                              multiValueRemove: (base) => ({
+                                ...base,
+                                color: 'white',
+                                ':hover': {
+                                  background: 'rgb(185, 28, 28)',
+                                  color: 'white'
+                                }
+                              })
+                            }}
+                          />
+                        </div>
+
+                        <div className="md:col-span-2">
+                          <label className="block text-sm font-medium text-gray-300 mb-2">
+                            Additional Message
+                          </label>
+                          <textarea
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                            rows={4}
+                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting || submitSuccess}
+                        className={`w-full text-white py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2
+    ${submitSuccess
+                            ? 'bg-green-600 hover:bg-green-700'
+                            : isSubmitting
+                              ? 'bg-red-700'
+                              : 'bg-red-600 hover:bg-red-700'
+                          }
+    ${(isSubmitting || submitSuccess) ? 'cursor-not-allowed' : ''}
+  `}
+                      >
+                        <AnimatePresence mode="wait">
+                          {isSubmitting ? (
+                            <motion.span
+                              key="loading"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              className="flex items-center gap-2"
+                            >
+                              <Loader2 className="h-5 w-5 animate-spin" />
+                              Submitting...
+                            </motion.span>
+                          ) : submitSuccess ? (
+                            <motion.span
+                              key="success"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              className="flex items-center gap-2"
+                            >
+                              <Check className="h-5 w-5" />
+                              Submitted!
+                            </motion.span>
+                          ) : (
+                            <motion.span
+                              key="default"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                            >
+                              Submit Application
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </button>
+
+                      {submitSuccess && (
+                        <motion.p
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="mt-4 text-green-500 text-center"
+                        >
+                          Thank you for your interest! We'll contact you if we find a suitable role matching your profile.
+                        </motion.p>
+                      )}
+                    </form>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Featured Projects Section */}
+        <section ref={featuredProjectsRef} className="py-16 container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl font-bold text-center mb-12 text-gradient"
+          >
+            All Projects
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/30 transition-all duration-300"
+              >
+                <div className="relative aspect-video">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300">{project.description}</p>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <Star className="w-4 h-4 text-red-500" />
+                      <span>{project.status}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <Clock className="w-4 h-4 text-red-500" />
+                      <span>{project.duration}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <Camera className="w-4 h-4 text-red-500" />
+                      <span>{project.director}</span>
+                    </div>
+                    {project.videoUrl && (
+                      <button
+                        onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
+                        className="flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors text-sm"
+                      >
+                        <Play className="w-3 h-3" />
+                        <span>Watch Now</span>
+                      </button>
+                    )}
+
+                  </div>
+                </div>
+              </motion.div> 
+            ))}
+          </div>
+        </section>
+
+        <VideoPlayer
+          url={selectedVideo?.url || ''}
+          duration={selectedVideo?.duration || '00:00'}
+          isOpen={!!selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+        />
       </div>
-    </div>
+
+    </>
   );
 };
 
-export default JobApplicationForm;
+export default ProjectShowcase;
