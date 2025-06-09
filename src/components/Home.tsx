@@ -424,59 +424,29 @@ const Home = () => {
 
 
 
-<section className="relative py-24 bg-black overflow-x-hidden">
-  {/* Edge-to-edge gradient fade effect */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-900/0 via-black to-red-900/0 z-0"></div>
-  
-  {/* Main stats container with pop-up effect */}
-  <motion.div 
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className="relative z-10 mx-auto px-4"
-  >
-    <div 
-      ref={statsRef}
-      className="grid grid-cols-2 md:grid-cols-4 gap-0 bg-black/80 backdrop-blur-md rounded-none md:rounded-xl shadow-[0_0_30px_rgba(239,68,68,0.3)] border-t border-b border-red-900/50 overflow-hidden transform md:hover:scale-[1.02] transition-transform duration-500"
-    >
-      {[
-        { number: "100+", label: "Projects Completed" },
-        { number: "50+", label: "Happy Clients" },
-        { number: "10+", label: "Awards Won" },
-        { number: "5+", label: "Years Experience" }
-      ].map((stat, index) => (
-        <div 
-          key={stat.label}
-          className="p-8 text-center relative group hover:bg-gradient-to-b from-red-900/20 to-transparent transition-all duration-300"
-        >
-          {/* Animated number with gradient text */}
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: index * 0.2 }}
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent mb-3"
-            data-value={stat.number}
-          >
-            0
-          </motion.h3>
-          
-          {/* Label with subtle animation */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: index * 0.2 + 0.1 }}
-            className="text-gray-300 uppercase text-xs tracking-widest font-medium"
-          >
-            {stat.label}
-          </motion.p>
-          
-          {/* Hover effect - glowing border bottom */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-1/2 bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      ))}
-    </div>
-  </motion.div>
-</section>
+        <section className="py-20 bg-black/30">
+          <div className="container mx-auto px-4">
+            <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { number: "100+", label: "Projects Completed" },
+                { number: "50+", label: "Happy Clients" },
+                { number: "10+", label: "Awards Won" },
+                { number: "5+", label: "Years Experience" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
+                  <p className="text-gray-400">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
 
 
