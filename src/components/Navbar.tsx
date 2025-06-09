@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
+import { Menu, X, ExternalLink, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
 import { ArrowRight } from 'lucide-react';
-import { updates } from "../data/updates"; 
+import { updates } from "../data/updates";
 
 const GlassMorphButton = styled(Link)`
   background: rgba(239, 68, 68, 0.1);
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(239, 68, 68, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transition: all 0.3s ease;
@@ -149,7 +149,7 @@ const Navbar = () => {
                     <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
-                    <Mic className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
+                    <ExternalLink className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
                   </Link>
                 </div>
               ))}
