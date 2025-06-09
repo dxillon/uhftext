@@ -442,14 +442,22 @@ const Home = () => {
     ].map((stat, index) => (
       <motion.div
         key={stat.label}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: index * 0.1, type: "spring", stiffness: 100, damping: 10 }}
         className="text-center text-white"
       >
         <h3
-          className="stat-number text-4xl font-bold  mb-2 "
+          className="
+            stat-number 
+            text-4xl font-bold mb-2 
+            text-white 
+            drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] 
+            shadow-lg 
+            transition-transform duration-300 ease-out
+          "
           data-value={stat.number}
+          style={{ transformOrigin: 'center' }}
         >
           0
         </h3>
