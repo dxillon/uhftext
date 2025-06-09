@@ -424,40 +424,44 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-gray-900">
+<section className="relative py-20 bg-neutral-900">
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
-      initial={{ opacity: 0, y: 20, rotateX: 5 }}
+      initial={{ opacity: 0, y: 40, rotateX: 3 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ 
         duration: 0.8,
         type: "spring",
-        bounce: 0.2
+        bounce: 0.15
       }}
-      className="relative perspective-1000"
+      className="relative"
     >
-      {/* 3D shadow effect */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 0.4, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute inset-0 -z-10 bg-black blur-xl rounded-xl translate-y-6"
-      ></motion.div>
-
-      {/* Red/white ambient glow */}
+      {/* Ambient lighting effect */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="absolute -inset-2 -z-10 overflow-hidden rounded-xl"
-      >
-        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-red-500/20 to-transparent mix-blend-overlay"></div>
-        <div className="absolute top-0 right-0 bottom-0 w-12 bg-gradient-to-l from-white/15 to-transparent mix-blend-overlay"></div>
-      </motion.div>
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="absolute inset-0 rounded-xl pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(circle at 75% 25%, rgba(239,68,68,0.15) 0%, transparent 50%),
+            linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, transparent 20%)
+          `,
+          boxShadow: 'inset 0 0 30px rgba(255,255,255,0.03)'
+        }}
+      />
 
-      {/* Main black box with subtle texture */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/90 p-8 rounded-xl border border-gray-800/50 shadow-[0_10px_30px_-5px_rgba(255,255,255,0.05)] transform-style-preserve-3d">
+      {/* Main black box */}
+      <div 
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black p-8 rounded-xl border border-gray-800/30"
+        style={{
+          boxShadow: `
+            0 10px 25px -5px rgba(0,0,0,0.5),
+            0 5px 10px -5px rgba(239,68,68,0.1)
+          `
+        }}
+      >
         {[
           { number: "100+", label: "Projects Completed" },
           { number: "50+", label: "Happy Clients" },
@@ -466,16 +470,16 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: index * 0.15 + 0.4,
-              duration: 0.6
+              delay: index * 0.12 + 0.3,
+              duration: 0.5
             }}
             className="text-center"
           >
             <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300/80 font-medium">{stat.label}</p>
+            <p className="text-gray-300/90 font-medium">{stat.label}</p>
           </motion.div>
         ))}
       </div>
