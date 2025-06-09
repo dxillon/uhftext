@@ -22,20 +22,66 @@ const GlassMorphButton = styled(Link)`
 `;
 
 const NewBadge = styled.span`
-  background: linear-gradient(225deg, #ef4444 0%, #f97316 100%);
-  animation: glow 1.5s ease-in-out infinite alternate;
-  font-size: 0.55rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.7) 0%,
+    rgba(249, 115, 22, 0.7) 100%
+  );
+  backdrop-filter: blur(4px);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(239, 68, 68, 0.1);
 
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #f97316;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite linear;
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(30deg);
     }
-    to {
-      box-shadow: 0 0 10px #ef4444, 0 0 20px #ef4444, 0 0 30px #f97316;
+    100% {
+      transform: translateX(100%) rotate(30deg);
     }
   }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+  }
+
+  animation: 
+    pulse 2s ease-in-out infinite,
+    ${glow} 3s ease-in-out infinite alternate;
 `;
 
 const Navbar = () => {
