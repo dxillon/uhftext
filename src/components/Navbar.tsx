@@ -192,7 +192,7 @@ const Navbar = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-10 -mr-6">
             {navLinks.map((link) => {
-              const Icon = link.icon; 
+              const Icon = link.icon;  
               return ( 
                 <Link
                   key={link.path}
@@ -207,7 +207,7 @@ const Navbar = () => {
             })}
 <GlassMorphButton
   to="/courses"
-  className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center gap-5 relative"
+  className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center gap-1.5 relative"
 >
   <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 " />
   <span className="leading-tight text-[22px]">Courses</span>
