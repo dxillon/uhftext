@@ -209,7 +209,7 @@ const Navbar = () => {
               to="/courses"
               className="px-5 py-2 text-xl font-medium text-white text-base rounded-full flex items-center gap-1.5 right-2 relative"
             >
-                <LibraryBig className=" gap-2 hover:text-red-400 "  />
+                <LibraryBig className="  hover:text-red-400 "  />
               Courses
             </GlassMorphButton>
           </div>
