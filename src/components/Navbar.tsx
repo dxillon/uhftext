@@ -232,7 +232,7 @@ const Navbar = () => {
               <X className="h-6 w-6" />
             ) : (
               <div className="relative">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-7 w-7" />
                 <span className="absolute top-0 right-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-red-500 to-orange-500 transform translate-x-1/2 -translate-y-1/2"></span>
               </div>
             )}
