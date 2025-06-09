@@ -12,280 +12,334 @@ import 'swiper/css/parallax';
 import 'swiper/css/thumbs';
 
 interface Project {
-    id: string;
-    title: string;
-    image: string;
-    description: string;
-    releaseDate: string;
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+  releaseDate: string;
 }
 
 interface HeroCarouselProps {
-    projects: Project[];
+  projects: Project[];
 }
 
 const HeroCarousel: React.FC<HeroCarouselProps> = ({ projects }) => {
-    const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [progress, setProgress] = useState(0);
-    const [remainingSeconds, setRemainingSeconds] = useState(5);
-    const swiperRef = useRef<any>(null);
-    const animationRef = useRef<number>();
-    const startTimeRef = useRef<number>(0);
-    const progressIntervalRef = useRef<NodeJS.Timeout>();
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [remainingSeconds, setRemainingSeconds] = useState(5);
+  const swiperRef = useRef<any>(null);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>(0);
+  const progressIntervalRef = useRef<NodeJS.Timeout>();
+  const [isMobile, setIsMobile] = useState(false);
 
-    const autoplayDelay = 5000; // 5 seconds - must match Swiper's autoplay delay
+  const autoplayDelay = 5000; // 5 seconds - must match Swiper's autoplay delay
 
-    // Reset and start the timer animation
-    const startTimer = () => {
-        // Clear any existing animations
-        if (progressIntervalRef.current) {
-            clearInterval(progressIntervalRef.current);
-        }
-        if (animationRef.current) {
-            cancelAnimationFrame(animationRef.current);
-        }
+  // Reset and start the timer animation
+  const startTimer = () => {
+    // Clear any existing animations
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+    }
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
 
-        // Reset state
-        setProgress(0);
-        setRemainingSeconds(5);
-        startTimeRef.current = Date.now();
+    // Reset state
+    setProgress(0);
+    setRemainingSeconds(5);
+    startTimeRef.current = Date.now();
 
-        // Start new animation
-        progressIntervalRef.current = setInterval(() => {
-            const elapsed = Date.now() - startTimeRef.current;
-            const progressValue = Math.min((elapsed / autoplayDelay) * 100, 100);
-            setProgress(progressValue);
+    // Start new animation
+    progressIntervalRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const progressValue = Math.min((elapsed / autoplayDelay) * 100, 100);
+      setProgress(progressValue);
+      
+      const secondsRemaining = Math.ceil((autoplayDelay - elapsed) / 1000);
+      setRemainingSeconds(Math.max(0, secondsRemaining));
+    }, 50);
+  };
 
-            const secondsRemaining = Math.ceil((autoplayDelay - elapsed) / 1000);
-            setRemainingSeconds(Math.max(0, secondsRemaining));
-        }, 50);
+  useEffect(() => {
+    const swiperInstance = swiperRef.current?.swiper;
+    if (!swiperInstance) return;
+
+    const handleAutoplay = () => {
+      startTimer();
     };
 
-    useEffect(() => {
-        const swiperInstance = swiperRef.current?.swiper;
-        if (!swiperInstance) return;
+    const handleSlideChange = () => {
+      setActiveIndex(swiperInstance.realIndex);
+      startTimer();
+    };
 
-        const handleAutoplay = () => {
-            startTimer();
-        };
+    // Set up event listeners
+    swiperInstance.on('autoplayStart', handleAutoplay);
+    swiperInstance.on('slideChangeTransitionStart', handleSlideChange);
 
-        const handleSlideChange = () => {
-            setActiveIndex(swiperInstance.realIndex);
-            startTimer();
-        };
+    // Initial timer start
+    startTimer();
 
-        // Set up event listeners
-        swiperInstance.on('autoplayStart', handleAutoplay);
-        swiperInstance.on('slideChangeTransitionStart', handleSlideChange);
+    return () => {
+      // Clean up event listeners
+      swiperInstance.off('autoplayStart', handleAutoplay);
+      swiperInstance.off('slideChangeTransitionStart', handleSlideChange);
+      
+      // Clear any running intervals
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
-        // Initial timer start
-        startTimer();
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind's md breakpoint
+    };
 
-        return () => {
-            // Clean up event listeners
-            swiperInstance.off('autoplayStart', handleAutoplay);
-            swiperInstance.off('slideChangeTransitionStart', handleSlideChange);
+    // Initial check
+    checkIfMobile();
 
-            // Clear any running intervals
-            if (progressIntervalRef.current) {
-                clearInterval(progressIntervalRef.current);
-            }
-            if (animationRef.current) {
-                cancelAnimationFrame(animationRef.current);
-            }
-        };
-    }, []);
+    // Add event listener for resize
+    window.addEventListener('resize', checkIfMobile);
 
-    return (
-        <div className="relative w-full overflow-hidden">
-            {/* Main Carousel */}
-            <div className="relative h-[60vh] md:h-[85vh]">
-                <Swiper
-                    ref={swiperRef}
-                    modules={[Autoplay, EffectFade, Navigation, Pagination, Parallax, Thumbs]}
-                    effect="fade"
-                    speed={1000}
-                    parallax={true}
-                    navigation={{
-                        nextEl: '.hero-swiper-button-next',
-                        prevEl: '.hero-swiper-button-prev',
-                    }}
-                    pagination={{
-                        clickable: true,
-                        el: '.hero-swiper-pagination',
-                        renderBullet: (index, className) => {
-                            return `<span class="${className} hero-swiper-bullet"></span>`;
-                        },
-                    }}
-                    autoplay={{
-                        delay: autoplayDelay,
-                        disableOnInteraction: false,
-                        waitForTransition: true,
-                    }}
-                    loop
-                    className="h-full"
-                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                >
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
-                    {projects.map((project, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="relative h-full w-full flex items-center justify-center">
-                                {/* Background Image with Parallax */}
-                                <div
-                                    className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-75"
-                                    style={{
-                                        backgroundImage: `url(${project.image})`,
-                                    }}
-                                    data-swiper-parallax="-30%"
-                                />
+  return (
+    <div className="relative w-full overflow-hidden">
+      {/* Main Carousel */}
+      <div className="relative h-[60vh] md:h-[85vh]">
+        <Swiper
+          ref={swiperRef}
+          modules={[Autoplay, EffectFade, Navigation, Pagination, Parallax, Thumbs]}
+          effect="fade"
+          speed={1000}
+          parallax={true}
+          navigation={{
+            nextEl: '.hero-swiper-button-next',
+            prevEl: '.hero-swiper-button-prev',
+          }}
+          pagination={{
+            clickable: true,
+            el: '.hero-swiper-pagination',
+            renderBullet: (index, className) => {
+              return `<span class="${className} hero-swiper-bullet"></span>`;
+            },
+          }}
+          autoplay={{
+            delay: autoplayDelay,
+            disableOnInteraction: false,
+            waitForTransition: true,
+          }}
+          loop
+          className="h-full"
+          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+        >
+          {projects.map((project, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative h-full w-full flex items-center justify-center">
+                {/* Background Image with Parallax */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-75"
+                  style={{
+                    backgroundImage: `url(${project.image})`,
+                  }}
+                  data-swiper-parallax="-30%"
+                />
+                
+                {/* Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
 
-                                {/* Gradient Overlays */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
-
-                                {/* Content - Centered vertically and at bottom */}
-                                <div className="relative z-10 w-full h-full flex flex-col items-center justify-end pb-8 md:pb-16">
-                                    <div className="container mx-auto px-4">
-                                        <div className="max-w-2xl mx-auto text-center">
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.8 }}
-                                            >
-                                                <h2
-                                                    className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-white leading-tight"
-                                                    data-swiper-parallax="-300"
-                                                >
-                                                    {project.title}
-                                                </h2>
-                                            </motion.div>
-
-                                            <motion.p
-                                                className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 max-w-lg mx-auto"
-                                                data-swiper-parallax="-200"
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.8, delay: 0.2 }}
-                                            >
-                                                {project.description}
-                                            </motion.p>
-
-                                            <motion.div
-                                                className="flex flex-col items-center space-y-3 md:space-y-0 md:flex-row md:justify-center md:space-x-6"
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.8, delay: 0.4 }}
-                                            >
-                                                <div className="flex items-center space-x-2 text-red-400">
-                                                    <Calendar className="w-4 h-4 md:w-5 md:h-5" />
-                                                    <span className="text-sm md:text-base font-medium">{project.releaseDate}</span>
-                                                </div>
-
-                                                <Link
-                                                    to={`/project/${project.id}`}
-                                                    className="inline-flex items-center justify-center px-5 py-2 md:px-6 md:py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 transform hover:scale-105 group text-sm md:text-base"
-                                                >
-                                                    <span>Explore Project</span>
-                                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                                                </Link>
-                                            </motion.div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-
-                    {/* Navigation Arrows */}
-                    <div className="hero-swiper-button-prev hero-swiper-button hidden md:flex"></div>
-                    <div className="hero-swiper-button-next hero-swiper-button hidden md:flex"></div>
-
-                    {/* Pagination - Modern style on slide */}
-                    <div className="hero-swiper-pagination !bottom-2 md:!bottom-4"></div>
-                </Swiper>
-            </div>
-
-            {/* Thumbnail Carousel - Bottom Right */}
-            <div className="hidden md:block absolute bottom-4 right-10 z-20 w-auto rounded-lg backdrop-blur-sm py-1 px-2 shadow-md">
-                <div className="flex items-center space-x-4">
-                    {/* Timer Circle - Larger */}
-                    <div className="relative w-8 h-8">
-                        <svg className="w-full h-full -rotate-90" viewBox="0 0 32 32">
-                            <circle
-                                cx="16"
-                                cy="16"
-                                r="14"
-                                fill="none"
-                                stroke="rgba(255,255,255,0.2)"
-                                strokeWidth="1.5"
-                                strokeDasharray="88"
-                                strokeDashoffset="0"
-                            />
-                            <circle
-                                cx="16"
-                                cy="16"
-                                r="14"
-                                fill="none"
-                                stroke="#ef4444"
-                                strokeWidth="1.5"
-                                strokeDasharray="88"
-                                strokeDashoffset={`${88 - (88 * progress) / 100}`}
-                                className="transition-all duration-50 ease-linear"
-                                style={{
-                                    transition: 'stroke-dashoffset 0.1s linear',
-                                }}
-                            />
-                        </svg>
-                        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs font-medium">
-                            {remainingSeconds}s
-                        </span>
-                    </div>
-
-                    {/* Thumbnails Container */}
-                    <div className="relative rounded-lg bg-white/10 p-1.5">
-                        {/* Moving Gradient Background */}
-                        <div className="absolute inset-0 transition-all duration-300 ease-in-out"
-                            style={{
-                                background: `radial-gradient(
-            circle at ${16.5 + (activeIndex * 33)}% 50%, 
-            rgba(220,38,38,0.3) 30%,
-            rgba(220,38,38,0.2) 40%,
-            transparent 70%
-          )`
-                            }}>
-                        </div>
-
-                        <Swiper
-                            onSwiper={setThumbsSwiper}
-                            spaceBetween={7}
-                            slidesPerView={3}
-                            freeMode={true}
-                            watchSlidesProgress={true}
-                            modules={[Thumbs]}
-                            className="!w-[182px] !overflow-visible relative z-10"
+                {/* Content - Centered vertically and at bottom */}
+                <div className="relative z-10 w-full h-full flex flex-col items-center justify-end pb-8 md:pb-16">
+                  <div className="container mx-auto px-4">
+                    <div className="max-w-2xl mx-auto text-center">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <h2 
+                          className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-white leading-tight"
+                          data-swiper-parallax="-300"
                         >
-                            {projects.map((project, index) => (
-                                <SwiperSlide key={index} className="!w-14 !h-14 relative">
-                                    <div className={`relative w-full h-full rounded-lg overflow-hidden transition-all duration-300
-              ${activeIndex === index ? 'ring-2 ring-red-500' : 'opacity-60'}`}>
-
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                          {project.title}
+                        </h2>
+                      </motion.div>
+                      
+                      <motion.p
+                        className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 max-w-lg mx-auto"
+                        data-swiper-parallax="-200"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                      >
+                        {project.description}
+                      </motion.p>
+                      
+                      <motion.div
+                        className="flex flex-col items-center space-y-3 md:space-y-0 md:flex-row md:justify-center md:space-x-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                      >
+                        <div className="flex items-center space-x-2 text-red-400">
+                          <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                          <span className="text-sm md:text-base font-medium">{project.releaseDate}</span>
+                        </div>
+                        
+                        <Link
+                          to={`/project/${project.id}`}
+                          className="inline-flex items-center justify-center px-5 py-2 md:px-6 md:py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 transform hover:scale-105 group text-sm md:text-base"
+                        >
+                          <span>Explore Project</span>
+                          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </motion.div>
                     </div>
+                  </div>
                 </div>
+              </div>
+            </SwiperSlide>
+          ))}
+
+          {/* Navigation Arrows */}
+          <div className="hero-swiper-button-prev hero-swiper-button hidden md:flex"></div>
+          <div className="hero-swiper-button-next hero-swiper-button hidden md:flex"></div>
+          
+          {/* Pagination - Modern style on slide */}
+          <div className="hero-swiper-pagination !bottom-2 md:!bottom-4"></div>
+        </Swiper>
+      </div>
+
+      {/* Timer Only for Mobile */}
+      {isMobile && (
+        <div className="absolute bottom-4 right-4 z-20 rounded-lg backdrop-blur-sm p-2 shadow-md bg-black/30">
+          <div className="relative w-8 h-8">
+            <svg className="w-full h-full -rotate-90" viewBox="0 0 32 32">
+              <circle
+                cx="16"
+                cy="16"
+                r="14"
+                fill="none"
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="1.5"
+                strokeDasharray="88"
+                strokeDashoffset="0"
+              />
+              <circle
+                cx="16"
+                cy="16"
+                r="14"
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="1.5"
+                strokeDasharray="88"
+                strokeDashoffset={`${88 - (88 * progress) / 100}`}
+                className="transition-all duration-50 ease-linear"
+                style={{
+                  transition: 'stroke-dashoffset 0.1s linear',
+                }}
+              />
+            </svg>
+            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs font-medium">
+              {remainingSeconds}s
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Thumbnail Carousel - Desktop Only */}
+      {!isMobile && (
+        <div className="hidden md:block absolute bottom-4 right-10 z-20 w-auto rounded-lg  py-1 px-2 shadow-md">
+          <div className="flex items-center space-x-4">
+            {/* Timer Circle */}
+            <div className="relative w-8 h-8">
+              <svg className="w-full h-full -rotate-90" viewBox="0 0 32 32">
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.2)"
+                  strokeWidth="1.5"
+                  strokeDasharray="88"
+                  strokeDashoffset="0"
+                />
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill="none"
+                  stroke="#ef4444"
+                  strokeWidth="1.5"
+                  strokeDasharray="88"
+                  strokeDashoffset={`${88 - (88 * progress) / 100}`}
+                  className="transition-all duration-50 ease-linear"
+                  style={{
+                    transition: 'stroke-dashoffset 0.1s linear',
+                  }}
+                />
+              </svg>
+              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs font-medium">
+                {remainingSeconds}s
+              </span>
             </div>
 
-            {/* Mobile Bullet Pagination */}
-            <div className="md:hidden hero-swiper-pagination-mobile !bottom-2"></div>
+            {/* Thumbnails Container */}
+            <div className="relative rounded-lg bg-white/10 p-1.5">
+              {/* Moving Gradient Background */}
+              <div className="absolute inset-0 transition-all duration-300 ease-in-out"
+                style={{
+                  background: `radial-gradient(
+                    circle at ${16.5 + (activeIndex * 33)}% 50%, 
+                    rgba(220,38,38,0.3) 30%,
+                    rgba(220,38,38,0.2) 40%,
+                    transparent 70%
+                  )`
+                }}>
+              </div>
+              
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                spaceBetween={7}
+                slidesPerView={3}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[Thumbs]}
+                className="!w-[182px] !overflow-visible relative z-10"
+              >
+                {projects.map((project, index) => (
+                  <SwiperSlide key={index} className="!w-14 !h-14 relative">
+                    <div className={`relative w-full h-full rounded-lg overflow-hidden transition-all duration-300
+                      ${activeIndex === index ? 'ring-2 ring-red-500' : 'opacity-60'}`}>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        </div>
+      )}
 
-            <style jsx>{`
+      {/* Mobile Bullet Pagination */}
+      <div className="md:hidden hero-swiper-pagination-mobile !bottom-2"></div>
+
+      <style jsx>{`
         .hero-swiper-button {
           width: 40px;
           height: 40px;
@@ -346,8 +400,8 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ projects }) => {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default HeroCarousel;
