@@ -87,9 +87,9 @@ const Navbar = () => {
 
   const navLinks = [
     { path: '/', label: 'Hall', icon: Theater },
-    { path: '/team', label: 'Team', icon: Drama },
+    { path: '/team', label: 'Crew', icon: Drama },
     { path: '/about', label: 'About', icon: Podcast },
-    { path: '/projects', label: 'Projects', icon: Projector }
+    { path: '/projects', label: 'Theater', icon: Projector }
   ];
 
   const getArticleUrl = (item) => {
