@@ -206,9 +206,20 @@ const Navbar = () => {
                     }`}
                 >
                   <Icon className="w-8 h-8 mb-1 " />
-             <span className="text-[12px] font-normal tracking-wide leading-snug text-white drop-shadow-sm">
+             <span
+  className="
+    text-[12px] 
+    font-medium 
+    tracking-wider 
+    leading-relaxed 
+    font-sans 
+    text-white 
+    drop-shadow-md
+  "
+>
   {link.label}
 </span>
+
                 </Link>
               );
             })}
