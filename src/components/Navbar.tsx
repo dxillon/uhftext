@@ -205,13 +205,13 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            <GlassMorphButton
-              to="/courses"
-              className="px-5 py-2 text-[22px] font-medium text-white hover:text-red-400 text-base rounded-full flex items-center gap-1.5 right-2 relative"
-            >
-                <LibraryBig className="  hover:text-red-400 "  />
-              Courses
-            </GlassMorphButton>
+<GlassMorphButton
+  to="/courses"
+  className="px-5 py-2 text-[22px] font-medium text-white text-base rounded-full flex items-center gap-1.5 relative"
+>
+  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 text-white text-[26px]" />
+  <span className="leading-tight text-[22px]">Courses</span>
+</GlassMorphButton>
           </div>
 
           {/* Mobile Menu Button */}
