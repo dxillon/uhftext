@@ -424,60 +424,43 @@ const Home = () => {
 
 
 
-<section className="relative py-20 overflow-hidden bg-gray-900">
-  {/* Main container with glow effect */}
-  <div className="container mx-auto px-4">
-    <motion.div 
-      ref={statsRef}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ 
-        duration: 0.7,
-        type: "spring",
-        bounce: 0.25
-      }}
-      className="relative"
-    >
-      {/* Red/White Glow Effect (Top and Right) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="absolute -inset-2 -z-10 overflow-hidden rounded-xl"
-      >
-        {/* Top glow */}
-        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-red-500/30 via-white/10 to-transparent"></div>
-        {/* Right glow */}
-        <div className="absolute top-0 right-0 bottom-0 w-16 bg-gradient-to-l from-red-500/30 via-white/10 to-transparent"></div>
-      </motion.div>
+<section className="relative py-20 bg-black/30">
+  {/* Top Glow */}
+  <div className="absolute top-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
+  {/* Bottom Glow */}
+  <div className="absolute bottom-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
 
-      {/* Black Stats Box */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black p-8 rounded-xl border border-gray-800 shadow-2xl">
-        {[
-          { number: "100+", label: "Projects Completed" },
-          { number: "50+", label: "Happy Clients" },
-          { number: "10+", label: "Awards Won" },
-          { number: "5+", label: "Years Experience" }
-        ].map((stat, index) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: index * 0.15 + 0.3,
-              duration: 0.5,
-              type: "spring"
-            }}
-            className="text-center"
+  <div className="container mx-auto px-4 relative z-10">
+    <div
+      ref={statsRef}
+      className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/40 border border-white/10 rounded-3xl shadow-[0_0_30px_rgba(255,255,255,0.2)] backdrop-blur-md p-8"
+    >
+      {[
+        { number: "100+", label: "Projects Completed" },
+        { number: "50+", label: "Happy Clients" },
+        { number: "10+", label: "Awards Won" },
+        { number: "5+", label: "Years Experience" }
+      ].map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="text-center"
+        >
+          <h3
+            className="stat-number text-4xl font-bold text-white drop-shadow-[0_0_5px_white] mb-2"
+            data-value={stat.number}
           >
-            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300">{stat.label}</p>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
+            0
+          </h3>
+          <p className="text-gray-300">{stat.label}</p>
+        </motion.div>
+      ))}
+    </div>
   </div>
 </section>
+
 
 
 
