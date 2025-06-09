@@ -425,13 +425,21 @@ const Home = () => {
 
 
 <section className="py-20 bg-black/30 relative overflow-hidden w-full">
-  {/* Glow Aura Around the Box */}
-  <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+  {/* Glow Aura Around the Box - Top */}
+  <div className="absolute inset-0 flex justify-center items-start pointer-events-none z-0">
     <div className="w-[90%] h-full rounded-2xl bg-white/10 blur-3xl opacity-10" />
   </div>
 
-  {/* Reflection Line on Top Edge */}
+  {/* Reflection Line - Top */}
   <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-white/10 blur-sm z-10" />
+
+  {/* Reflection Line - Bottom */}
+  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-white/10 blur-sm z-10" />
+
+  {/* Glow Aura Around the Box - Bottom */}
+  <div className="absolute inset-0 flex justify-center items-end pointer-events-none z-0">
+    <div className="w-[90%] h-full rounded-2xl bg-white/10 blur-3xl opacity-10" />
+  </div>
 
   {/* Stats Box */}
   <div
@@ -479,6 +487,7 @@ const Home = () => {
     ))}
   </div>
 </section>
+
 
 
 
