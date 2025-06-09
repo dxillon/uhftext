@@ -425,24 +425,23 @@ const Home = () => {
 
 
 <section className="relative py-24 w-full bg-black overflow-hidden">
-  {/* Cinematic White Glow - Top */}
+  {/* Soft White Glow - Top */}
   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
     <div className="w-full h-full bg-gradient-to-b from-white/10 to-transparent blur-2xl" />
   </div>
 
-  {/* Cinematic White Glow - Bottom */}
+  {/* Soft White Glow - Bottom */}
   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
     <div className="w-full h-full bg-gradient-to-t from-white/10 to-transparent blur-2xl" />
   </div>
 
-  {/* Glowing Stats Container */}
+  {/* Stats Container with clean border */}
   <div className="w-full relative z-10">
     <div className="w-full mx-auto max-w-none px-0">
       <div
         ref={statsRef}
         className="
-          bg-gradient-to-br from-white/5 via-black to-white/5
-          border-y border-white/10 
+          border-y border-white border-[1.5px]
           shadow-[0_0_40px_rgba(255,255,255,0.15)] 
           px-6 md:px-24 py-20 
           flex flex-col items-center justify-center
