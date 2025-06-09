@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, ExternalLink } from 'lucide-react';
+import { Menu, X, ExternalLink, Home, Users, Info, Folder } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -34,50 +34,6 @@ const NewBadge = styled.span`
     }
     to {
       box-shadow: 0 0 10px #ef4444, 0 0 20px #ef4444, 0 0 30px #f97316;
-    }
-  }
-`;
-
-const LiquidGlassBackground = styled(motion.div)`
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    animation: liquidFlow 8s linear infinite;
-    transform: rotate(30deg);
-  }
-
-  @keyframes liquidFlow {
-    0% {
-      transform: translateX(-100%) rotate(30deg);
-    }
-    100% {
-      transform: translateX(100%) rotate(30deg);
     }
   }
 `;
@@ -130,10 +86,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/team', label: 'Team' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' }
+    { path: '/', label: 'Home', icon: Home },
+    { path: '/team', label: 'Team', icon: Users },
+    { path: '/about', label: 'About', icon: Info },
+    { path: '/projects', label: 'Projects', icon: Folder }
   ];
 
   const getArticleUrl = (item) => {
@@ -147,15 +103,15 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 mt-5">
       <div className="max-w-screen-4xl mx-auto px-8 sm:px-10 lg:px-20 relative">
-        {/* Liquid Glass Background */}
+        {/* Background Blur Box */}
         <AnimatePresence>
           {isScrolled && (
-            <LiquidGlassBackground
+            <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="absolute inset-x-0 top-0 mx-4 md:mx-3 h-12 md:h-20"
+              className="absolute inset-x-0 top-0 mx-4 md:mx-3 h-12 md:h-20 rounded-full bg-black/60 backdrop-blur-lg border border-white/15 shadow-lg py-2"
             />
           )}
         </AnimatePresence>
@@ -235,16 +191,20 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-6 -mr-7">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-white text-xl font-medium transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
+                    }`}
+                >
+                  <Icon className="w-6 h-6 mb-1" />
+                  <span className="text-sm font-medium">{link.label}</span>
+                </Link>
+              );
+            })}
             <GlassMorphButton
               to="/courses"
               className="px-5 py-2 text-white text-base rounded-full flex items-center gap-1 relative"
@@ -294,28 +254,32 @@ const Navbar = () => {
               transition={{ type: 'spring', damping: 20 }}
               className="relative mt-24 mx-6 p-8 rounded-xl bg-gray-900/80 border border-gray-800 backdrop-blur-md"
             >
-              <div className="flex flex-col space-y-8">
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 100,
-                      delay: index * 0.05
-                    }}
-                  >
-                    <Link
-                      to={link.path}
-                      className={`block text-2xl py-3 text-white hover:text-red-400 transition-colors ${location.pathname === link.path ? 'font-bold text-red-500' : 'font-medium'
-                        }`}
-                      onClick={() => setIsOpen(false)}
+              <div className="flex flex-col space-y-6">
+                {navLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <motion.div
+                      key={link.path}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 100,
+                        delay: index * 0.05
+                      }}
                     >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        to={link.path}
+                        className={`flex items-center text-xl py-3 text-white hover:text-red-400 transition-colors ${location.pathname === link.path ? 'font-bold text-red-500' : 'font-medium'
+                          }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Icon className="w-6 h-6 mr-4" />
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
 
                 <motion.div
                   initial={{ x: -20, opacity: 0 }}
@@ -328,7 +292,7 @@ const Navbar = () => {
                 >
                   <Link
                     to="/courses"
-                    className="flex items-center gap-3 text-2xl py-3 text-white group"
+                    className="flex items-center gap-3 text-xl py-3 text-white group"
                     onClick={() => setIsOpen(false)}
                   >
                     <span className="font-bold group-hover:text-red-400 transition-colors">
