@@ -206,7 +206,7 @@ const Navbar = () => {
                     }`}
                 >
                   <Icon className="w-8 h-8 mb-1 " />
-                  <span className="text-[12px] text-red-400 font-medium">{link.label}</span>
+                  <span className="text-[12px]   font-medium">{link.label}</span>
                 </Link>
               );
             })}
