@@ -425,37 +425,34 @@ const Home = () => {
 
 
 <section className="relative py-20 overflow-hidden bg-gray-900">
-  {/* Background glow effect */}
-  <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.8 }}
-    className="absolute inset-0 pointer-events-none"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent"></div>
-  </motion.div>
-
+  {/* Main container with glow effect */}
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
-      initial={{ scale: 0.9, opacity: 0 }}
-      whileInView={{ scale: 1, opacity: 1 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ 
         duration: 0.7,
         type: "spring",
-        bounce: 0.3
+        bounce: 0.25
       }}
       className="relative"
     >
-      {/* White glow behind the box */}
+      {/* Red/White Glow Effect (Top and Right) */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 0.4, scale: 1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="absolute -inset-4 -z-10 bg-white/30 blur-2xl rounded-xl"
-      ></motion.div>
+        className="absolute -inset-2 -z-10 overflow-hidden rounded-xl"
+      >
+        {/* Top glow */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-red-500/30 via-white/10 to-transparent"></div>
+        {/* Right glow */}
+        <div className="absolute top-0 right-0 bottom-0 w-16 bg-gradient-to-l from-red-500/30 via-white/10 to-transparent"></div>
+      </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-gray-800/80 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 shadow-lg">
+      {/* Black Stats Box */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black p-8 rounded-xl border border-gray-800 shadow-2xl">
         {[
           { number: "100+", label: "Projects Completed" },
           { number: "50+", label: "Happy Clients" },
@@ -464,16 +461,17 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ 
               delay: index * 0.15 + 0.3,
-              duration: 0.5
+              duration: 0.5,
+              type: "spring"
             }}
             className="text-center"
           >
             <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300/80">{stat.label}</p>
+            <p className="text-gray-300">{stat.label}</p>
           </motion.div>
         ))}
       </div>
