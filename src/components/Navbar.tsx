@@ -24,7 +24,7 @@ const GlassMorphButton = styled(Link)`
 const NewBadge = styled.span`
   background: linear-gradient(225deg, #ef4444 0%, #f97316 100%);
   animation: glow 1.5s ease-in-out infinite alternate;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   padding: 0.15rem 0.5rem;
   border-radius: 9999px;
 
