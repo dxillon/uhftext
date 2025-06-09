@@ -181,7 +181,7 @@ const Navbar = () => {
                       <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
                         {item.text}
                       </span>
-                      <Mic className="w-5 h-5 text-red-400 rotate-[-180deg] flex-shrink-0" />
+                      <Mic className="w-5 h-5 text-red-400 rotate-[15deg] flex-shrink-0" />
                     </Link>
                   </div>
                 ))}
