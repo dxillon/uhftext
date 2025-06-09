@@ -213,7 +213,6 @@ const Navbar = () => {
                 New
               </NewBadge>
               Courses
-              <ArrowRight className="w-4 h-4" />
             </GlassMorphButton>
           </div>
 
