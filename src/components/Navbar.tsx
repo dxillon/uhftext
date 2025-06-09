@@ -190,31 +190,29 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav */}
-<div className="hidden md:flex items-center space-x-10 -mr-7">
-  {navLinks.map((link) => {
-    const Icon = link.icon;
-    return (
-      <Link
-        key={link.path}
-        to={link.path}
-        className={`group flex flex-col items-center text-white transition-colors ${
-          location.pathname === link.path ? 'text-red-500 font-semibold' : 'hover:text-red-400'
-        }`}
-      >
-        <Icon className="w-7 h-7 mb-1" />
-        <span className="text-[10px] font-medium">{link.label}</span>
-      </Link>
-    );
-  })}
-
-  <GlassMorphButton
-    to="/courses"
-    className="group px-5 py-2 text-white rounded-full flex items-center gap-1.5 relative"
-  >
-    <LibraryBig className="text-white text-[26px] transition-colors duration-300 group-hover:text-red-400" />
-    <span className="text-[22px] leading-tight font-medium">Courses</span>
-  </GlassMorphButton>
-</div>
+          <div className="hidden md:flex items-center space-x-10 -mr-7">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`group flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
+                    }`}
+                >
+                  <Icon className="w-7 h-7 mb-1 " />
+                  <span className="text-[10px] font-medium">{link.label}</span>
+                </Link>
+              );
+            })}
+<GlassMorphButton
+  to="/courses"
+  className=" grouppx-5 py-2 text-[22px] font-medium text-white text-base rounded-full flex items-center gap-1.5 relative"
+>
+  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 text-white text-[26px]" />
+  <span className="leading-tight text-[22px]">Courses</span>
+</GlassMorphButton>
+          </div> 
 
 
           {/* Mobile Menu Button */}
