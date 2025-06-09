@@ -22,65 +22,35 @@ const GlassMorphButton = styled(Link)`
 `;
 
 const NewBadge = styled.span`
-  background: linear-gradient(
-    to right,
-    rgba(239, 68, 68, 0.8),
-    rgba(249, 115, 22, 0.8)
-  );
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
   font-size: 0.6rem;
   font-weight: 600;
-  padding: 0.2rem 0.8rem;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow:
-    0 2px 10px rgba(239, 68, 68, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.18);
+    border-color: rgba(239, 68, 68, 0.4);
+  }
+
   &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    animation: shimmer 2.5s infinite;
+    content: '•';
+    color: #ef4444;
+    margin-left: 0.25rem;
+    animation: pulse 1.5s infinite;
   }
-
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  animation: pulse 2s infinite ease-in-out;
 
   @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow:
-        0 2px 10px rgba(239, 68, 68, 0.3),
-        inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-    50% {
-      transform: scale(1.02);
-      box-shadow:
-        0 4px 15px rgba(239, 68, 68, 0.4),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3);
-    }
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
 `;
 
