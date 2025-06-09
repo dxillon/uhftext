@@ -424,7 +424,7 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-gray-100 dark:bg-gray-800"> {/* Light gray in light mode, dark gray in dark mode */}
+<section className="relative py-20 bg-black "> {/* Light gray in light mode, dark gray in dark mode */}
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
