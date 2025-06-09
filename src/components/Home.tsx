@@ -427,11 +427,16 @@ const Home = () => {
 <section className="py-20 bg-black/30 relative overflow-hidden w-full">
   <div
     ref={statsRef}
-    className="grid grid-cols-2 md:grid-cols-4 gap-x-1 gap-y-8
-      border-y border-white/[0.9] border-t-[1.5px] border-b-[1.5px]
-      bg-black/30
-      px-6 md:px-24 py-20
-      w-full
+    className="
+      grid grid-cols-2 md:grid-cols-4 gap-x-1 gap-y-8
+      px-6 md:px-24 py-20 w-full
+      
+      bg-black/60 backdrop-blur-md 
+      rounded-xl
+      
+      border-y border-white/[0.15] border-t-[1.5px] border-b-[1.5px]
+      shadow-[0_25px_50px_-12px_rgba(255,255,255,0.1),_0_4px_6px_rgba(0,0,0,0.8)]
+      transition-all duration-500 ease-out
     "
   >
     {[
@@ -442,7 +447,7 @@ const Home = () => {
     ].map((stat, index) => (
       <motion.div
         key={stat.label}
-        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ delay: index * 0.1, type: "spring", stiffness: 100, damping: 10 }}
         className="text-center text-white"
@@ -453,7 +458,6 @@ const Home = () => {
             text-4xl font-bold mb-2 
             text-white 
             drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] 
-            shadow-lg 
             transition-transform duration-300 ease-out
           "
           data-value={stat.number}
@@ -466,6 +470,7 @@ const Home = () => {
     ))}
   </div>
 </section>
+
 
 
 
