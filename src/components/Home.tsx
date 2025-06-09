@@ -6,9 +6,7 @@ import anime from 'animejs';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import HeroCarousel from '../components/HeroCarousel';
 import ArticleSlider from '../components/ArticleSlider';
 import { articles } from '../data/articles';
 import VideoPlayer from './VideoPlayer';
@@ -101,7 +99,7 @@ const Home = () => {
   const heroTextRef = useRef<HTMLHeadingElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     if (heroTextRef.current) {
@@ -115,16 +113,6 @@ const Home = () => {
         easing: 'easeOutExpo',
         duration: 1200,
         delay: anime.stagger(100)
-      });
-    }
-
-    if (carouselRef.current) {
-      anime({
-        targets: carouselRef.current,
-        translateY: [50, 0],
-        opacity: [0, 1],
-        easing: 'easeOutExpo',
-        duration: 1000
       });
     }
 
@@ -195,71 +183,8 @@ const Home = () => {
       </Helmet>
       <div className="min-h-screen">
 
-        <section className="min-h-screen relative overflow-hidden">
-          <div ref={carouselRef} className="absolute inset-0 z-0">
-            <Swiper
-              modules={[Autoplay, EffectFade, Navigation, Pagination]}
-              effect="fade"
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 5000 }}
-              loop
-              className="h-full"
-              speed={1000}
-            >
-              {upcomingProjects.map((project, index) => (
-                <SwiperSlide key={index}>
-                  <div className="relative h-screen">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center hero-image"
-                      style={{
-                        backgroundImage: `url(${project.image})`,
-                        filter: 'brightness(0.3)'
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                    <div className="absolute bottom-1/4 left-0 right-0 text-center px-4 hero-content">
-                      <motion.h2
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="text-5xl font-bold mb-4 text-gray-100"
-                      >
-                        {project.title}
-                      </motion.h2>
-                      <motion.p
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                        className="text-xl text-gray-300 mb-6"
-                      >
-                        {project.description}
-                      </motion.p>
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.9 }}
-                        className="flex flex-col items-center justify-center space-y-4"
-                      >
-                        <div className="flex items-center space-x-2 text-red-500">
-                          <Calendar className="w-5 h-5" />
-                          <span>{project.releaseDate}</span>
-                        </div>
-                        <Link
-                          to={`/project/${project.id}`}
-                          className="btn-primary inline-flex items-center space-x-2 hover:scale-105 transition-transform"
-                          data-clickable="true"
-                        >
-                          <span>Sneak peek Ahead </span>
-                          <ArrowRight className="w-5 h-5" />
-                        </Link>
-                      </motion.div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+        <section className="relative overflow-hidden">
+          <HeroCarousel projects={upcomingProjects} />
         </section>
 
         <section className="py-16 bg-black/30 relative overflow-hidden">
@@ -526,7 +451,7 @@ const Home = () => {
 
 
 
-         <div
+        <div
           style={{
             background: `
       radial-gradient(
