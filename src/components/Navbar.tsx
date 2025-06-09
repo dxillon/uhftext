@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
 import { ArrowRight } from 'lucide-react';
-import { updates } from "../data/updates";
+import { updates } from "../data/updates"; 
 
 const GlassMorphButton = styled(Link)`
   background: rgba(239, 68, 68, 0.1);
