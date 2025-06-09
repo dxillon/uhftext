@@ -21,6 +21,22 @@ const GlassMorphButton = styled(Link)`
   }
 `;
 
+const NewBadge = styled.span`
+  background: linear-gradient(225deg, #ef4444 0%, #f97316 100%);
+  animation: glow 1.5s ease-in-out infinite alternate;
+  font-size: 0.55rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #f97316;
+    }
+    to {
+      box-shadow: 0 0 10px #ef4444, 0 0 20px #ef4444, 0 0 30px #f97316;
+    }
+  }
+`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
