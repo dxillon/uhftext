@@ -424,17 +424,17 @@ const Home = () => {
 
 
 
-<section className="py-20 relative overflow-hidden">
-  {/* Top gradient fade */}
-  <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-red-900/80 to-transparent z-0"></div>
+<section className="py-20 relative overflow-hidden bg-black">
+  {/* Reversed top gradient (darker at edge) */}
+  <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-0"></div>
   
-  {/* Bottom gradient fade */}
-  <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-red-900/80 to-transparent z-0"></div>
+  {/* Reversed bottom gradient (darker at edge) */}
+  <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-0"></div>
 
-  <div className="container mx-auto px-0"> {/* Changed px-4 to px-0 for full edge */}
+  <div className="container mx-auto px-4 relative z-10">
     <div 
       ref={statsRef} 
-      className="grid grid-cols-2 md:grid-cols-4 gap-0 bg-black border-y border-red-600/50 relative z-10"
+      className="grid grid-cols-2 md:grid-cols-4 gap-8" // Removed all borders and bg
     >
       {[
         { number: "100+", label: "Projects Completed" },
@@ -447,18 +447,21 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
-          className="text-center p-8 bg-black hover:bg-red-900/10 transition-all duration-300 border-x border-red-600/20 relative group"
+          className="text-center p-6 hover:scale-105 transition-transform duration-300"
         >
-          {/* Glow effect on hover */}
-          <div className="absolute inset-0 group-hover:bg-red-900/5 transition-all duration-300"></div>
-          
-          <h3 className="stat-number text-5xl font-bold text-red-500 mb-2" data-value={stat.number}>
+          {/* Gradient text effect */}
+          <h3 
+            className="stat-number text-5xl font-bold mb-2 bg-gradient-to-b from-red-600 to-red-400 bg-clip-text text-transparent"
+            data-value={stat.number}
+          >
             0
           </h3>
-          <p className="text-gray-300 uppercase text-sm tracking-wider">{stat.label}</p>
+          <p className="text-gray-400 uppercase text-sm tracking-wider font-medium">
+            {stat.label}
+          </p>
           
-          {/* Bottom accent bar */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-16 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Radial glow on hover */}
+          <div className="absolute inset-0 rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-radial-gradient(from-center, rgba(239,68,68,0.1), transparent)"></div>
         </motion.div>
       ))}
     </div>
