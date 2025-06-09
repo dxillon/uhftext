@@ -141,6 +141,7 @@ const Navbar = () => {
     <div className="flex-shrink-0 ml-1">
       <CircleArrowOutUpRight className="w-3 h-3 text-red-400" />
     </div>
+    
     {/* Moving text container */}
     <div className="flex-1 overflow-hidden h-full relative">
       <div
@@ -156,7 +157,7 @@ const Navbar = () => {
           >
             <Link
               to={getArticleUrl(item)}
-              className="flex items-center w-full px-1"
+              className="flex items-center w-full"
             >
               <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                 {item.text}
@@ -171,35 +172,36 @@ const Navbar = () => {
 
 {/* Centered Text Carousel */}
 <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
-  <div className="relative h-8 w-full max-w-lg mx-auto">
-    <div className="absolute inset-0 flex items-center justify-end pr-2">
-      {/* Static icon container */}
-      <CircleArrowOutUpRight className="w-4 h-4 text-red-400 flex-shrink-0" />
-      {/* Moving text container */}
-      <div className="flex-1 overflow-hidden h-full relative">
-        <div
-          className="absolute top-0 left-0 right-0 flex flex-col items-end transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateY(-${currentIndex * 32}px)`,
-          }}
-        >
-          {updates.map((item, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 h-8 flex items-center justify-end w-full"
+  <div className="relative h-8 w-full max-w-lg mx-auto flex items-center justify-end">
+    {/* Moving text container */}
+    <div className="flex-1 overflow-hidden h-full relative">
+      <div
+        className="absolute inset-0 flex flex-col transition-transform duration-500 ease-in-out"
+        style={{
+          transform: `translateY(-${currentIndex * 32}px)`,
+        }}
+      >
+        {updates.map((item, index) => (
+          <div
+            key={index}
+            className="flex-shrink-0 h-8 flex items-center justify-end"
+          >
+            <Link
+              to={getArticleUrl(item)}
+              className="flex items-center group w-full justify-end"
             >
-              <Link
-                to={getArticleUrl(item)}
-                className="flex items-center group w-full justify-end"
-              >
-                <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
-                  {item.text}
-                </span>
-              </Link>
-            </div>
-          ))}
-        </div>
+              <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
+                {item.text}
+              </span>
+            </Link>
+          </div>
+        ))}
       </div>
+    </div>
+    
+    {/* Static icon container */}
+    <div className="flex-shrink-0 ml-2">
+      <CircleArrowOutUpRight className="w-4 h-4 text-red-400" />
     </div>
   </div>
 </div>
