@@ -21,17 +21,6 @@ const GlassMorphButton = styled(Link)`
   }
 `;
 
-const NewBadge = styled.span`
-  background: linear-gradient(225deg, #ef4444 0%, #f97316 100%);
-  color: white;
-  font-size: 0.6rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  display: inline-flex;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -204,9 +193,6 @@ const Navbar = () => {
               to="/courses"
               className="px-5 py-2 text-white text-base rounded-full flex items-center gap-1 right-2 relative"
             >
-              <NewBadge className="absolute -top-4 -right-2">
-                New
-              </NewBadge>
               Courses
             </GlassMorphButton>
           </div>
