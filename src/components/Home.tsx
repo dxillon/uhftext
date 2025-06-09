@@ -427,7 +427,7 @@ const Home = () => {
 <section className="py-20 bg-black/30 relative overflow-hidden w-full">
   <div
     ref={statsRef}
-    className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8
+    className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8
       border-y border-white/[0.9] border-t-[1.5px] border-b-[1.5px]
       bg-black/30
       px-6 md:px-24 py-20
