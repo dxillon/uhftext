@@ -102,7 +102,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50 mt-5">
-      <div className="max-w-screen-4xl mx-auto px-8 sm:px-10 lg:px-15 relative">
+      <div className="max-w-screen-4xl mx-auto px-8 sm:px-10 lg:px-1 relative">
         {/* Background Blur Box */}
         <AnimatePresence>
           {isScrolled && (
