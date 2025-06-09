@@ -424,16 +424,16 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-black/30">
-  {/* Top Glow */}
+<section className="relative py-20 bg-black/30 w-full">
+  {/* White Glows Top & Bottom */}
   <div className="absolute top-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
-  {/* Bottom Glow */}
   <div className="absolute bottom-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
 
-  <div className="container mx-auto px-4 relative z-10">
+  {/* Glowing Full-Width Box */}
+  <div className="w-full bg-black/40 border-t border-b border-white/10 shadow-[0_0_60px_rgba(255,255,255,0.2)] backdrop-blur-md px-4 md:px-12 lg:px-24 py-12">
     <div
       ref={statsRef}
-      className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/40 border border-white/10 rounded-3xl shadow-[0_0_30px_rgba(255,255,255,0.2)] backdrop-blur-md p-8"
+      className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto"
     >
       {[
         { number: "100+", label: "Projects Completed" },
@@ -460,6 +460,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+
 
 
 
