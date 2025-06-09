@@ -425,9 +425,15 @@ const Home = () => {
 
 
 <section className="relative py-24 w-full bg-black overflow-hidden">
-  {/* Tight Top & Bottom Glows */}
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-16 bg-white/10 blur-xl pointer-events-none z-0" />
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-16 bg-white/10 blur-xl pointer-events-none z-0" />
+  {/* Cinematic White Glow - Top */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
+    <div className="w-full h-full bg-gradient-to-b from-white/10 to-transparent blur-2xl" />
+  </div>
+
+  {/* Cinematic White Glow - Bottom */}
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
+    <div className="w-full h-full bg-gradient-to-t from-white/10 to-transparent blur-2xl" />
+  </div>
 
   {/* Glowing Stats Container */}
   <div className="w-full relative z-10">
@@ -470,6 +476,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+
 
 
 
