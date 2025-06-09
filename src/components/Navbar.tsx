@@ -190,7 +190,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-10 -pr-10">
+          <div className="hidden md:flex items-center space-x-10 -pr-20">
             {navLinks.map((link) => {
               const Icon = link.icon;
               return (
