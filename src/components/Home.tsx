@@ -424,42 +424,47 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-black/30 w-full">
-  {/* White Glows Top & Bottom */}
-  <div className="absolute top-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
-  <div className="absolute bottom-0 left-0 w-full h-16 bg-white/10 blur-2xl pointer-events-none"></div>
+<section className="relative py-28 bg-black w-full overflow-hidden">
+  {/* Top & Bottom White Glow */}
+  <div className="absolute top-0 left-0 w-full h-20 bg-white/10 blur-3xl pointer-events-none z-0" />
+  <div className="absolute bottom-0 left-0 w-full h-20 bg-white/10 blur-3xl pointer-events-none z-0" />
 
-  {/* Glowing Full-Width Box */}
-  <div className="w-full bg-black/40 border-t border-b border-white/10 shadow-[0_0_60px_rgba(255,255,255,0.2)] backdrop-blur-md px-4 md:px-12 lg:px-24 py-12">
-    <div
-      ref={statsRef}
-      className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto"
-    >
-      {[
-        { number: "100+", label: "Projects Completed" },
-        { number: "50+", label: "Happy Clients" },
-        { number: "10+", label: "Awards Won" },
-        { number: "5+", label: "Years Experience" }
-      ].map((stat, index) => (
-        <motion.div
-          key={stat.label}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className="text-center"
-        >
-          <h3
-            className="stat-number text-4xl font-bold text-white drop-shadow-[0_0_5px_white] mb-2"
-            data-value={stat.number}
+  {/* Full-Width Glowing Stats Box */}
+  <div className="w-full px-4 md:px-16 lg:px-24 relative z-10">
+    <div className="bg-gradient-to-br from-white/5 via-black/50 to-white/5 border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,255,255,0.15)] backdrop-blur-2xl py-16 px-6 md:px-20 scale-[1.02] transition-transform duration-500 ease-out">
+
+      <div
+        ref={statsRef}
+        className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto text-white"
+      >
+        {[
+          { number: "100+", label: "Projects Completed" },
+          { number: "50+", label: "Happy Clients" },
+          { number: "10+", label: "Awards Won" },
+          { number: "5+", label: "Years Experience" }
+        ].map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.15 }}
+            className="text-center"
           >
-            0
-          </h3>
-          <p className="text-gray-300">{stat.label}</p>
-        </motion.div>
-      ))}
+            <h3
+              className="text-5xl md:text-6xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] mb-3"
+              data-value={stat.number}
+            >
+              0
+            </h3>
+            <p className="text-gray-300 text-lg">{stat.label}</p>
+          </motion.div>
+        ))}
+      </div>
+
     </div>
   </div>
 </section>
+
 
 
 
