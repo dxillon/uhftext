@@ -424,41 +424,42 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-neutral-900">
+<section className="relative py-20 bg-gray-100 dark:bg-gray-800"> {/* Light gray in light mode, dark gray in dark mode */}
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
-      initial={{ opacity: 0, y: 40, rotateX: 3 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.8,
+        duration: 0.7,
         type: "spring",
-        bounce: 0.15
+        bounce: 0.2
       }}
       className="relative"
     >
-      {/* Ambient lighting effect */}
+      {/* Ambient glow (works on both light/dark) */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.5 }}
         className="absolute inset-0 rounded-xl pointer-events-none"
         style={{
           background: `
-            radial-gradient(circle at 75% 25%, rgba(239,68,68,0.15) 0%, transparent 50%),
-            linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, transparent 20%)
+            radial-gradient(circle at 75% 25%, rgba(239,68,68,0.08) 0%, transparent 50%),
+            linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, transparent 20%)
           `,
-          boxShadow: 'inset 0 0 30px rgba(255,255,255,0.03)'
+          mixBlendMode: 'overlay'
         }}
       />
 
-      {/* Main black box */}
+      {/* Main container with depth */}
       <div 
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black p-8 rounded-xl border border-gray-800/30"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-200 dark:border-gray-700"
         style={{
           boxShadow: `
-            0 10px 25px -5px rgba(0,0,0,0.5),
-            0 5px 10px -5px rgba(239,68,68,0.1)
+            0 8px 20px -5px rgba(0,0,0,0.1),
+            0 4px 8px -4px rgba(239,68,68,0.1),
+            inset 0 1px 0 rgba(255,255,255,0.1) /* subtle top highlight */
           `
         }}
       >
@@ -470,16 +471,16 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: index * 0.12 + 0.3,
-              duration: 0.5
+              delay: index * 0.1 + 0.3,
+              duration: 0.4
             }}
             className="text-center"
           >
-            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300/90 font-medium">{stat.label}</p>
+            <h3 className="stat-number text-4xl font-bold text-gray-900 dark:text-white mb-2" data-value={stat.number}>0</h3>
+            <p className="text-gray-600 dark:text-gray-300 font-medium">{stat.label}</p>
           </motion.div>
         ))}
       </div>
