@@ -424,46 +424,53 @@ const Home = () => {
 
 
 
-<section className="relative py-28 bg-black w-full overflow-hidden">
-  {/* Top & Bottom White Glow */}
-  <div className="absolute top-0 left-0 w-full h-20 bg-white/10 blur-3xl pointer-events-none z-0" />
-  <div className="absolute bottom-0 left-0 w-full h-20 bg-white/10 blur-3xl pointer-events-none z-0" />
+<section className="relative py-24 w-full bg-black overflow-hidden">
+  {/* OUTER WHITE GLOWS */}
+  <div className="absolute top-0 left-0 w-full h-32 bg-white/10 blur-3xl pointer-events-none z-0" />
+  <div className="absolute bottom-0 left-0 w-full h-32 bg-white/10 blur-3xl pointer-events-none z-0" />
 
-  {/* Full-Width Glowing Stats Box */}
-  <div className="w-full px-4 md:px-16 lg:px-24 relative z-10">
-    <div className="bg-gradient-to-br from-white/5 via-black/50 to-white/5 border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,255,255,0.15)] backdrop-blur-2xl py-16 px-6 md:px-20 scale-[1.02] transition-transform duration-500 ease-out">
-
+  {/* FULL-WIDTH GLOWING CONTAINER */}
+  <div className="w-full relative z-10">
+    <div className="w-full mx-auto max-w-none px-0">
       <div
         ref={statsRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto text-white"
+        className="
+          bg-gradient-to-br from-white/10 via-black to-white/10
+          border-y border-white/20 
+          shadow-[0_0_100px_rgba(255,255,255,0.3)] 
+          px-6 md:px-24 py-20 
+          flex flex-col items-center justify-center
+        "
       >
-        {[
-          { number: "100+", label: "Projects Completed" },
-          { number: "50+", label: "Happy Clients" },
-          { number: "10+", label: "Awards Won" },
-          { number: "5+", label: "Years Experience" }
-        ].map((stat, index) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15 }}
-            className="text-center"
-          >
-            <h3
-              className="text-5xl md:text-6xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] mb-3"
-              data-value={stat.number}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-16 gap-x-12 w-full max-w-7xl text-center">
+          {[
+            { number: "100+", label: "Projects Completed" },
+            { number: "50+", label: "Happy Clients" },
+            { number: "10+", label: "Awards Won" },
+            { number: "5+", label: "Years Experience" },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              className="text-white"
             >
-              0
-            </h3>
-            <p className="text-gray-300 text-lg">{stat.label}</p>
-          </motion.div>
-        ))}
+              <h3
+                className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-[0_0_8px_white]"
+                data-value={stat.number}
+              >
+                0
+              </h3>
+              <p className="text-gray-300 text-lg">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-
     </div>
   </div>
 </section>
+
 
 
 
