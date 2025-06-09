@@ -425,18 +425,29 @@ const Home = () => {
 
 
 <section className="py-20 bg-black/30 relative overflow-hidden w-full">
+  {/* Glow Aura Around the Box */}
+  <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+    <div className="w-[90%] h-full rounded-2xl bg-white/10 blur-3xl opacity-10" />
+  </div>
+
+  {/* Reflection Line on Top Edge */}
+  <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-white/10 blur-sm z-10" />
+
+  {/* Stats Box */}
   <div
     ref={statsRef}
     className="
-      grid grid-cols-2 md:grid-cols-4 gap-x-1 gap-y-8
+      relative z-20
+      grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-8
       px-6 md:px-24 py-20 w-full
-      
-      bg-black/60 backdrop-blur-md 
-      rounded-xl
-      
-      border-y border-white/[0.15] border-t-[1.5px] border-b-[1.5px]
-      shadow-[0_25px_50px_-12px_rgba(255,255,255,0.1),_0_4px_6px_rgba(0,0,0,0.8)]
-      transition-all duration-500 ease-out
+
+      bg-gradient-to-br from-black/60 via-black/40 to-black/60
+      backdrop-blur-md rounded-2xl
+
+      border border-white/[0.05]
+      shadow-[0_25px_50px_-12px_rgba(255,255,255,0.15),_0_6px_30px_rgba(0,0,0,0.9)]
+
+      transition-all duration-700 ease-out
     "
   >
     {[
@@ -447,33 +458,27 @@ const Home = () => {
     ].map((stat, index) => (
       <motion.div
         key={stat.label}
-        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: index * 0.1, type: "spring", stiffness: 100, damping: 10 }}
+        transition={{ delay: index * 0.1, type: "spring", stiffness: 90, damping: 14 }}
         className="text-center text-white"
       >
         <h3
           className="
             stat-number 
-            text-4xl font-bold mb-2 
-            text-white 
-            drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] 
+            text-4xl md:text-5xl font-extrabold mb-2 
+            drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] 
             transition-transform duration-300 ease-out
           "
           data-value={stat.number}
-          style={{ transformOrigin: 'center' }}
         >
           0
         </h3>
-        <p className="text-gray-400">{stat.label}</p>
+        <p className="text-gray-400 text-sm md:text-base">{stat.label}</p>
       </motion.div>
     ))}
   </div>
 </section>
-
-
-
-
 
 
 
