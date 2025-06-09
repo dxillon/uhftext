@@ -23,65 +23,65 @@ const GlassMorphButton = styled(Link)`
 
 const NewBadge = styled.span`
   background: linear-gradient(
-    135deg,
-    rgba(239, 68, 68, 0.7) 0%,
-    rgba(249, 115, 22, 0.7) 100%
+    to right,
+    rgba(239, 68, 68, 0.8),
+    rgba(249, 115, 22, 0.8)
   );
   backdrop-filter: blur(4px);
-  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
   font-size: 0.6rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.2rem 0.8rem;
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 4px 6px rgba(239, 68, 68, 0.1);
-
-  &::before {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 2px 10px rgba(239, 68, 68, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  
+  &::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(255, 255, 255, 0.2) 100%
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
     );
-    transform: rotate(30deg);
-    animation: shine 3s infinite linear;
+    animation: shimmer 2.5s infinite;
   }
 
-  @keyframes shine {
+  @keyframes shimmer {
     0% {
-      transform: translateX(-100%) rotate(30deg);
+      transform: translateX(-100%);
     }
     100% {
-      transform: translateX(100%) rotate(30deg);
+      transform: translateX(100%);
     }
   }
+
+  animation: pulse 2s infinite ease-in-out;
 
   @keyframes pulse {
     0%, 100% {
       transform: scale(1);
-      opacity: 0.9;
+      box-shadow:
+        0 2px 10px rgba(239, 68, 68, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
     }
     50% {
-      transform: scale(1.03);
-      opacity: 1;
+      transform: scale(1.02);
+      box-shadow:
+        0 4px 15px rgba(239, 68, 68, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
     }
   }
-
-  animation: 
-    pulse 2s ease-in-out infinite,
-    ${glow} 3s ease-in-out infinite alternate;
 `;
 
 const Navbar = () => {
