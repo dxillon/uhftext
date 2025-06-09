@@ -424,41 +424,41 @@ const Home = () => {
 
 
 
-<section className="py-20 bg-black/30 relative overflow-hidden">
-  <div className="container mx-auto px-4">
-    <div
-      ref={statsRef}
-      className="grid grid-cols-2 md:grid-cols-4 gap-8
-        border-y border-white/[0.9] border-t-[1.5px] border-b-[1.5px]
-        bg-black/30
-        px-6 md:px-24 py-20
-      "
-    >
-      {[
-        { number: "100+", label: "Projects Completed" },
-        { number: "50+", label: "Happy Clients" },
-        { number: "10+", label: "Awards Won" },
-        { number: "5+", label: "Years Experience" }
-      ].map((stat, index) => (
-        <motion.div
-          key={stat.label}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className="text-center text-white"
+<section className="py-20 bg-black/30 relative overflow-hidden w-full">
+  <div
+    ref={statsRef}
+    className="grid grid-cols-2 md:grid-cols-4 gap-8
+      border-y border-white/[0.9] border-t-[1.5px] border-b-[1.5px]
+      bg-black/30
+      px-6 md:px-24 py-20
+      w-full
+    "
+  >
+    {[
+      { number: "100+", label: "Projects Completed" },
+      { number: "50+", label: "Happy Clients" },
+      { number: "10+", label: "Awards Won" },
+      { number: "5+", label: "Years Experience" }
+    ].map((stat, index) => (
+      <motion.div
+        key={stat.label}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="text-center text-white"
+      >
+        <h3
+          className="stat-number text-4xl font-bold drop-shadow-[0_0_5px_white] mb-2"
+          data-value={stat.number}
         >
-          <h3
-            className="stat-number text-4xl font-bold drop-shadow-[0_0_5px_white] mb-2"
-            data-value={stat.number}
-          >
-            0
-          </h3>
-          <p className="text-gray-400">{stat.label}</p>
-        </motion.div>
-      ))}
-    </div>
+          0
+        </h3>
+        <p className="text-gray-400">{stat.label}</p>
+      </motion.div>
+    ))}
   </div>
 </section>
+
 
 
 
