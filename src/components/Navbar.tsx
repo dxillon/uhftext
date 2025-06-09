@@ -209,7 +209,7 @@ const Navbar = () => {
   to="/courses"
   className=" group px-5 py-2 text-[22px] font-medium text-white text-base rounded-full flex items-center gap-1.5 relative"
 >
-  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 text-white text-[26px]" />
+  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 text-white text-[28px]" />
   <span className="leading-tight text-[22px]">Courses</span>
 </GlassMorphButton>
           </div> 
