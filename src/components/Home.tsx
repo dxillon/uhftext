@@ -424,22 +424,30 @@ const Home = () => {
 
 
 
-<section className="relative py-20 overflow-hidden">
+<section className="relative py-20 overflow-hidden bg-black/10">
+  {/* Background gradient elements */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
+    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+  </div>
+
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
-      initial={{ x: 100, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.7, type: "spring" }}
-      className="relative"
+      initial={{ scale: 0.8, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ 
+        duration: 0.6,
+        type: "spring",
+        bounce: 0.4
+      }}
+      className="relative origin-center"
     >
-      {/* Gradient top edge of box */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-70"></div>
-      
-      {/* Gradient bottom edge of box */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-70"></div>
+      {/* Container gradient edges */}
+      <div className="absolute -top-[1px] -left-[1px] -right-[1px] h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-t-lg"></div>
+      <div className="absolute -bottom-[1px] -left-[1px] -right-[1px] h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-b-lg"></div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-gray-800 shadow-xl">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/50 backdrop-blur-md p-8 rounded-xl border border-gray-800/50 shadow-2xl">
         {[
           { number: "100+", label: "Projects Completed" },
           { number: "50+", label: "Happy Clients" },
@@ -448,13 +456,17 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 + 0.3 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              delay: index * 0.15,
+              duration: 0.5,
+              type: "spring"
+            }}
             className="text-center"
           >
             <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300">{stat.label}</p>
+            <p className="text-gray-300/90">{stat.label}</p>
           </motion.div>
         ))}
       </div>
