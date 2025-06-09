@@ -86,7 +86,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Theater', icon: Theater },
+    { path: '/', label: 'Hall', icon: Theater },
     { path: '/team', label: 'Team', icon: Drama },
     { path: '/about', label: 'About', icon: Podcast },
     { path: '/projects', label: 'Projects', icon: Projector }
