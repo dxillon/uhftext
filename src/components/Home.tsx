@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Camera, Film, Award, Play, ArrowRight, Star, Calendar, Clock, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import anime from 'animejs';
