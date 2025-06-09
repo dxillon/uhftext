@@ -22,36 +22,14 @@ const GlassMorphButton = styled(Link)`
 `;
 
 const NewBadge = styled.span`
-  background: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
-  font-size: 0.6rem;
+  background: #ef4444;
+  color: white;
+  font-size: 0.55rem;
   font-weight: 600;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  display: inline-flex;
-  align-items: center;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  display: inline-block;
   line-height: 1;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: rgba(239, 68, 68, 0.18);
-    border-color: rgba(239, 68, 68, 0.4);
-  }
-
-  &::after {
-    content: '•';
-    color: #ef4444;
-    margin-left: 0.25rem;
-    animation: pulse 1.5s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
 `;
 
 const Navbar = () => {
