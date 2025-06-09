@@ -190,10 +190,10 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-9 -mr-6">
+          <div className="hidden md:flex items-center space-x-10 -mr-6">
             {navLinks.map((link) => {
               const Icon = link.icon; 
-              return (
+              return ( 
                 <Link
                   key={link.path}
                   to={link.path}
