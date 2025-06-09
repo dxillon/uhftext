@@ -209,7 +209,7 @@ const Navbar = () => {
               to="/courses"
               className="px-5 py-2 text-white text-base rounded-full flex items-center gap-1 relative"
             >
-              <NewBadge className="absolute -top-4 pr-5">
+              <NewBadge className="absolute -top-4 -right-2">
                 New
               </NewBadge>
               Courses
