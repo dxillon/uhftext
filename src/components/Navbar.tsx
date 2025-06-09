@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, ExternalLink, Home, Users, Info, Folder,LibraryBig } from 'lucide-react';
+import { Menu, X, ExternalLink, Home, Users, Info, Projector,LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -89,7 +89,7 @@ const Navbar = () => {
     { path: '/', label: 'Home', icon: Home },
     { path: '/team', label: 'Team', icon: Users },
     { path: '/about', label: 'About', icon: Info },
-    { path: '/projects', label: 'Projects', icon: Folder }
+    { path: '/projects', label: 'Projects', icon: Projector }
   ];
 
   const getArticleUrl = (item) => {
