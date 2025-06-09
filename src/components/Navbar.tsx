@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, ExternalLink, Home, Users, Podcast, Projector,LibraryBig } from 'lucide-react';
+import { Menu, X, ExternalLink, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -86,8 +86,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Home', icon: Home },
-    { path: '/team', label: 'Team', icon: Users },
+    { path: '/', label: 'Theater', icon: Theater },
+    { path: '/team', label: 'Team', icon: Drama },
     { path: '/about', label: 'About', icon: Podcast },
     { path: '/projects', label: 'Projects', icon: Projector }
   ];
