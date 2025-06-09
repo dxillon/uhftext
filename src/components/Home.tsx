@@ -424,30 +424,38 @@ const Home = () => {
 
 
 
-<section className="relative py-20 overflow-hidden bg-black/10">
-  {/* Background gradient elements */}
-  <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
-    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-  </div>
+<section className="relative py-20 overflow-hidden bg-gray-900">
+  {/* Background glow effect */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8 }}
+    className="absolute inset-0 pointer-events-none"
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent"></div>
+  </motion.div>
 
   <div className="container mx-auto px-4">
     <motion.div 
       ref={statsRef}
-      initial={{ scale: 0.8, opacity: 0 }}
+      initial={{ scale: 0.9, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       transition={{ 
-        duration: 0.6,
+        duration: 0.7,
         type: "spring",
-        bounce: 0.4
+        bounce: 0.3
       }}
-      className="relative origin-center"
+      className="relative"
     >
-      {/* Container gradient edges */}
-      <div className="absolute -top-[1px] -left-[1px] -right-[1px] h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-t-lg"></div>
-      <div className="absolute -bottom-[1px] -left-[1px] -right-[1px] h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-b-lg"></div>
+      {/* White glow behind the box */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 0.4, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="absolute -inset-4 -z-10 bg-white/30 blur-2xl rounded-xl"
+      ></motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/50 backdrop-blur-md p-8 rounded-xl border border-gray-800/50 shadow-2xl">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-gray-800/80 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 shadow-lg">
         {[
           { number: "100+", label: "Projects Completed" },
           { number: "50+", label: "Happy Clients" },
@@ -456,17 +464,16 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: index * 0.15,
-              duration: 0.5,
-              type: "spring"
+              delay: index * 0.15 + 0.3,
+              duration: 0.5
             }}
             className="text-center"
           >
-            <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300/90">{stat.label}</p>
+            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
+            <p className="text-gray-300/80">{stat.label}</p>
           </motion.div>
         ))}
       </div>
