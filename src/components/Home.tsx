@@ -448,7 +448,7 @@ const Home = () => {
         className="text-center text-white"
       >
         <h3
-          className="stat-number text-4xl font-bold drop-shadow-[0_0_5px_white] mb-2 tracking-tight"
+          className="stat-number text-4xl font-bold  mb-2 "
           data-value={stat.number}
         >
           0
