@@ -424,43 +424,38 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-black "> {/* Light gray in light mode, dark gray in dark mode */}
-  <div className="container mx-auto px-4">
+<section className="relative py-20 bg-black overflow-x-hidden">
+  <div className="container mx-auto px-0"> {/* Remove horizontal padding to allow edge stretching */}
     <motion.div 
       ref={statsRef}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.7,
+        duration: 0.8,
         type: "spring",
-        bounce: 0.2
+        bounce: 0.1
       }}
       className="relative"
     >
-      {/* Ambient glow (works on both light/dark) */}
+      {/* Floating shadow effect */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="absolute inset-0 rounded-xl pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(circle at 75% 25%, rgba(239,68,68,0.08) 0%, transparent 50%),
-            linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, transparent 20%)
-          `,
-          mixBlendMode: 'overlay'
-        }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 0.3, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="absolute inset-x-4 -bottom-4 h-8 bg-black blur-2xl rounded-full"
       />
 
-      {/* Main container with depth */}
+      {/* Main container stretched to edges with floating effect */}
       <div 
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-200 dark:border-gray-700"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-gray-900 p-8 rounded-none md:rounded-xl border-t border-b md:border border-gray-800"
         style={{
           boxShadow: `
-            0 8px 20px -5px rgba(0,0,0,0.1),
-            0 4px 8px -4px rgba(239,68,68,0.1),
-            inset 0 1px 0 rgba(255,255,255,0.1) /* subtle top highlight */
-          `
+            0 25px 50px -12px rgba(255, 255, 255, 0.05),
+            inset 0 1px 0 rgba(255,255,255,0.05),
+            inset 0 -1px 0 rgba(0,0,0,0.5)
+          `,
+          marginLeft: '-1px',
+          marginRight: '-1px'
         }}
       >
         {[
@@ -471,18 +466,24 @@ const Home = () => {
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: index * 0.1 + 0.3,
-              duration: 0.4
+              delay: index * 0.15 + 0.4,
+              duration: 0.5
             }}
-            className="text-center"
+            className="text-center px-4"
           >
-            <h3 className="stat-number text-4xl font-bold text-gray-900 dark:text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">{stat.label}</p>
+            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
+            <p className="text-gray-300 font-medium">{stat.label}</p>
           </motion.div>
         ))}
+      </div>
+
+      {/* Edge glow effect (hidden on mobile) */}
+      <div className="hidden md:block">
+        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent"></div>
       </div>
     </motion.div>
   </div>
