@@ -425,25 +425,26 @@ const Home = () => {
 
 
 <section className="relative py-24 w-full bg-black overflow-hidden">
-  {/* Soft White Glow - Top */}
+  {/* Cinematic Glow - Top */}
   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
     <div className="w-full h-full bg-gradient-to-b from-white/10 to-transparent blur-2xl" />
   </div>
 
-  {/* Soft White Glow - Bottom */}
+  {/* Cinematic Glow - Bottom */}
   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-20 pointer-events-none z-0">
     <div className="w-full h-full bg-gradient-to-t from-white/10 to-transparent blur-2xl" />
   </div>
 
-  {/* Stats Container with clean border */}
+  {/* Clean Solid Stats Box */}
   <div className="w-full relative z-10">
-    <div className="w-full mx-auto max-w-none px-0">
+    <div className="px-0 w-full">
       <div
         ref={statsRef}
         className="
-          border-y border-white border-[1.5px]
-          shadow-[0_0_40px_rgba(255,255,255,0.15)] 
-          px-6 md:px-24 py-20 
+          border-y border-white/[0.9]
+          border-t-[1.5px] border-b-[1.5px]
+          bg-black/30
+          px-6 md:px-24 py-20
           flex flex-col items-center justify-center
         "
       >
@@ -475,6 +476,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+
 
 
 
