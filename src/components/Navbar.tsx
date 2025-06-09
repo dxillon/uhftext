@@ -205,7 +205,8 @@ const Navbar = () => {
                   className={`group flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
                     }`}
                 >
-                  <Icon className=" strokeWidth={1} " />
+                  <Icon className="   style={{ strokeWidth: 1 }}
+ " />
              <span
   className="
     text-[12px] 
@@ -227,7 +228,7 @@ const Navbar = () => {
   to="/courses"
   className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center  gap-1.5 relative"
 >
-  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400  strokeWidth={10}" />
+  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400  " />
   <span className="leading-tight text-[22px]">Course's</span>
 </GlassMorphButton>
           </div> 
