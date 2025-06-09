@@ -291,12 +291,13 @@ const Navbar = () => {
                     className="flex items-center gap-3 text-xl py-3 text-white group"
                     onClick={() => setIsOpen(false)}
                   >
+                                        <NewBadge className="text-xs font-bold px-2 py-1">
+                      New
+                    </NewBadge>
                     <span className="font-bold group-hover:text-red-400 transition-colors">
                       Courses
                     </span>
-                    <NewBadge className="text-xs font-bold px-2 py-1">
-                      New
-                    </NewBadge>
+
                   </Link>
                 </motion.div>
               </div>
