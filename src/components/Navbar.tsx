@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, CircleArrowOutUpRight , Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
+import { Menu, X, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -26,7 +26,7 @@ const NewBadge = styled.span`
   animation: glow 1.5s ease-in-out infinite alternate;
   font-size: 0.55rem;
   padding: 0.15rem 0.5rem;
-  border-radius: 9999px;
+  border-radius: 9999pxdata:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaXJjbGUtYXJyb3ctb3V0LXVwLXJpZ2h0LWljb24gbHVjaWRlLWNpcmNsZS1hcnJvdy1vdXQtdXAtcmlnaHQiPjxwYXRoIGQ9Ik0yMiAxMkExMCAxMCAwIDEgMSAxMiAyIi8+PHBhdGggZD0iTTIyIDIgMTIgMTIiLz48cGF0aCBkPSJNMTYgMmg2djYiLz48L3N2Zz4=;
 
   @keyframes glow {
     from {
