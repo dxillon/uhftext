@@ -210,7 +210,7 @@ const Navbar = () => {
   className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center  gap-1.5 relative"
 >
   <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 " />
-  <span className="leading-tight text-[22px]">Courses</span>
+  <span className="leading-tight text-[22px]">Course's</span>
 </GlassMorphButton>
           </div> 
 
@@ -297,7 +297,7 @@ const Navbar = () => {
                       New
                     </NewBadge>
                     <span className="font-bold group-hover:text-red-400 transition-colors">
-                      Courses
+                      Course's
                     </span>
 
                   </Link>
