@@ -424,29 +424,41 @@ const Home = () => {
 
 
 
-        <section className="py-20 bg-black/30">
-          <div className="container mx-auto px-4">
-            <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { number: "100+", label: "Projects Completed" },
-                { number: "50+", label: "Happy Clients" },
-                { number: "10+", label: "Awards Won" },
-                { number: "5+", label: "Years Experience" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
-                  <p className="text-gray-400">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+<section className="relative py-20 overflow-hidden">
+  {/* Gradient top edge */}
+  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-70"></div>
+  
+  {/* Gradient bottom edge */}
+  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-70"></div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <motion.div 
+      ref={statsRef}
+      initial={{ scale: 0.95, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/40 backdrop-blur-sm p-8 rounded-lg border border-gray-800 shadow-xl"
+    >
+      {[
+        { number: "100+", label: "Projects Completed" },
+        { number: "50+", label: "Happy Clients" },
+        { number: "10+", label: "Awards Won" },
+        { number: "5+", label: "Years Experience" }
+      ].map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="text-center"
+        >
+          <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
+          <p className="text-gray-300">{stat.label}</p>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
 
 
