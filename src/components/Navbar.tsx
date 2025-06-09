@@ -200,7 +200,7 @@ const Navbar = () => {
     </div>
     
     {/* Static icon container */}
-    <div className="flex-shrink-0 ml-2">
+    <div className="flex-shrink-0 ml-1">
       <CircleArrowOutUpRight className="w-4 h-4 text-red-400" />
     </div>
   </div>
