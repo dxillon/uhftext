@@ -424,67 +424,62 @@ const Home = () => {
 
 
 
-<section className="py-20 bg-black/30 relative overflow-hidden w-full">
-  {/* Glow Aura Around the Box - Top */}
-  <div className="absolute inset-0 flex justify-center items-start pointer-events-none z-0">
-    <div className="w-[90%] h-full rounded-2xl bg-white/10 blur-3xl opacity-10" />
-  </div>
-
-  {/* Reflection Line - Top */}
-  <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-white/10 blur-sm z-10" />
-
-  {/* Reflection Line - Bottom */}
-  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-white/10 blur-sm z-10" />
-
-  {/* Glow Aura Around the Box - Bottom */}
-  <div className="absolute inset-0 flex justify-center items-end pointer-events-none z-0">
-    <div className="w-[90%] h-full rounded-2xl bg-white/10 blur-3xl opacity-10" />
-  </div>
-
-  {/* Stats Box */}
-  <div
-    ref={statsRef}
-    className="
-      relative z-20
-      grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-8
-      px-6 md:px-24 py-20 w-full
-
-      bg-gradient-to-br from-black/60 via-black/40 to-black/60
-      backdrop-blur-md rounded-2xl
-
-      border border-white/[0.05]
-      shadow-[0_25px_50px_-12px_rgba(255,255,255,0.15),_0_6px_30px_rgba(0,0,0,0.9)]
-
-      transition-all duration-700 ease-out
-    "
-  >
-    {[
-      { number: "100+", label: "Projects Completed" },
-      { number: "50+", label: "Happy Clients" },
-      { number: "10+", label: "Awards Won" },
-      { number: "5+", label: "Years Experience" }
-    ].map((stat, index) => (
+<section className="relative py-20 bg-gray-900">
+  <div className="container mx-auto px-4">
+    <motion.div 
+      ref={statsRef}
+      initial={{ opacity: 0, y: 20, rotateX: 5 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      transition={{ 
+        duration: 0.8,
+        type: "spring",
+        bounce: 0.2
+      }}
+      className="relative perspective-1000"
+    >
+      {/* 3D shadow effect */}
       <motion.div
-        key={stat.label}
-        initial={{ opacity: 0, y: 30, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: index * 0.1, type: "spring", stiffness: 90, damping: 14 }}
-        className="text-center text-white"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 0.4, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="absolute inset-0 -z-10 bg-black blur-xl rounded-xl translate-y-6"
+      ></motion.div>
+
+      {/* Red/white ambient glow */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="absolute -inset-2 -z-10 overflow-hidden rounded-xl"
       >
-        <h3
-          className="
-            stat-number 
-            text-4xl md:text-5xl font-extrabold mb-2 
-            drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] 
-            transition-transform duration-300 ease-out
-          "
-          data-value={stat.number}
-        >
-          0
-        </h3>
-        <p className="text-gray-400 text-sm md:text-base">{stat.label}</p>
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-red-500/20 to-transparent mix-blend-overlay"></div>
+        <div className="absolute top-0 right-0 bottom-0 w-12 bg-gradient-to-l from-white/15 to-transparent mix-blend-overlay"></div>
       </motion.div>
-    ))}
+
+      {/* Main black box with subtle texture */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-black/90 p-8 rounded-xl border border-gray-800/50 shadow-[0_10px_30px_-5px_rgba(255,255,255,0.05)] transform-style-preserve-3d">
+        {[
+          { number: "100+", label: "Projects Completed" },
+          { number: "50+", label: "Happy Clients" },
+          { number: "10+", label: "Awards Won" },
+          { number: "5+", label: "Years Experience" }
+        ].map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: index * 0.15 + 0.4,
+              duration: 0.6
+            }}
+            className="text-center"
+          >
+            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
+            <p className="text-gray-300/80 font-medium">{stat.label}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   </div>
 </section>
 
