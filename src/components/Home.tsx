@@ -425,19 +425,19 @@ const Home = () => {
 
 
 <section className="relative py-24 w-full bg-black overflow-hidden">
-  {/* OUTER WHITE GLOWS */}
-  <div className="absolute top-0 left-0 w-full h-32 bg-white/10 blur-3xl pointer-events-none z-0" />
-  <div className="absolute bottom-0 left-0 w-full h-32 bg-white/10 blur-3xl pointer-events-none z-0" />
+  {/* Tight Top & Bottom Glows */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-16 bg-white/10 blur-xl pointer-events-none z-0" />
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-16 bg-white/10 blur-xl pointer-events-none z-0" />
 
-  {/* FULL-WIDTH GLOWING CONTAINER */}
+  {/* Glowing Stats Container */}
   <div className="w-full relative z-10">
     <div className="w-full mx-auto max-w-none px-0">
       <div
         ref={statsRef}
         className="
-          bg-gradient-to-br from-white/10 via-black to-white/10
-          border-y border-white/20 
-          shadow-[0_0_100px_rgba(255,255,255,0.3)] 
+          bg-gradient-to-br from-white/5 via-black to-white/5
+          border-y border-white/10 
+          shadow-[0_0_40px_rgba(255,255,255,0.15)] 
           px-6 md:px-24 py-20 
           flex flex-col items-center justify-center
         "
@@ -457,7 +457,7 @@ const Home = () => {
               className="text-white"
             >
               <h3
-                className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-[0_0_8px_white]"
+                className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-[0_0_5px_white]"
                 data-value={stat.number}
               >
                 0
@@ -470,6 +470,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+
 
 
 
