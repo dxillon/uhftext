@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
+import { Menu, X, Theater, Drama, Podcast, Projector, LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -46,8 +46,8 @@ const Navbar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const CircleArrowOutUpRight = (props: React.SVGProps<SVGSVGElement>) => (
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-out-up-right-icon lucide-circle-arrow-out-up-right"><path d="M22 12A10 10 0 1 1 12 2"/><path d="M22 2 12 12"/><path d="M16 2h6v6"/></svg>
-);
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-out-up-right-icon lucide-circle-arrow-out-up-right"><path d="M22 12A10 10 0 1 1 12 2" /><path d="M22 2 12 12" /><path d="M16 2h6v6" /></svg>
+  );
 
 
   useEffect(() => {
@@ -134,7 +134,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-{/* Mobile Text Carousel (left of menu button) */}
+          {/* Mobile Text Carousel (left of menu button) */}
           <div className="md:hidden flex-1 min-w-0 mx-2 h-8 overflow-hidden relative">
             <div
               className="absolute top-0 left-0 right-0 flex flex-col transition-transform duration-500 ease-in-out"
@@ -154,7 +154,7 @@ const Navbar = () => {
                     <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
-  <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
+                    <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
                   </Link>
                 </div>
               ))}
@@ -186,58 +186,50 @@ const Navbar = () => {
                       <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
                         {item.text}
                       </span>
-  <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
+                      <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
                     </Link>
                   </div>
                 ))}
               </div>
             </div>
-          </div> 
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-10 -mr-6.5">
             {navLinks.map((link) => {
-              const Icon = link.icon;  
-              return (  
+              const Icon = link.icon;
+              return (
                 <Link
                   key={link.path}
                   to={link.path}
                   className={`group flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
                     }`}
                 >
-                    <Icon className="w-7 h-7 mb-1 " />
-             <span
-  className="
-    text-[12px] 
-    font-medium 
-    tracking-wider 
-    leading-relaxed 
-    font-sans 
-    text-white 
-    drop-shadow-md
-  "
->
-  {link.label}
-</span>
+                  <Icon className="w-7 h-7 mb-1 " />
+                  <span
+                    className="  text-[12px]  font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
+                  >
+                    {link.label}
+                  </span>
 
                 </Link>
               );
             })}
-<GlassMorphButton
-  to="/courses"
-  className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center  gap-1.5 relative"
->
-  <LibraryBig className="transition-colors duration-300 group-hover:text-red-400  " />
-  <span className="leading-tight text-[22px]">Course's</span>
-</GlassMorphButton>
-          </div> 
+            <GlassMorphButton
+              to="/courses"
+              className=" group px-3 py-2.5 text-[22px] font-medium text-white text-base rounded-full flex items-center  gap-1.5 relative"
+            >
+              <LibraryBig className="transition-colors duration-300 group-hover:text-red-400 " />
+              <span className="leading-tight text-[22px]">Course's</span>
+            </GlassMorphButton>
+          </div>
 
 
           {/* Mobile Menu Button */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => setIsOpen(!isOpen)} 
+            onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none relative z-50"
             aria-label="Menu"
           >
@@ -311,7 +303,7 @@ const Navbar = () => {
                     className="flex items-center gap-3 text-xl py-3 text-white group"
                     onClick={() => setIsOpen(false)}
                   >
-                                        <NewBadge className="text-xs font-bold px-2 py-1">
+                    <NewBadge className="text-xs font-bold px-2 py-1">
                       New
                     </NewBadge>
                     <span className="font-bold group-hover:text-red-400 transition-colors">
@@ -329,4 +321,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 
