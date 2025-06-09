@@ -424,29 +424,34 @@ const Home = () => {
 
 
 
-        <section className="py-20 bg-black/30">
-          <div className="container mx-auto px-4">
-            <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { number: "100+", label: "Projects Completed" },
-                { number: "50+", label: "Happy Clients" },
-                { number: "10+", label: "Awards Won" },
-                { number: "5+", label: "Years Experience" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
-                  <p className="text-gray-400">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+<section className="py-20">
+  <div className="container mx-auto px-4">
+    <div 
+      ref={statsRef} 
+      className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-gradient-to-r from-purple-900/80 via-blue-900/80 to-indigo-900/80 rounded-2xl p-8 shadow-2xl border border-white/10 backdrop-blur-sm"
+    >
+      {[
+        { number: "100+", label: "Projects Completed" },
+        { number: "50+", label: "Happy Clients" },
+        { number: "10+", label: "Awards Won" },
+        { number: "5+", label: "Years Experience" }
+      ].map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+        >
+          <h3 className="stat-number text-5xl font-bold text-white mb-2" data-value={stat.number}>
+            0
+          </h3>
+          <p className="text-gray-300 font-medium">{stat.label}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
 
 
