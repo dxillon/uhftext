@@ -200,7 +200,7 @@ const Navbar = () => {
                   className={`flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
                     }`}
                 >
-                  <Icon className="w-7 h-7 mb-1 hover:text-red-400" />
+                  <Icon className="w-7 h-7 mb-1 " />
                   <span className="text-[10px] font-medium">{link.label}</span>
                 </Link>
               );
@@ -209,7 +209,7 @@ const Navbar = () => {
               to="/courses"
               className="px-5 py-2 text-xl font-medium text-white text-base rounded-full flex items-center gap-1.5 right-2 relative"
             >
-                <LibraryBig className=" gap-2 "  />
+                <LibraryBig className=" gap-2 hover:text-red-400 "  />
               Courses
             </GlassMorphButton>
           </div>
