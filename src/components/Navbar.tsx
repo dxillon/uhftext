@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
-import { Menu, X,  MicVocal, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
+import { Menu, X, Mic, Theater, Drama, Podcast, Projector,LibraryBig } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import anime from 'animejs';
 import styled from '@emotion/styled';
@@ -149,7 +149,7 @@ const Navbar = () => {
                     <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
-                    < MicVocal className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
+                    <Mic className="w-3 h-3 text-red-400 flex-shrink-0 ml-1" />
                   </Link>
                 </div>
               ))}
@@ -181,7 +181,7 @@ const Navbar = () => {
                       <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
                         {item.text}
                       </span>
-                      < MicVocal className="w-5 h-5 text-red-400 flex-shrink-0" />
+                      <Mic className="w-5 h-5 text-red-400 flex-shrink-0" />
                     </Link>
                   </div>
                 ))}
