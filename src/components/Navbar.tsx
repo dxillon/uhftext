@@ -10,7 +10,7 @@ import { updates } from "../data/updates";
 
 const GlassMorphButton = styled(Link)`
   background: rgba(239, 68, 68, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); 
   border: 1px solid rgba(239, 68, 68, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transition: all 0.3s ease;
