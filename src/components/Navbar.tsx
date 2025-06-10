@@ -109,7 +109,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Hall', icon: Theater,  className: "relative top-10" },
+    { path: '/', label: 'Hall', icon: Theater,  className: "relative top-5" },
     { path: '/team', label: 'Crew', icon: Drama },
     { path: '/about', label: 'Origin', icon: Podcast },
     { path: '/projects', label: 'Theater', icon: Projector }
