@@ -304,7 +304,11 @@ const Navbar = () => {
                         onClick={() => setIsOpen(false)}
                       >
                         <Icon className="w-6 h-6 mr-4" />
-                        {link.label}
+                       <span
+                    className="  ml-1   "
+                  >
+                    {link.label}
+                  </span>
                       </Link>
                     </motion.div>
                   );
