@@ -216,24 +216,27 @@ const CircleArrowOutUpRight = ({
          <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
   {/* Add this notification component at the top */}
   <AnimatePresence>
-{showTrendingNotification && (
-  <motion.div
-    // ... animation props
-    className="absolute top-0 left-0 right-0 bg-gray-800 text-white text-center py-2 px-4 text-sm font-medium z-10 flex justify-between items-center"
-  >
-    <div>
-      🔥 Trending: 
-      <Link to="/trending-page1" className="ml-2 hover:text-red-400">Page 1</Link>
-      <Link to="/trending-page2" className="ml-3 hover:text-red-400">Page 2</Link>
-    </div>
-    <button 
-      onClick={() => setShowTrendingNotification(false)}
-      className="text-gray-400 hover:text-white"
-    >
-      <X className="w-4 h-4" />
-    </button>
-  </motion.div>
-)}
+         {showTrendingNotification && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20"
+            >
+              <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg flex items-center whitespace-nowrap">
+                🔥 Trending now
+                <button 
+                  onClick={() => setShowTrendingNotification(false)}
+                  className="ml-2 p-0.5 rounded-full hover:bg-white/20"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+              {/* Small arrow pointer */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-red-500"></div>
+            </motion.div>
+          )}
   </AnimatePresence>
 
   <div
