@@ -179,7 +179,7 @@ const CircleArrowOutUpRight = ({
           <div className="md:hidden flex-1 min-w-0 mx-2 h-8 overflow-hidden relative">
             <div
               className="absolute top-0 left-0 right-0 flex flex-col transition-transform duration-500 ease-in-out"
-              style={{
+              style={{ 
                 transform: `translateY(-${currentIndex * 32}px)`,
               }}
             >
@@ -192,7 +192,7 @@ const CircleArrowOutUpRight = ({
                     to={getArticleUrl(item)}
                     className="flex items-center max-w-full px-1"
                   >
-                    <span className="text-white font-medium text-[13px] whitespace-nowrap overflow-hidden text-ellipsis">
+                    <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
                     <CircleArrowOutUpRight className="w-3.5 h-3.5 text-red-400 flex-shrink-0 ml-1" />
