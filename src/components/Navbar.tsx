@@ -305,7 +305,7 @@ const Navbar = () => {
                       >
                         <Icon className="w-6 h-6 mr-4" />
                        <span
-                    className="  ml-1   "
+                    className="  ml-2   "
                   >
                     {link.label}
                   </span>
