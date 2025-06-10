@@ -224,7 +224,7 @@ const Navbar = () => {
                 >
                   <Icon className="w-7 h-7 mb-1.5 " />
                   <span
-                    className="  text-[12px]  font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
+                    className="  text-[12px] mt-1.5 font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
                   >
                     {link.label}
                   </span>
