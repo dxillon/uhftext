@@ -66,7 +66,7 @@ const Navbar = () => {
   );
 
      const  Theater = (props: React.SVGProps<SVGSVGElement>) => (
-<svg xmlns="http://www.w3.org/2000/svg"  height="35px" width="35px" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-theater-icon lucide-theater"><path d="M2 10s3-3 3-8"/><path d="M22 10s-3-3-3-8"/><path d="M10 2c0 4.4-3.6 8-8 8"/><path d="M14 2c0 4.4 3.6 8 8 8"/><path d="M2 10s2 2 2 5"/><path d="M22 10s-2 2-2 5"/><path d="M8 15h8"/><path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/><path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/></svg>);
+<svg xmlns="http://www.w3.org/2000/svg"  height="38px" width="35px" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-theater-icon lucide-theater"><path d="M2 10s3-3 3-8"/><path d="M22 10s-3-3-3-8"/><path d="M10 2c0 4.4-3.6 8-8 8"/><path d="M14 2c0 4.4 3.6 8 8 8"/><path d="M2 10s2 2 2 5"/><path d="M22 10s-2 2-2 5"/><path d="M8 15h8"/><path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/><path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/></svg>);
 
   useEffect(() => {
     if (isOpen) {
@@ -205,7 +205,7 @@ const Navbar = () => {
                         {item.text}
                       </span>
                       <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-2" />
-                    </Link>
+                    </Link> 
                   </div>
                 ))}
               </div>
@@ -225,7 +225,7 @@ const Navbar = () => {
                 >
                   <Icon  />
                   <span
-                    className="  text-[12px] mt-1 font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
+                    className="  text-[12px] mt-1.5 font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
                   >
                     {link.label}
                   </span>
