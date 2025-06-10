@@ -224,7 +224,9 @@ const Navbar = () => {
                   className={`group flex flex-col items-center text-white transition-colors hover:text-red-400 ${location.pathname === link.path ? 'text-red-500 font-semibold' : ''
                     }`}
                 >
-                  <Icon  className="w-6 h-6" />
+                        <div className={link.label === "Hall" ? "relative -top-1" : ""}>
+        <Icon className="w-6 h-6" />
+      </div>
                   <span
                     className="  text-[12px] mt-1 font-medium  tracking-wider  leading-relaxed   font-sans  text-white  drop-shadow-md  "
                   >
