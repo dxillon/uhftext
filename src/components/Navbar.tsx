@@ -173,7 +173,7 @@ const Navbar = () => {
                     <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
-                    <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-2" />
+                    <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-5" />
                   </Link>
                 </div>
               ))}
