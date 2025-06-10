@@ -168,7 +168,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={getArticleUrl(item)}
-                    className="flex items-center max-w-full px-1"
+                    className="flex items-center max-w-full px-2"
                   >
                     <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
