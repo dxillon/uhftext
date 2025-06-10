@@ -299,7 +299,7 @@ const Navbar = () => {
                     >
                       <Link
                         to={link.path}
-                        className={`flex items-center text-xl py-3 text-white hover:text-red-400 transition-colors ${location.pathname === link.path ? 'font-bold text-red-500' :'text-white hover:text-red-40 font-medium'
+                        className={`flex items-center text-xl py-3  transition-colors ${location.pathname === link.path ? 'font-bold text-red-500' :'text-white hover:text-red-40 font-medium'
                           }`}
                         onClick={() => setIsOpen(false)}
                       >
