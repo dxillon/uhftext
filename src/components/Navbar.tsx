@@ -110,7 +110,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Hall', icon: Theater,   style: { position: 'relative', top: '-0.25rem' }  },
+    { path: '/', label: 'Hall', icon: Theater  },
     { path: '/team', label: 'Crew', icon: Drama },
     { path: '/about', label: 'Origin', icon: Podcast },
     { path: '/projects', label: 'Theater', icon: Projector }
