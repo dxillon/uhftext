@@ -192,7 +192,7 @@ const CircleArrowOutUpRight = ({
                     to={getArticleUrl(item)}
                     className="flex items-center max-w-full px-1"
                   >
-                    <span className="text-white font-medium text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+                    <span className="text-white font-medium text-[12px] whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.text}
                     </span>
                     <CircleArrowOutUpRight className="w-3.5 h-3.5 text-red-400 flex-shrink-0 ml-1" />
