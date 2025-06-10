@@ -227,7 +227,7 @@ const CircleArrowOutUpRight = ({
                       <span className="text-white font-medium text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis mr-2 group-hover:text-red-400 transition-colors">
                         {item.text}
                       </span>
-                      <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-2"" />
+                      <CircleArrowOutUpRight className="w-3 h-3 text-red-400 flex-shrink-0 ml-2" />
                     </Link> 
                   </div>
                 ))}
