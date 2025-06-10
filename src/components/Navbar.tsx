@@ -44,6 +44,7 @@ const Navbar = () => {
   const location = useLocation();
   const logoRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+   const [showTrendingNotification, setShowTrendingNotification] = useState(true);
 
 const CircleArrowOutUpRight = ({ 
   width = 24, 
@@ -131,6 +132,15 @@ const CircleArrowOutUpRight = ({
     return () => clearInterval(interval);
   }, []);
 
+ useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTrendingNotification(false);
+    }, 2000); // Hide after 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  
   const navLinks = [
     { path: '/', label: 'Hall', icon: Theater  },
     { path: '/team', label: 'Crew', icon: Drama },
@@ -203,37 +213,58 @@ const CircleArrowOutUpRight = ({
           </div>
 
           {/* Centered Text Carousel */}
-          <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
-            <div
-              className="relative h-8 w-full max-w-lg mx-auto"
-              style={{ overflow: 'hidden' }}
-            >
-              <div
-                className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: `translateY(-${currentIndex * 32}px)`,
-                  right: '10%'
-                }}
-              >
-                {updates.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 h-8 flex items-center justify-end w-full"
-                  >
-                    <Link
-                      to={getArticleUrl(item)}
-                      className="flex items-center group"
-                    >
-                      <span className="text-white text-[23px] font-medium text-base  whitespace-nowrap overflow-hidden text-ellipsis mr-1 group-hover:text-red-400 transition-colors">
-                        {item.text}
-                      </span>
-                      <CircleArrowOutUpRight className="w-6 h-6 text-red-400 flex-shrink-0 ml-1" />
-                    </Link> 
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+         <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
+  {/* Add this notification component at the top */}
+  <AnimatePresence>
+    {showTrendingNotification && (
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="absolute top-0 left-0 right-0 bg-gradient-to-r from-red-500 to-orange-500 text-white text-center py-2 text-sm font-medium z-10"
+      >
+        🔥 Trending now: Quick access to popular pages! 
+        <button 
+          onClick={() => setShowTrendingNotification(false)}
+          className="ml-2 underline"
+        >
+          Dismiss
+        </button>
+      </motion.div>
+    )}
+  </AnimatePresence>
+
+  <div
+    className="relative h-8 w-full max-w-lg mx-auto"
+    style={{ overflow: 'hidden' }}
+  >
+    <div
+      className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"
+      style={{
+        transform: `translateY(-${currentIndex * 32}px)`,
+        right: '10%'
+      }}
+    >
+      {updates.map((item, index) => (
+        <div
+          key={index}
+          className="flex-shrink-0 h-8 flex items-center justify-end w-full"
+        >
+          <Link
+            to={getArticleUrl(item)}
+            className="flex items-center group"
+          >
+            <span className="text-white text-[23px] font-medium text-base whitespace-nowrap overflow-hidden text-ellipsis mr-1 group-hover:text-red-400 transition-colors">
+              {item.text}
+            </span>
+            <CircleArrowOutUpRight className="w-6 h-6 text-red-400 flex-shrink-0 ml-1" />
+          </Link> 
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-10 -mr-6.5">
