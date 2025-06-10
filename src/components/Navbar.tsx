@@ -44,7 +44,6 @@ const Navbar = () => {
   const location = useLocation();
   const logoRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-   const [showTrendingNotification, setShowTrendingNotification] = useState(true);
 
 const CircleArrowOutUpRight = ({ 
   width = 24, 
@@ -132,15 +131,6 @@ const CircleArrowOutUpRight = ({
     return () => clearInterval(interval);
   }, []);
 
- useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTrendingNotification(false);
-    }, 2000); // Hide after 2 seconds
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  
   const navLinks = [
     { path: '/', label: 'Hall', icon: Theater  },
     { path: '/team', label: 'Crew', icon: Drama },
@@ -212,63 +202,38 @@ const CircleArrowOutUpRight = ({
             </div>
           </div>
 
-          {/* Centered Text Carousel */}
-         <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
-  {/* Add this notification component at the top */}
-  <AnimatePresence>
-         {showTrendingNotification && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20"
+          {/* Centered Text Carousel */} 
+          <div className="hidden md:flex flex-1 justify-center items-center overflow-hidden">
+            <div
+              className="relative h-8 w-full max-w-lg mx-auto"
+              style={{ overflow: 'hidden' }}
             >
-              <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg flex items-center whitespace-nowrap">
-                🔥 Trending now
-                <button 
-                  onClick={() => setShowTrendingNotification(false)}
-                  className="ml-2 p-0.5 rounded-full hover:bg-white/20"
-                >
-                  <X className="w-3 h-3" />
-                </button>
+              <div
+                className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateY(-${currentIndex * 32}px)`,
+                  right: '10%'
+                }}
+              >
+                {updates.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 h-8 flex items-center justify-end w-full"
+                  >
+                    <Link
+                      to={getArticleUrl(item)}
+                      className="flex items-center group"
+                    >
+                      <span className="text-white text-[23px] font-medium text-base  whitespace-nowrap overflow-hidden text-ellipsis mr-1 group-hover:text-red-400 transition-colors">
+                        {item.text}
+                      </span>
+                      <CircleArrowOutUpRight className="w-6 h-6 text-red-400 flex-shrink-0 ml-1" />
+                    </Link> 
+                  </div>
+                ))}
               </div>
-              {/* Small arrow pointer */}
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-red-500"></div>
-            </motion.div>
-          )}
-  </AnimatePresence>
-
-  <div
-    className="relative h-8 w-full max-w-lg mx-auto"
-    style={{ overflow: 'hidden' }}
-  >
-    <div
-      className="absolute inset-0 flex flex-col items-end transition-transform duration-500 ease-in-out"
-      style={{
-        transform: `translateY(-${currentIndex * 32}px)`,
-        right: '10%'
-      }}
-    >
-      {updates.map((item, index) => (
-        <div
-          key={index}
-          className="flex-shrink-0 h-8 flex items-center justify-end w-full"
-        >
-          <Link
-            to={getArticleUrl(item)}
-            className="flex items-center group"
-          >
-            <span className="text-white text-[23px] font-medium text-base whitespace-nowrap overflow-hidden text-ellipsis mr-1 group-hover:text-red-400 transition-colors">
-              {item.text}
-            </span>
-            <CircleArrowOutUpRight className="w-6 h-6 text-red-400 flex-shrink-0 ml-1" />
-          </Link> 
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+            </div>
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-10 -mr-6.5">
