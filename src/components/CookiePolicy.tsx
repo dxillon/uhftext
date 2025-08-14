@@ -70,9 +70,23 @@ const CookiePolicy = () => {
     <>
       <Helmet>
         <title>Cookie Policy – Urban Hustle Films</title>
-        <meta name="description" content="Understand how we use cookies to improve your browsing experience." />
+        <meta name="description" content="Understand how we use cookies to improve your browsing experience at Urban Hustle Films." />
         <link rel="canonical" href="https://uhfilms.in/cookies" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Cookie Policy – Urban Hustle Films" />
+        <meta property="og:description" content="Understand how we use cookies to improve your browsing experience at Urban Hustle Films." />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
+        <meta property="og:url" content="https://uhfilms.in/cookies" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cookie Policy – Urban Hustle Films" />
+        <meta name="twitter:description" content="Understand how we use cookies to improve your browsing experience at Urban Hustle Films." />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
       </Helmet>
+
 
       <div className="min-h-screen pt-20">
         <motion.div

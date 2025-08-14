@@ -325,7 +325,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ selectedRole, h
 
                   <motion.div whileHover={{ y: -2 }}>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-mono">
-                      COVER LETTER / NOTES *
+                      COVER LETTER / MRESSAGE *
                     </label>
                     <textarea
                       id="message"

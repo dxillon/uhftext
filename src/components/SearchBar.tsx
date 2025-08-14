@@ -1,23 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, X, Loader2 } from 'lucide-react';
 
 interface SearchBarProps {
   onSearch: (term: string) => void;
   isLoading?: boolean;
+  onFocusChange?: (isFocused: boolean) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading = false }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ 
+  onSearch, 
+  isLoading = false,
+  onFocusChange
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+
+  // Debounce search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onSearch(searchTerm);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, onSearch]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchTerm);
   };
 
-  const handleClear = () => {
-    setSearchTerm('');
-    onSearch('');
+const handleClear = () => {
+  setSearchTerm('');
+  onSearch('');
+  if (onFocusChange) onFocusChange(false);
+};
+
+const handleFocus = () => {
+  setIsFocused(true);
+  if (onFocusChange) onFocusChange(true);
+};
+
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    if (onFocusChange) onFocusChange(false);
   };
 
   return (
@@ -40,8 +66,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading = false }) =>
           placeholder="Search articles..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           className="flex-grow bg-transparent outline-none text-white placeholder-white/60 text-base sm:text-lg"
         />
 

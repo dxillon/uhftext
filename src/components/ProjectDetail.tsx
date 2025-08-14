@@ -1,96 +1,26 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Film, Users, Award, Clock, Calendar, Star, Play, Heart, ArrowLeft, FileDown } from 'lucide-react';
-import PasswordModal from '../components/PasswordModal';
-import usePasswordProtectedDownload from '../hooks/usePasswordProtectedDownload';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useParams, useNavigate,Link } from "react-router-dom";
+import {
+  Film,
+  Users,
+  Award,
+  Clock,
+  Calendar,
+  Star,
+  Play,
+  Heart,
+  ArrowLeft,
+  FileDown,
+} from "lucide-react";
+import PasswordModal from "../components/PasswordModal";
+import { projectDetails } from "../data/projectdetail";
+import usePasswordProtectedDownload from "../hooks/usePasswordProtectedDownload";
+import { Helmet } from "react-helmet-async";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  // This would normally come from an API or database
-  const projectDetails = {
-    "agyaat": {
-      title: "Agyaat",
-      shouldCover: true,
-      shouldDim: true,
-      image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759562/WhatsApp_Image_2025-04-27_at_17.53.31_a20c2148_x5mnpk.jpg",
-      description: "When truth is invisible, can you find it?",
-      releaseDate: "Fall 2025",
-      duration: "10 episodes",
-      genre: "Fiction",
-      rating: "PG-13",
-      budget: "TBR",
-      status: "In Production",
-      synopsis: "Agyaat is a gripping psychological mystery thriller that delves into the unknown, where reality and perception blur. Set against the backdrop of a seemingly normal town, a series of strange, unexplainable events begins to unravel the lives of those involved. With each twist, the characters are forced to confront their deepest fears and secrets, questioning whether the world they know is real or a dangerous illusion. The show challenges the boundaries of sanity, diving into the shadows of the human mind and the eerie silence of the unknown.",
-      team: {
-        director: "Harry Targotra ,Bishanpreet",
-        producer: "Bishanpreet , TBR",
-        writer: "Harry Targotra , Sam",
-        cinematographer: "TBR",
-        composer: "TBR"
-      },
-      cast: [
-        "Casting in process."
-      ],
-      pitchdeckUrl: "https://example.com/pitchdeck-last-horizon.pdf",
-      password: "agyaat2025+1"
-    },
-    "sucidefun": {
-      title: "Sucide Fun",
-      shouldCover: true,
-      shouldDim: true,
-      image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759555/WhatsApp_Image_2025-04-27_at_17.53.32_87bee1b0_q9etqk.jpg",
-      description: "Do you have the courage to see your future?",
-      releaseDate: "Fall 2025",
-      duration: "8 Episodes",
-      genre: "Fiction",
-      rating: "A",
-      budget: "TBD",
-      status: "Writing",
-      synopsis: "Suicide Fun is a dark, mysterious thriller where curiosity and fate collide. A young boy's search for answers about his future takes him down a path filled with chilling encounters and unsettling twists. As he unravels secrets beyond his control, he must face the terrifying consequences of knowing too much. In a world where destiny might not be as it seems, every answer leads to more questions, and every step forward may be one toward destruction.",
-      team: {
-        director: "TBD",
-        producer: "TBD",
-        writer: "Harry Targotra, Jhujar Singh",
-        cinematographer: "TBD",
-        composer: "TBD"
-      },
-      cast: [
-        "TBD"
-      ],
-      pitchdeckUrl: "https://example.com/pitchdeck-urban-legends.pdf",
-      password: "sucidefun2025+2"
-    },
-    "snake&lovers": {
-      title: "Snake & Lovers",
-      image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745852895/Snake_2_dz80lv.png",
-      shouldCover: true,
-      shouldDim: true,
-      description: "A psychological thriller that will keep you guessing",
-      releaseDate: "Early 2026",
-      duration: "8 episodes",
-      genre: "Psychological Thriller",
-      rating: "R",
-      budget: "TBR",
-      status: "Writing, Pre-production",
-      synopsis: "Snake & Lovers is an emotional rollercoaster that follows the heart-wrenching journey of a boy navigating the chaos of heartbreak and self-discovery. After falling for a girl at school, his world is turned upside down as his relationship takes unexpected turns. Caught between love, rejection, and a thirst for validation, he embarks on a path of self-hustle and growth. As the story unfolds, he learns the true meaning of love, sacrifice, and personal strength. The series blends the intensity of youth, the pain of unrequited love, and the relentless pursuit of success.",
-      team: {
-        director: "Bishanpreet , TBR",
-        producer: "Bishanpreet",
-        writer: "Harry Targotra , Jhujar Singh",
-        cinematographer: "TBD",
-        composer: "TBD"
-      },
-      cast: [
-        "Casting  in process."
-      ],
-      pitchdeckUrl: "https://example.com/pitchdeck-silent-echo.pdf",
-      password: "s&l2026+3"
-    }
-  };
 
   const project = projectDetails[id as keyof typeof projectDetails];
 
@@ -108,14 +38,14 @@ const ProjectDetail = () => {
     isDownloading,
     openModal,
     closeModal,
-    handlePasswordSubmit
+    handlePasswordSubmit,
   } = usePasswordProtectedDownload({
     correctPassword: project.password,
-    fileUrl: project.pitchdeckUrl
+    fileUrl: project.pitchdeckUrl,
   });
 
   const handleBackToHome = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -124,7 +54,27 @@ const ProjectDetail = () => {
         <title>{project.title} – Urban Hustle Films</title>
         <meta name="description" content={project.description} />
         <link rel="canonical" href={`https://uhfilms.in/project/${id}`} />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content={`${project.title} – Urban Hustle Films`}
+        />
+        <meta property="og:description" content={project.description} />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
+        <meta property="og:url" content={`https://uhfilms.in/project/${id}`} />
+        <meta property="og:type" content="article" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`${project.title} – Urban Hustle Films`}
+        />
+        <meta name="twitter:description" content={project.description} />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
       </Helmet>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={id}
@@ -145,17 +95,19 @@ const ProjectDetail = () => {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${project.image})`,
-                  backgroundSize: project.shouldCover ? 'cover' : 'contain',
-                  backgroundPosition: 'center 25%',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundSize: project.shouldCover ? "cover" : "contain",
+                  backgroundPosition: "center 25%",
+                  backgroundRepeat: "no-repeat",
                 }}
               />
               {project.shouldDim && (
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: 'radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)',
-                    filter: 'brightness(1.5) contrast(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))',
+                    background:
+                      "radial-gradient(circle, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)",
+                    filter:
+                      "brightness(1.5) contrast(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))",
                   }}
                 />
               )}
@@ -225,8 +177,12 @@ const ProjectDetail = () => {
                 className="md:col-span-2"
               >
                 <div className="card mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-4">Synopsis</h2>
-                  <p className="text-gray-300 leading-relaxed">{project.synopsis}</p>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    Synopsis
+                  </h2>
+                  <p className="text-gray-300 leading-relaxed">
+                    {project.synopsis}
+                  </p>
                 </div>
 
                 <div className="card">
@@ -245,6 +201,76 @@ const ProjectDetail = () => {
                       </motion.div>
                     ))}
                   </div>
+                  {project.showGetCasted && (
+                    <div className="mt-4 flex justify-end">
+                      <Link
+                        to="/get-noticed"
+                        className="relative overflow-hidden group"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          padding: "8px 20px",
+                          borderRadius: "9999px",
+                          background:
+                            "linear-gradient(135deg, rgba(250, 126, 30, 0.15), rgba(214, 41, 118, 0.15), rgba(150, 47, 191, 0.15), rgba(254, 218, 117, 0.15))",
+                          color: "white",
+                          fontSize: "16px",
+                          fontWeight: "600",
+                          border: "1px solid rgba(255, 255, 255, 0.15)",
+                          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                          textDecoration: "none",
+                          zIndex: "1",
+                        }}
+                      >
+                        {/* Animated gradient overlay */}
+                        <span
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, rgba(250, 126, 30, 0.3), rgba(214, 41, 118, 0.3), rgba(150, 47, 191, 0.3), rgba(254, 218, 117, 0.3))",
+                            zIndex: "-1",
+                          }}
+                        />
+
+                        {/* Rotating star icon */}
+                        <span
+                          className="inline-block w-6 h-6"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #fa7e1e, #d62976, #962fbf, #feda75)",
+                            WebkitMaskImage:
+                              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E\")",
+                            WebkitMaskRepeat: "no-repeat",
+                            WebkitMaskSize: "contain",
+                            WebkitMaskPosition: "center",
+                            animation: "spin 6s linear infinite",
+                          }}
+                        />
+                        <span className="relative z-10">Get Casted</span>
+
+                        {/* Glow effect on hover */}
+                        <span
+                          className="absolute -inset-1 blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #fa7e1e, #d62976, #962fbf, #feda75)",
+                            zIndex: "-2",
+                          }}
+                        />
+
+                        <style>
+                          {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+                        </style>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </motion.div>
 
@@ -255,11 +281,15 @@ const ProjectDetail = () => {
                 className="space-y-8"
               >
                 <div className="card">
-                  <h2 className="text-2xl font-bold text-white mb-4">Production Details</h2>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    Production Details
+                  </h2>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-gray-300">
                       <span>Status</span>
-                      <span className="text-red-500 font-semibold">{project.status}</span>
+                      <span className="text-red-500 font-semibold">
+                        {project.status}
+                      </span>
                     </div>
                     <div className="flex items-center justify-between text-gray-300">
                       <span>Budget</span>
@@ -269,7 +299,9 @@ const ProjectDetail = () => {
                 </div>
 
                 <div className="card">
-                  <h2 className="text-2xl font-bold text-white mb-4">Creative Team</h2>
+                  <h2 className="text-2xl font-bold text-white mb-4">
+                    Creative Team
+                  </h2>
                   <div className="space-y-4">
                     {Object.entries(project.team).map(([role, name], index) => (
                       <motion.div

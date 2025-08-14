@@ -87,9 +87,23 @@ const TermsConditions = () => {
     <>
       <Helmet>
         <title>Terms & Conditions – Urban Hustle Films</title>
-        <meta name="description" content="Review the terms and conditions for using Urban Hustle Films' services." />
+        <meta name="description" content="Review the terms and conditions for using Urban Hustle Films' services, website, and content." />
         <link rel="canonical" href="https://uhfilms.in/terms" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Terms & Conditions – Urban Hustle Films" />
+        <meta property="og:description" content="Review the legal terms for using Urban Hustle Films' platform, services, and content." />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
+        <meta property="og:url" content="https://uhfilms.in/terms" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms & Conditions – Urban Hustle Films" />
+        <meta name="twitter:description" content="Review the legal terms for using Urban Hustle Films' platform, services, and content." />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
       </Helmet>
+
 
       <div className="min-h-screen pt-20">
         <motion.div

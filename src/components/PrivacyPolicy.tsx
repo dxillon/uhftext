@@ -51,9 +51,23 @@ const PrivacyPolicy = () => {
     <>
       <Helmet>
         <title>Privacy Policy – Urban Hustle Films</title>
-        <meta name="description" content="Read how Urban Hustle Films collects, stores, and protects your data." />
+        <meta name="description" content="Read how Urban Hustle Films collects, stores, and protects your personal data and ensures your privacy." />
         <link rel="canonical" href="https://uhfilms.in/privacy" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Privacy Policy – Urban Hustle Films" />
+        <meta property="og:description" content="Learn how Urban Hustle Films handles your personal data and privacy on our platform." />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
+        <meta property="og:url" content="https://uhfilms.in/privacy" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy – Urban Hustle Films" />
+        <meta name="twitter:description" content="Learn how Urban Hustle Films handles your personal data and privacy on our platform." />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
       </Helmet>
+
 
       <div className="min-h-screen pt-20">
         <motion.div

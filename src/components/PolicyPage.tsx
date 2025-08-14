@@ -14,39 +14,27 @@ const PolicyPage = () => {
         <>
 
             <Helmet>
-                {/* Primary Meta Tags */}
                 <title>Refund, Shipping & Cancellation Policy | UH Films</title>
-                <meta
-                    name="description"
-                    content="Read UH Films' detailed refund, shipping, and cancellation policy. Transparent terms for online digital film courses and services at uhfilms.in."
-                />
-                <meta
-                    name="keywords"
-                    content="UH Films refund policy, shipping policy, cancellation policy, online film course refund, digital course cancellation, uhfilms.in terms"
-                />
+                <meta name="description" content="Read UH Films' detailed refund, shipping, and cancellation policy. Transparent terms for online digital film courses and services at uhfilms.in." />
+                <meta name="keywords" content="UH Films refund policy, shipping policy, cancellation policy, online film course refund, digital course cancellation, uhfilms.in terms" />
                 <meta name="author" content="UH Films" />
+                <link rel="canonical" href="https://uhfilms.in/policies" />
 
-                {/* Open Graph / Facebook */}
+                {/* Open Graph */}
                 <meta property="og:title" content="Refund, Shipping & Cancellation Policy | UH Films" />
-                <meta
-                    property="og:description"
-                    content="Clear and transparent policies for refunds, shipping, and cancellations for all digital film courses and services offered by UH Films."
-                />
+                <meta property="og:description" content="Clear and transparent policies for refunds, shipping, and cancellations for digital film services and courses by UH Films." />
                 <meta property="og:url" content="https://uhfilms.in/policies" />
+                <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="UH Films" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Refund, Shipping & Cancellation Policy | UH Films" />
-                <meta
-                    name="twitter:description"
-                    content="Get clarity on our refund, shipping, and cancellation policies. UH Films ensures full transparency for all digital services and courses."
-                />
-
-                {/* Canonical URL */}
-                <link rel="canonical" href="https://uhfilms.in/policies" />
+                <meta name="twitter:description" content="Get clarity on our refund, shipping, and cancellation policies. UH Films ensures transparency for digital services and courses." />
+                <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
             </Helmet>
+
 
             <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-200 pt-40 pb-16">
                 <div className="container mx-auto px-4">

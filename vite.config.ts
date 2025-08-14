@@ -1,20 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    sitemap({
-      hostname: 'https://uhfilms.in',
-      outDir: 'dist',
-      robotsTxt: true,
-    }),
-  ],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+  assetsInclude: ['**/*.pdf'], // ✅ Allow PDF in `import` or `public` access
+  plugins: [react()],
   build: {
+    chunkSizeWarningLimit: 1000,
+    minify: 'esbuild', // Fast minifier (default)
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -24,7 +17,9 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
+  },
+  optimizeDeps: {
+    exclude: ['lucide-react'], // ✅ Optional for smaller dev builds
   },
   server: {
     port: 5173,

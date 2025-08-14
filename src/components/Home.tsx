@@ -1,98 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useEffect, useRef, useState, lazy, Suspense, } from 'react';
+import { motion } from 'framer-motion';
 import { Camera, Film, Award, Play, ArrowRight, Star, Calendar, Clock, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import anime from 'animejs';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import HeroCarousel from '../components/HeroCarousel';
 import ArticleSlider from '../components/ArticleSlider';
 import { articles } from '../data/articles';
-import VideoPlayer from './VideoPlayer';
+const VideoPlayer = lazy(() => import('./VideoPlayer'));
 import CourseSlider from '../components/CourseSlider';
 import { Helmet } from 'react-helmet-async';
+import { upcomingProjects } from '../data/home';
+import FeaturedProjects from '../components/FeaturedProjects'
+import ErrorBoundary from '../../scripts/ErrorBoundary'; 
 
-const upcomingProjects = [
-  {
-    id: "sucidefun",
-    title: "Sucide Fun",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759555/WhatsApp_Image_2025-04-27_at_17.53.32_87bee1b0_q9etqk.jpg",
-    description: "Do you have the courage to see your future?",
-    releaseDate: "Fall 2025"
-  },
-  {
-    id: "agyaat",
-    title: "Agyaat",
-    description: "When truth is invisible, can you find it?",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759562/WhatsApp_Image_2025-04-27_at_17.53.31_a20c2148_x5mnpk.jpg",
-    releaseDate: "Fall 2025"
-  },
-  {
-    id: "snake&lovers",
-    title: "Snake & Lovers",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745762922/Snake_1_cq4u0v.png",
-    description: "The paths of love are never straight",
-    releaseDate: "Early 2026"
-  }
-];
-
-const featuredProjects = [
-  {
-    title: "Moonlight",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745845529/Moonlight_-_Short_Film_cheshi.webp",
-    category: "Feature Film",
-    awards: "Best Cinematography",
-    duration: "4:34",
-    Artist: "Avi Kesarvani",
-    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745845532/Moonlight_-_Short_Film_abxrcs.mp4"
-  },
-  {
-    title: "Naam main kya rhka hai ",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745843893/cold_smooth_tasty._3_wcjkyz.png",
-    category: "Short Film",
-    awards: "Best Naration",
-    duration: "4:52",
-    Artist: "Avi Kesarvani",
-    videoUrl: "https://storage.googleapis.com/uhfmp4/Naam%20Main%20Kya%20Rakha%20Hai%20With%20Subs.mp4"
-  },
-  {
-    title: "Mikaali",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/c_pad,ar_4:3/v1745837264/maxresdefault_vur854.jpg",
-    category: "Trailer",
-    awards: "Best visual's",
-    duration: "1:28",
-    Artist: "Manthan Mese",
-    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745836248/Trailer-_MiKaali_%E0%A4%AE%E0%A5%80%E0%A4%95%E0%A4%BE%E0%A4%B2%E0%A5%80_-_A_shortfilm_by_Manthan_Mese_zjvpyl.mp4"
-  },
-  {
-    title: "Work From Home",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745845873/Short_Film_Work_From_Home_Covid_19_Family_Drama_qbtelj.webp",
-    category: "Short Film",
-    awards: "Best sound designs",
-    duration: "13:46",
-    Artist: "Avi Kesarvani",
-    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745845890/Short_Film_Work_From_Home_Covid_19_Family_Drama_dpjkt3.mp4"
-  },
-  {
-    title: "Fastack Advertisement",
-    image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/086d25e1-c650-4237-9c4c-2ff5a4832f3d.__CR0,0,970,600_PT0_SX970_V1___.png",
-    category: "Advertisement",
-    awards: "Best Story Telling",
-    duration: "0:20",
-    Artist: "Avi Kesarvani",
-    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745834231/Play_Mix_13_h23nxo.mp4"
-  },
-  {
-    title: "Lailaaj",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745846167/SHORT_FILM_LAILAAJ_STORYGRAM_BOOMSLANG_PICTURES_ALLAHABAD_bebkgx.webp",
-    category: "Short Film",
-    awards: "Best Concept",
-    duration: "5:54",
-    Artist: "Avi Kesarvani",
-    videoUrl: "https://res.cloudinary.com/dbtj6orw2/video/upload/v1745846175/SHORT_FILM_LAILAAJ_STORYGRAM_BOOMSLANG_PICTURES_ALLAHABAD_yeziho.mp4"
-  }
-];
 
 const Home = () => {
   const [selectedVideo, setSelectedVideo] = useState<{ url: string; duration: string } | null>(null);
@@ -171,13 +92,14 @@ const Home = () => {
     <>
       <Helmet>
         <title>Urban Hustle Films – Home</title>
-        <meta name="description" content="Official site of Urban Hustle Films – producing bold, real, and unique stories in film and web." />
+        <meta name="description"
+          content="UH Films - Urban Tales | Cinematic Trails. Discover cinematic stories and projects by Urban Hustle Films™." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://uhfilms.in/" />
 
         <meta property="og:title" content="Urban Hustle Films – Official Site" />
         <meta property="og:description" content="Producing bold, real, and unique stories in film and web." />
-        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
         <meta property="og:url" content="https://uhfilms.in/" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
@@ -187,111 +109,7 @@ const Home = () => {
           <HeroCarousel projects={upcomingProjects} />
         </section>
 
-        <section className="py-16 bg-black/30 relative overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div className="absolute top-20 left-20 w-60 h-60 bg-red-500/10 rounded-full filter blur-3xl"></div>
-            <div className="absolute bottom-10 right-20 w-80 h-80 bg-red-500/5 rounded-full filter blur-3xl"></div>
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            {/* Section Title with Underline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
-                Featured Projects
-              </h2>
-              <div className="mx-auto w-24 h-1 bg-gradient-to-r from-red-500 to-transparent"></div>
-            </motion.div>
-
-            {/* Projects Grid - 3 on mobile, 6 on desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredProjects.slice(0, 6).map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
-                  transition={{ delay: index * 0.15, duration: 0.4 }}
-                  className={`card group cursor-pointer ${index >= 3 ? 'hidden lg:block' : ''}`}
-                  data-clickable="true"
-                >
-                  {/* Image with play button */}
-                  <div className="relative aspect-video mb-4 overflow-hidden rounded-xl group">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                      <div
-                        className="bg-black/90 p-3 rounded-full flex justify-center items-center w-12 h-12 hover:scale-110 transition-transform"
-                        onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
-                      >
-                        <Play className="w-6 h-6 text-red-500" />
-                      </div>
-                    </div>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="p-2">
-                    <h3 className="text-lg md:text-xl font-semibold text-white mb-3">{project.title}</h3>
-
-                    {/* Metadata Grid */}
-                    <div className="grid grid-cols-2 gap-3 text-sm text-gray-400 mb-4">
-                      <div className="flex items-center space-x-2">
-                        <Film className="w-4 h-4 text-red-500 flex-shrink-0" />
-                        <span className="truncate">{project.category}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Star className="w-4 h-4 text-red-500 flex-shrink-0" />
-                        <span className="truncate">{project.awards}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Clock className="w-4 h-4 text-red-500 flex-shrink-0" />
-                        <span>{project.duration}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Users className="w-4 h-4 text-red-500 flex-shrink-0" />
-                        <span className="truncate">{project.Artist}</span>
-                      </div>
-                    </div>
-
-                    {/* Watch Now Button */}
-                    <button
-                      onClick={() => setSelectedVideo({ url: project.videoUrl, duration: project.duration })}
-                      className="w-full py-2 px-4 bg-red-500/10 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-colors duration-300 rounded-lg flex items-center justify-center space-x-2"
-                    >
-                      <Play className="w-4 h-4" />
-                      <span>Watch Now</span>
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* View All Projects CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-center mt-10"
-            >
-              <Link
-                href="/projects"
-                className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transition-all duration-300 rounded-lg shadow-lg hover:shadow-red-500/20"
-              >
-                View All Projects
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        <FeaturedProjects onSelect={setSelectedVideo} />
 
 
 
@@ -424,71 +242,29 @@ const Home = () => {
 
 
 
-<section className="relative py-20 bg-black overflow-x-hidden">
-  <div className="container mx-auto px-0"> {/* Remove horizontal padding to allow edge stretching */}
-    <motion.div 
-      ref={statsRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 0.8,
-        type: "spring",
-        bounce: 0.1
-      }}
-      className="relative"
-    >
-      {/* Floating shadow effect */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 0.3, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute inset-x-4 -bottom-4 h-8 bg-black blur-2xl rounded-full"
-      />
-
-      {/* Main container stretched to edges with floating effect */}
-      <div 
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-gray-900 p-8 rounded-none md:rounded-xl border-t border-b md:border border-gray-800"
-        style={{
-          boxShadow: `
-            0 25px 50px -12px rgba(255, 255, 255, 0.05),
-            inset 0 1px 0 rgba(255,255,255,0.05),
-            inset 0 -1px 0 rgba(0,0,0,0.5)
-          `,
-          marginLeft: '-1px',
-          marginRight: '-1px'
-        }}
-      >
-        {[
-          { number: "100+", label: "Projects Completed" },
-          { number: "50+", label: "Happy Clients" },
-          { number: "10+", label: "Awards Won" },
-          { number: "5+", label: "Years Experience" }
-        ].map((stat, index) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: index * 0.15 + 0.4,
-              duration: 0.5
-            }}
-            className="text-center px-4"
-          >
-            <h3 className="stat-number text-4xl font-bold text-white mb-2" data-value={stat.number}>0</h3>
-            <p className="text-gray-300 font-medium">{stat.label}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Edge glow effect (hidden on mobile) */}
-      <div className="hidden md:block">
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent"></div>
-      </div>
-    </motion.div>
-  </div>
-</section>
-
+        <section className="py-20 bg-black/30">
+          <div className="container mx-auto px-4">
+            <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { number: "100+", label: "Projects Completed" },
+                { number: "50+", label: "Happy Clients" },
+                { number: "10+", label: "Awards Won" },
+                { number: "5+", label: "Years Experience" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <h3 className="stat-number text-4xl font-bold text-gradient mb-2" data-value={stat.number}>0</h3>
+                  <p className="text-gray-400">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
 
 
@@ -555,12 +331,18 @@ const Home = () => {
           </div>
         </section>
 
-        <VideoPlayer
-          url={selectedVideo?.url || ''}
-          duration={selectedVideo?.duration || '00:00'}
-          isOpen={!!selectedVideo}
-          onClose={() => setSelectedVideo(null)}
-        />
+        {selectedVideo && (
+          <ErrorBoundary>
+            <Suspense fallback={<div className="text-center text-white py-10">Loading video...</div>}>
+              <VideoPlayer
+                url={selectedVideo.url}
+                duration={selectedVideo.duration}
+                isOpen={true}
+                onClose={() => setSelectedVideo(null)}
+              />
+            </Suspense>
+          </ErrorBoundary>
+        )}
       </div>
     </>
   );

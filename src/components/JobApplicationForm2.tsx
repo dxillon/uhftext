@@ -111,7 +111,7 @@ const JobApplicationForm2: React.FC<JobApplicationForm2Props> = ({ selectedRole,
       {/* Open Graph / Facebook */}
       <meta property="og:title" content="Meet the Team | Urban Hustle Films" />
       <meta property="og:description" content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films™." />
-      <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+      <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
       <meta property="og:url" content="https://uhfilms.in/team" />
       <meta property="og:type" content="website" />
 
@@ -119,7 +119,7 @@ const JobApplicationForm2: React.FC<JobApplicationForm2Props> = ({ selectedRole,
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Meet the Team | Urban Hustle Films" />
       <meta name="twitter:description" content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films™." />
-      <meta name="twitter:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+      <meta name="twitter:image" content="hhttps://www.uhfilms.in/uhf.png" />
 
       {/* Canonical URL */}
       <link rel="canonical" href="https://uhfilms.in/team/apply" />
@@ -310,7 +310,7 @@ const JobApplicationForm2: React.FC<JobApplicationForm2Props> = ({ selectedRole,
 
               <motion.div whileHover={{ y: -2 }} className="space-y-1">
                 <label htmlFor="message" className="block text-xs md:text-sm font-medium text-gray-300 font-mono uppercase tracking-wider">
-                  Cover Letter / Notes *
+                  Cover Letter / Message *
                 </label>
                 <textarea
                   id="message"

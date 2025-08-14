@@ -108,10 +108,11 @@ const ArticleDetailPage: React.FC = () => {
               : 'Explore insights and untold stories from Urban Hustle Films™.'
           }
         />
-        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
         <meta property="og:url" content={`https://urbanhustlefilms.com/articles/${article.slug}`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

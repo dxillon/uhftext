@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin
 Disallow: /login
 Allow: /
-Sitemap: https://uhfilms.in/sitemap.xml
+Sitemap: https://www.uhfilms.in/sitemap.xml

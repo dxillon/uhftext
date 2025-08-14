@@ -1,5 +1,4 @@
-types
-article.ts
+
 export type Category =
   | 'post-production'
   | 'hollywood'

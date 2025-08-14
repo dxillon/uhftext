@@ -296,7 +296,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ projects }) => {
             </div>
 
             {/* Thumbnails Container */}
-            <div className="relative rounded-lg bg-white/10 p-1.5">
+            <div className="relative rounded-lg bg-white/10 p-1.5 overflow-hidden">
               {/* Moving Gradient Background */}
               <div className="absolute inset-0 transition-all duration-300 ease-in-out"
                 style={{

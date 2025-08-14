@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Camera, Star, Clock, Calendar, Users, ChevronDown, ChevronUp, Loader2, Check, Play } from 'lucide-react';
-import Select from 'react-select';
-import emailjs from '@emailjs/browser';
+import { Camera, Star, Clock, ChevronDown, Play } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import confetti from 'canvas-confetti';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -16,7 +13,7 @@ const upcomingProjects = [
   {
     id: "sucidefun",
     title: "Suicide Fun",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759555/WhatsApp_Image_2025-04-27_at_17.53.32_87bee1b0_q9etqk.jpg",
+      image: "/32_87bee1b0_q9etqk.jpg",
     description: "Do you have the courage to see your future?",
     releaseDate: "Fall 2025",
     status: "In Development"
@@ -25,15 +22,22 @@ const upcomingProjects = [
     id: "agyaat",
     title: "Agyaat",
     description: "When truth is invisible, can you find it?",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745759562/WhatsApp_Image_2025-04-27_at_17.53.31_a20c2148_x5mnpk.jpg",
+          image: "/Xj39Kslw_99320__Fdq.webp",
     releaseDate: "Fall 2025",
     status: "Pre-production"
   },
-
+      {
+    id: "vaaran1942",
+    title: "Vaaran 1942",
+    image: "/dsvfygsavfgyvdsaygfvadsy1.36.29_1200656c.jpg",
+    description: "A journalist uncovers a deadly ritual disguised as a wedding.",
+    releaseDate: "Fall 2025",
+    status: "Writing"
+  },
   {
     id: "snake&lovers",
     title: "Snake & Lovers",
-    image: "https://res.cloudinary.com/dbtj6orw2/image/upload/v1745762922/Snake_1_cq4u0v.png",
+          image: "/Snake_2_dz80lv.png",
     description: "The paths of love are never straight",
     releaseDate: "Early 2026",
     status: "Writing"
@@ -103,132 +107,16 @@ const featuredProjects = [
   }
 ];
 
-const roleTypes = [
-  { value: 'actor', label: 'Actor' },
-  { value: 'extra', label: 'Extra' },
-  { value: 'voice', label: 'Voice Artist' },
-  { value: 'stunts', label: 'Stunts' },
-  { value: 'modeling', label: 'Modeling' },
-  { value: 'others', label: 'Others.PLease describe below.' }
-];
-
-const actingStyles = [
-  { value: 'method', label: 'Method Acting' },
-  { value: 'protagonist', label: 'Protagonist' },
-  { value: 'antagonist', label: 'Antagonist' },
-  { value: 'emotional', label: 'Emotional Roles' },
-  { value: 'comedy', label: 'Comedy' },
-  { value: 'action', label: 'Action' },
-  { value: 'modeling', label: 'Modeling' },
-  { value: 'others', label: 'Others.PLease describe below.' }
-];
-
 const ProjectShowcase = () => {
   const [selectedVideo, setSelectedVideo] = useState<{ url: string; duration: string } | null>(null);
-  const [isFormVisible, setIsFormVisible] = useState(false);
   const featuredProjectsRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const confettiRef = useRef(false);
-  const getcastProjectsRef = useRef<HTMLDivElement>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    experience: '',
-    phone: '',
-    portfolio: '',
-    roleTypes: [],
-    actingStyles: [],
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        experience: formData.experience,
-        phone: formData.phone,
-        portfolio: formData.portfolio,
-        roleTypes: `Role Type's: ${formData.roleTypes.map(role => role.label).join(', ')}`,
-        actingStyles: `Best In: ${formData.actingStyles.map(style => style.label).join(', ')}`,
-        message: formData.message
-      };
-
-      await emailjs.send(
-        'service_a5tly1m',
-        'template_57jdkuq',
-        templateParams,
-        'lJX7YKVh5gsW2x9rS'
-      );
-
-      setSubmitSuccess(true);
-      setTimeout(() => {
-        setIsFormVisible(false);
-        setSubmitSuccess(false);
-        setFormData({
-          name: '',
-          email: '',
-          experience: '',
-          phone: '',
-          portfolio: '',
-          roleTypes: [],
-          actingStyles: [],
-          message: ''
-        });
-      }, 1700);
-    } catch (error) {
-      console.error('Submission error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
 
   useEffect(() => {
-    if (location.hash === '#get-casted') {
-      // First, open the form
-      setIsFormVisible(true);
-
-      // Then scroll after a small delay to allow the form to render
-      setTimeout(() => {
-        const element = document.getElementById('get-casted');
-        if (element) {
-          // Calculate position to center the entire section
-          const elementRect = element.getBoundingClientRect();
-          const offsetPosition = elementRect.top + window.pageYOffset - (window.innerHeight / 2) + (elementRect.height / 2);
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 100); // Small delay to ensure form is rendered
+    if (location.hash === '#featured-projects' && featuredProjectsRef.current) {
+      featuredProjectsRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [location]);
-
-  useEffect(() => {
-    if (submitSuccess && !confettiRef.current) {
-      confettiRef.current = true;
-
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#d62976', '#962fbf', '#fa7e1e', '#feda75'],
-        scalar: 1.2,
-      });
-
-      // reset ref after a short delay so it can play again if needed
-      setTimeout(() => {
-        confettiRef.current = false;
-      }, 2000);
-    }
-  }, [submitSuccess]);
 
   return (
     <>
@@ -242,7 +130,7 @@ const ProjectShowcase = () => {
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="Projects | Urban Hustle Films" />
         <meta property="og:description" content="See what we've been working on – a dynamic portfolio of digital creativity and storytelling." />
-        <meta property="og:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
         <meta property="og:url" content="https://uhfilms.in/projects" />
         <meta property="og:type" content="website" />
 
@@ -250,19 +138,17 @@ const ProjectShowcase = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Projects | Urban Hustle Films" />
         <meta name="twitter:description" content="Explore our latest creative and digital projects from music to tech." />
-        <meta name="twitter:image" content="https://res.cloudinary.com/dbtj6orw2/image/upload/v1745652699/Blue_and_White_Circle_Surfing_Club_Logo_gb72rx.png" />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://uhfilms.in/projects" />
       </Helmet>
 
       <div className="min-h-screen pt-20 bg-black">
-
-
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-transparent" />
-            <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbtj6orw2/image/upload/v1747864204/FILM_S_jhhj0l.svg')] bg-cover bg-center opacity-35 blur-sm" />
+            <div className="absolute inset-0 bg-[url('/uhf3.svg')] bg-cover bg-center opacity-35 blur-sm" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
@@ -333,7 +219,7 @@ const ProjectShowcase = () => {
               pagination={{
                 clickable: true,
                 dynamicBullets: true,
-                el: '.swiper-pagination', // Add custom pagination container class
+                el: '.swiper-pagination',
               }}
               navigation={{
                 nextEl: '.swiper-button-next',
@@ -343,7 +229,7 @@ const ProjectShowcase = () => {
               touchRatio={1.5}
               grabCursor={true}
             >
-              {upcomingProjects.map((project, index) => (
+              {upcomingProjects.map((project) => (
                 <SwiperSlide key={project.id}>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -351,7 +237,6 @@ const ProjectShowcase = () => {
                     transition={{ duration: 0.5 }}
                     className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/30 transition-all duration-300 mx-auto max-w-md"
                   >
-                    {/* Project Card Content */}
                     <div className="relative h-48">
                       <img
                         src={project.image}
@@ -384,13 +269,8 @@ const ProjectShowcase = () => {
             </Swiper>
             <div className="absolute bottom-0 left-0 right-0">
               <div className="flex items-center justify-center">
-                {/* Previous Button - Small with spacing */}
                 <div className="swiper-button-prev !relative !text-red-500 !w-3 !h-3 !mr-14" />
-
-                {/* Pagination Dots - Perfectly Centered */}
                 <div className="swiper-pagination !absolute left-1/2 transform -translate-x-1/2" style={{ width: 'auto' }} />
-
-                {/* Next Button - Small with spacing */}
                 <div className="swiper-button-next !relative !text-red-500 !w-3 !h-3 !ml-14" />
               </div>
             </div>
@@ -437,275 +317,18 @@ const ProjectShowcase = () => {
           </div>
         </section>
 
-
         {/* Casting Call-to-Action */}
-        <section ref={getcastProjectsRef} id="get-casted" className="py-16 bg-gradient-to-b from-black to-gray-900 -h-[50vh]">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center"
+        <section className="py-16 bg-gradient-to-b from-black to-gray-900">
+          <div className="container mx-auto px-4 text-center">
+            <Link
+              to="/get-noticed"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 transform hover:scale-105"
             >
-              <button
-                onClick={() => setIsFormVisible(!isFormVisible)}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 transform hover:scale-105"
-              >
-                <span className="text-lg font-semibold">
-                  Want to be in our shows and series? Get cast now!
-                </span>
-                {isFormVisible ? (
-                  <ChevronUp className="w-5 h-5" />
-                ) : (
-                  <ChevronDown className="w-5 h-5" />
-                )}
-              </button>
-
-              <AnimatePresence>
-                {isFormVisible && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="mt-8 max-w-2xl mx-auto"
-                  >
-                    <form onSubmit={handleSubmit} className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Full Name *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Email *
-                          </label>
-                          <input
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Experience (years) *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.experience}
-                            onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Phone Number *
-                          </label>
-                          <input
-                            type="tel"
-                            required
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-
-                        <div className="md:col-span-2">
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Portfolio URL
-                          </label>
-                          <input
-                            type="url"
-                            value={formData.portfolio}
-                            onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Role Types *
-                          </label>
-                          <Select
-                            isMulti
-                            options={roleTypes}
-                            value={formData.roleTypes}
-                            onChange={(selected) => setFormData({ ...formData, roleTypes: selected || [] })}
-                            className="react-select-container"
-                            classNamePrefix="react-select"
-                            styles={{
-                              control: (base) => ({
-                                ...base,
-                                background: 'rgb(31, 41, 55)',
-                                borderColor: 'rgb(75, 85, 99)',
-                                '&:hover': {
-                                  borderColor: 'rgb(239, 68, 68)'
-                                }
-                              }),
-                              menu: (base) => ({
-                                ...base,
-                                background: 'rgb(31, 41, 55)'
-                              }),
-                              option: (base, state) => ({
-                                ...base,
-                                background: state.isFocused ? 'rgb(55, 65, 81)' : 'transparent',
-                                color: 'white'
-                              }),
-                              multiValue: (base) => ({
-                                ...base,
-                                background: 'rgb(239, 68, 68)'
-                              }),
-                              multiValueLabel: (base) => ({
-                                ...base,
-                                color: 'white'
-                              }),
-                              multiValueRemove: (base) => ({
-                                ...base,
-                                color: 'white',
-                                ':hover': {
-                                  background: 'rgb(185, 28, 28)',
-                                  color: 'white'
-                                }
-                              })
-                            }}
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Best In *
-                          </label>
-                          <Select
-                            isMulti
-                            options={actingStyles}
-                            value={formData.actingStyles}
-                            onChange={(selected) => setFormData({ ...formData, actingStyles: selected || [] })}
-                            className="react-select-container"
-                            classNamePrefix="react-select"
-                            styles={{
-                              control: (base) => ({
-                                ...base,
-                                background: 'rgb(31, 41, 55)',
-                                borderColor: 'rgb(75, 85, 99)',
-                                '&:hover': {
-                                  borderColor: 'rgb(239, 68, 68)'
-                                }
-                              }),
-                              menu: (base) => ({
-                                ...base,
-                                background: 'rgb(31, 41, 55)'
-                              }),
-                              option: (base, state) => ({
-                                ...base,
-                                background: state.isFocused ? 'rgb(55, 65, 81)' : 'transparent',
-                                color: 'white'
-                              }),
-                              multiValue: (base) => ({
-                                ...base,
-                                background: 'rgb(239, 68, 68)'
-                              }),
-                              multiValueLabel: (base) => ({
-                                ...base,
-                                color: 'white'
-                              }),
-                              multiValueRemove: (base) => ({
-                                ...base,
-                                color: 'white',
-                                ':hover': {
-                                  background: 'rgb(185, 28, 28)',
-                                  color: 'white'
-                                }
-                              })
-                            }}
-                          />
-                        </div>
-
-                        <div className="md:col-span-2">
-                          <label className="block text-sm font-medium text-gray-300 mb-2">
-                            Additional Message
-                          </label>
-                          <textarea
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            rows={4}
-                            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-                          />
-                        </div>
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting || submitSuccess}
-                        className={`w-full text-white py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2
-    ${submitSuccess
-                            ? 'bg-green-600 hover:bg-green-700'
-                            : isSubmitting
-                              ? 'bg-red-700'
-                              : 'bg-red-600 hover:bg-red-700'
-                          }
-    ${(isSubmitting || submitSuccess) ? 'cursor-not-allowed' : ''}
-  `}
-                      >
-                        <AnimatePresence mode="wait">
-                          {isSubmitting ? (
-                            <motion.span
-                              key="loading"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="flex items-center gap-2"
-                            >
-                              <Loader2 className="h-5 w-5 animate-spin" />
-                              Submitting...
-                            </motion.span>
-                          ) : submitSuccess ? (
-                            <motion.span
-                              key="success"
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              className="flex items-center gap-2"
-                            >
-                              <Check className="h-5 w-5" />
-                              Submitted!
-                            </motion.span>
-                          ) : (
-                            <motion.span
-                              key="default"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                            >
-                              Submit Application
-                            </motion.span>
-                          )}
-                        </AnimatePresence>
-                      </button>
-
-                      {submitSuccess && (
-                        <motion.p
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="mt-4 text-green-500 text-center"
-                        >
-                          Thank you for your interest! We'll contact you if we find a suitable role matching your profile.
-                        </motion.p>
-                      )}
-                    </form>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              <span className="text-lg font-semibold">
+                Want to be in our shows and series? Get casted now !
+              </span>
+              <ChevronDown className="w-5 h-5" />
+            </Link>
           </div>
         </section>
 
@@ -750,7 +373,6 @@ const ProjectShowcase = () => {
                       <Clock className="w-4 h-4 text-red-500" />
                       <span>{project.duration}</span>
                     </div>
-
                     <div className="flex items-center gap-2 text-gray-400">
                       <Camera className="w-4 h-4 text-red-500" />
                       <span>{project.director}</span>
@@ -764,10 +386,9 @@ const ProjectShowcase = () => {
                         <span>Watch Now</span>
                       </button>
                     )}
-
                   </div>
                 </div>
-              </motion.div> 
+              </motion.div>
             ))}
           </div>
         </section>
@@ -779,7 +400,6 @@ const ProjectShowcase = () => {
           onClose={() => setSelectedVideo(null)}
         />
       </div>
-
     </>
   );
 };

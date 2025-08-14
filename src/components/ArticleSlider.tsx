@@ -21,7 +21,7 @@ const ArticleSlider: React.FC<ArticleSliderProps> = ({
 }) => {
 
   const filteredArticles = featuredOnly
-    ? articles.filter(article => article.featured)
+    ? articles.filter(article => article.featuredOnly)
     : articles;
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);

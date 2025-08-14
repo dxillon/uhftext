@@ -1,24 +1,45 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, TrendingUp, MapPin, Send, ArrowRight, ChevronUp, ChevronDown, Check, Eye, AlertTriangle, Instagram, Youtube, Facebook, Twitter, User, Film, Camera, Video, Clapperboard } from 'lucide-react';
-import anime from 'animejs';
-import type { FAQItem } from '../types/faq';
-import { faqData } from '../data/faq';
-import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Mail,
+  Phone,
+  TrendingUp,
+  MapPin,
+  Send,
+  ArrowRight,
+  ChevronUp,
+  ChevronDown,
+  Check,
+  Eye,
+  AlertTriangle,
+  Instagram,
+  Youtube,
+  Facebook,
+  Twitter,
+  User,
+  Film,
+  Camera,
+  Video,
+  Clapperboard,
+} from "lucide-react";
+import anime from "animejs";
+import type { FAQItem } from "../types/faq";
+import { faqData } from "../data/faq";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { useLocation, Link } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const subjectOptions = [
-  { value: 'production-inquiry', label: 'Film Production Inquiry' },
-  { value: 'collaboration', label: 'Collaboration Opportunity' },
-  { value: 'casting', label: 'Casting Information' },
-  { value: 'location-scouting', label: 'Location Scouting' },
-  { value: 'equipment-rental', label: 'Equipment Rental' },
-  { value: 'request-access', label: 'Request access for files' },
-  { value: 'incorrect-password', label: 'Incorrect password for files' },
-  { value: 'general-support', label: 'General Support' },
-  { value: 'feedback', label: 'Feedback' },
-  { value: 'other', label: 'Other' }
+  { value: "production-inquiry", label: "Film Production Inquiry" },
+  { value: "collaboration", label: "Collaboration Opportunity" },
+  { value: "casting", label: "Casting Information" },
+  { value: "location-scouting", label: "Location Scouting" },
+  { value: "equipment-rental", label: "Equipment Rental" },
+  { value: "request-access", label: "Request access for files" },
+  { value: "incorrect-password", label: "Incorrect password for files" },
+  { value: "general-support", label: "General Support" },
+  { value: "feedback", label: "Feedback" },
+  { value: "other", label: "Other" },
 ];
 
 type FormField = {
@@ -30,17 +51,19 @@ type FormField = {
 };
 
 const initialFormState: FormField = {
-  name: '',
-  email: '',
-  phone: '',
-  subject: '',
-  message: ''
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
 };
 
 const ContactPage = () => {
   const [formData, setFormData] = useState<FormField>(initialFormState);
   const [errors, setErrors] = useState<Partial<FormField>>({});
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [expandedFeatured, setExpandedFeatured] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const pageRef = useRef<HTMLDivElement>(null);
@@ -50,7 +73,7 @@ const ContactPage = () => {
     email: useRef<HTMLInputElement>(null),
     phone: useRef<HTMLInputElement>(null),
     subject: useRef<HTMLSelectElement>(null),
-    message: useRef<HTMLTextAreaElement>(null)
+    message: useRef<HTMLTextAreaElement>(null),
   };
 
   const location = useLocation();
@@ -62,37 +85,41 @@ const ContactPage = () => {
 
     setFormData((prev) => ({
       ...prev,
-      message: prev.message || prefillMessage || '',
+      message: prev.message || prefillMessage || "",
       subject: prefillSubject || prev.subject,
     }));
   }, [location.search]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (errors[name as keyof FormField]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormField> = {};
 
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = "Please enter a valid email";
     }
     if (formData.phone && !/^[0-9+\-\s()]{7,15}$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
+      newErrors.phone = "Please enter a valid phone number";
     }
-    if (!formData.subject) newErrors.subject = 'Please select a subject';
+    if (!formData.subject) newErrors.subject = "Please select a subject";
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     setErrors(newErrors);
@@ -103,40 +130,42 @@ const ContactPage = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      setSubmitStatus('submitting');
+      setSubmitStatus("submitting");
 
       try {
         const result = await emailjs.send(
-          'service_a5tly1m',
-          'template_z0pckoc',
+          "service_a5tly1m",
+          "template_z0pckoc",
           {
             name: formData.name,
             email: formData.email,
             phone_number: formData.phone,
-            subject: subjectOptions.find(opt => opt.value === formData.subject)?.label || formData.subject,
-            message: formData.message
+            subject:
+              subjectOptions.find((opt) => opt.value === formData.subject)
+                ?.label || formData.subject,
+            message: formData.message,
           },
-          'lJX7YKVh5gsW2x9rS'
+          "lJX7YKVh5gsW2x9rS"
         );
 
         if (result.status === 200) {
-          setSubmitStatus('success');
+          setSubmitStatus("success");
           setFormData(initialFormState);
-          setTimeout(() => setSubmitStatus('idle'), 3000);
+          setTimeout(() => setSubmitStatus("idle"), 3000);
         } else {
-          throw new Error('Failed to send email');
+          throw new Error("Failed to send email");
         }
       } catch (error) {
-        console.error('Failed to send email:', error);
-        setSubmitStatus('error');
-        setTimeout(() => setSubmitStatus('idle'), 3000);
+        console.error("Failed to send email:", error);
+        setSubmitStatus("error");
+        setTimeout(() => setSubmitStatus("idle"), 3000);
       }
     } else {
       anime({
         targets: formRef.current,
         translateX: [0, -10, 10, -10, 10, 0],
         duration: 500,
-        easing: 'easeInOutSine'
+        easing: "easeInOutSine",
       });
     }
   };
@@ -144,40 +173,43 @@ const ContactPage = () => {
   useEffect(() => {
     if (pageRef.current) {
       anime({
-        targets: pageRef.current.querySelectorAll('.animate-in'),
+        targets: pageRef.current.querySelectorAll(".animate-in"),
         translateY: [50, 0],
         opacity: [0, 1],
         delay: anime.stagger(100),
         duration: 800,
-        easing: 'easeOutExpo'
+        easing: "easeOutExpo",
       });
     }
   }, []);
 
   useEffect(() => {
-    const addInputAnimation = (el: HTMLElement | null, labelEl: Element | null) => {
+    const addInputAnimation = (
+      el: HTMLElement | null,
+      labelEl: Element | null
+    ) => {
       if (!el || !labelEl) return;
 
-      el.addEventListener('focus', () => {
+      el.addEventListener("focus", () => {
         anime({
           targets: labelEl,
           translateY: [-5, -5],
           translateX: [0, 5],
-          color: '#ef4444',
+          color: "#ef4444",
           duration: 300,
-          easing: 'easeOutCubic'
+          easing: "easeOutCubic",
         });
       });
 
-      el.addEventListener('blur', () => {
+      el.addEventListener("blur", () => {
         if (!el.value) {
           anime({
             targets: labelEl,
             translateY: [-5, -5],
             translateX: [5, 0],
-            color: '#9ca3af',
+            color: "#9ca3af",
             duration: 300,
-            easing: 'easeOutCubic'
+            easing: "easeOutCubic",
           });
         }
       });
@@ -190,7 +222,7 @@ const ContactPage = () => {
   }, []);
 
   const mostAskedQuestions = faqData
-    .filter(faq => faq.isFeatured)
+    .filter((faq) => faq.isFeatured)
     .sort((a, b) => b.views - a.views)
     .slice(0, 4);
 
@@ -202,10 +234,33 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contact Us – Urban Hustle Films</title>
-        <meta name="description" content="Get in touch with Urban Hustle Films for collaborations, inquiries, and partnerships." />
+        <meta
+          name="description"
+          content="Get in touch with Urban Hustle Films for collaborations, inquiries, and partnerships."
+        />
         <link rel="canonical" href="https://uhfilms.in/contact" />
-      </Helmet>
 
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Contact Us – Urban Hustle Films" />
+        <meta
+          property="og:description"
+          content="Get in touch with Urban Hustle Films for collaborations, inquiries, and partnerships."
+        />
+        <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
+        <meta property="og:url" content="https://uhfilms.in/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us – Urban Hustle Films" />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Urban Hustle Films for collaborations, inquiries, and partnerships."
+        />
+        <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
+      </Helmet>
 
       <div ref={pageRef} className="pt-32 pb-16 relative overflow-hidden">
         {/* Background Gradients */}
@@ -250,11 +305,11 @@ const ContactPage = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-xl text-gray-300  max-w-2xl mx-auto animate-in"
             >
-              Ready to bring your vision to life? We're excited to hear from you and discuss how we can help create your next masterpiece.
+              Ready to bring your vision to life? We're excited to hear from you
+              and discuss how we can help create your next masterpiece.
             </motion.p>
           </section>
 
-          {/* FAQ Section */}
           {/* FAQ Section */}
           <section className="py-12 relative">
             <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 to-transparent rounded-3xl -z-10"></div>
@@ -267,7 +322,9 @@ const ContactPage = () => {
                 className="flex items-center gap-2 mb-8"
               >
                 <TrendingUp className="w-6 h-6 text-red-500" />
-                <h2 className="text-2xl font-bold text-white">Most Asked Questions</h2>
+                <h2 className="text-2xl font-bold text-white">
+                  Most Asked Questions
+                </h2>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -276,23 +333,32 @@ const ContactPage = () => {
                     key={faq.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * parseInt(faq.id) }}
+                    transition={{ duration: 0.3 }}
                     viewport={{ once: true }}
                     className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden hover:border-red-500/30 transition-all duration-300 shadow-lg hover:shadow-red-500/10"
                   >
-                    <div onClick={() => handleFeaturedClick(faq.id)} className="cursor-pointer">
-                      <div className="w-full px-6 py-4 flex items-center justify-between">
-                        <div className="flex items-center justify-center gap-3">
-                          <div className="flex items-center gap-1 text-xs bg-gradient-to-r from-red-900/50 to-red-900/30 rounded-full px-2 py-1 whitespace-nowrap flex-shrink-0">
-                            <Eye className="w-4 h-4 text-red-500" />
-                            <span className="text-gray-300">{faq.views.toLocaleString()} views</span>
+                    <div
+                      onClick={() => handleFeaturedClick(faq.id)}
+                      className="cursor-pointer"
+                    >
+                      <div className="w-full px-6 py-4 flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="text-lg font-medium text-white break-words">
+                              {faq.question}
+                            </h3>
+                            <div className="flex items-center gap-1 text-xs bg-gradient-to-r from-red-900/50 to-red-900/30 rounded-full px-2 py-1 whitespace-nowrap">
+                              <Eye className="w-4 h-4 text-red-500" />
+                              <span className="text-gray-300">
+                                {faq.views.toLocaleString()} views
+                              </span>
+                            </div>
                           </div>
-                          <h3 className="text-lg font-medium text-white">{faq.question}</h3>
                         </div>
                         {expandedFeatured === faq.id ? (
-                          <ChevronUp className="w-5 h-5 text-red-500" />
+                          <ChevronUp className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400" />
+                          <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0 mt-1" />
                         )}
                       </div>
 
@@ -303,7 +369,9 @@ const ContactPage = () => {
                           transition={{ duration: 0.2 }}
                           className="px-6 pb-4"
                         >
-                          <p className="text-gray-400 line-clamp-2 text-sm">{faq.answer}</p>
+                          <p className="text-gray-400 line-clamp-2 text-sm">
+                            {faq.answer}
+                          </p>
                         </motion.div>
                       )}
                     </div>
@@ -314,20 +382,26 @@ const ContactPage = () => {
                           key={`content-${faq.id}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{
-                            height: 'auto',
+                            height: "auto",
                             opacity: 1,
                             transition: {
-                              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
-                              opacity: { duration: 0.25, delay: 0.1 }
-                            }
+                              height: {
+                                duration: 0.3,
+                                ease: [0.04, 0.62, 0.23, 0.98],
+                              },
+                              opacity: { duration: 0.25, delay: 0.1 },
+                            },
                           }}
                           exit={{
                             height: 0,
                             opacity: 0,
                             transition: {
                               opacity: { duration: 0.15 },
-                              height: { duration: 0.2, ease: [0.04, 0.62, 0.23, 0.98] }
-                            }
+                              height: {
+                                duration: 0.2,
+                                ease: [0.04, 0.62, 0.23, 0.98],
+                              },
+                            },
                           }}
                           className="overflow-hidden"
                         >
@@ -335,7 +409,7 @@ const ContactPage = () => {
                             <p className="text-gray-300 mb-4">{faq.answer}</p>
                             {faq.hasActionButton && (
                               <Link
-                                to={faq.actionLink || '#'}
+                                to={faq.actionLink || "#"}
                                 className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg text-sm transition-all duration-300 shadow-md hover:shadow-red-500/30"
                               >
                                 {faq.actionText}
@@ -406,10 +480,17 @@ const ContactPage = () => {
                   </h2>
                 </div>
 
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
                   {/* Name Field */}
                   <div className="form-group">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-400 mb-1"
+                    >
                       Name *
                     </label>
                     <div className="relative">
@@ -420,12 +501,15 @@ const ContactPage = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full bg-gray-800/50 border ${errors.name ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
+                        className={`w-full bg-gray-800/50 border ${
+                          errors.name ? "border-red-500" : "border-gray-700"
+                        } rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
                         placeholder="Your full name"
                       />
                       {errors.name && (
                         <p className="text-red-500 text-sm mt-1 flex items-center">
-                          <AlertTriangle className="w-4 h-4 mr-1" /> {errors.name}
+                          <AlertTriangle className="w-4 h-4 mr-1" />{" "}
+                          {errors.name}
                         </p>
                       )}
                     </div>
@@ -434,7 +518,10 @@ const ContactPage = () => {
                   {/* Email & Phone Fields */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="form-group">
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-400 mb-1"
+                      >
                         Email *
                       </label>
                       <div className="relative">
@@ -445,19 +532,25 @@ const ContactPage = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full bg-gray-800/50 border ${errors.email ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
+                          className={`w-full bg-gray-800/50 border ${
+                            errors.email ? "border-red-500" : "border-gray-700"
+                          } rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
                           placeholder="your.email@example.com"
                         />
                         {errors.email && (
                           <p className="text-red-500 text-sm mt-1 flex items-center">
-                            <AlertTriangle className="w-4 h-4 mr-1" /> {errors.email}
+                            <AlertTriangle className="w-4 h-4 mr-1" />{" "}
+                            {errors.email}
                           </p>
                         )}
                       </div>
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-1">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-400 mb-1"
+                      >
                         Phone
                       </label>
                       <div className="relative">
@@ -468,12 +561,15 @@ const ContactPage = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className={`w-full bg-gray-800/50 border ${errors.phone ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
+                          className={`w-full bg-gray-800/50 border ${
+                            errors.phone ? "border-red-500" : "border-gray-700"
+                          } rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
                           placeholder="+91 8920476445"
                         />
                         {errors.phone && (
                           <p className="text-red-500 text-sm mt-1 flex items-center">
-                            <AlertTriangle className="w-4 h-4 mr-1" /> {errors.phone}
+                            <AlertTriangle className="w-4 h-4 mr-1" />{" "}
+                            {errors.phone}
                           </p>
                         )}
                       </div>
@@ -482,7 +578,10 @@ const ContactPage = () => {
 
                   {/* Subject Field */}
                   <div className="form-group">
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-1">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-400 mb-1"
+                    >
                       Subject *
                     </label>
                     <div className="relative">
@@ -492,23 +591,43 @@ const ContactPage = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className={`w-full bg-gray-900/70 border ${errors.subject ? 'border-red-500' : 'border-gray-700'} text-white rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 appearance-none`}
+                        className={`w-full bg-gray-900/70 border ${
+                          errors.subject ? "border-red-500" : "border-gray-700"
+                        } text-white rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 appearance-none`}
                       >
-                        <option value="" disabled className="text-gray-500">Select a subject</option>
-                        {subjectOptions.map(option => (
-                          <option key={option.value} value={option.value} className="bg-gray-800">
+                        <option value="" disabled className="text-gray-500">
+                          Select a subject
+                        </option>
+                        {subjectOptions.map((option) => (
+                          <option
+                            key={option.value}
+                            value={option.value}
+                            className="bg-gray-800"
+                          >
                             {option.label}
                           </option>
                         ))}
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                        <svg
+                          className="w-5 h-5 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M19 9l-7 7-7-7"
+                          ></path>
                         </svg>
                       </div>
                       {errors.subject && (
                         <p className="text-red-500 text-sm mt-1 flex items-center">
-                          <AlertTriangle className="w-4 h-4 mr-1" /> {errors.subject}
+                          <AlertTriangle className="w-4 h-4 mr-1" />{" "}
+                          {errors.subject}
                         </p>
                       )}
                     </div>
@@ -516,7 +635,10 @@ const ContactPage = () => {
 
                   {/* Message Field */}
                   <div className="form-group">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-400 mb-1"
+                    >
                       Message *
                     </label>
                     <div className="relative">
@@ -527,12 +649,15 @@ const ContactPage = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className={`w-full bg-gray-800/50 border ${errors.message ? 'border-red-500' : 'border-gray-700'} rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
+                        className={`w-full bg-gray-800/50 border ${
+                          errors.message ? "border-red-500" : "border-gray-700"
+                        } rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 text-white transition-all duration-300 placeholder-gray-500`}
                         placeholder="Tell us about your project or inquiry..."
                       ></textarea>
                       {errors.message && (
                         <p className="text-red-500 text-sm mt-1 flex items-center">
-                          <AlertTriangle className="w-4 h-4 mr-1" /> {errors.message}
+                          <AlertTriangle className="w-4 h-4 mr-1" />{" "}
+                          {errors.message}
                         </p>
                       )}
                     </div>
@@ -542,11 +667,16 @@ const ContactPage = () => {
                   <div>
                     <motion.button
                       type="submit"
-                      disabled={submitStatus === 'submitting' || submitStatus === 'success'}
+                      disabled={
+                        submitStatus === "submitting" ||
+                        submitStatus === "success"
+                      }
                       className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-300 flex items-center justify-center shadow-lg
-                      ${submitStatus === 'success'
-                          ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800'
-                          : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'} 
+                      ${
+                        submitStatus === "success"
+                          ? "bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
+                          : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
+                      } 
                       text-white relative overflow-hidden`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -554,31 +684,47 @@ const ContactPage = () => {
                       {/* Button shine effect */}
                       <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
 
-                      {submitStatus === 'idle' && (
+                      {submitStatus === "idle" && (
                         <>
                           <Send className="w-5 h-5 mr-2" />
                           Send Message
                         </>
                       )}
 
-                      {submitStatus === 'submitting' && (
+                      {submitStatus === "submitting" && (
                         <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Sending...
                         </>
                       )}
 
-                      {submitStatus === 'success' && (
+                      {submitStatus === "success" && (
                         <>
                           <Check className="w-5 h-5 mr-2" />
                           Message Sent!
                         </>
                       )}
 
-                      {submitStatus === 'error' && (
+                      {submitStatus === "error" && (
                         <>
                           <AlertTriangle className="w-5 h-5 mr-2" />
                           Try Again
@@ -626,8 +772,12 @@ const ContactPage = () => {
                       <Mail className="w-6 h-6 text-red-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-white">Email Us</h3>
-                      <p className="text-gray-400 mt-1">Our team is here to help</p>
+                      <h3 className="text-lg font-medium text-white">
+                        Email Us
+                      </h3>
+                      <p className="text-gray-400 mt-1">
+                        Our team is here to help
+                      </p>
                       <a
                         href="mailto:operations@uhfilms.in"
                         className="text-red-400 hover:text-red-300 transition-colors block mt-1 group"
@@ -647,8 +797,12 @@ const ContactPage = () => {
                       <Phone className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-white">Call Us</h3>
-                      <p className="text-gray-400 mt-1">Mon-Fri, 10am-6pm IST</p>
+                      <h3 className="text-lg font-medium text-white">
+                        Call Us
+                      </h3>
+                      <p className="text-gray-400 mt-1">
+                        Mon-Fri, 10am-6pm IST
+                      </p>
                       <a
                         href="tel:+918920476445"
                         className="text-blue-400 hover:text-blue-300 transition-colors block mt-1 group"
@@ -668,7 +822,9 @@ const ContactPage = () => {
                       <MapPin className="w-6 h-6 text-purple-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-white">Location</h3>
+                      <h3 className="text-lg font-medium text-white">
+                        Location
+                      </h3>
                       <p className="text-gray-400 mt-1">Delhi, India</p>
                       <p className="text-purple-400 mt-1 group">
                         Studio visits by appointment only
@@ -679,7 +835,9 @@ const ContactPage = () => {
 
                   {/* Social Media */}
                   <div className="mt-12">
-                    <h3 className="text-lg font-medium text-white mb-4">Follow Us</h3>
+                    <h3 className="text-lg font-medium text-white mb-4">
+                      Follow Us
+                    </h3>
                     <div className="flex flex-wrap gap-3">
                       <motion.a
                         whileHover={{ y: -3 }}
