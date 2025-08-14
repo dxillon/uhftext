@@ -8,7 +8,7 @@ import HeroCarousel from '../components/HeroCarousel';
 import ArticleSlider from '../components/ArticleSlider';
 import { articles } from '../data/articles';
 const VideoPlayer = lazy(() => import('./VideoPlayer'));
-import CourseSlider from '../components/CourseSlider';
+// import CourseSlider from '../components/CourseSlider';
 import { Helmet } from 'react-helmet-async';
 import { upcomingProjects } from '../data/home';
 import FeaturedProjects from '../components/FeaturedProjects'
@@ -173,7 +173,7 @@ const Home = () => {
 
 
 
-
+{/* 
         <div
           style={{
             background: `
@@ -238,7 +238,7 @@ const Home = () => {
               borderRadius: '6px'
             }}
           />
-        </div>
+        </div> */}
 
 
 
