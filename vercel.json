@@ -1,14 +1,16 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ],
   "routes": [
     {
       "src": "/uhf3.txt",
       "headers": {
         "Content-Type": "image/svg+xml",
         "Content-Transfer-Encoding": "base64"
-      }
+      },
+      "dest": "/uhf3.txt"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
