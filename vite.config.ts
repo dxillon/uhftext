@@ -114,6 +114,7 @@ export default defineConfig({
       // Pre-bundle these dependencies for faster dev startup
       'react',
       'react-dom',
+      'react/jsx-runtime',
       'react-router-dom',
       'framer-motion',
     ],
