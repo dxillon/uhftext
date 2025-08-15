@@ -16,7 +16,7 @@ const TermsConditions = () => {
     {
       icon: Scale,
       title: "Production Agreement",
-      content: "All production services begin upon a signed agreement between the client and Urban Hustle Films™. The agreement outlines project scope, deliverables, deadlines, and costs. No project work will commence without a fully executed agreement. Any changes in project scope may result in adjusted timelines and additional charges."
+      content: "All production services begin upon a signed agreement between the client and Urban Hustle Films . The agreement outlines project scope, deliverables, deadlines, and costs. No project work will commence without a fully executed agreement. Any changes in project scope may result in adjusted timelines and additional charges."
     },
     {
       icon: FileText,
