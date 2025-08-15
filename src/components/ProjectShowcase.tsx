@@ -149,7 +149,7 @@ const ProjectShowcase = () => {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-transparent" />
-            <div className="absolute inset-0 bg-[url('/uhf3.txt')] bg-cover bg-center opacity-35 blur-sm" />
+            <div className="absolute inset-0 bg-[url('/uhf3.txt')] bg-cover bg-center opacity-35 blur-sm" /> 
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
