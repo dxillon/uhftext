@@ -29,10 +29,12 @@ export default defineConfig({
         manualChunks(id) {
           // Vendor libraries
           if (id.includes('node_modules')) {
-            // Large libraries get their own chunks
-            if (id.includes('react') && !id.includes('react-router') && !id.includes('react-player')) {
+            // Keep React and React-DOM together - CRITICAL
+            if (id.includes('react-dom') || (id.includes('react') && !id.includes('react-router') && !id.includes('react-player') && !id.includes('react-icons') && !id.includes('react-helmet') && !id.includes('react-select') && !id.includes('react-responsive') && !id.includes('react-marquee'))) {
               return 'react-vendor';
             }
+            
+            // Other React ecosystem libraries
             if (id.includes('react-router-dom')) return 'react-router';
             if (id.includes('framer-motion')) return 'framer-motion';
             if (id.includes('three') && !id.includes('@react-three')) return 'three-core';
@@ -60,18 +62,21 @@ export default defineConfig({
           
           // Your application code - split by feature/directory
           if (id.includes('/src/')) {
-            // Large components get their own chunks
-            if (id.includes('/src/components/Home')) return 'page-home';
-            if (id.includes('/src/components/About')) return 'page-about';
-            if (id.includes('/src/components/Contact')) return 'page-contact';
-            if (id.includes('/src/components/Services')) return 'page-services';
-            if (id.includes('/src/components/Portfolio')) return 'page-portfolio';
-            if (id.includes('/src/components/ProjectShowcase')) return 'project-showcase';
-            if (id.includes('/src/components/VideoPlayer')) return 'video-player';
+            // Large components get their own chunks only if they're lazy loaded
             if (id.includes('/src/components/FormCast')) return 'form-cast';
+            if (id.includes('/src/components/VideoPlayer')) return 'video-player';
+            
+            // Keep core app components together
+            if (id.includes('/src/components/Home') || 
+                id.includes('/src/components/About') || 
+                id.includes('/src/components/Contact') || 
+                id.includes('/src/components/Services') || 
+                id.includes('/src/components/Portfolio') || 
+                id.includes('/src/components/ProjectShowcase')) {
+              return 'app-pages';
+            }
             
             // Group smaller components
-            if (id.includes('/src/components/ui/') || id.includes('/src/components/common/')) return 'ui-components';
             if (id.includes('/src/components/')) return 'components';
             if (id.includes('/src/hooks/')) return 'hooks';
             if (id.includes('/src/utils/') || id.includes('/src/lib/')) return 'utils';
