@@ -34,8 +34,8 @@ import FAQPage from "./components/FAQPage";
 import GetCastedPage from "./components/GetCastedPage";
 import { Analytics } from "@vercel/analytics/react";
 import { LoadingProvider } from "./components/LoadingContext";
-// const Courses = lazy(() => import("./components/Courses"));
-// const CourseDetail = lazy(() => import("./components/CourseDetail"));
+const Courses = lazy(() => import("./components/Courses"));
+const CourseDetail = lazy(() => import("./components/CourseDetail"));
 // make sure this exists
 
 // Scroll to top on route change
@@ -190,8 +190,8 @@ const AppContent = () => {
                     <Route path="/faq" element={<FAQPage />} />
                     <Route path="/ask-us" element={<FAQPage />} />
 
-                    {/* <Route path="/courses" element={<Courses />} />
-                    <Route path="/course/:slug" element={<CourseDetail />} /> */}
+                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/course/:slug" element={<CourseDetail />} />
 
                     <Route path="/watch" element={<ProjectShowcase />} />
                     <Route path="/projects" element={<ProjectShowcase />} />

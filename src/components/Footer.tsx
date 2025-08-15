@@ -577,6 +577,7 @@ const Footer = () => {
                 target="_blank"
                 aria-label="Facebook – Urban Hustle Films"
                 rel="noopener noreferrer"
+                aria-label="Facebook – Urban Hustle Films"
                 whileHover={{ scale: 1.2, color: "#0077B5" }}
                 transition={{ duration: 0.3 }}
                 style={{ fontSize: "1.5rem", color: "white" }}

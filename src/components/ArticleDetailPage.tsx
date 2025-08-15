@@ -79,14 +79,14 @@ const ArticleDetailPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{`${article.title} | Urban Hustle Films `}</title>
+        <title>{`${article.title} | Urban Hustle Films™`}</title>
 
         <meta
           name="description"
           content={
             article.summary?.length
               ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
-              : 'Explore inspiring stories and insights from Urban Hustle Films .'
+              : 'Explore inspiring stories and insights from Urban Hustle Films™.'
           }
         />
 
@@ -99,13 +99,13 @@ const ArticleDetailPage: React.FC = () => {
           }
         />
 
-        <meta property="og:title" content={`${article.title} | Urban Hustle Films `} />
+        <meta property="og:title" content={`${article.title} | Urban Hustle Films™`} />
         <meta
           property="og:description"
           content={
             article.summary?.length
               ? article.summary.map(s => s.replace(/^•\s*/, '')).join(' | ')
-              : 'Explore insights and untold stories from Urban Hustle Films .'
+              : 'Explore insights and untold stories from Urban Hustle Films™.'
           }
         />
         <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
