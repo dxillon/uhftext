@@ -4,8 +4,8 @@ import { FAQItem } from '../types/faq';
 export const faqData: FAQItem[] = [
  {
     id: '1',
-    question: 'What services does Urban Hustle Films  offer?',
-    answer: 'Urban Hustle Films  provides full-scale film and video production services including scriptwriting, pre-production planning, cinematography, video editing, VFX, sound design, post-production, and distribution support. We cater to both fiction and non-fiction content across formats like feature films, web series, documentaries, branded content, music videos, and commercials.',
+    question: 'What services does Urban Hustle Films™ offer?',
+    answer: 'Urban Hustle Films™ provides full-scale film and video production services including scriptwriting, pre-production planning, cinematography, video editing, VFX, sound design, post-production, and distribution support. We cater to both fiction and non-fiction content across formats like feature films, web series, documentaries, branded content, music videos, and commercials.',
     views: 2450,
     category: 'General',
     isFeatured: true,
@@ -28,7 +28,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '3',
-    question: 'Can I hire Urban Hustle Films  for a corporate or branded video?',
+    question: 'Can I hire Urban Hustle Films™ for a corporate or branded video?',
     answer: 'Absolutely. We specialize in creating high-quality branded content and corporate films that align with your company’s messaging and brand identity. From concept development to final delivery, we ensure every frame reflects professionalism and creativity.',
     views: 980,
     category: 'Business',
@@ -41,7 +41,7 @@ export const faqData: FAQItem[] = [
   {
     id: '4',
     question: 'Do you offer post-production services separately?',
-    answer: 'Yes, Urban Hustle Films  offers standalone post-production services including editing, color grading, sound mixing, VFX, and animation. You can bring your raw footage and we’ll transform it into a polished final product.',
+    answer: 'Yes, Urban Hustle Films™ offers standalone post-production services including editing, color grading, sound mixing, VFX, and animation. You can bring your raw footage and we’ll transform it into a polished final product.',
     views: 1140,
     category: 'Post Production',
     isFeatured: false,
@@ -63,7 +63,7 @@ export const faqData: FAQItem[] = [
   {
     id: '6',
     question: 'What is the cost of video production?',
-    answer: 'Costs depend on various factors such as concept complexity, shoot locations, equipment, crew size, and post-production needs. We offer transparent quotes after an initial consultation. Urban Hustle Films  is known for delivering cinematic quality within a competitive budget.',
+    answer: 'Costs depend on various factors such as concept complexity, shoot locations, equipment, crew size, and post-production needs. We offer transparent quotes after an initial consultation. Urban Hustle Films™ is known for delivering cinematic quality within a competitive budget.',
     views: 1090,
     category: 'Pricing',
     isFeatured: false,
@@ -86,7 +86,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '8',
-    question: 'Can Urban Hustle Films  help with casting and location scouting?',
+    question: 'Can Urban Hustle Films™ help with casting and location scouting?',
     answer: 'Yes, we provide complete support with casting, location scouting, permits, and other production logistics. Our team ensures all pre-production elements are in place so the shoot runs smoothly.',
     views: 890,
     category: 'Pre Production',
@@ -98,7 +98,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '9',
-    question: 'Where is Urban Hustle Films  based and do you travel for shoots?',
+    question: 'Where is Urban Hustle Films™ based and do you travel for shoots?',
     answer: 'We are headquartered in India with operations in major cities including Mumbai, Delhi, and Chandigarh. We also undertake international shoots depending on project needs and logistics.',
     views: 750,
     category: 'Logistics',
@@ -120,7 +120,7 @@ export const faqData: FAQItem[] = [
   },
    {
     id: '11',
-    question: 'Can I watch content created by Urban Hustle Films  online?',
+    question: 'Can I watch content created by Urban Hustle Films™ online?',
     answer: 'Yes, many of our productions are available on major streaming platforms like Netflix, Amazon Prime, Disney+ Hotstar, and YouTube. We also host selected projects on our own digital portal, depending on licensing agreements and distribution rights.',
     views: 1400,
     category: 'Streaming',
@@ -132,7 +132,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '12',
-    question: 'Does Urban Hustle Films  have its own subscription platform?',
+    question: 'Does Urban Hustle Films™ have its own subscription platform?',
     answer: 'We are currently developing a curated streaming experience for original content, behind-the-scenes footage, and exclusive filmmaker sessions. Subscribe to our newsletter to be notified when we launch.',
     views: 1020,
     category: 'Subscription',
@@ -144,7 +144,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '13',
-    question: 'What kind of original content does Urban Hustle Films  produce?',
+    question: 'What kind of original content does Urban Hustle Films™ produce?',
     answer: 'Our original slate includes web series, independent films, experimental shorts, music videos, and socio-political documentaries. We focus on stories rooted in realism, creativity, and innovation, crafted for digital-first audiences.',
     views: 920,
     category: 'Content',
@@ -167,7 +167,7 @@ export const faqData: FAQItem[] = [
   {
     id: '15',
     question: 'Do you work on international co-productions?',
-    answer: 'Yes, Urban Hustle Films  actively collaborates with international production companies for co-productions, festival projects, and cross-border distribution. We handle global production logistics, permits, and compliance.',
+    answer: 'Yes, Urban Hustle Films™ actively collaborates with international production companies for co-productions, festival projects, and cross-border distribution. We handle global production logistics, permits, and compliance.',
     views: 880,
     category: 'International',
     isFeatured: true,
@@ -202,7 +202,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '18',
-    question: 'Is Urban Hustle Films  content suitable for all age groups?',
+    question: 'Is Urban Hustle Films™ content suitable for all age groups?',
     answer: 'We create diverse content including general audience entertainment, family-friendly series, and mature content rated for 18+. Each title is clearly marked with age ratings in compliance with content guidelines.',
     views: 680,
     category: 'Content Policy',
@@ -224,8 +224,8 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '20',
-    question: 'What makes Urban Hustle Films  different from other production houses?',
-    answer: 'Urban Hustle Films  stands out for its bold storytelling, seamless technical execution, and commitment to fresh, contemporary voices. We bring a unique blend of urban grit and cinematic finesse, working with both emerging and established creators.',
+    question: 'What makes Urban Hustle Films™ different from other production houses?',
+    answer: 'Urban Hustle Films™ stands out for its bold storytelling, seamless technical execution, and commitment to fresh, contemporary voices. We bring a unique blend of urban grit and cinematic finesse, working with both emerging and established creators.',
     views: 1500,
     category: 'About Us',
     isFeatured: true,
@@ -235,7 +235,7 @@ export const faqData: FAQItem[] = [
   {
     id: '21',
     question: 'Do you offer end-to-end film production services?',
-    answer: 'Yes, Urban Hustle Films  provides full-service production from concept development to final delivery. This includes scripting, casting, location scouting, shooting, editing, VFX, sound design, and distribution support.',
+    answer: 'Yes, Urban Hustle Films™ provides full-service production from concept development to final delivery. This includes scripting, casting, location scouting, shooting, editing, VFX, sound design, and distribution support.',
     views: 1120,
     category: 'Services',
     isFeatured: true,
@@ -270,7 +270,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '24',
-    question: 'How do I submit a script or pitch an idea to Urban Hustle Films ?',
+    question: 'How do I submit a script or pitch an idea to Urban Hustle Films™?',
     answer: 'You can submit your script, pitch deck, or treatment via our official submission form. Our creative development team reviews every proposal and reaches out if it aligns with our production slate.',
     views: 980,
     category: 'Submissions',
@@ -282,7 +282,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '25',
-    question: 'What genres does Urban Hustle Films  specialize in?',
+    question: 'What genres does Urban Hustle Films™ specialize in?',
     answer: 'We create content across multiple genres including mystery thrillers, psychological drama, urban fiction, sci-fi, social realism, and experimental cinema. Our strength lies in bold, disruptive storytelling.',
     views: 1040,
     category: 'Content',
@@ -292,7 +292,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '26',
-    question: 'Can brands or agencies collaborate with Urban Hustle Films  for video campaigns?',
+    question: 'Can brands or agencies collaborate with Urban Hustle Films™ for video campaigns?',
     answer: 'Yes, we partner with brands, creative agencies, and PR firms for commercial shoots, digital ad films, brand documentaries, and influencer-led content. We tailor each production to meet campaign goals and market trends.',
     views: 820,
     category: 'Commercial',
@@ -304,7 +304,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '27',
-    question: 'Where is Urban Hustle Films  located?',
+    question: 'Where is Urban Hustle Films™ located?',
     answer: 'Our main studio is based in India, with satellite partnerships in Mumbai, Delhi, and Chandigarh. We also have collaborators across Europe, North America, and Southeast Asia for global projects.',
     views: 670,
     category: 'About Us',
@@ -344,7 +344,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '31',
-    question: 'Is Urban Hustle Films  open to film festival collaborations?',
+    question: 'Is Urban Hustle Films™ open to film festival collaborations?',
     answer: 'Yes, we submit our projects to international film festivals and also collaborate with curators, cultural organizations, and film weeks. We welcome partnerships that showcase new voices in cinema.',
     views: 690,
     category: 'Festivals',
@@ -390,7 +390,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '35',
-    question: 'Can I co-produce a film with Urban Hustle Films ?',
+    question: 'Can I co-produce a film with Urban Hustle Films™?',
     answer: 'Yes, we welcome co-production opportunities with independent producers, studios, and international partners. Co-productions allow for shared resources, wider distribution, and greater creative synergy. Please contact us to discuss your project and funding model.',
     views: 560,
     category: 'Business',
@@ -402,7 +402,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '36',
-    question: 'Is Urban Hustle Films  open to investor partnerships?',
+    question: 'Is Urban Hustle Films™ open to investor partnerships?',
     answer: 'Yes. We offer investment opportunities in select film and series projects. Our investment decks include ROI forecasts, festival targets, OTT tie-ups, and territory rights. Reach out for a private consultation and project portfolio.',
     views: 430,
     category: 'Investors',
@@ -415,7 +415,7 @@ export const faqData: FAQItem[] = [
   {
     id: '37',
     question: 'Who owns the final product once it is delivered?',
-    answer: 'Ownership depends on the contract. In most commissioned works, the client owns full rights after final payment. For co-productions, IP is shared. For in-house films, Urban Hustle Films  retains full rights, including global distribution and licensing.',
+    answer: 'Ownership depends on the contract. In most commissioned works, the client owns full rights after final payment. For co-productions, IP is shared. For in-house films, Urban Hustle Films™ retains full rights, including global distribution and licensing.',
     views: 610,
     category: 'Legal',
     isFeatured: false,
@@ -466,7 +466,7 @@ export const faqData: FAQItem[] = [
   },
   {
     id: '42',
-    question: 'Does Urban Hustle Films  produce content for OTT platforms?',
+    question: 'Does Urban Hustle Films™ produce content for OTT platforms?',
     answer: 'Yes, we develop original web series, films, and documentaries for OTT platforms like Netflix, Prime Video, and Disney+. Our OTT-ready content is designed with global storytelling, quality standards, and streaming formats in mind.',
     views: 820,
     category: 'OTT',

@@ -93,7 +93,7 @@ const Home = () => {
       <Helmet>
         <title>Urban Hustle Films – Home</title>
         <meta name="description"
-          content="UH Films - Urban Tales | Cinematic Trails. Discover cinematic stories and projects by Urban Hustle Films ." />
+          content="UH Films - Urban Tales | Cinematic Trails. Discover cinematic stories and projects by Urban Hustle Films™." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://uhfilms.in/" />
 

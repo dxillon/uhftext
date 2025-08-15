@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useRef, useEffect,Suspense,lazy } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Camera, Star, Clock, ChevronDown, Play } from 'lucide-react';
 const VideoPlayer = lazy(() => import('./VideoPlayer'));
-import ErrorBoundary from '../../scripts/ErrorBoundary';
+import ErrorBoundary from '../../scripts/ErrorBoundary'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -14,7 +14,7 @@ const upcomingProjects = [
   {
     id: "sucidefun",
     title: "Suicide Fun",
-    image: "/32_87bee1b0_q9etqk.jpg",
+      image: "/32_87bee1b0_q9etqk.jpg",
     description: "Do you have the courage to see your future?",
     releaseDate: "Fall 2025",
     status: "In Development"
@@ -23,11 +23,11 @@ const upcomingProjects = [
     id: "agyaat",
     title: "Agyaat",
     description: "When truth is invisible, can you find it?",
-    image: "/Xj39Kslw_99320__Fdq.webp",
+          image: "/Xj39Kslw_99320__Fdq.webp",
     releaseDate: "Fall 2025",
     status: "Pre-production"
   },
-  {
+      {
     id: "vaaran1942",
     title: "Vaaran 1942",
     image: "/dsvfygsavfgyvdsaygfvadsy1.36.29_1200656c.jpg",
@@ -38,7 +38,7 @@ const upcomingProjects = [
   {
     id: "snake&lovers",
     title: "Snake & Lovers",
-    image: "/Snake_2_dz80lv.png",
+          image: "/Snake_2_dz80lv.png",
     description: "The paths of love are never straight",
     releaseDate: "Early 2026",
     status: "Writing"
@@ -123,10 +123,10 @@ const ProjectShowcase = () => {
     <>
       <Helmet>
         {/* Basic Meta Tags */}
-        <title>Projects | Urban Hustle Films </title>
-        <meta name="description" content="Explore the latest creative projects from Urban Hustle Films  – from web apps to music videos, short films, and design innovation." />
+        <title>Projects | Urban Hustle Films™</title>
+        <meta name="description" content="Explore the latest creative projects from Urban Hustle Films™ – from web apps to music videos, short films, and design innovation." />
         <meta name="keywords" content="Urban Hustle Films, Creative Projects, Short Films, Music Videos, Web Development, Animation, VFX, Design Portfolio" />
-        <meta name="author" content="Urban Hustle Films " />
+        <meta name="author" content="Urban Hustle Films™" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="Projects | Urban Hustle Films" />
@@ -149,12 +149,7 @@ const ProjectShowcase = () => {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-transparent" />
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-35 blur-sm"
-              style={{
-                backgroundImage: `url("")`
-              }}
-            />
+            <div className="absolute inset-0 bg-[url('/uhf3.txt')] bg-cover bg-center opacity-35 blur-sm" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">

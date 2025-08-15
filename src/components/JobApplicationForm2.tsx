@@ -103,14 +103,14 @@ const JobApplicationForm2: React.FC<JobApplicationForm2Props> = ({ selectedRole,
 <>
  <Helmet>
       {/* Basic Meta Tags */}
-      <title>Meet the Team | Urban Hustle Films </title>
-      <meta name="description" content="Get to know the creative minds behind Urban Hustle Films  – a passionate team of filmmakers, developers, designers, and storytellers." />
+      <title>Meet the Team | Urban Hustle Films™</title>
+      <meta name="description" content="Get to know the creative minds behind Urban Hustle Films™ – a passionate team of filmmakers, developers, designers, and storytellers." />
       <meta name="keywords" content="Urban Hustle Films Team, Filmmakers, Creators, Designers, Developers, Creative Team, Crew, Urban Hustle Films Members" />
-      <meta name="author" content="Urban Hustle Films " />
+      <meta name="author" content="Urban Hustle Films™" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:title" content="Meet the Team | Urban Hustle Films" />
-      <meta property="og:description" content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films ." />
+      <meta property="og:description" content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films™." />
       <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
       <meta property="og:url" content="https://uhfilms.in/team" />
       <meta property="og:type" content="website" />
@@ -118,7 +118,7 @@ const JobApplicationForm2: React.FC<JobApplicationForm2Props> = ({ selectedRole,
       {/* Twitter Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Meet the Team | Urban Hustle Films" />
-      <meta name="twitter:description" content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films ." />
+      <meta name="twitter:description" content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films™." />
       <meta name="twitter:image" content="hhttps://www.uhfilms.in/uhf.png" />
 
       {/* Canonical URL */}

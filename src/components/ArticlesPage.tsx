@@ -256,10 +256,10 @@ const ArticlesPage: React.FC = () => {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>Articles & Insights – Urban Hustle Films </title>
+        <title>Articles & Insights – Urban Hustle Films™</title>
         <meta
           name="description"
-          content="Dive into filmmaking stories, production insights, and creative inspiration from Urban Hustle Films . Explore lessons from behind the scenes and industry tips by Bishanpreet Singh."
+          content="Dive into filmmaking stories, production insights, and creative inspiration from Urban Hustle Films™. Explore lessons from behind the scenes and industry tips by Bishanpreet Singh."
         />
         <meta
           name="keywords"
@@ -272,25 +272,25 @@ const ArticlesPage: React.FC = () => {
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content="Articles & Insights – Urban Hustle Films "
+          content="Articles & Insights – Urban Hustle Films™"
         />
         <meta
           property="og:description"
-          content="Explore creative insights, stories from set, and filmmaking lessons from Urban Hustle Films  and Bishanpreet Singh."
+          content="Explore creative insights, stories from set, and filmmaking lessons from Urban Hustle Films™ and Bishanpreet Singh."
         />
         <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
         <meta property="og:url" content="https://uhfilms.in/articles" />
-        <meta property="og:site_name" content="Urban Hustle Films " />
+        <meta property="og:site_name" content="Urban Hustle Films™" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Articles & Insights – Urban Hustle Films "
+          content="Articles & Insights – Urban Hustle Films™"
         />
         <meta
           name="twitter:description"
-          content="Behind-the-scenes stories, indie filmmaking knowledge, and creative inspiration from Urban Hustle Films ."
+          content="Behind-the-scenes stories, indie filmmaking knowledge, and creative inspiration from Urban Hustle Films™."
         />
         <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
       </Helmet>

@@ -62,23 +62,23 @@ const TeamPage = () => {
   return (
     <>
       <Helmet>
-        <title>Meet the Team | Urban Hustle Films </title>
+        <title>Meet the Team | Urban Hustle Films™</title>
         <meta
           name="description"
-          content="Get to know the creative minds behind Urban Hustle Films  – a passionate team of filmmakers, developers, designers, and storytellers."
+          content="Get to know the creative minds behind Urban Hustle Films™ – a passionate team of filmmakers, developers, designers, and storytellers."
         />
         <meta
           name="keywords"
           content="Urban Hustle Films Team, Filmmakers, Creators, Designers, Developers, Creative Team, Crew, Urban Hustle Films Members"
         />
-        <meta name="author" content="Urban Hustle Films " />
+        <meta name="author" content="Urban Hustle Films™" />
         <meta
           property="og:title"
           content="Meet the Team | Urban Hustle Films"
         />
         <meta
           property="og:description"
-          content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films ."
+          content="Meet our creative team – the people behind the storytelling, visuals, tech, and innovation at Urban Hustle Films™."
         />
         <meta property="og:image" content="https://www.uhfilms.in/uhf.png" />
         <meta property="og:url" content="https://uhfilms.in/team" />
@@ -90,7 +90,7 @@ const TeamPage = () => {
         />
         <meta
           name="twitter:description"
-          content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films ."
+          content="Explore the brilliant team behind the visuals, code, and stories at Urban Hustle Films™."
         />
         <meta name="twitter:image" content="https://www.uhfilms.in/uhf.png" />
         <link rel="canonical" href="https://uhfilms.in/team" />
