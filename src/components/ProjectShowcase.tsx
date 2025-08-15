@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect,Suspense,lazy } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Camera, Star, Clock, ChevronDown, Play } from 'lucide-react';
-import VideoPlayer from './VideoPlayer';
+const VideoPlayer = lazy(() => import('./VideoPlayer'));
+import ErrorBoundary from '../../scripts/ErrorBoundary'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -393,12 +394,18 @@ const ProjectShowcase = () => {
           </div>
         </section>
 
-        <VideoPlayer
-          url={selectedVideo?.url || ''}
-          duration={selectedVideo?.duration || '00:00'}
-          isOpen={!!selectedVideo}
-          onClose={() => setSelectedVideo(null)}
-        />
+        {selectedVideo && (
+          <ErrorBoundary>
+            <Suspense fallback={<div className="text-center text-white py-10">Loading video...</div>}>
+              <VideoPlayer
+                url={selectedVideo.url}
+                duration={selectedVideo.duration}
+                isOpen={true}
+                onClose={() => setSelectedVideo(null)}
+              />
+            </Suspense>
+          </ErrorBoundary>
+        )}
       </div>
     </>
   );
