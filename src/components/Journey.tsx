@@ -142,7 +142,7 @@ const Journey = () => {
   return (
     <>
       <Helmet>
-        <title>Bishanpreet Singh - Founder Journey | Urban Hustle Films™</title>
+        <title>Bishanpreet Singh - Founder Journey | Urban Hustle Films </title>
         <meta
           name="description"
           content="Explore the inspiring journey of Bishanpreet Singh, the founder of Urban Hustle Films. Learn about his vision, creative path, and impact in indie cinema."

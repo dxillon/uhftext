@@ -123,10 +123,10 @@ const ProjectShowcase = () => {
     <>
       <Helmet>
         {/* Basic Meta Tags */}
-        <title>Projects | Urban Hustle Films™</title>
-        <meta name="description" content="Explore the latest creative projects from Urban Hustle Films™ – from web apps to music videos, short films, and design innovation." />
+        <title>Projects | Urban Hustle Films </title>
+        <meta name="description" content="Explore the latest creative projects from Urban Hustle Films  – from web apps to music videos, short films, and design innovation." />
         <meta name="keywords" content="Urban Hustle Films, Creative Projects, Short Films, Music Videos, Web Development, Animation, VFX, Design Portfolio" />
-        <meta name="author" content="Urban Hustle Films™" />
+        <meta name="author" content="Urban Hustle Films " />
 
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="Projects | Urban Hustle Films" />

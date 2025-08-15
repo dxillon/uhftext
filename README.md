@@ -292,10 +292,10 @@ The website is deployed on Vercel with continuous integration from the main bran
 
 ## 👥 Team & Ownership
 
-- **Owner**: Urban Hustle Films™
+- **Owner**: Urban Hustle Films 
 - **Founder**: Bishanpreet Singh
 - **Development**: Built with Bolt.new
-- **Design**: Urban Hustle Films™ Design Team
+- **Design**: Urban Hustle Films  Design Team
 
 ## 📄 License
 
